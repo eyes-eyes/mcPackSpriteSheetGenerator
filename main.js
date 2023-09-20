@@ -3,6 +3,7 @@ const upload = document.querySelector('.upload');
 const uploadButtonText = document.querySelector*('.upload-button-text');
 const uploadFilename = document.querySelector('.upload-filename');
 const fileInput = document.getElementById*('file');
+const dropArea = document.querySelector('.drop-area');
 
 function handle_file(file) {
     console.log(file)
