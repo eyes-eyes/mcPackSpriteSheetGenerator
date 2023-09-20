@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    padding: 0;
     background-color: rgb(229, 236, 212);
     text-align: center;
 }
@@ -21,7 +22,7 @@ body {
 
 .main_file_selector {
     left:50%;
-    top:20%;
+    top:13%;
     position: absolute;
     width: 60vmin;
     height: 22vmin;
@@ -33,7 +34,7 @@ body {
     border-radius: 26px;
 }
 
-.groups_selector {
+.format_verify {
     left: 15%;
     top: 30%;
     position: absolute;
@@ -42,15 +43,23 @@ body {
     background-color: white;
     color: black;
     text-align: center;
+    align-items: center;
     font-size: 3vmin;
     transform: translate(-15%,-30%);
     border-radius: 26px;
 }
 
-.section {
-    display: grid;
-    place-items: center;
-    align-content: center;
-    min-height: 100vh;
-    
+.groups_selector {
+    left: 94%;
+    top: 40%;
+    position: absolute;
+    width: 45vmin;
+    height: 60vmin;
+    background-color: white;
+    color: black;
+    text-align: center;
+    align-items: center;
+    font-size: 3vmin;
+    transform: translate(-94%,-30%);
+    border-radius: 26px;
 }
