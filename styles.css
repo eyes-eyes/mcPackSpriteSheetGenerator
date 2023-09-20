@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700";)
+
 body {
     margin: 0;
     padding: 0;
@@ -5,7 +7,9 @@ body {
     text-align: center;
 }
 
-
+/* .upload {
+    
+} */
 
 .file_hover_popup {
     width:100%;
@@ -30,6 +34,7 @@ body {
     color: black;
     text-align: center;
     font-size: 3vmin;
+    font-family: Roboto, sans-serif;
     transform: translate(-50%,-20%);
     border-radius: 26px;
 }
@@ -47,6 +52,7 @@ body {
     text-align: center;
     align-items: center;
     font-size: 3vmin;
+    font-family: Roboto, sans-serif;
     transform: translate(-15%,-30%);
     border-radius: 26px;
 }
@@ -64,6 +70,7 @@ body {
     text-align: center;
     align-items: center;
     font-size: 3vmin;
+    font-family: Roboto, sans-serif;
     transform: translate(-94%,-30%);
     border-radius: 26px;
 }
