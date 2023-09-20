@@ -1,3 +1,9 @@
+const body = document.querySelector('body');
+const upload = document.querySelector('.upload');
+const uploadButtonText = document.querySelector*('.upload-button-text');
+const uploadFilename = document.querySelector('.upload-filename');
+const fileInput = document.getElementById*('file');
+
 function handle_file(file) {
     console.log(file)
     document.getElementById("file_hover_popup").style.display = "none";
