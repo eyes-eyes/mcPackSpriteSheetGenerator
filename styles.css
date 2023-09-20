@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700");
+/* @import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700"); */
+
 
 body {
     margin: 0;
@@ -7,7 +8,19 @@ body {
     text-align: center;
 }
 
-/* .upload {
+/* .info_hover {
+<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 192 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M48 80a48 48 0 1 1 96 0A48 48 0 1 1 48 80zM0 224c0-17.7 14.3-32 32-32H96c17.7 0 32 14.3 32 32V448h32c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H64V256H32c-17.7 0-32-14.3-32-32z"/></svg>
+    &-upload {
+
+    }
+
+    &-groups {
+        
+    }
+
+    &-format {
+
+    }
     
 } */
 
@@ -36,7 +49,7 @@ body {
     font-size: 3vmin;
     font-family: Roboto, sans-serif;
     transform: translate(-50%,-20%);
-    border-radius: 26px;
+    border-radius: 10px;
 }
 
 .format_verify {
@@ -45,22 +58,22 @@ body {
     left: 15%;
     top: 30%;
     position: absolute;
-    width: 30vmin;
+    width: 35vmin;
     height: 20vmin;
     background-color: white;
     color: black;
     text-align: center;
     align-items: center;
-    font-size: 3vmin;
+    font-size: 2vmin;
     font-family: Roboto, sans-serif;
-    transform: translate(-15%,-30%);
-    border-radius: 26px;
+    transform: translate(-15%,-35%);
+    border-radius: 10px;
 }
 
 .groups_selector {
     margin: 1;
     padding: 1;
-    left: 94%;
+    left: 93%;
     top: 40%;
     position: absolute;
     width: 45vmin;
@@ -72,5 +85,5 @@ body {
     font-size: 3vmin;
     font-family: Roboto, sans-serif;
     transform: translate(-94%,-30%);
-    border-radius: 26px;
+    border-radius: 10px;
 }
