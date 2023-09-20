@@ -35,6 +35,7 @@ body {
 }
 
 .format_verify {
+    margin: 1;
     left: 15%;
     top: 30%;
     position: absolute;
@@ -50,6 +51,7 @@ body {
 }
 
 .groups_selector {
+    margin: 1;
     left: 94%;
     top: 40%;
     position: absolute;
