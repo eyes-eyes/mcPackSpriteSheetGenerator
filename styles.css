@@ -89,3 +89,35 @@ body {
     transform: translate(-50%,-50%);
     border-radius: 10px;
 }
+
+.checkboxes {
+    padding: 10;
+    font-size: 2vmin;
+    text-align: left;
+    color: black;
+    font-family: Roboto, sans-serif;
+
+}
+
+.tooltip {
+    display:inline-block;
+    position: relative;
+  }
+  .tooltip .content {
+    width: min-content;
+    padding: 5;
+    display: none;
+    position: absolute;
+    top: 1em;
+    left: 0;
+    z-index: 99999;
+    border-style: solid;
+    border-radius: 10px;
+    color: black;
+    /* background-color: rgb(44, 47, 51); */
+    background-color: white;
+  }
+  .tooltip:hover .content {
+    display: block;
+    
+  }
