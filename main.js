@@ -6,6 +6,15 @@ const fileInput = document.getElementById('file');
 const dropArea = document.querySelector('.drop-area');*/
 
 let file_object_raw = null;
+let file_object_zip = null;
+let zip_path_objects = {}
+
+
+
+function zip_new_entry_handler(entries) {
+    entries.
+    zip_path_objects
+}
 
 function handle_file(file) {
     console.log(file)
@@ -13,6 +22,10 @@ function handle_file(file) {
     document.getElementById("main_file_selector_areas").style.display = "none";
     document.getElementById("main_site_data").style.display = "block";
     file_object_raw = file;
+
+    file_object_zip = new zip.ZipReader(new zip.BlobReader(file));
+    file_object_zip.getEntries().then(zip_new_entry_handler)
+
     
 } 
 
