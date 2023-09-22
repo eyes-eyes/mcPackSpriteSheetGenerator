@@ -102,8 +102,8 @@ body {
 .tooltip {
     display:inline-block;
     position: relative;
-  }
-  .tooltip .content {
+}
+.tooltip .content {
     width: min-content;
     padding: 5;
     display: none;
@@ -116,8 +116,23 @@ body {
     color: black;
     /* background-color: rgb(44, 47, 51); */
     background-color: white;
-  }
-  .tooltip:hover .content {
+}
+.tooltip:hover .content {
     display: block;
-    
-  }
+}
+
+.top_bar_thingy {
+    left:0px;
+    top:0px;
+    width: 100%;
+    background-color: black;
+    height: 4%;
+    border-radius: 0px 0px 40px 40px;
+    position: fixed;
+    color:white;
+    font-size: 97%;
+}
+.top_bar_thingy * {
+    margin: 0px;
+    padding: 0px;
+}
