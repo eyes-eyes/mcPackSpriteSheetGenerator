@@ -42,14 +42,11 @@ const version_codes = {
 let fileNameElement = document.querySelector("#main_site_data p");
 
 function zip_new_entry_handler(entries) {
+    zip_path_objects = {}
     for (i in entries) {
         path_arrary = entries[i].filename.split("/")
 
-        current_path_loc = zip_path_objects
-        for (o in path_arrary) {
-            current_path_loc = current_path_loc[path_arrary[o]] ? current_path_loc[path_arrary[o]] : {}
-        }
-        current_path_loc = entries[i]
+        fillObjectAtDepth(zip_path_objects,entries[i],path_arrary)
     }
 
     
@@ -92,6 +89,42 @@ function back_to_file_selector() {
 
 
 
+
+
+
+//helper functions
+const fillObjectAtDepth = (object, value, depthArray) => {
+    let currentObj = object;
+  
+    for (let i = 0; i < depthArray.length - 1; i++) {
+      const key = depthArray[i];
+      if (!currentObj[key]) {
+        currentObj[key] = {};
+      }
+      currentObj = currentObj[key];
+    }
+  
+    // Set the value at the final depth
+    currentObj[depthArray[depthArray.length - 1]] = value;
+    return object;
+};
+const getObjcetAtDepth = (object, depthArray) => {
+    let currentObj = object;
+  
+    for (let i = 0; i < depthArray.length - 1; i++) {
+      const key = depthArray[i];
+      if (!currentObj[key]) {
+        currentObj[key] = {};
+      }
+      currentObj = currentObj[key];
+    }
+  
+    // Set the value at the final depth
+    return currentObj[depthArray[depthArray.length - 1]];
+};
+
+
+//helper function
 
 
 
