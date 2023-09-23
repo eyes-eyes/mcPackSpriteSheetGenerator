@@ -8,8 +8,10 @@ const dropArea = document.querySelector('.drop-area');*/
 let file_object_raw = null;
 let file_object_zip = null;
 let zip_path_objects = {};
-let pack_mcmetta_data = {};
+let pack_mcmeta_data = {};
+let pack_version = 0;
 
+let fileNameElement = document.querySelector("#main_site_data p");
 
 
 //Constants
@@ -25,13 +27,13 @@ const version_codes = {
     "9": ["1.19", "1.19.2"],
     "10": ["1.19", "1.19.2"],
     "11": ["1.19.2", "1.19.2"],
-    "12": ["1.19.3"],
-    "13": ["1.19.4"],
-    "14": ["1.19.4"],
+    "12": ["1.19.3", "1.19.3"],
+    "13": ["1.19.4", "1.19.4"],
+    "14": ["1.19.4", "1.19.4"],
     "15": ["1.20", "1.20.1"],
     "16": ["1.20", "1.20.1"],
     "17": ["1.20", "1.20.1"],
-    "18": ["1.20.2"]
+    "18": ["1.20.2", "1.20.2"]
 }
 
 
@@ -39,17 +41,42 @@ const version_codes = {
 
 
 
-let fileNameElement = document.querySelector("#main_site_data p");
 
+async function pack_data_parse() {
+    mcmeta = zip_path_objects["pack.mcmeta"]
+    if (mcmeta) {
+        mcmeta_data = await read_file_to_str(mcmeta)
+        try {
+            packmcmeta_json = JSON.parse(mcmeta)
+        } catch (e) {
+            return 1
+        }
 
-function pack_data_parse() {
-    zip_path_objects
+        if (packmcmeta_json) {
+            pack_version = packmcmeta_json?.["pack"]?.["pack_format"]
+            if (!pack_version) {
+                return 1
+            }
+
+            pack_mcmeta_data = packmcmeta_json
+
+            update_pack_version(pack_version)
+        } else {
+            return 1
+        }
+    } else {
+        return 1
+    }
 }
 
+function update_pack_version(pack_version) {
+    pack_minecraft_version_names = version_codes[pack_version.toString()]
+    if (!pack_minecraft_version_names) {
+        pack_minecraft_version_names = ["Unknown","Unknown"]
+    }
+    document.getElementById("pack_version_top_bar").innerText = "Pack version: "+pack_version+" ("+pack_minecraft_version_names[0]+"-"+pack_minecraft_version_names[1]+")"
+}
 
-// read_file_to_str(file) {
-//     file
-// }
 
 function zip_new_entry_handler(entries) {
     zip_path_objects = {}
@@ -61,7 +88,7 @@ function zip_new_entry_handler(entries) {
 
     
 
-    pack_data_parse()
+    pack_data_parse().then((o) => {if (o == 1) {error_invalid_pack("cant parse pack.mcmeta")}})
 }
 
 function handle_file(file) {
@@ -81,6 +108,7 @@ function handle_file(file) {
 function back_to_file_selector() {
     document.getElementById("main_file_selector_areas").style.display = "block";
     document.getElementById("main_site_data").style.display = "none";
+    document.getElementById("pack_version_top_bar").innerText = "Pack version: (opening)"
 }
 
 
@@ -98,7 +126,11 @@ function back_to_file_selector() {
 
 
 
-
+function error_invalid_pack(message) {
+    pack_invalid = 1;
+    back_to_file_selector();
+    alert("invalid pack:\r\n"+message)
+}
 
 
 
@@ -132,7 +164,18 @@ const getObjcetAtDepth = (object, depthArray) => {
     // Set the value at the final depth
     return currentObj[depthArray[depthArray.length - 1]];
 };
-
+function read_file_to_str(file) {
+    return file.getData(
+        // writer
+        new zip.TextWriter(),
+        // options
+        {
+            onprogress: (index, max) => {
+            // onprogress callback
+            }
+        }
+    );
+}
 
 //helper function
 
