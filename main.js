@@ -122,7 +122,10 @@ function handle_file(file) {
     document.getElementById("main_site_data").style.display = "block";
     file_object_raw = file;
 
-    document.getElementById("pack_name_top_bar").innerText = file.name;
+
+    console.log(file_object_raw.name.replace(".zip",""))
+
+    document.getElementById("pack_name_top_bar").innerHTML = minecraft_name_to_html(file_object_raw.name.replace(".zip","").replace(/^[!\s]*/gm,"")).innerHTML;
 
     file_object_zip = new zip.ZipReader(new zip.BlobReader(file));
     file_object_zip.getEntries().then(zip_new_entry_handler)
@@ -204,18 +207,53 @@ function read_file_to_str(file) {
 
 
 function minecraft_name_to_html(name) {
-    current_settings = {
+    default_settings = {
         "color": "#fff",
         "bold": false,
         "italic": false,
         "underline": false
     }
+    current_setting = default_settings
     make_new_html_element_with_settings = (text,settings) => {
-        current_element = document.createElement("p")
-        
+        current_element = document.createElement("span")
+        current_element.style.fontWeight = settings.bold ? "bold" : "";
+        current_element.style.color = settings.color;
+        current_element.style.textDecoration = settings.underline ? "underline" : "";
+        current_element.style.fontStyle = settings.italic ? "italic" : "";
+        current_element.innerText = text
+        return current_element
     }
 
-    main_p = 
+    main_p = document.createElement("p")
+
+    text_buffer = ""
+    for (let i = 0; i < name.length; i++) {
+        if (name[i] == "§") {
+            main_p.appendChild(make_new_html_element_with_settings(text_buffer,current_setting))
+            text_buffer = ""
+            i+=1
+            if (color_codes[name[i]]) {
+                current_setting.color = color_codes[name[i]]
+            } else {
+                switch (name[i]) {
+                    case "l":
+                      current_setting.bold = true
+                    case "n":
+                        current_setting.underline = true
+                    case "o":
+                        current_setting.italic = true
+                    case "r":
+                        current_setting = default_settings
+                }
+            }
+        } else {
+            text_buffer += name[i]
+        }
+    }
+
+    main_p.appendChild(make_new_html_element_with_settings(text_buffer,current_setting))
+
+    return main_p
     
 }
 //helper function

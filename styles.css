@@ -124,12 +124,14 @@ body {
     left:0px;
     top:0px;
     width: 100%;
-    background-color: black;
     height: 4%;
     border-radius: 0px 0px 40px 40px;
     position: fixed;
     color:white;
     font-size: 97%;
+    /* background-image: url(images/Blue_wave-haikei.svg); */
+    background-color: rgb(151, 211, 232);
+    background-size: 100% 100%;
 }
 .top_bar_thingy * {
     margin: 0px;
