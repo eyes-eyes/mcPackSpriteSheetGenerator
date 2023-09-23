@@ -41,6 +41,16 @@ const version_codes = {
 
 let fileNameElement = document.querySelector("#main_site_data p");
 
+
+function pack_data_parse() {
+    zip_path_objects
+}
+
+
+// read_file_to_str(file) {
+//     file
+// }
+
 function zip_new_entry_handler(entries) {
     zip_path_objects = {}
     for (i in entries) {
@@ -51,7 +61,7 @@ function zip_new_entry_handler(entries) {
 
     
 
-    // pack_data_parse()
+    pack_data_parse()
 }
 
 function handle_file(file) {
