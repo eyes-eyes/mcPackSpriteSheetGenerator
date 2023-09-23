@@ -1,6 +1,4 @@
 <html lang="en">
-<script type="text/javascript" src="librarys/zip-full.min.js"></script>
-<script type="text/javascript" src="main.js"></script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +10,7 @@
     <div class="file_hover_popup" id="file_hover_popup"></div>
     <div class="main_file_selector">
       <h1>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         Upload resource pack
       </h1>
       <input type="file" accept="application/x-zip-compressed" id="input_main_upload">
@@ -24,19 +23,19 @@
     <section>
       <div class="top_bar_thingy">
         <button style="left:10%;top:50%;position: absolute;transform: translate(0px,-50%);" onclick="back_to_file_selector()"> &leftarrow; Back</button>
-        <p style="position: absolute;left:50%;top:50%;transform:translate(-50%,-50%);">Test.zip</p>
-        <p style="right:10%;top:50%;position: absolute;transform: translate(0px,-50%);">Pack version: 15 (1.19.4)</p>
+        <p style="position: absolute;left:50%;top:50%;transform:translate(-50%,-50%); font-family: Roboto, sans-serif;">Test.zip</p>
+        <p style="right:10%;top:50%;position: absolute;transform: translate(0px,-50%); font-family: Roboto, sans-serif;">Pack version: 15 (1.19.4)</p>
       </div>
     </section>
 
 
-    <!-- <section>
+    <section>
       <div class="format_verify" id="format_verify">
         <h2>
           Verify format version
         </h2>
       </div>
-    </section> -->
+    </section>
     <section>
       <div class="groups_selector" id="groups_selector">
         <h2>
@@ -91,5 +90,6 @@
   </section>
 
 </body>
-
+<script type="text/javascript" src="librarys/zip-full.min.js"></script>
+<script type="text/javascript" src="main.js"></script>
 </html>
