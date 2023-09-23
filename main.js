@@ -5,13 +5,13 @@ const uploadFilename = document.querySelector('.upload-filename');
 const fileInput = document.getElementById('file');
 const dropArea = document.querySelector('.drop-area');*/
 
+
 let file_object_raw = null;
 let file_object_zip = null;
 let zip_path_objects = {};
 let pack_mcmeta_data = {};
 let pack_version = 0;
 
-let fileNameElement = document.querySelector("#main_site_data p");
 
 
 //Constants
@@ -37,6 +37,26 @@ const version_codes = {
 }
 
 
+const color_codes = {
+    "0":["#000000"],
+    "1":["#0000AA"],
+    "2":["#00AA00"],
+    "3":["#00AAAA"],
+    "4":["#AA0000"],
+    "5":["#AA00AA"],
+    "6":["#FFAA00"],
+    "7":["#AAAAAA"],
+    "8":["#555555"],
+    "9":["#5555FF"],
+    "a":["#55FF55"],
+    "b":["#55FFFF"],
+    "c":["#FF5555"],
+    "d":["#FF55FF"],
+    "e":["#FFFF55"],
+    "f":["#FFFFFF"],
+}
+
+
 //Constants
 
 
@@ -47,14 +67,16 @@ async function pack_data_parse() {
     if (mcmeta) {
         mcmeta_data = await read_file_to_str(mcmeta)
         try {
-            packmcmeta_json = JSON.parse(mcmeta)
+            packmcmeta_json = JSON.parse(mcmeta_data)
         } catch (e) {
+            console.log("error parsing json")
             return 1
         }
 
         if (packmcmeta_json) {
             pack_version = packmcmeta_json?.["pack"]?.["pack_format"]
             if (!pack_version) {
+                console.log("no pack format")
                 return 1
             }
 
@@ -62,9 +84,11 @@ async function pack_data_parse() {
 
             update_pack_version(pack_version)
         } else {
+            console.log("json invalid")
             return 1
         }
     } else {
+        console.log("error opening file")
         return 1
     }
 }
@@ -98,7 +122,7 @@ function handle_file(file) {
     document.getElementById("main_site_data").style.display = "block";
     file_object_raw = file;
 
-    fileNameElement.innerText = file.name;
+    document.getElementById("pack_name_top_bar").innerText = file.name;
 
     file_object_zip = new zip.ZipReader(new zip.BlobReader(file));
     file_object_zip.getEntries().then(zip_new_entry_handler)
@@ -109,6 +133,7 @@ function back_to_file_selector() {
     document.getElementById("main_file_selector_areas").style.display = "block";
     document.getElementById("main_site_data").style.display = "none";
     document.getElementById("pack_version_top_bar").innerText = "Pack version: (opening)"
+    document.getElementById("pack_name_top_bar").innerText = "None"
 }
 
 
@@ -177,6 +202,22 @@ function read_file_to_str(file) {
     );
 }
 
+
+function minecraft_name_to_html(name) {
+    current_settings = {
+        "color": "#fff",
+        "bold": false,
+        "italic": false,
+        "underline": false
+    }
+    make_new_html_element_with_settings = (text,settings) => {
+        current_element = document.createElement("p")
+        
+    }
+
+    main_p = 
+    
+}
 //helper function
 
 
