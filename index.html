@@ -102,20 +102,28 @@
       <div class="searchingSection">
         <h1 style="font-size: 2.1vmin;">Add addition textures here!<br></h1>
         <div class = 'search' id="search">          
-          <input type="text" class="searchTerm" placeholder="Search textures">
+          <input type="text" class="searchTerm" placeholder="Search textures" oninput="search_user_input(this.value)">
           <button type="submit" class="searchButton">
           </button>
         </div>
+
+        <div class="search_results" id="search_results">
+          
+        </div>
+        
       </div>
     </section>
       
 
-
-
-
-      <section>
+      <!-- <section>
         <canvas class="center_canvas" id="center_canvas" height="1" width="1">
+      </section> -->
+      <section>
+        <div class="proceedSection">
+          <button>Proceed With options</button>
+        </div>
       </section>
+      
 
   </section>
 
