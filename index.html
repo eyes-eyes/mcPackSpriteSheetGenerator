@@ -23,20 +23,20 @@
   <section id="main_site_data" style="display: none;">
     <section>
       <div class="top_bar_thingy">
-        <button style="left:10%;top:50%;position: absolute;transform: translate(0px,-50%);" onclick="back_to_file_selector()"> &leftarrow; Back</button>
-        <p style="position: absolute;left:50%;top:50%;transform:translate(-50%,-50%); font-family: Roboto, sans-serif;text-align: center;max-width: 10%;text-overflow: ellipsis;white-space: nowrap;" id="pack_name_top_bar">None</p>
-        <p style="right:10%;top:50%;position: absolute;transform: translate(0px,-50%); font-family: Roboto, sans-serif;" id="pack_version_top_bar">Pack version: (opening)</p>
+        <button style="left:5%;top:50%;position: absolute;transform: translate(0px,-50%);" onclick="back_to_file_selector()"> &leftarrow; Back</button>
+        <p style="position: absolute;left:50%;top:50%;transform:translate(-50%,-50%); font-family: Roboto, sans-serif;max-width: 30%;overflow: hidden;white-space: nowrap;text-align: center;" id="pack_name_top_bar">None</p>
+        <p style="right:5%;top:50%;position: absolute;transform: translate(0px,-50%); font-family: Roboto, sans-serif;" id="pack_version_top_bar">Pack version: (opening)</p>
       </div>
     </section>
 
-
-    <section>
+    <!-- <section>
       <div class="format_verify" id="format_verify">
         <h2>
           Verify format version
         </h2>
       </div>
-    </section>
+    </section> -->
+
     <section>
       <div class="groups_selector" id="groups_selector">
         <h2>
@@ -97,6 +97,27 @@
         </h2>
       </div>
     </section>
+
+    <section>
+      <div class="searchingSection">
+        <h1 style="font-size: 2.1vmin;">Add addition textures here!<br></h1>
+        <div class = 'search' id="search">          
+          <input type="text" class="searchTerm" placeholder="Search textures">
+          <button type="submit" class="searchButton">
+            <svg><use xlink:href="visual"></use></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+      
+
+
+
+
+      <section>
+        <canvas class="center_canvas" id="center_canvas" height="1" width="1">
+      </section>
+
   </section>
 
 </body>

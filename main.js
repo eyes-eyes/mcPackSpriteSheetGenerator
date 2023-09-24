@@ -1,14 +1,9 @@
-/*const body = document.querySelector('body');
-const upload = document.querySelector('.upload');
-const uploadButtonText = document.querySelector*('.upload-button-text');
-const uploadFilename = document.querySelector('.upload-filename');
-const fileInput = document.getElementById('file');
-const dropArea = document.querySelector('.drop-area');*/
 
 
 let file_object_raw = null;
 let file_object_zip = null;
 let zip_path_objects = {};
+let zip_orig_path_objects = [];
 let pack_mcmeta_data = {};
 let pack_version = 0;
 
@@ -109,6 +104,7 @@ function zip_new_entry_handler(entries) {
 
         fillObjectAtDepth(zip_path_objects,entries[i],path_arrary)
     }
+    zip_orig_path_objects = entries
 
     
 
@@ -178,7 +174,7 @@ const fillObjectAtDepth = (object, value, depthArray) => {
     currentObj[depthArray[depthArray.length - 1]] = value;
     return object;
 };
-const getObjcetAtDepth = (object, depthArray) => {
+const getObjectAtDepth = (object, depthArray) => {
     let currentObj = object;
   
     for (let i = 0; i < depthArray.length - 1; i++) {
@@ -205,6 +201,36 @@ function read_file_to_str(file) {
     );
 }
 
+
+
+function search_object_tree(root,regex) {
+    
+    for (i in root) {
+        if (regex.exec(zip_orig_path_objects) !== null) {
+            
+        }
+        // if (typeof(root[i]) === typeof({})) {
+            
+        // }
+
+        //quick check if file
+        if (typeof(root[i].filename) == typeof("")) {
+
+        } else if (typeof(root[i].filename) == typeof({})) {
+
+        } else {
+            
+        }
+    }
+}
+
+function get_just_file_name(fileobj) {
+    fil_name = fileobj.filename 
+    fil_name = fil_name ? fil_name : ""
+    return fil_name.split("/").reverse()[0]
+}
+
+//Shows colors and removed codes in pack name
 
 function minecraft_name_to_html(name) {
     default_settings = {
