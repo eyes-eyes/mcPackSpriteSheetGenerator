@@ -203,23 +203,55 @@ function read_file_to_str(file) {
 
 
 
-function search_object_tree(root,regex) {
-    
+function search_object_tree(root,search_value) {
+    let output_array = []
     for (i in root) {
-        if (regex.exec(zip_orig_path_objects) !== null) {
-            
-        }
-        // if (typeof(root[i]) === typeof({})) {
-            
-        // }
+        // console.log(i)
+        
 
         //quick check if file
         if (typeof(root[i].filename) == typeof("")) {
-
-        } else if (typeof(root[i].filename) == typeof({})) {
-
+            // console.log(i)
+            if (i.toString().includes(search_value)) {
+                output_array.push(root[i])
+                console.log(i)
+                // debugger;
+            }
         } else {
-            
+            output_array.push(...search_object_tree(root[i],search_value))
+        }
+    }
+    return output_array
+}
+
+function search_user_input(search_string) {
+    output = []
+    search_array = search_string.split(" ")
+    for (i in zip_orig_path_objects) {
+        current_name = get_just_file_name(zip_orig_path_objects[i])
+        if (current_name.endsWith(".png")) {
+            current_eligablility = true;
+            for (o in search_array) {
+                if (!current_name.includes(search_array[o])) {
+                    current_eligablility = false;
+                }
+            }
+            if (current_eligablility) {
+                output.push(zip_orig_path_objects[i])
+            }
+        }
+    }
+    
+
+    search_results = document.getElementById("search_results")
+    if (output.length == 0) {
+        search_results.innerHTML = "<p>no ballz</p>"
+    } else {
+        search_results.innerHTML = ""
+        for (i in output) {
+            current_result_itter = document.createElement("p")
+            current_result_itter.innerText = get_just_file_name(output[i])
+            search_results.appendChild(current_result_itter)
         }
     }
 }

@@ -32,7 +32,7 @@ body {
     position: fixed;
     background-color: aqua;
     pointer-events: none;
-    z-index: 1000;
+    z-index: 3;
     opacity: 0.5;
 }
 
@@ -93,16 +93,16 @@ body {
     width: 100%;
     position: relative;
     display: flex;
+    z-index: 1;
 }
 
 .searchTerm {
     width: 100%;
     border: 3px solid #00B4CC;
     border-right: none;
-    /* padding: 5px; */
-    /* display: block; */
+    z-index: 2;
     height: 20px;
-    border-radius: 5px 0 0 5px;
+    border-radius: 5px 0 0 0px;
     outline: none;
     color: #9DBFAF;
 }
@@ -117,7 +117,7 @@ body {
     background-color: #00B4CC;
     text-align: center;
     color: #fff; 
-    border-radius: 0 5px 5px 0;
+    border-radius: 0 5px 0px 0;
     cursor: pointer;
     font-size: 20px; 
     background-image: url(images/search_FILL0_wght400_GRAD0_opsz24.svg);
@@ -131,8 +131,18 @@ body {
     position: absolute;
     top: 25%;
     left: 2.5%;
-    transform: translate(0%,-50%);
     max-width: 25%;
+}
+
+.search_results {
+    z-index: 3;
+    width: 100%;
+    background-color: #0090a3;
+    height: fit-content;
+    overflow-y: scroll;
+    max-height: 50vh;
+    border-radius: 0px 0px 0px 40px;
+    text-align: center;
 }
 
 .checkboxes {
@@ -147,6 +157,7 @@ body {
 .tooltip {
     display:inline-block;
     position: relative;
+    z-index: 10;
 }
 .tooltip .content {
     width: min-content;
@@ -156,7 +167,7 @@ body {
     transform: translate(-105%,-50%);
     top: 1em;
     left: 0;
-    z-index: 99999;
+    z-index: 10;
     border-style: solid;
     border-radius: 8px;
     color: black;
@@ -185,6 +196,14 @@ body {
     padding: 0px;
 }
 
+.proceed {
+    left: 50%;
+    top: 80%;
+    width: 30%;
+    border-radius: 30px;
+    position: relative
+    
+}
 
 
 .center_canvas {
