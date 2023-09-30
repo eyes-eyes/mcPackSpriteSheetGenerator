@@ -81,9 +81,15 @@ body {
     ;
 }
 
-.listOne {
-    margin: 1;
-    padding: 1;
+.grouping {
+    display: flex;
+    justify-content: space-between; 
+}
+
+.list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 /* The switch - the box around the slider */
@@ -220,21 +226,14 @@ body {
     text-align: center;
 }
 
-.grouping {
-    padding: 10;
-    font-size: 2vmin;
-    text-align: left;
-    color: black;
-    font-family: Roboto, sans-serif;
-    
 
-}
 
 .tooltip {
     display:inline-block;
     position: relative;
     z-index: 10;
 }
+
 .tooltip .content {
     width: min-content;
     padding: 5;
@@ -250,6 +249,7 @@ body {
     /* background-color: rgb(44, 47, 51); */
     background-color: white;
 }
+
 .tooltip:hover .content {
     display: block;
 }
