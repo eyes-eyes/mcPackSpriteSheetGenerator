@@ -99,8 +99,11 @@ body {
     display: inline-block;
     width: 3.5em;
     height: 2em;
-    margin: 15px;
+    margin: 18px;
+    cursor: pointer;
 }
+
+
 
 /* Hide default HTML checkbox */
 .switch input {
