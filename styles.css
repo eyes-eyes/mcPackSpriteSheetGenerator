@@ -62,7 +62,7 @@ body {
     position: absolute;
     width: 30%;
     max-width: 25%;
-    height: 60vmin;
+    max-height: fit-content;
     background-color: white;
     color: black;
     text-align: center;
@@ -81,6 +81,11 @@ body {
     ;
 }
 
+.listOne {
+    margin: 1;
+    padding: 1;
+}
+
 /* The switch - the box around the slider */
 .switch {
     font-size: 17px;
@@ -88,26 +93,27 @@ body {
     display: inline-block;
     width: 3.5em;
     height: 2em;
-  }
-  
-  /* Hide default HTML checkbox */
-  .switch input {
+    margin: 15px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
     opacity: 0;
     width: 0;
     height: 0;
-  }
-  
-  .toggle {
+}
+
+.toggle {
     position: relative;
     display: flex;
     width: 2.8em;
     height: 1em;
     background-color: rgb(165, 165, 165);
     justify-content: center;
-  }
-  
-  .toggle::before {
-    content: "qwefqwefwq";
+}
+
+.toggle::before {
+    /* content: ""; */
     position: absolute;
     z-index: -1;
     width: .8em;
@@ -119,16 +125,47 @@ body {
     transform-origin: bottom;
     transform: rotateZ(-30deg);
     transition: transform 150ms;
-  }
-  
-  .switch input:checked + .toggle::before {
+}
+
+.switch input:checked + .toggle::before {
     transform: rotateZ(30deg);
-  }
-  
-  .switch input:checked + .toggle {
+}
+
+.switch input:checked + .toggle {
     box-shadow: 0 -1em 2em 0 rgb(230, 111, 111);
-  }     
-  
+}     
+
+.switch.logs .toggle::before {
+    content: "Logs";
+}
+
+.switch.planks .toggle::before{
+    content: "Planks";
+}
+
+.switch.armors .toggle::before{
+    content: "Armors";
+}
+
+.switch.toolsets .toggle::before{
+    content: "Tool\00a0Sets";
+}
+
+.switch.statusEffects .toggle::before{
+    content: "Status\00a0 Effects";
+}
+
+.switch.stones .toggle::before{
+    content: "Stones";
+}
+
+.switch.sediments .toggle::before{
+    content: "Sediments";
+}
+
+.switch.foods .toggle::before{
+    content: "Foods";
+}
 
 .searchingSection {
     width: 30%;
