@@ -41,10 +41,11 @@
       <div class="groups_selector" id="groups_selector">
         <h2>
           Checkboxes for groups of spritesheets
-          <div class="checkboxes" id="checkboxes">
+          <div class="grouping" id="grouping">
             <div>
               <input type="checkbox" id="logs" name="logs"/>
-              <div class="tooltip"><label for="logs">Logs</label>
+              <div class="tooltip"><label for="logs">Logs<span class="toggle">
+              </span></label>
                 <div class="content">Java&nbsp1.3.1:&nbspoak,&nbspspruce,&nbspbirch,&nbspjungle&nbspwood
                   Java&nbsp1.7.2:&nbsp[+]&nbspacacia,&nbspdark&nbspoak
                   Java&nbsp1.13:&nbsp[+]&nbspstripped&nbspbarks
@@ -99,12 +100,10 @@
     </section>
 
     <section>
-      <div class="searchingSection">
+      <div class="searchingSection" id="searchingSection">
         <h1 style="font-size: 2.1vmin;">Add addition textures here!<br></h1>
         <div class = 'search' id="search">          
-          <input type="text" class="searchTerm" placeholder="Search textures" oninput="search_user_input(this.value)">
-          <button type="submit" class="searchButton">
-          </button>
+          <input type="text" class="searchTerm" placeholder="Search for textures..." oninput="search_user_input(this.value)">
         </div>
 
         <div class="search_results" id="search_results">
@@ -118,11 +117,11 @@
       <!-- <section>
         <canvas class="center_canvas" id="center_canvas" height="1" width="1">
       </section> -->
-      <section>
+      <!-- <section>
         <div class="proceedSection">
           <button>Proceed With options</button>
         </div>
-      </section>
+      </section> -->
       
 
   </section>
