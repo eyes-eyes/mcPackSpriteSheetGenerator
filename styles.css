@@ -87,6 +87,14 @@ body {
     font-family: Roboto, sans-serif;
     transform: translate(-50%,-50%);
     border-radius: 10px;
+    box-shadow:
+    2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+    6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+    12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+    22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+    41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+    100px 100px 80px rgba(0, 0, 0, 0.07)
+    ;
 }
 
 .searchingSection {
@@ -95,6 +103,7 @@ body {
     top: 25%;
     left: 3%;
     max-width: 25%;
+    
 }
 
 .search {
@@ -102,12 +111,13 @@ body {
     position: center;
     display: flex;
     z-index: 1;
-}
+    font-weight: 900;
+}   
 
 .searchTerm {
     width: 100%;
     /* max-width: 220px; */
-    height: 45px;
+    height: 20px;
     padding: 12px;
     border-radius: 12px;
     border: 1.5px solid lightgrey;
@@ -146,6 +156,7 @@ body {
     text-align: left;
     color: black;
     font-family: Roboto, sans-serif;
+    
 
 }
 
