@@ -60,8 +60,8 @@ body {
     left: 83%;
     top: 50%;
     position: absolute;
-    width: 45vmin;
-    /* max-width: fit-content; */
+    width: 30%;
+    max-width: 25%;
     height: 60vmin;
     background-color: white;
     color: black;
