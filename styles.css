@@ -256,32 +256,6 @@ body {
     background-color: #ff0000;
 }
 
-.tooltip {
-    display: inline-block;
-    position: relative;
-    z-index: 10;
-}
-
-.tooltip .content {
-    width: min-content;
-    padding: 5;
-    display: none;
-    position: absolute;
-    transform: translate(-105%, -50%);
-    top: 1em;
-    left: 0;
-    z-index: 10;
-    border-style: solid;
-    border-radius: 8px;
-    color: black;
-    /* background-color: rgb(44, 47, 51); */
-    background-color: white;
-}
-
-.tooltip:hover .content {
-    display: block;
-}
-
 .top_bar_thingy {
     left: 0px;
     top: 0px;
@@ -300,12 +274,31 @@ body {
     padding: 0px;
 }
 
-.proceed {
+.proceedSection {
     left: 50%;
     top: 80%;
-    width: 30%;
-    border-radius: 30px;
+    transform: translate(-50%, -50%);
     position: relative;
+}
+
+.proceedSection button {
+    position: relative;
+    width: fit-content;
+    height: 60px;
+    border: 3px solid #315cfd;
+    border-radius: 45px;
+    transition: all 0.3s;
+    cursor: pointer;
+    background: white;
+    font-size: 1.2em;
+    font-weight: 550;
+    font-family: "Montserrat", sans-serif;
+}
+
+.proceedSection button:hover {
+    background: #315cfd;
+    color: white;
+    font-size: 1.5em;
 }
 
 .center_canvas {
