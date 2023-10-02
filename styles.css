@@ -109,7 +109,7 @@ body {
     display: inline-block;
     width: 3.5em;
     height: 2em;
-    margin: 18px;
+    margin: 20px;
     cursor: pointer;
 }
 
@@ -302,12 +302,6 @@ body {
     font-size: 1.5em;
 }
 
-.center_canvas {
-    width: 54vmin;
-    height: 54vmin;
-    top: 50%;
-    left: 50%;
-    background-color: blue;
-    transform: translate(-50%, -50%);
-    position: absolute;
+.proceedSection button:active {
+    transform: scale(0.9);
 }
