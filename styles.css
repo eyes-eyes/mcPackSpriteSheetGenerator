@@ -201,7 +201,7 @@ body {
 }
 
 .search {
-    width: 100%;
+    width: 96%;
     position: center;
     display: flex;
     z-index: 1;
@@ -210,7 +210,6 @@ body {
 
 .searchTerm {
     width: 100%;
-    /* max-width: 220px; */
     height: 20px;
     padding: 12px;
     border-radius: 12px;
