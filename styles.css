@@ -184,6 +184,10 @@ body {
     content: "Foods";
 }
 
+.switch.ores .toggle::before {
+    content: "Ores";
+}
+
 .searchingSection {
     width: 30%;
     position: absolute;
