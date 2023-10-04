@@ -138,6 +138,10 @@ function back_to_file_selector() {
     document.getElementById("pack_name_top_bar").innerText = "None";
 }
 
+function proceed() {
+    
+}
+
 function error_invalid_pack(message) {
     pack_invalid = 1;
     back_to_file_selector();
