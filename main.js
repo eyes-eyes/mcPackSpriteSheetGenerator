@@ -48,6 +48,27 @@ const color_codes = {
 
 //Constants
 
+document.onkeydown = function (evt) {
+    evt = evt || window.event;
+    var isEscape = false;
+    if ("key" in evt) {
+        isEscape = evt.key === "Escape" || evt.key === "Esc";
+    } else {
+        isEscape = evt.keyCode === 27;
+    }
+    if (isEscape) {
+        const isNotCombinedKey = !(
+            event.ctrlKey ||
+            event.altKey ||
+            event.shiftKey
+        );
+        if (isNotCombinedKey) {
+            back_to_file_selector();
+        }
+        back_to_file_selector();
+    }
+};
+
 async function pack_data_parse() {
     mcmeta = zip_path_objects["pack.mcmeta"];
     if (mcmeta) {
@@ -138,9 +159,8 @@ function back_to_file_selector() {
     document.getElementById("pack_name_top_bar").innerText = "None";
 }
 
-function proceed() {
-    
-}
+// FUNCTION TO PROCEED TO DOWNLOAD PAGE
+function proceed() {}
 
 function error_invalid_pack(message) {
     pack_invalid = 1;

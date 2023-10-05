@@ -37,7 +37,7 @@
                         "
                         onclick="back_to_file_selector()"
                     >
-                        &leftarrow; Back
+                        &leftarrow; (Esc)
                     </button>
                     <p
                         style="
@@ -182,8 +182,16 @@
             </section>
         </section>
 
-        <section id="Final_edits_areas">
-            <div class="canvasSpriteSheets" id="canvasSpriteSheets"></div>
+        <section id="Final_edits_areas" style="display: none">
+            <section>
+                <div class="canvasSpriteSheets" id="canvasSpriteSheets"></div>
+            </section>
+
+            <section>
+                <div class="downloadSection" id="downloadSection">
+                    <button class="DownloadButton" onclick="">Download</button>
+                </div>
+            </section>
         </section>
     </body>
     <script type="text/javascript" src="librarys/zip-full.min.js"></script>
