@@ -58,8 +58,6 @@ const groups = {
         "jungle",
         "acacia",
         "dark oak",
-        "crimson",
-        "warped",
         "mangrove",
         "cherry",
     ],
