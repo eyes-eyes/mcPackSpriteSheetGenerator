@@ -358,6 +358,12 @@ function generate_selected_textures_list() {
     }
 }
 
+function clear_selected() {
+    search_selected_items = [];
+    generate_selected_textures_list();
+    search_user_input(last_user_inputStringThing);
+}
+
 //Shows colors and removed codes in pack name
 
 function minecraft_name_to_html(name) {
