@@ -5,6 +5,8 @@ let zip_orig_path_objects = [];
 let pack_mcmeta_data = {};
 let pack_version = 0;
 
+search_selected_items = [];
+
 //Constants
 const version_codes = {
     1: ["1.6.1", "1.8.9"],
@@ -257,13 +259,35 @@ function search_user_input(search_string) {
         for (i in output) {
             current_result_itter = document.createElement("div");
             current_result_itter.addEventListener("click", (e) => {
+                let current_item_name_again = e.target.fill_obj;
+                console.log(current_item_name_again);
+                console.log(
+                    search_selected_items.includes(current_item_name_again)
+                );
+
+                if (!e.target.getAttribute("checkd")) {
+                    if (
+                        !search_selected_items.includes(current_item_name_again)
+                    ) {
+                        search_selected_items.push(current_item_name_again);
+                    }
+                } else {
+                    search_selected_items.pop(current_item_name_again);
+                }
+
                 e.target.setAttribute(
                     "checkd",
                     !e.target.getAttribute("checkd") ? "true" : ""
                 );
+
+                generate_selected_textures_list();
             });
             // current_result_itter.setAttribute("checkd",true);
             current_result_itter.innerText = get_just_file_name(output[i]);
+            current_result_itter.fill_obj = output[i];
+            if (search_selected_items.includes(output[i])) {
+                current_result_itter.setAttribute("checkd", "true");
+            }
             search_results.appendChild(current_result_itter);
         }
     }
@@ -273,6 +297,57 @@ function get_just_file_name(fileobj) {
     fil_name = fileobj.filename;
     fil_name = fil_name ? fil_name : "";
     return fil_name.split("/").reverse()[0];
+}
+
+function generate_selected_textures_list() {
+    // search_selected_items
+    // for(i in search_selected_items) {
+    //     var iterate = search_selected_items[i];
+    //     return search_object_tree[iterate];
+    // }
+
+    search_results = document.getElementById("total_textures_input");
+    if (search_selected_items.length == 0) {
+        search_results.innerHTML = "<p>Nothing here!</p>";
+    } else {
+        search_results.innerHTML = "";
+        for (i in search_selected_items) {
+            current_result_itter = document.createElement("div");
+            current_result_itter.addEventListener("click", (e) => {
+                let current_item_name_again = e.target.fill_obj;
+                console.log(current_item_name_again);
+                console.log(
+                    search_selected_items.includes(current_item_name_again)
+                );
+
+                if (!e.target.getAttribute("checkd")) {
+                    if (
+                        !search_selected_items.includes(current_item_name_again)
+                    ) {
+                        search_selected_items.push(current_item_name_again);
+                    }
+                } else {
+                    search_selected_items.pop(current_item_name_again);
+                }
+
+                e.target.setAttribute(
+                    "checkd",
+                    !e.target.getAttribute("checkd") ? "true" : ""
+                );
+
+                generate_selected_textures_list();
+            });
+            // current_result_itter.setAttribute("checkd",true);
+            current_result_itter.innerText = get_just_file_name(
+                search_selected_items[i]
+            );
+            current_result_itter.fill_obj = search_selected_items[i];
+            if (search_selected_items.includes(search_selected_items[i])) {
+                current_result_itter.setAttribute("checkd", "true");
+            }
+            search_results.appendChild(current_result_itter);
+        }
+    }
 }
 
 //Shows colors and removed codes in pack name
