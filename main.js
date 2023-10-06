@@ -30,6 +30,7 @@ const version_codes = {
     18: ["1.20.2", "1.20.2"],
 };
 
+//Constants
 const color_codes = {
     0: ["#000000"],
     1: ["#0000AA"],
@@ -49,7 +50,181 @@ const color_codes = {
     f: ["#FFFFFF"],
 };
 
-//Constants
+const groups = {
+    Woods: [
+        "oak",
+        "spruce",
+        "birch",
+        "jungle",
+        "acacia",
+        "dark oak",
+        "crimson",
+        "warped",
+        "mangrove",
+        "cherry",
+    ],
+    Stones: ["stone", "granite", "diorite", "andesite", "sandstone"],
+    Sediments: [
+        "grass block",
+        "Mycelium",
+        "Podzol",
+        "dirt",
+        "farmland",
+        "gravel",
+        "sand",
+    ],
+    Armors: [
+        "Leather Cap",
+        "Chainmail Helmet",
+        "Iron Helmet",
+        "Golden Helmet",
+        "Diamond Helmet",
+        "Netherite Helmet",
+        "Leather Tunic",
+        "Chainmail Chestplate",
+        "Iron Chestplate",
+        "Golden Chestplate",
+        "Diamond Chestplate",
+        "Netherite Chestplate",
+        "Leather Pants",
+        "Chainmail Leggings",
+        "Iron Leggings",
+        "Golden Leggings",
+        "Diamond Leggings",
+        "Netherite Leggings",
+        "Leather Boots",
+        "Chainmail Boots",
+        "Iron Boots",
+        "Golden Boots",
+        "Diamond Boots",
+        "Netherite Boots",
+        "Leather Horse Armor",
+        "Iron Horse Armor",
+        "Golden Horse Armor",
+        "Diamond Horse Armor",
+        "Turtle Shell",
+    ],
+    Toolsets: [
+        "Wooden Sword",
+        "Stone Sword",
+        "Iron Sword",
+        "Golden Sword",
+        "Diamond Sword",
+        "Netherite Sword",
+        "Wooden Pickaxe",
+        "Stone Pickaxe",
+        "Iron Pickaxe",
+        "Golden Pickaxe",
+        "Diamond Pickaxe",
+        "Netherite Pickaxe",
+        "Wooden Axe",
+        "Stone Axe",
+        "Iron Axe",
+        "Golden Axe",
+        "Diamond Axe",
+        "Netherite Axe",
+        "Wooden Shovel",
+        "Stone Shovel",
+        "Iron Shovel",
+        "Golden Shovel",
+        "Diamond Shovel",
+        "Netherite Shovel",
+        "Wooden Hoe",
+        "Stone Hoe",
+        "Iron Hoe",
+        "Golden Hoe",
+        "Diamond Hoe",
+        "Netherite Hoe",
+    ],
+    Foods: [
+        "Raw Beef",
+        "Cooked Salmon",
+        "Steak",
+        "Tropical Fish",
+        "Raw Chicken",
+        "Pufferfish",
+        "Melon Slice",
+        "Cooked Chicken",
+        "Apple",
+        "Mushroom Stew",
+        "Raw Mutton",
+        "Golden Apple",
+        "Baked Potato",
+        "Cooked Mutton",
+        "Beetroot",
+        "Poisonous Potato",
+        "Raw Porkchop",
+        "Beetroot Soup",
+        "Pumpkin Pie",
+        "Cooked Porkchop",
+        "Bread",
+        "Rabbit Stew",
+        "Raw Rabbit",
+        "Chorus Fruit",
+        "Rotten Flesh",
+        "Cooked Rabbit",
+        "Cookie",
+        "Spider Eye",
+        "Raw Cod",
+        "Dried Kelp",
+        "Suspicious Stew",
+        "Cooked Cod",
+        "Golden Carrot",
+        "Raw Salmon",
+        "Honey Bottle",
+    ],
+    Ores: [
+        "Coal Ore",
+        "Iron Ore",
+        "Gold Ore",
+        "Redstone Ore",
+        "Emerald Ore",
+        "Lapis Lazuli Ore",
+        "Diamond Ore",
+        "Copper Ore",
+        "Deepslate Coal Ore",
+        "Deepslate Iron Ore",
+        "Deepslate Gold Ore",
+        "Deepslate Redstone Ore",
+        "Deepslate Emerald Ore",
+        "Deepslate Lapis Lazuli Ore",
+        "Deepslate Diamond Ore",
+        "Deepslate Copper Ore",
+        "Nether Gold Ore",
+        "Nether Quartz Ore",
+        "Ancient Debris",
+        "Block of Iron",
+        "Block of Gold",
+        "Block of Redstone",
+        "Block of Emerald",
+        "Block of Lapis Lazuli",
+        "Block of Diamond",
+        "Block of Copper",
+        "Block of Quartz",
+        "Block of Netherite",
+        "Block of Raw Iron",
+        "Block of Raw Gold",
+        "Block of Raw Copper",
+    ],
+    Balls: [
+        "ender pearl",
+        "eye of ender",
+        "snowball",
+        "slimeball",
+        "egg",
+        "magma cream",
+        "fire charge",
+        "Heart of the Sea",
+    ],
+    CropStages: [
+        "wheat_stage",
+        "carrots_stage",
+        "beetroots_stage",
+        "cocoa_stage",
+        "potatoes_stage",
+        "bamboo_stage",
+    ],
+};
 
 document.onkeydown = function (evt) {
     evt = evt || window.event;
@@ -358,10 +533,15 @@ function clear_selected() {
     search_user_input(last_user_inputStringThing);
 }
 
-// function group_selected() {
-//     const wood_variants_check = document.getElementById("woodVariants");
-//     wood_variants_check.addEventListener("change",)
-// }
+//! group selection method
+function group_selected() {
+    var wood_variants_selected = document.getElementById("woodVariants");
+    if (wood_variants_selected.checked) {
+        console.log("checked");
+    } else {
+        console.log("not checked");
+    }
+}
 
 //Shows colors and removed codes in pack name
 

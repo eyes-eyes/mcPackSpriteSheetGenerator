@@ -450,3 +450,8 @@ button:focus {
     left: 50%;
     top: 20%;
 }
+
+.clearAll:active {
+    transform: translate(0, 5px);
+    transition-duration: 0.06s;
+}
