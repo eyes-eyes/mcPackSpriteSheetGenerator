@@ -6,6 +6,7 @@ let pack_mcmeta_data = {};
 let pack_version = 0;
 
 search_selected_items = [];
+last_user_inputStringThing = "";
 
 //Constants
 const version_codes = {
@@ -234,6 +235,7 @@ function search_object_tree(root, search_value) {
 }
 
 function search_user_input(search_string) {
+    last_user_inputStringThing = search_string;
     output = [];
     search_array = search_string.split(" ");
     for (i in zip_orig_path_objects) {
@@ -269,7 +271,7 @@ function search_user_input(search_string) {
                     if (
                         !search_selected_items.includes(current_item_name_again)
                     ) {
-                        search_selected_items.push(current_item_name_again);
+                        search_selected_items.unshift(current_item_name_again);
                     }
                 } else {
                     search_selected_items.pop(current_item_name_again);
@@ -324,7 +326,7 @@ function generate_selected_textures_list() {
                     if (
                         !search_selected_items.includes(current_item_name_again)
                     ) {
-                        search_selected_items.push(current_item_name_again);
+                        search_selected_items.unshift(current_item_name_again);
                     }
                 } else {
                     search_selected_items.pop(current_item_name_again);
@@ -336,6 +338,7 @@ function generate_selected_textures_list() {
                 );
 
                 generate_selected_textures_list();
+                search_user_input(last_user_inputStringThing);
             });
             // current_result_itter.setAttribute("checkd",true);
             current_result_itter.innerText = get_just_file_name(
