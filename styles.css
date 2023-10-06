@@ -156,12 +156,8 @@ body {
     box-shadow: 0 -1em 2em 0 rgb(230, 111, 111);
 }
 
-.switch.logs .toggle::before {
-    content: "Logs";
-}
-
-.switch.planks .toggle::before {
-    content: "Planks";
+.switch.woodVariants .toggle::before {
+    content: "Wood\00a0Variants";
 }
 
 .switch.armors .toggle::before {
@@ -258,9 +254,23 @@ body {
     cursor: pointer !important;
     text-decoration: None !important;
     user-select: none;
+    position: relative;
 }
 .search_results > div[checkd="true"] {
     background-color: #ff0000;
+}
+
+.search_results > div[checkd="true"]::after {
+    content: "";
+    position: absolute;
+    left: 20%;
+    top: 25%;
+    background-image: url(images/ILikeSharingCat.png);
+    width: 50%;
+    height: 50%;
+    display: block;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .top_bar_thingy {

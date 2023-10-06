@@ -274,7 +274,9 @@ function search_user_input(search_string) {
                         search_selected_items.unshift(current_item_name_again);
                     }
                 } else {
-                    search_selected_items.pop(current_item_name_again);
+                    search_selected_items = search_selected_items.filter(
+                        (a) => a !== current_item_name_again
+                    );
                 }
 
                 e.target.setAttribute(
@@ -329,7 +331,10 @@ function generate_selected_textures_list() {
                         search_selected_items.unshift(current_item_name_again);
                     }
                 } else {
-                    search_selected_items.pop(current_item_name_again);
+                    // search_selected_items.pop(current_item_name_again);
+                    search_selected_items = search_selected_items.filter(
+                        (a) => a !== current_item_name_again
+                    );
                 }
 
                 e.target.setAttribute(
