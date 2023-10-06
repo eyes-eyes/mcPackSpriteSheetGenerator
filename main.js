@@ -304,12 +304,6 @@ function get_just_file_name(fileobj) {
 }
 
 function generate_selected_textures_list() {
-    // search_selected_items
-    // for(i in search_selected_items) {
-    //     var iterate = search_selected_items[i];
-    //     return search_object_tree[iterate];
-    // }
-
     search_results = document.getElementById("total_textures_input");
     if (search_selected_items.length == 0) {
         search_results.innerHTML = "<p>Nothing here!</p>";
@@ -363,6 +357,11 @@ function clear_selected() {
     generate_selected_textures_list();
     search_user_input(last_user_inputStringThing);
 }
+
+// function group_selected() {
+//     const wood_variants_check = document.getElementById("woodVariants");
+//     wood_variants_check.addEventListener("change",)
+// }
 
 //Shows colors and removed codes in pack name
 
