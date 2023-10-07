@@ -86,7 +86,6 @@
             <section>
                 <div class="textureAdded" id="textureAded">
                     <h2>Total Textures:</h2>
-
                     <div class="search_results" id="total_textures_input"></div>
                 </div>
             </section>
@@ -102,18 +101,7 @@
                                         <input
                                             type="checkbox"
                                             id="woodVariants"
-                                            onclick="group_selected()"
-                                        />
-                                        <span class="toggle"></span>
-                                    </label>
-                                </div>
-
-                                <div>
-                                    <label class="switch statusEffects">
-                                        <input
-                                            type="checkbox"
-                                            id="statusEffects"
-                                            onclick="group_selected()"
+                                            onclick="group_selected(this)"
                                         />
                                         <span class="toggle"></span>
                                     </label>
@@ -124,7 +112,18 @@
                                         <input
                                             type="checkbox"
                                             id="stones"
-                                            onclick="group_selected()"
+                                            onclick="group_selected(this)"
+                                        />
+                                        <span class="toggle"></span>
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <label class="switch statusEffects">
+                                        <input
+                                            type="checkbox"
+                                            id="statusEffects"
+                                            onclick="group_selected(this)"
                                         />
                                         <span class="toggle"></span>
                                     </label>
@@ -135,11 +134,31 @@
                                         <input
                                             type="checkbox"
                                             id="sediments"
-                                            onclick="group_selected()"
+                                            onclick="group_selected(this)"
                                         />
                                         <span class="toggle"></span>
                                     </label>
                                 </div>
+
+                                <div>
+                                    <label class="switch minerals">
+                                        <input
+                                            type="checkbox"
+                                            id="minerals"
+                                            onclick="group_selected(this)"
+                                        />
+                                        <span class="toggle"></span>
+                                    </label>
+                                </div>
+
+                                <label class="switch vehicles">
+                                    <input
+                                        type="checkbox"
+                                        id="vehicles"
+                                        onclick="group_selected(this)"
+                                    />
+                                    <span class="toggle"></span>
+                                </label>
                             </div>
 
                             <div class="column" id="column">
@@ -148,7 +167,7 @@
                                         <input
                                             type="checkbox"
                                             id="armors"
-                                            onclick="group_selected()"
+                                            onclick="group_selected(this)"
                                         />
                                         <span class="toggle"></span>
                                     </label>
@@ -159,7 +178,7 @@
                                         <input
                                             type="checkbox"
                                             id="toolsets"
-                                            onclick="group_selected()"
+                                            onclick="group_selected(this)"
                                         />
                                         <span class="toggle"></span>
                                     </label>
@@ -170,7 +189,7 @@
                                         <input
                                             type="checkbox"
                                             id="foods"
-                                            onclick="group_selected()"
+                                            onclick="group_selected(this)"
                                         />
                                         <span class="toggle"></span>
                                     </label>
@@ -181,7 +200,40 @@
                                         <input
                                             type="checkbox"
                                             id="ores"
-                                            onclick="group_selected()"
+                                            onclick="group_selected(this)"
+                                        />
+                                        <span class="toggle"></span>
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <label class="switch minerals">
+                                        <input
+                                            type="checkbox"
+                                            id="minerals"
+                                            onclick="group_selected(this)"
+                                        />
+                                        <span class="toggle"></span>
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <label class="switch shulkerBoxes">
+                                        <input
+                                            type="checkbox"
+                                            id="shulkerBoxes"
+                                            onclick="group_selected(this)"
+                                        />
+                                        <span class="toggle"></span>
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <label class="switch musicDiscs">
+                                        <input
+                                            type="checkbox"
+                                            id="musicDiscs"
+                                            onclick="group_selected(this)"
                                         />
                                         <span class="toggle"></span>
                                     </label>

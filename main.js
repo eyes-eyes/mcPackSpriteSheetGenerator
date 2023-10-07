@@ -50,8 +50,8 @@ const color_codes = {
     f: ["#FFFFFF"],
 };
 
-const groups = {
-    Woods: [
+const java_mc_groups = {
+    woodVariants: [
         "oak",
         "spruce",
         "birch",
@@ -61,8 +61,15 @@ const groups = {
         "mangrove",
         "cherry",
     ],
-    Stones: ["stone", "granite", "diorite", "andesite", "sandstone"],
-    Sediments: [
+    stones: [
+        "stone",
+        "granite",
+        "diorite",
+        "andesite",
+        "sandstone",
+        "Obsidian",
+    ],
+    sediments: [
         "grass block",
         "Mycelium",
         "Podzol",
@@ -71,7 +78,7 @@ const groups = {
         "gravel",
         "sand",
     ],
-    Armors: [
+    armors: [
         "Leather Cap",
         "Chainmail Helmet",
         "Iron Helmet",
@@ -100,9 +107,9 @@ const groups = {
         "Iron Horse Armor",
         "Golden Horse Armor",
         "Diamond Horse Armor",
-        "Turtle Shell",
+        "Turtle Helmet",
     ],
-    Toolsets: [
+    toolsets: [
         "Wooden Sword",
         "Stone Sword",
         "Iron Sword",
@@ -134,7 +141,7 @@ const groups = {
         "Diamond Hoe",
         "Netherite Hoe",
     ],
-    Foods: [
+    foods: [
         "Raw Beef",
         "Cooked Salmon",
         "Steak",
@@ -171,7 +178,7 @@ const groups = {
         "Raw Salmon",
         "Honey Bottle",
     ],
-    Ores: [
+    ores: [
         "Coal Ore",
         "Iron Ore",
         "Gold Ore",
@@ -204,7 +211,7 @@ const groups = {
         "Block of Raw Gold",
         "Block of Raw Copper",
     ],
-    Minerals: [
+    minerals: [
         "emerald",
         "diamond",
         "copper ingot",
@@ -223,7 +230,7 @@ const groups = {
         "raw gold",
         "nether quartz",
     ],
-    Balls: [
+    balls: [
         "ender pearl",
         "eye of ender",
         "snowball",
@@ -233,7 +240,7 @@ const groups = {
         "fire charge",
         "Heart of the Sea",
     ],
-    CropStages: [
+    cropStages: [
         "wheat_stage",
         "carrots_stage",
         "beetroots_stage",
@@ -241,8 +248,27 @@ const groups = {
         "potatoes_stage",
         "bamboo_stage",
     ],
-    Vehicles: ["Minecart", "boat"],
-    MusicDisc: ["muisc disc"],
+    vehicles: ["Minecart", "boat"],
+    musicDisc: ["muisc disc"],
+    shulkerBoxes: [
+        "Shulker Box",
+        "White Shulker Box",
+        "Light Gray Shulker Box",
+        "Gray Shulker Box",
+        "Black Shulker Box",
+        "Brown Shulker Box",
+        "Red Shulker Box",
+        "Orange Shulker Box",
+        "Yellow Shulker Box",
+        "Lime Shulker Box",
+        "Green Shulker Box",
+        "Cyan Shulker Box",
+        "Light Blue Shulker Box",
+        "Blue Shulker Box",
+        "Purple Shulker Box",
+        "Magenta Shulker Box",
+        "Pink Shulker Box",
+    ],
 };
 
 document.onkeydown = function (evt) {
@@ -433,12 +459,18 @@ function search_user_input(search_string) {
     output = [];
     search_array = search_string.split(" ");
     for (i in zip_orig_path_objects) {
-        current_name = get_just_file_name(zip_orig_path_objects[i]);
+        current_name = zip_orig_path_objects[i].filename; //get_just_file_name(zip_orig_path_objects[i]);
         if (current_name.endsWith(".png")) {
             current_eligablility = true;
             for (o in search_array) {
-                if (!current_name.includes(search_array[o])) {
-                    current_eligablility = false;
+                if (search_array[o][0] == "!") {
+                    if (current_name.includes(search_array[o].slice(1))) {
+                        current_eligablility = false;
+                    }
+                } else {
+                    if (!current_name.includes(search_array[o])) {
+                        current_eligablility = false;
+                    }
                 }
             }
             if (current_eligablility) {
@@ -553,13 +585,62 @@ function clear_selected() {
 }
 
 //! group selection method
-function group_selected() {
-    var wood_variants_selected = document.getElementById("woodVariants");
-    if (wood_variants_selected.checked) {
-        console.log("checked");
-    } else {
-        console.log("not checked");
+function group_selected(obj) {
+    // console.log(obj, obj.id);
+
+    // switch (obj.id) {
+    //     case value:
+
+    //         break;
+
+    //     default:
+    //         break;
+    // }
+
+    group_add_remove = java_mc_groups[obj.id];
+
+    output = [];
+    for (apple in group_add_remove) {
+        search_string = group_add_remove[apple].toLowerCase();
+        search_array = search_string.split(" ");
+        for (i in zip_orig_path_objects) {
+            current_name = zip_orig_path_objects[i].filename; //get_just_file_name(zip_orig_path_objects[i]);
+            if (current_name.endsWith(".png")) {
+                current_eligablility = true;
+                for (o in search_array) {
+                    if (search_array[o][0] == "!") {
+                        if (current_name.includes(search_array[o].slice(1))) {
+                            current_eligablility = false;
+                        }
+                    } else {
+                        if (!current_name.includes(search_array[o])) {
+                            current_eligablility = false;
+                        }
+                    }
+                }
+                if (current_eligablility) {
+                    output.push(zip_orig_path_objects[i]);
+                }
+            }
+        }
     }
+
+    for (i in output) {
+        if (obj.checked) {
+            if (!search_selected_items.includes(output[i])) {
+                search_selected_items.unshift(output[i]);
+            }
+        } else {
+            search_selected_items = search_selected_items.filter(
+                (a) => a !== output[i]
+            );
+        }
+    }
+
+    generate_selected_textures_list();
+    search_user_input(last_user_inputStringThing);
+
+    // console.log(obj.id + (obj.checked ? " CHECKED" : " Unchecked"));
 }
 
 //Shows colors and removed codes in pack name
