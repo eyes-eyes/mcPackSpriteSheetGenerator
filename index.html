@@ -35,7 +35,7 @@
                             position: absolute;
                             transform: translate(0px, -50%);
                         "
-                        onclick="back_to_file_selector()"
+                        onclick="back_button()"
                     >
                         &leftarrow; (Esc)
                     </button>
@@ -71,209 +71,218 @@
                 </div>
             </section>
 
-            <section>
-                <div class="clearAllSection" id="clearAllSection">
-                    <button class="clearAll" onclick="clear_selected()">
-                        <svg viewBox="0 0 448 512" class="svgIcon">
-                            <path
-                                d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"
-                            ></path>
-                        </svg>
-                    </button>
-                </div>
-            </section>
-
-            <section>
-                <div class="textureAdded" id="textureAded">
-                    <h2>Total Textures:</h2>
-                    <div class="search_results" id="total_textures_input"></div>
-                </div>
-            </section>
-
-            <section>
-                <div class="groups_selector" id="groups_selector">
-                    <h2>
-                        Select the groups
-                        <div class="grouping" id="grouping">
-                            <div class="column" id="column">
-                                <div>
-                                    <label class="switch woodVariants">
-                                        <input
-                                            type="checkbox"
-                                            id="woodVariants"
-                                            onclick="group_selected(this)"
-                                        />
-                                        <span class="toggle"></span>
-                                    </label>
-                                </div>
-
-                                <div>
-                                    <label class="switch stones">
-                                        <input
-                                            type="checkbox"
-                                            id="stones"
-                                            onclick="group_selected(this)"
-                                        />
-                                        <span class="toggle"></span>
-                                    </label>
-                                </div>
-
-                                <div>
-                                    <label class="switch statusEffects">
-                                        <input
-                                            type="checkbox"
-                                            id="statusEffects"
-                                            onclick="group_selected(this)"
-                                        />
-                                        <span class="toggle"></span>
-                                    </label>
-                                </div>
-
-                                <div>
-                                    <label class="switch sediments">
-                                        <input
-                                            type="checkbox"
-                                            id="sediments"
-                                            onclick="group_selected(this)"
-                                        />
-                                        <span class="toggle"></span>
-                                    </label>
-                                </div>
-
-                                <div>
-                                    <label class="switch minerals">
-                                        <input
-                                            type="checkbox"
-                                            id="minerals"
-                                            onclick="group_selected(this)"
-                                        />
-                                        <span class="toggle"></span>
-                                    </label>
-                                </div>
-
-                                <label class="switch vehicles">
-                                    <input
-                                        type="checkbox"
-                                        id="vehicles"
-                                        onclick="group_selected(this)"
-                                    />
-                                    <span class="toggle"></span>
-                                </label>
-                            </div>
-
-                            <div class="column" id="column">
-                                <div>
-                                    <label class="switch armors">
-                                        <input
-                                            type="checkbox"
-                                            id="armors"
-                                            onclick="group_selected(this)"
-                                        />
-                                        <span class="toggle"></span>
-                                    </label>
-                                </div>
-
-                                <div>
-                                    <label class="switch toolsets">
-                                        <input
-                                            type="checkbox"
-                                            id="toolsets"
-                                            onclick="group_selected(this)"
-                                        />
-                                        <span class="toggle"></span>
-                                    </label>
-                                </div>
-
-                                <div>
-                                    <label class="switch foods">
-                                        <input
-                                            type="checkbox"
-                                            id="foods"
-                                            onclick="group_selected(this)"
-                                        />
-                                        <span class="toggle"></span>
-                                    </label>
-                                </div>
-
-                                <div>
-                                    <label class="switch ores">
-                                        <input
-                                            type="checkbox"
-                                            id="ores"
-                                            onclick="group_selected(this)"
-                                        />
-                                        <span class="toggle"></span>
-                                    </label>
-                                </div>
-
-                                <div>
-                                    <label class="switch minerals">
-                                        <input
-                                            type="checkbox"
-                                            id="minerals"
-                                            onclick="group_selected(this)"
-                                        />
-                                        <span class="toggle"></span>
-                                    </label>
-                                </div>
-
-                                <div>
-                                    <label class="switch shulkerBoxes">
-                                        <input
-                                            type="checkbox"
-                                            id="shulkerBoxes"
-                                            onclick="group_selected(this)"
-                                        />
-                                        <span class="toggle"></span>
-                                    </label>
-                                </div>
-
-                                <div>
-                                    <label class="switch musicDiscs">
-                                        <input
-                                            type="checkbox"
-                                            id="musicDiscs"
-                                            onclick="group_selected(this)"
-                                        />
-                                        <span class="toggle"></span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </h2>
-                </div>
-            </section>
-
-            <section>
-                <div class="searchingSection" id="searchingSection">
-                    <h1 style="font-size: 2.1vmin">
-                        Add additional textures here!<br />
-                    </h1>
-                    <div class="search" id="search">
-                        <input
-                            type="text"
-                            class="searchTerm"
-                            placeholder="Search for textures..."
-                            oninput="search_user_input(this.value)"
-                        />
+            <section id="edit_page">
+                <section>
+                    <div class="clearAllSection" id="clearAllSection">
+                        <button class="clearAll" onclick="clear_selected()">
+                            <svg viewBox="0 0 448 512" class="svgIcon">
+                                <path
+                                    d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"
+                                ></path>
+                            </svg>
+                        </button>
                     </div>
+                </section>
 
-                    <div class="search_results" id="search_results"></div>
-                </div>
-            </section>
+                <section>
+                    <div class="textureAdded" id="textureAded">
+                        <h2>Total Textures:</h2>
+                        <div
+                            class="search_results"
+                            id="total_textures_input"
+                        ></div>
+                    </div>
+                </section>
 
-            <section>
-                <div class="proceedSection" id="proceedSection">
-                    <button class="proceedButton" onclick="proceed()">
-                        Proceed
-                    </button>
-                </div>
+                <section>
+                    <div class="groups_selector" id="groups_selector">
+                        <h2>
+                            Select the groups
+                            <div class="grouping" id="grouping">
+                                <div class="column" id="column">
+                                    <div>
+                                        <label class="switch woodVariants">
+                                            <input
+                                                type="checkbox"
+                                                id="woodVariants"
+                                                onclick="group_selected(this)"
+                                            />
+                                            <span class="toggle"></span>
+                                        </label>
+                                    </div>
+
+                                    <div>
+                                        <label class="switch stones">
+                                            <input
+                                                type="checkbox"
+                                                id="stones"
+                                                onclick="group_selected(this)"
+                                            />
+                                            <span class="toggle"></span>
+                                        </label>
+                                    </div>
+
+                                    <div>
+                                        <label class="switch statusEffects">
+                                            <input
+                                                type="checkbox"
+                                                id="statusEffects"
+                                                onclick="group_selected(this)"
+                                            />
+                                            <span class="toggle"></span>
+                                        </label>
+                                    </div>
+
+                                    <div>
+                                        <label class="switch sediments">
+                                            <input
+                                                type="checkbox"
+                                                id="sediments"
+                                                onclick="group_selected(this)"
+                                            />
+                                            <span class="toggle"></span>
+                                        </label>
+                                    </div>
+
+                                    <div>
+                                        <label class="switch minerals">
+                                            <input
+                                                type="checkbox"
+                                                id="minerals"
+                                                onclick="group_selected(this)"
+                                            />
+                                            <span class="toggle"></span>
+                                        </label>
+                                    </div>
+
+                                    <label class="switch vehicles">
+                                        <input
+                                            type="checkbox"
+                                            id="vehicles"
+                                            onclick="group_selected(this)"
+                                        />
+                                        <span class="toggle"></span>
+                                    </label>
+                                </div>
+
+                                <div class="column" id="column">
+                                    <div>
+                                        <label class="switch armors">
+                                            <input
+                                                type="checkbox"
+                                                id="armors"
+                                                onclick="group_selected(this)"
+                                            />
+                                            <span class="toggle"></span>
+                                        </label>
+                                    </div>
+
+                                    <div>
+                                        <label class="switch toolsets">
+                                            <input
+                                                type="checkbox"
+                                                id="toolsets"
+                                                onclick="group_selected(this)"
+                                            />
+                                            <span class="toggle"></span>
+                                        </label>
+                                    </div>
+
+                                    <div>
+                                        <label class="switch foods">
+                                            <input
+                                                type="checkbox"
+                                                id="foods"
+                                                onclick="group_selected(this)"
+                                            />
+                                            <span class="toggle"></span>
+                                        </label>
+                                    </div>
+
+                                    <div>
+                                        <label class="switch ores">
+                                            <input
+                                                type="checkbox"
+                                                id="ores"
+                                                onclick="group_selected(this)"
+                                            />
+                                            <span class="toggle"></span>
+                                        </label>
+                                    </div>
+
+                                    <div>
+                                        <label class="switch minerals">
+                                            <input
+                                                type="checkbox"
+                                                id="minerals"
+                                                onclick="group_selected(this)"
+                                            />
+                                            <span class="toggle"></span>
+                                        </label>
+                                    </div>
+
+                                    <div>
+                                        <label class="switch shulkerBoxes">
+                                            <input
+                                                type="checkbox"
+                                                id="shulkerBoxes"
+                                                onclick="group_selected(this)"
+                                            />
+                                            <span class="toggle"></span>
+                                        </label>
+                                    </div>
+
+                                    <div>
+                                        <label class="switch musicDiscs">
+                                            <input
+                                                type="checkbox"
+                                                id="musicDiscs"
+                                                onclick="group_selected(this)"
+                                            />
+                                            <span class="toggle"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </h2>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="searchingSection" id="searchingSection">
+                        <h1 style="font-size: 2.1vmin">
+                            Add additional textures here!<br />
+                        </h1>
+                        <div class="search" id="search">
+                            <input
+                                type="text"
+                                class="searchTerm"
+                                placeholder="Search for textures..."
+                                oninput="search_user_input(this.value)"
+                            />
+                        </div>
+
+                        <div class="search_results" id="search_results"></div>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="proceedSection" id="proceedSection">
+                        <button class="proceedButton" onclick="proceed()">
+                            Proceed
+                        </button>
+                    </div>
+                </section>
             </section>
         </section>
 
-        <section id="Final_edits_areas" style="display: none">
+        <section id="generate_page" style="display: none">
             <section>
-                <div class="canvasSpriteSheets" id="canvasSpriteSheets"></div>
+                <div class="canvasSpriteSheets" id="canvasSpriteSheets">
+                    <canvas id="out_canvas">
+                    
+                    </canvas>
+                </div>
             </section>
 
             <section>

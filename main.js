@@ -4,6 +4,7 @@ let zip_path_objects = {};
 let zip_orig_path_objects = [];
 let pack_mcmeta_data = {};
 let pack_version = 0;
+let pagination = 0;
 
 search_selected_items = [];
 last_user_inputStringThing = "";
@@ -142,7 +143,7 @@ const java_mc_groups = {
         "Netherite Hoe",
     ],
     foods: [
-        "Raw Beef",
+        "Cooked Beef",
         "Cooked Salmon",
         "Steak",
         "Tropical Fish",
@@ -285,12 +286,29 @@ document.onkeydown = function (evt) {
             event.altKey ||
             event.shiftKey
         );
-        if (isNotCombinedKey) {
-            back_to_file_selector();
-        }
-        back_to_file_selector();
+        // if ()
+        // if (isNotCombinedKey) {
+        //     back_to_file_selector();
+        // }
+        // if (pagination == 2)
+        back_button();
     }
 };
+
+function back_button() {
+    switch (pagination) {
+        case 1:
+            back_to_file_selector();
+            break;
+        case 2:
+            back_to_edit_page();
+            break;
+        // back_to_file_selector()
+
+        default:
+            break;
+    }
+}
 
 async function pack_data_parse() {
     mcmeta = zip_path_objects["pack.mcmeta"];
@@ -345,7 +363,8 @@ function zip_new_entry_handler(entries) {
     for (i in entries) {
         path_arrary = entries[i].filename.split("/");
 
-        fillObjectAtDepth(zip_path_objects, entries[i], path_arrary);
+        if (!get_just_file_name(entries[i]).startsWith("."))
+            fillObjectAtDepth(zip_path_objects, entries[i], path_arrary);
     }
     zip_orig_path_objects = entries;
 
@@ -357,10 +376,14 @@ function zip_new_entry_handler(entries) {
 }
 
 function handle_file(file) {
+    pagination = 1;
     console.log(file);
     document.getElementById("file_hover_popup").style.display = "none";
     document.getElementById("main_file_selector_areas").style.display = "none";
     document.getElementById("main_site_data").style.display = "block";
+    document.getElementById("edit_page").style.display = "block";
+    document.getElementById("generate_page").style.display = "none";
+
     file_object_raw = file;
 
     console.log(file_object_raw.name.replace(".zip", ""));
@@ -375,15 +398,15 @@ function handle_file(file) {
 }
 
 function back_to_file_selector() {
+    pagination = 0;
     document.getElementById("main_file_selector_areas").style.display = "block";
     document.getElementById("main_site_data").style.display = "none";
     document.getElementById("pack_version_top_bar").innerText =
         "Pack version: (opening)";
     document.getElementById("pack_name_top_bar").innerText = "None";
+    document.getElementById("edit_page").style.display = "none";
+    document.getElementById("generate_page").style.display = "none";
 }
-
-// FUNCTION TO PROCEED TO DOWNLOAD PAGE
-function proceed() {}
 
 function error_invalid_pack(message) {
     pack_invalid = 1;
@@ -759,6 +782,23 @@ function install_event_listners() {
 
             document.getElementById("input_main_upload").value = "";
         });
+}
+
+// FUNCTION TO PROCEED TO DOWNLOAD PAGE
+function proceed() {
+    pagination = 2;
+    document.getElementById("main_file_selector_areas").style.display = "none";
+    document.getElementById("main_site_data").style.display = "block";
+    document.getElementById("generate_page").style.display = "block";
+    document.getElementById("edit_page").style.display = "none";
+}
+
+function back_to_edit_page() {
+    pagination = 1;
+    document.getElementById("main_file_selector_areas").style.display = "none";
+    document.getElementById("main_site_data").style.display = "block";
+    document.getElementById("generate_page").style.display = "none";
+    document.getElementById("edit_page").style.display = "block";
 }
 
 window.addEventListener("load", install_event_listners);
