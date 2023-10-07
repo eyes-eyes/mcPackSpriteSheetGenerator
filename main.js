@@ -242,6 +242,7 @@ const groups = {
         "bamboo_stage",
     ],
     Vehicles: ["Minecart", "boat"],
+    MusicDisc: ["muisc disc"],
 };
 
 document.onkeydown = function (evt) {
