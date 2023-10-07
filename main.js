@@ -241,6 +241,7 @@ const groups = {
         "potatoes_stage",
         "bamboo_stage",
     ],
+    Vehicles: ["Minecart", "boat"],
 };
 
 document.onkeydown = function (evt) {
