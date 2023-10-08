@@ -539,7 +539,7 @@ function search_user_input(search_string) {
                 generate_selected_textures_list();
             });
             // current_result_itter.setAttribute("checkd",true);
-            current_result_itter.innerText = get_just_file_name(output[i]);
+            current_result_itter.innerText = get_just_file_name(output[i]).replace(".png","");
             current_result_itter.fill_obj = output[i];
             if (search_selected_items.includes(output[i])) {
                 current_result_itter.setAttribute("checkd", "true");
@@ -592,9 +592,7 @@ function generate_selected_textures_list() {
                 search_user_input(last_user_inputStringThing);
             });
             // current_result_itter.setAttribute("checkd",true);
-            current_result_itter.innerText = get_just_file_name(
-                search_selected_items[i]
-            );
+            current_result_itter.innerText = get_just_file_name(search_selected_items[i]).replace(".png","");
             current_result_itter.fill_obj = search_selected_items[i];
             if (search_selected_items.includes(search_selected_items[i])) {
                 current_result_itter.setAttribute("checkd", "true");
