@@ -3,4 +3,5 @@ This is a github page to a website that will automatically merge Minecraft resou
 Check the out the link: https://eyes-eyes.github.io/mcPackSpriteSheetGenerator/
 
 ## PLEASE DO NOT USE THIS FOR AI TRAINING PURPOSES!!!
+
 ### DO NOT HAVE ABSURD FILE SIZE TEXTURE PACKS OR ELSE WILL NOT WORK!!!
