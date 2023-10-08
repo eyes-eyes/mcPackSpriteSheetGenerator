@@ -250,7 +250,7 @@ const java_mc_groups = {
         "bamboo_stage",
     ],
     vehicles: ["Minecart", "boat"],
-    musicDisc: ["music disc"],
+    musicDiscs: ["music disc"],
     shulkerBoxes: [
         "Shulker Box",
         "White Shulker Box",
