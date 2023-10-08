@@ -250,7 +250,7 @@ const java_mc_groups = {
         "bamboo_stage",
     ],
     vehicles: ["Minecart", "boat"],
-    musicDisc: ["muisc disc"],
+    musicDiscs: ["music disc"],
     shulkerBoxes: [
         "Shulker Box",
         "White Shulker Box",
@@ -726,7 +726,7 @@ function minecraft_name_to_html(name) {
 }
 //helper function
 
-function install_event_listners() { 
+function install_event_listners() {
     window.addEventListener(
         "dragover",
         (ev) => {
@@ -749,12 +749,12 @@ function install_event_listners() {
         "drop",
         (ev) => {
             document.getElementById("file_hover_popup").style.display = "none";
-            
+
             // Prevent default behavior (Prevent file from being opened)
             ev.preventDefault();
 
             if (pagination != 0) return;
-            
+
             if (ev.dataTransfer.items) {
                 // Use DataTransferItemList interface to access the file(s)
                 [...ev.dataTransfer.items].forEach((item, i) => {
@@ -797,10 +797,11 @@ function proceed() {
     document.getElementById("edit_page").style.display = "none";
 }
 
-
 function getWorkerURL(url) {
-    const content = `importScripts( "${ url }" );`;
-    return URL.createObjectURL( new Blob( [ content ], { type: "text/javascript" } ) );
+    const content = `importScripts( "${url}" );`;
+    return URL.createObjectURL(
+        new Blob([content], { type: "text/javascript" })
+    );
 }
 
 // imageWorker=null;
@@ -812,12 +813,11 @@ function getWorkerURL(url) {
 
 //     imageWorker.postMessage(image_test,[image_test])
 //     // used_width, used_height = 0;
-    
 
 // }
 
 // function start_image_worker() {
-    
+
 // }
 
 function back_to_edit_page() {
