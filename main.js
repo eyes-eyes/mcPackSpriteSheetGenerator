@@ -797,11 +797,28 @@ function proceed() {
     document.getElementById("edit_page").style.display = "none";
 }
 
-function sort_and_draw_image(image_array) {
-    used_width, used_height = 0;
+
+function getWorkerURL(url) {
+    const content = `importScripts( "${ url }" );`;
+    return URL.createObjectURL( new Blob( [ content ], { type: "text/javascript" } ) );
+}
+
+// imageWorker=null;
+// function sort_and_draw_image(image_array) {
+//     if (imageWorker == null)
+//         imageWorker = new Worker(getWorkerURL("image_combiner.js"));
+
+//     image_test = new ImageBitmap();
+
+//     imageWorker.postMessage(image_test,[image_test])
+//     // used_width, used_height = 0;
     
 
-}
+// }
+
+// function start_image_worker() {
+    
+// }
 
 function back_to_edit_page() {
     pagination = 1;
