@@ -363,8 +363,8 @@ function zip_new_entry_handler(entries) {
     for (i in entries) {
         path_arrary = entries[i].filename.split("/");
 
-        if (!get_just_file_name(entries[i]).startsWith("."))
-            fillObjectAtDepth(zip_path_objects, entries[i], path_arrary);
+        // if (!get_just_file_name(entries[i]).startsWith("."))
+        fillObjectAtDepth(zip_path_objects, entries[i], path_arrary);
     }
     zip_orig_path_objects = entries;
 
@@ -483,7 +483,10 @@ function search_user_input(search_string) {
     search_array = search_string.split(" ");
     for (i in zip_orig_path_objects) {
         current_name = zip_orig_path_objects[i].filename; //get_just_file_name(zip_orig_path_objects[i]);
-        if (current_name.endsWith(".png")) {
+        if (
+            current_name.endsWith(".png") &&
+            !get_just_file_name(zip_orig_path_objects[i]).startsWith(".")
+        ) {
             current_eligablility = true;
             for (o in search_array) {
                 if (search_array[o][0] == "!") {
@@ -609,17 +612,6 @@ function clear_selected() {
 
 //! group selection method
 function group_selected(obj) {
-    // console.log(obj, obj.id);
-
-    // switch (obj.id) {
-    //     case value:
-
-    //         break;
-
-    //     default:
-    //         break;
-    // }
-
     group_add_remove = java_mc_groups[obj.id];
 
     output = [];
@@ -628,7 +620,10 @@ function group_selected(obj) {
         search_array = search_string.split(" ");
         for (i in zip_orig_path_objects) {
             current_name = zip_orig_path_objects[i].filename; //get_just_file_name(zip_orig_path_objects[i]);
-            if (current_name.endsWith(".png")) {
+            if (
+                current_name.endsWith(".png") &&
+                !get_just_file_name(zip_orig_path_objects[i]).startsWith(".")
+            ) {
                 current_eligablility = true;
                 for (o in search_array) {
                     if (search_array[o][0] == "!") {
@@ -665,6 +660,9 @@ function group_selected(obj) {
 
     // console.log(obj.id + (obj.checked ? " CHECKED" : " Unchecked"));
 }
+
+//! The real spritesheet stitch thing
+function drawingSpriteSheets() {}
 
 //Shows colors and removed codes in pack name
 
@@ -728,7 +726,7 @@ function minecraft_name_to_html(name) {
 }
 //helper function
 
-function install_event_listners() {
+function install_event_listners() { 
     window.addEventListener(
         "dragover",
         (ev) => {
@@ -750,16 +748,22 @@ function install_event_listners() {
     window.addEventListener(
         "drop",
         (ev) => {
+            document.getElementById("file_hover_popup").style.display = "none";
+            
             // Prevent default behavior (Prevent file from being opened)
             ev.preventDefault();
 
+            if (pagination != 0) return;
+            
             if (ev.dataTransfer.items) {
                 // Use DataTransferItemList interface to access the file(s)
                 [...ev.dataTransfer.items].forEach((item, i) => {
                     // If dropped items aren't files, reject them
                     if (item.kind === "file") {
                         const file = item.getAsFile();
-                        handle_file(file);
+                        // console.log(file);
+                        if (file.type == "application/x-zip-compressed")
+                            handle_file(file);
                     }
                 });
             } else {
@@ -791,6 +795,12 @@ function proceed() {
     document.getElementById("main_site_data").style.display = "block";
     document.getElementById("generate_page").style.display = "block";
     document.getElementById("edit_page").style.display = "none";
+}
+
+function sort_and_draw_image(image_array) {
+    used_width, used_height = 0;
+    
+
 }
 
 function back_to_edit_page() {
