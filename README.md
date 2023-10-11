@@ -2,14 +2,14 @@
 This is a github page to a website that will automatically merge Minecraft resource pack files into serveral big sprite sheets.
 Check the out the link: https://eyes-eyes.github.io/mcPackSpriteSheetGenerator/
 
-##d MUST used zipped folder
+## MUST used zipped folder
 
 ## Known issues
 If a zipped folder says "This Folder is Empty" then it will not work!
 
 ## How to use Search
-The exclamation mark ("!") is an anti-search. Results containing the letters after a exclamation mark will NOT be shown.
-For example (for pack format 1 or known as 1.8.9):
+The exclamation mark ("!") is an **anti-search**. Results containing the letters after a exclamation mark will **NOT** be shown.
+For example (pack format 1 or known as 1.8.9):
 > diamond !ore
 
 results in
