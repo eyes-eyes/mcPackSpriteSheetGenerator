@@ -211,17 +211,6 @@
                                     </div>
 
                                     <div>
-                                        <label class="switch minerals">
-                                            <input
-                                                type="checkbox"
-                                                id="minerals"
-                                                onclick="group_selected(this)"
-                                            />
-                                            <span class="toggle"></span>
-                                        </label>
-                                    </div>
-
-                                    <div>
                                         <label class="switch shulkerBoxes">
                                             <input
                                                 type="checkbox"
@@ -237,6 +226,18 @@
                                             <input
                                                 type="checkbox"
                                                 id="musicDiscs"
+                                                onclick="group_selected(this)"
+                                            />
+                                            <span class="toggle"></span>
+                                        </label>
+                                    </div>
+
+                                    
+                                    <div>
+                                        <label class="switch balls">
+                                            <input
+                                                type="checkbox"
+                                                id="balls"
                                                 onclick="group_selected(this)"
                                             />
                                             <span class="toggle"></span>
@@ -279,9 +280,7 @@
         <section id="generate_page" style="display: none">
             <section>
                 <div class="canvasSpriteSheets" id="canvasSpriteSheets">
-                    <canvas id="out_canvas">
-                    
-                    </canvas>
+                    <canvas id="out_canvas"> </canvas>
                 </div>
             </section>
 

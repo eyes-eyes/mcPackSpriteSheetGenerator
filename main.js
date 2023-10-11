@@ -53,193 +53,194 @@ const color_codes = {
 
 const java_mc_groups = {
     woodVariants: [
-        "oak",
-        "spruce",
-        "birch",
-        "jungle",
-        "acacia",
-        "dark oak",
-        "mangrove",
-        "cherry",
+        "^block oak",
+        "^block spruce",
+        "^block birch",
+        "^block jungle",
+        "^block acacia",
+        "^block dark oak",
+        "^block mangrove",
+        "^block cherry",
     ],
     stones: [
-        "stone",
-        "granite",
-        "diorite",
-        "andesite",
-        "sandstone",
-        "Obsidian",
+        "^block stone !redstone !grindstone !lodestone !sword !axe !shovel !hoe !pickaxe !stonecutter !glowstone !slab !dripstone",
+        "^block granite !slab",
+        "^block diorite !slab",
+        "^block andesite !slab",
+        "^block sandstone !slab",
+        "^block Obsidian !slab",
+        "^block blackstone !slab",
     ],
     sediments: [
-        "grass block",
-        "Mycelium",
-        "Podzol",
-        "dirt",
-        "farmland",
-        "gravel",
-        "sand",
+        "^block grass block !sea !tallgrass !tall",
+        "^block Mycelium",
+        "^block Podzol",
+        "^block dirt",
+        "^block farmland",
+        "^block gravel",
+        "^block sand !sandstone !soul",
     ],
     armors: [
-        "Leather Cap",
-        "Chainmail Helmet",
-        "Iron Helmet",
-        "Golden Helmet",
-        "Diamond Helmet",
-        "Netherite Helmet",
-        "Leather Tunic",
-        "Chainmail Chestplate",
-        "Iron Chestplate",
-        "Golden Chestplate",
-        "Diamond Chestplate",
-        "Netherite Chestplate",
-        "Leather Pants",
-        "Chainmail Leggings",
-        "Iron Leggings",
-        "Golden Leggings",
-        "Diamond Leggings",
-        "Netherite Leggings",
-        "Leather Boots",
-        "Chainmail Boots",
-        "Iron Boots",
-        "Golden Boots",
-        "Diamond Boots",
-        "Netherite Boots",
-        "Leather Horse Armor",
-        "Iron Horse Armor",
-        "Golden Horse Armor",
-        "Diamond Horse Armor",
-        "Turtle Helmet",
+        "^item Leather Cap",
+        "^item Chainmail Helmet",
+        "^item Iron Helmet",
+        "^item Golden Helmet",
+        "^item Diamond Helmet",
+        "^item Netherite Helmet",
+        "^item Leather Tunic",
+        "^item Chainmail Chestplate",
+        "^item Iron Chestplate",
+        "^item Golden Chestplate",
+        "^item Diamond Chestplate",
+        "^item Netherite Chestplate",
+        "^item Leather Pants",
+        "^item Chainmail Leggings",
+        "^item Iron Leggings",
+        "^item Golden Leggings",
+        "^item Diamond Leggings",
+        "^item Netherite Leggings",
+        "^item Leather Boots !overlay",
+        "^item Chainmail Boots",
+        "^item Iron Boots",
+        "^item Golden Boots",
+        "^item Diamond Boots",
+        "^item Netherite Boots",
+        "^item Leather Horse Armor",
+        "^item Iron Horse Armor",
+        "^item Golden Horse Armor",
+        "^item Diamond Horse Armor",
+        "^item Turtle Helmet",
     ],
     toolsets: [
-        "Wooden Sword",
-        "Stone Sword",
-        "Iron Sword",
-        "Golden Sword",
-        "Diamond Sword",
-        "Netherite Sword",
-        "Wooden Pickaxe",
-        "Stone Pickaxe",
-        "Iron Pickaxe",
-        "Golden Pickaxe",
-        "Diamond Pickaxe",
-        "Netherite Pickaxe",
-        "Wooden Axe",
-        "Stone Axe",
-        "Iron Axe",
-        "Golden Axe",
-        "Diamond Axe",
-        "Netherite Axe",
-        "Wooden Shovel",
-        "Stone Shovel",
-        "Iron Shovel",
-        "Golden Shovel",
-        "Diamond Shovel",
-        "Netherite Shovel",
-        "Wooden Hoe",
-        "Stone Hoe",
-        "Iron Hoe",
-        "Golden Hoe",
-        "Diamond Hoe",
-        "Netherite Hoe",
+        "^item Wooden Sword",
+        "^item Stone Sword",
+        "^item Iron Sword",
+        "^item Golden Sword",
+        "^item Diamond Sword",
+        "^item Netherite Sword",
+        "^item Wooden Pickaxe",
+        "^item Stone Pickaxe",
+        "^item Iron Pickaxe",
+        "^item Golden Pickaxe",
+        "^item Diamond Pickaxe",
+        "^item Netherite Pickaxe",
+        "^item Wooden Axe",
+        "^item Stone Axe",
+        "^item Iron Axe",
+        "^item Golden Axe",
+        "^item Diamond Axe",
+        "^item Netherite Axe",
+        "^item Wooden Shovel",
+        "^item Stone Shovel",
+        "^item Iron Shovel",
+        "^item Golden Shovel",
+        "^item Diamond Shovel",
+        "^item Netherite Shovel",
+        "^item Wooden Hoe",
+        "^item Stone Hoe",
+        "^item Iron Hoe",
+        "^item Golden Hoe",
+        "^item Diamond Hoe",
+        "^item Netherite Hoe",
     ],
     foods: [
-        "Cooked Beef",
-        "Cooked Salmon",
-        "Steak",
-        "Tropical Fish",
-        "Raw Chicken",
-        "Pufferfish",
-        "Melon Slice",
-        "Cooked Chicken",
-        "Apple",
-        "Mushroom Stew",
-        "Raw Mutton",
-        "Golden Apple",
-        "Baked Potato",
-        "Cooked Mutton",
-        "Beetroot",
-        "Poisonous Potato",
-        "Raw Porkchop",
-        "Beetroot Soup",
-        "Pumpkin Pie",
-        "Cooked Porkchop",
-        "Bread",
-        "Rabbit Stew",
-        "Raw Rabbit",
-        "Chorus Fruit",
-        "Rotten Flesh",
-        "Cooked Rabbit",
-        "Cookie",
-        "Spider Eye",
-        "Raw Cod",
-        "Dried Kelp",
-        "Suspicious Stew",
-        "Cooked Cod",
-        "Golden Carrot",
-        "Raw Salmon",
-        "Honey Bottle",
+        "^item Cooked Beef",
+        "^item Cooked Salmon",
+        "^item Steak",
+        "^item Tropical Fish",
+        "^item Raw Chicken",
+        "^item Pufferfish",
+        "^item Melon Slice",
+        "^item Cooked Chicken",
+        "^item Apple",
+        "^item Mushroom Stew",
+        "^item Raw Mutton",
+        "^item Golden Apple",
+        "^item Baked Potato",
+        "^item Cooked Mutton",
+        "^item Beetroot",
+        "^item Poisonous Potato",
+        "^item Raw Porkchop",
+        "^item Beetroot Soup",
+        "^item Pumpkin Pie",
+        "^item Cooked Porkchop",
+        "^item Bread",
+        "^item Rabbit Stew",
+        "^item Raw Rabbit",
+        "^item Chorus Fruit",
+        "^item Rotten Flesh",
+        "^item Cooked Rabbit",
+        "^item Cookie",
+        "^item Spider Eye",
+        "^item Raw Cod",
+        "^item Dried Kelp",
+        "^item Suspicious Stew",
+        "^item Cooked Cod",
+        "^item Golden Carrot",
+        "^item Raw Salmon",
+        "^item Honey Bottle",
     ],
     ores: [
-        "Coal Ore",
-        "Iron Ore",
-        "Gold Ore",
-        "Redstone Ore",
-        "Emerald Ore",
-        "Lapis Lazuli Ore",
-        "Diamond Ore",
-        "Copper Ore",
-        "Deepslate Coal Ore",
-        "Deepslate Iron Ore",
-        "Deepslate Gold Ore",
-        "Deepslate Redstone Ore",
-        "Deepslate Emerald Ore",
-        "Deepslate Lapis Lazuli Ore",
-        "Deepslate Diamond Ore",
-        "Deepslate Copper Ore",
-        "Nether Gold Ore",
-        "Nether Quartz Ore",
-        "Ancient Debris",
-        "Block of Iron",
-        "Block of Gold",
-        "Block of Redstone",
-        "Block of Emerald",
-        "Block of Lapis Lazuli",
-        "Block of Diamond",
-        "Block of Copper",
-        "Block of Quartz",
-        "Block of Netherite",
-        "Block of Raw Iron",
-        "Block of Raw Gold",
-        "Block of Raw Copper",
+        "^block Coal Ore",
+        "^block Iron Ore",
+        "^block Gold Ore",
+        "^block Redstone Ore !torch",
+        "^block Emerald Ore",
+        "^block Lapis Lazuli Ore",
+        "^block Diamond Ore",
+        "^block Copper Ore",
+        "^block Deepslate Coal Ore",
+        "^block Deepslate Iron Ore",
+        "^block Deepslate Gold Ore",
+        "^block Deepslate Redstone Ore",
+        "^block Deepslate Emerald Ore",
+        "^block Deepslate Lapis Lazuli Ore",
+        "^block Deepslate Diamond Ore",
+        "^block Deepslate Copper Ore",
+        "^block Nether Gold Ore",
+        "^block Nether Quartz Ore",
+        "^block Ancient Debris",
+        "^block Block of Iron",
+        "^block Block of Gold",
+        "^block Block of Redstone",
+        "^block Block of Emerald",
+        "^block Block of Lapis Lazuli",
+        "^block Block of Diamond",
+        "^block Block of Copper",
+        "^block Block of Quartz",
+        "^block Block of Netherite",
+        "^block raw iron block",
+        "^block raw gold block",
+        "^block raw copper block",
     ],
     minerals: [
-        "emerald",
-        "diamond",
-        "copper ingot",
-        "iron ingot",
-        "iron nugget",
-        "gold ingot",
-        "gold nugget",
-        "netherite ingot",
-        "netherite scrap",
-        "redstone dust",
-        "coal",
-        "charcoal",
-        "Lapis Lazuli",
-        "raw copper",
-        "raw iron",
-        "raw gold",
-        "nether quartz",
+        "^item emerald",
+        "^item diamond !sword !shovel !axe !pickaxe !hoe !armor !helmet !chestplate !leggings !boots",
+        "^item copper ingot",
+        "^item iron ingot",
+        "^item iron nugget",
+        "^item gold ingot",
+        "^item gold nugget",
+        "^item netherite ingot",
+        "^item netherite scrap",
+        "^item redstone dust !overlay !dot !line",
+        "^item coal !block",
+        "^item charcoal !block",
+        "^item Lapis Lazuli !block",
+        "^item raw copper !block",
+        "^item raw iron !block",
+        "^item raw gold !block",
+        "^item nether quartz !block",
     ],
     balls: [
-        "ender pearl",
-        "eye of ender",
-        "snowball",
-        "slimeball",
-        "egg",
-        "magma cream",
-        "fire charge",
-        "Heart of the Sea",
+        "^item ender pearl",
+        "^item eye of ender",
+        "^item snowball",
+        "^item slimeball",
+        "^item egg !leggings !overlay !spawn",
+        "^item magma cream",
+        "^item fire charge",
+        "^item Heart of the Sea",
     ],
     cropStages: [
         "wheat_stage",
@@ -249,7 +250,7 @@ const java_mc_groups = {
         "potatoes_stage",
         "bamboo_stage",
     ],
-    vehicles: ["Minecart", "boat"],
+    vehicles: ["^item Minecart", "^item boat"],
     musicDiscs: ["music disc"],
     shulkerBoxes: [
         "Shulker Box",
@@ -383,6 +384,7 @@ function handle_file(file) {
     document.getElementById("main_site_data").style.display = "block";
     document.getElementById("edit_page").style.display = "block";
     document.getElementById("generate_page").style.display = "none";
+    clear_selected();
 
     file_object_raw = file;
 
@@ -482,19 +484,32 @@ function search_user_input(search_string) {
     output = [];
     search_array = search_string.split(" ");
     for (i in zip_orig_path_objects) {
-        current_name = zip_orig_path_objects[i].filename; //get_just_file_name(zip_orig_path_objects[i]);
+        current_name = get_just_file_name(zip_orig_path_objects[i]);
+        current_long_name = zip_orig_path_objects[i].filename;
         if (
             current_name.endsWith(".png") &&
             !get_just_file_name(zip_orig_path_objects[i]).startsWith(".")
         ) {
             current_eligablility = true;
             for (o in search_array) {
-                if (search_array[o][0] == "!") {
-                    if (current_name.includes(search_array[o].slice(1))) {
+                searched_level_path =
+                    search_array[o][0] == "^"
+                        ? current_long_name
+                        : current_name;
+                search_string_current =
+                    search_array[o][0] == "^"
+                        ? search_array[o].slice(1)
+                        : search_array[o];
+                if (search_string_current[0] == "!") {
+                    if (
+                        searched_level_path.includes(
+                            search_string_current.slice(1)
+                        )
+                    ) {
                         current_eligablility = false;
                     }
                 } else {
-                    if (!current_name.includes(search_array[o])) {
+                    if (!searched_level_path.includes(search_string_current)) {
                         current_eligablility = false;
                     }
                 }
@@ -538,10 +553,10 @@ function search_user_input(search_string) {
 
                 generate_selected_textures_list();
             });
-            // current_result_itter.setAttribute("checkd",true);
+            current_result_itter.setAttribute("hover_text", output[i].filename);
             current_result_itter.innerText = get_just_file_name(
                 output[i]
-            ).slice(0, -4);
+            ).replace(".png", "");
             current_result_itter.fill_obj = output[i];
             if (search_selected_items.includes(output[i])) {
                 current_result_itter.setAttribute("checkd", "true");
@@ -594,9 +609,13 @@ function generate_selected_textures_list() {
                 search_user_input(last_user_inputStringThing);
             });
             // current_result_itter.setAttribute("checkd",true);
+            current_result_itter.setAttribute(
+                "hover_text",
+                search_selected_items[i].filename
+            );
             current_result_itter.innerText = get_just_file_name(
                 search_selected_items[i]
-            ).slice(0, -4);
+            ).replace(".png", "");
             current_result_itter.fill_obj = search_selected_items[i];
             if (search_selected_items.includes(search_selected_items[i])) {
                 current_result_itter.setAttribute("checkd", "true");
@@ -610,6 +629,11 @@ function clear_selected() {
     search_selected_items = [];
     generate_selected_textures_list();
     search_user_input(last_user_inputStringThing);
+    document
+        .querySelectorAll(".switch > input[type=checkbox]")
+        .forEach(function (currentValue) {
+            currentValue.checked = false;
+        });
 }
 
 //! group selection method
@@ -621,19 +645,35 @@ function group_selected(obj) {
         search_string = group_add_remove[apple].toLowerCase();
         search_array = search_string.split(" ");
         for (i in zip_orig_path_objects) {
-            current_name = zip_orig_path_objects[i].filename; //get_just_file_name(zip_orig_path_objects[i]);
+            current_name = get_just_file_name(zip_orig_path_objects[i]);
+            current_long_name = zip_orig_path_objects[i].filename; //get_just_file_name(zip_orig_path_objects[i]);
             if (
                 current_name.endsWith(".png") &&
                 !get_just_file_name(zip_orig_path_objects[i]).startsWith(".")
             ) {
                 current_eligablility = true;
                 for (o in search_array) {
-                    if (search_array[o][0] == "!") {
-                        if (current_name.includes(search_array[o].slice(1))) {
+                    searched_level_path =
+                        search_array[o][0] == "^"
+                            ? current_long_name
+                            : current_name;
+                    search_string_current =
+                        search_array[o][0] == "^"
+                            ? search_array[o].slice(1)
+                            : search_array[o];
+
+                    if (search_string_current[0] == "!") {
+                        if (
+                            searched_level_path.includes(
+                                search_string_current.slice(1)
+                            )
+                        ) {
                             current_eligablility = false;
                         }
                     } else {
-                        if (!current_name.includes(search_array[o])) {
+                        if (
+                            !searched_level_path.includes(search_string_current)
+                        ) {
                             current_eligablility = false;
                         }
                     }
@@ -831,3 +871,40 @@ function back_to_edit_page() {
 }
 
 window.addEventListener("load", install_event_listners);
+
+// const canvas = document.getElementById("out_canvas");
+// const ctx = canvas.getContext("2d");
+
+// const imageSources = [
+//     "images/bamboo.png",
+//     "images/barrier.png",
+//     "images/beef.png",
+//     "images/beetroot.png",
+// ];
+
+// var columns = 2;
+// var rows = 2;
+
+// const imageWidth = canvas.width / columns;
+// const imageHeight = canvas.height / rows;
+
+// let imagesLoaded = 0;
+// imageSources.forEach((src, index) => {
+//     const img = new Image();
+//     img.src = src;
+//     img.onload = () => {
+//         const row = Math.floor(index / columns);
+//         const col = index % columns;
+//         ctx.drawImage(
+//             img,
+//             col * imageWidth,
+//             row * imageHeight,
+//             imageWidth,
+//             imageHeight
+//         );
+//         imagesLoaded++;
+//         if (imagesLoaded == imageSources.length) {
+//             console.log("All images loaded and drawn on the canvas.");
+//         }
+//     };
+// });

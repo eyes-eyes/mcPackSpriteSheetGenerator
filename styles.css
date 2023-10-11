@@ -203,6 +203,10 @@ body {
     content: "Vehicles";
 }
 
+.switch.balls .toggle::before {
+    content: "Balls";
+}
+
 /* .switch > .toggle::before {
     translate: -50% 0px;
 } */
@@ -277,6 +281,43 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+.search_results > div:hover::before {
+    opacity: 1;
+    height: 200%;
+}
+.search_results > div::before {
+    opacity: 0;
+    transition: 100ms height ease-in-out;
+    overflow: clip;
+    pointer-events: none;
+    line-break: anywhere;
+    text-align: center;
+    z-index: 1000;
+    /* content: "etst"; */
+    content: attr(hover_text) " ";
+    /* */
+    width: 95%;
+    height: 0%;
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translate(-50%, 0);
+    background-color: #1899d6;
+    border-radius: 10px;
+    /* animation: infinite forwards slide_across_hover 10s; */
+}
+
+/* @keyframes slide_across_hover {
+    from {
+        left: -100%;
+    }
+
+    to {
+        left: 100%;
+    }
+} */
 
 .search_results > div {
     width: 100%;
@@ -501,8 +542,8 @@ button:focus {
 
 .canvasSpriteSheets canvas {
     image-rendering: pixelated;
-    width: 100%;
-    height: 100%;
+    width: 32px;
+    height: 32px;
     /* position: absolute;
     left:0px;
     top:0px; */
