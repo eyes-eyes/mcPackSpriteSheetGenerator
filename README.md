@@ -11,6 +11,7 @@ If a zipped folder says "This Folder is Empty" then it will not work!
 The exclamation mark ("!") is an anti-search. Results containing the letters after a exclamation mark will NOT be shown.
 For example (for pack format 1 or known as 1.8.9):
 > diamond !ore
+
 results in
 - diamond_block
 - horse_armor_diamond
