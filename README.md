@@ -8,6 +8,7 @@ Check the out the link: https://eyes-eyes.github.io/mcPackSpriteSheetGenerator/
 If a zipped folder says "This Folder is Empty" then it will not work!
 
 # How to use Search
+_Remember not to confused file names with game names!_
 ### Anti-search
 The exclamation mark ("!") is an **anti-search**. Results containing the word after a exclamation mark will **NOT** be shown.
 For example (pack format 1 or known as 1.8.9):
