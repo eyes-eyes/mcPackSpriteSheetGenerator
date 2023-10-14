@@ -301,6 +301,21 @@
                     <button class="DownloadButton" onclick="">Download</button>
                 </div>
             </section>
+
+            <section>
+                <div class="custom_number" id="custom_number">
+                    <h2>Input custom width for spritesheet here:</h2>
+                    <input
+                        type="number"
+                        id="number_input"
+                        required
+                        maxlength="5"
+                        max="16384"
+                        min="0"
+                        oninput="this.valueAsNumber = Math.min(Math.max(this.valueAsNumber,this.min),this.max)"
+                    />
+                </div>
+            </section>
         </section>
     </body>
     <script type="text/javascript" src="librarys/zip-full.min.js"></script>

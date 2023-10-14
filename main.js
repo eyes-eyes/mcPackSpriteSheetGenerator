@@ -820,13 +820,88 @@ function proceed() {
     document.getElementById("main_site_data").style.display = "block";
     document.getElementById("generate_page").style.display = "block";
     document.getElementById("edit_page").style.display = "none";
+    generate_final_image();
+
+    textures_list_final = search_selected_items;
+    final_textures_list = [];
+    for (i in textures_list_final) {
+        final_textures_list.push(
+            await createImageBitmap(
+                await textures_list_final[i].getData(new zip.BlobWriter())
+            )
+        );
+    }
 }
 
-function getWorkerURL(url) {
-    const content = `importScripts( "${url}" );`;
-    return URL.createObjectURL(
-        new Blob([content], { type: "text/javascript" })
-    );
+
+let final_textures_list = []
+// ! generate final image function!!!
+async function generate_final_image() {
+    // for (i in groups) {
+
+    // }
+
+    
+    out = sort_and_draw_image(images_to_sort, 0);
+    console.log((window.ffff = out));
+
+    const canvas = document.getElementById("out_canvas");
+    canvas.width = out[1][0];
+    canvas.height = out[1][1];
+    const ctx = canvas.getContext("2d");
+    ctx.drawImage(out[0], 0, 0);
+}
+
+function sort_and_draw_image(image_array, width) {
+    img_max_dimensions = [0, 0];
+    img_area_needed = 0;
+    img_min_dimensions = [9999999, 9999999];
+    for (i of image_array) {
+        img_max_dimensions[0] = Math.max(img_max_dimensions[0], i.width);
+        img_max_dimensions[1] = Math.max(img_max_dimensions[1], i.height);
+        img_min_dimensions[0] = Math.min(img_min_dimensions[0], i.width);
+        img_min_dimensions[1] = Math.min(img_min_dimensions[1], i.height);
+        console.log("sizes", img_max_dimensions, img_min_dimensions);
+        img_area_needed += i.height * i.width;
+    }
+
+    if (width == 0) {
+        width =
+            Math.ceil(Math.sqrt(img_area_needed) / img_min_dimensions[0]) *
+            img_min_dimensions[0];
+        console.log("Width2 " + width);
+    }
+
+    width = Math.max(width, img_max_dimensions[0]);
+    console.log("Width3 " + width);
+
+    const offscreen = new OffscreenCanvas(16384, width);
+    const ctx = offscreen.getContext("2d", {
+        willReadFrequently: true,
+        alpha: true,
+        antialias: false,
+    });
+
+    line_height_used_temp = 0;
+    line_width_used_tmp = 0;
+    line_offset_top = 0;
+
+    for (image of image_array) {
+        if (image.width > width - line_width_used_tmp) {
+            line_offset_top += line_height_used_temp;
+            line_width_used_tmp = 0;
+            line_height_used_temp = 0;
+            // continue;
+        }
+
+        ctx.drawImage(image, line_width_used_tmp, line_offset_top);
+
+        line_height_used_temp = Math.max(line_height_used_temp, image.height);
+        line_width_used_tmp += image.width;
+    }
+    line_offset_top += line_height_used_temp;
+
+    return [offscreen.transferToImageBitmap(), [line_offset_top, width]];
 }
 
 // imageWorker=null;
