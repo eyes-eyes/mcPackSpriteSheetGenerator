@@ -207,6 +207,10 @@ body {
     content: "Balls";
 }
 
+.switch.cropStages .toggle::before {
+    content: "Crop\00a0 Stages";
+}
+
 /* .switch > .toggle::before {
     translate: -50% 0px;
 } */
