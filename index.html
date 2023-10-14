@@ -307,12 +307,12 @@
                     <h2>Input custom width for spritesheet here:</h2>
                     <input
                         type="number"
-                        id="number_input"
+                        id="width_input_generate"
                         required
                         maxlength="5"
                         max="16384"
                         min="0"
-                        oninput="this.valueAsNumber = Math.min(Math.max(this.valueAsNumber,this.min),this.max)"
+                        oninput="this.valueAsNumber = Math.min(Math.max(this.valueAsNumber,this.min),this.max);generate_final_image()"
                     />
                 </div>
             </section>

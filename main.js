@@ -820,8 +820,13 @@ function proceed() {
     document.getElementById("main_site_data").style.display = "block";
     document.getElementById("generate_page").style.display = "block";
     document.getElementById("edit_page").style.display = "none";
-    generate_final_image();
 
+    generate_final_text_list().then(() => {
+        generate_final_image();
+    });
+}
+
+async function generate_final_text_list() {
     textures_list_final = search_selected_items;
     final_textures_list = [];
     for (i in textures_list_final) {
@@ -833,16 +838,13 @@ function proceed() {
     }
 }
 
-
-let final_textures_list = []
+let final_textures_list = [];
 // ! generate final image function!!!
 async function generate_final_image() {
-    // for (i in groups) {
-
-    // }
-
-    
-    out = sort_and_draw_image(images_to_sort, 0);
+    out = sort_and_draw_image(
+        final_textures_list,
+        document.getElementById("width_input_generate").valueAsNumber || 0
+    );
     console.log((window.ffff = out));
 
     const canvas = document.getElementById("out_canvas");
