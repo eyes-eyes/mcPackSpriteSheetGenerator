@@ -848,8 +848,8 @@ async function generate_final_image() {
     console.log((window.ffff = out));
 
     const canvas = document.getElementById("out_canvas");
-    canvas.width = out[1][0];
-    canvas.height = out[1][1];
+    canvas.width = out[1][1];
+    canvas.height = out[1][0];
     const ctx = canvas.getContext("2d");
     ctx.drawImage(out[0], 0, 0);
 }
