@@ -71,6 +71,7 @@ const java_mc_groups = {
         "^minecraft ^block Obsidian !slab",
         "^minecraft ^block blackstone !slab",
     ],
+    statusEffects: ["^minecraft ^mob_effect"],
     sediments: [
         "^minecraft ^block grass block !sea !tallgrass !tall",
         "^minecraft ^block Mycelium",
@@ -82,6 +83,7 @@ const java_mc_groups = {
     ],
     armors: [
         "^minecraft ^item Leather Cap",
+        "^minecraft ^item Leather helmet !overlay",
         "^minecraft ^item Chainmail Helmet",
         "^minecraft ^item Iron Helmet",
         "^minecraft ^item Gold Helmet",
@@ -207,15 +209,15 @@ const java_mc_groups = {
         "^minecraft ^block Block Lapis",
         "^minecraft ^block Block Diamond",
         "^minecraft ^block Block Copper",
-        "^minecraft ^block Block Quartz",
+        "^minecraft ^block Block Quartz !chiseled",
         "^minecraft ^block Block Netherite",
         "^minecraft ^block raw iron block",
         "^minecraft ^block raw gold block",
         "^minecraft ^block raw copper block",
     ],
     minerals: [
-        "^minecraft ^item emerald",
-        "^minecraft ^item diamond !sword !shovel !axe !pickaxe !hoe !armor !helmet !chestplate !leggings !boots",
+        "^minecraft ^item emerald !empty",
+        "^minecraft ^item diamond !sword !shovel !axe !pickaxe !hoe !armor !helmet !chestplate !leggings !boots !empty",
         "^minecraft ^item copper ingot",
         "^minecraft ^item iron ingot",
         "^minecraft ^item iron nugget",
@@ -223,14 +225,14 @@ const java_mc_groups = {
         "^minecraft ^item gold nugget",
         "^minecraft ^item netherite ingot",
         "^minecraft ^item netherite scrap",
-        "^minecraft ^item redstone dust !overlay !dot !line",
+        "^minecraft ^item redstone !overlay !dot !line !empty",
         "^minecraft ^item coal !block",
         "^minecraft ^item charcoal !block",
-        "^minecraft ^item Lapis Lazuli !block",
+        "^minecraft ^item Lapis Lazuli !block !empty",
         "^minecraft ^item raw copper !block",
         "^minecraft ^item raw iron !block",
         "^minecraft ^item raw gold !block",
-        "^minecraft ^item nether quartz !block",
+        "^minecraft ^item quartz !block !empty",
     ],
     balls: [
         "^minecraft ^item ender pearl",
@@ -283,6 +285,7 @@ function back_button() {
     switch (pagination) {
         case 1:
             back_to_file_selector();
+            clear_selected();
             break;
         case 2:
             back_to_edit_page();
@@ -604,6 +607,8 @@ function generate_selected_textures_list() {
                 current_result_itter.setAttribute("checkd", "true");
             }
             search_results.appendChild(current_result_itter);
+            document.getElementById("counterTotal").innerText =
+                "(" + search_selected_items.length + ") " + "Total Textures:";
         }
     }
 }
@@ -617,6 +622,8 @@ function clear_selected() {
         .forEach(function (currentValue) {
             currentValue.checked = false;
         });
+    document.getElementById("counterTotal").innerText =
+        "(" + search_selected_items.length + ") " + "Total Textures:";
 }
 
 //! group selection method
@@ -682,6 +689,8 @@ function group_selected(obj) {
 
     generate_selected_textures_list();
     search_user_input(last_user_inputStringThing);
+    document.getElementById("counterTotal").innerText =
+        "(" + search_selected_items.length + ") " + "Total Textures:";
 
     // console.log(obj.id + (obj.checked ? " CHECKED" : " Unchecked"));
 }
@@ -815,15 +824,20 @@ function install_event_listners() {
 
 // FUNCTION TO PROCEED TO DOWNLOAD PAGE
 function proceed() {
-    pagination = 2;
-    document.getElementById("main_file_selector_areas").style.display = "none";
-    document.getElementById("main_site_data").style.display = "block";
-    document.getElementById("generate_page").style.display = "block";
-    document.getElementById("edit_page").style.display = "none";
+    if (search_selected_items.length == 0) {
+        return;
+    } else {
+        pagination = 2;
+        document.getElementById("main_file_selector_areas").style.display =
+            "none";
+        document.getElementById("main_site_data").style.display = "block";
+        document.getElementById("generate_page").style.display = "block";
+        document.getElementById("edit_page").style.display = "none";
 
-    generate_final_text_list().then(() => {
-        generate_final_image();
-    });
+        generate_final_text_list().then(() => {
+            generate_final_image();
+        });
+    }
 }
 
 async function generate_final_text_list() {
@@ -921,6 +935,30 @@ function sort_and_draw_image(image_array, width) {
 // function start_image_worker() {
 
 // }
+
+// function download_Sprites() {
+//     const downloadButton = document.getElementById("downloadButton");
+//     const canvas = document.getElementById("out_canvas");
+//     const image = canvas.toDataURL("image/png");
+//     const link = document.createElement("a");
+//     link.href = image;
+//     link.download = "myImage.png";
+//     link.click();
+// }
+
+const downloadButton = document.getElementById("downloadButton");
+
+downloadButton.addEventListener("click", function () {
+    const canvas = document.getElementById("out_canvas");
+    const image = canvas.toDataURL("image/png");
+    const link = document.createElement("a");
+    link.href = image;
+    link.download =
+        file_object_raw.name.replace(".zip", "").replace(/^[!\s]*/gm, "") +
+        "_SPRITESHEET" +
+        ".png";
+    link.click();
+});
 
 function back_to_edit_page() {
     pagination = 1;
