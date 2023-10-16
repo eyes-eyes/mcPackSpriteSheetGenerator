@@ -581,7 +581,7 @@ button:focus {
     position: absolute;
 }
 
-.downloadSection button {
+.downloadButton {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
         sans-serif;
@@ -598,39 +598,39 @@ button:focus {
     font-weight: 1000;
 }
 
-.downloadSection button span {
+.downloadButton span {
     display: block;
     margin-left: 0.3em;
     transition: all 0.3s ease-in-out;
 }
 
-.downloadSection button svg {
+.downloadButton svg {
     display: block;
     transform-origin: center center;
     transition: transform 0.3s ease-in-out;
 }
 
-.downloadSection button:hover {
+.downloadButton:hover {
     background: #000;
     cursor: pointer;
 }
 
-.downloadSection button:hover .svg-wrapper {
+.downloadButton:hover .svg-wrapper {
     transform: scale(1.25);
     transition: 0.5s linear;
 }
 
-.downloadSection button:hover svg {
+.downloadButton:hover svg {
     transform: translateX(1.2em) scale(1.1);
     fill: #fff;
 }
 
-.downloadSection button:hover span {
+.downloadButton:hover span {
     opacity: 0;
     transition: 0.5s linear;
 }
 
-.downloadSection button:active {
+.downloadButton:active {
     transform: scale(0.95);
 }
 
@@ -685,25 +685,31 @@ button:focus {
     transition-duration: 0.2s;
 }
 
+.copy_paste_list {
+    position: relative;
+    left: 100%;
+    top: 50%;
+}
 
 .integration-checklist__copy-button {
+    position: relative;
     display: inline;
     width: 40px;
     height: 40px;
     cursor: pointer;
     background-color: #fff;
-    background-image: url('images/1f4cb.svg');
-   /* Twitter clipboard emoji */
+    background-image: url("images/1f4cb.svg");
+    /* Twitter clipboard emoji */
     background-size: 60% auto;
     background-position: center center;
     background-repeat: no-repeat;
-    border: 1px solid rgba(0, 0, 0, .29);
-    border-bottom-color: rgba(0, 0, 0, .36);
+    border: 1px solid rgba(0, 0, 0, 0.29);
+    border-bottom-color: rgba(0, 0, 0, 0.36);
     border-radius: 3px;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, .12);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12);
 }
 .integration-checklist__copy-button:before {
-    content: '';
+    content: "";
     display: none;
     position: absolute;
     z-index: 9998;
@@ -713,10 +719,10 @@ button:focus {
     height: 0;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-bottom: 5px solid rgba(0, 0, 0, .72);
+    border-bottom: 5px solid rgba(0, 0, 0, 0.72);
 }
 .integration-checklist__copy-button:after {
-    content: 'Copy to Clipboard';
+    content: "Copy to Clipboard";
     display: none;
     position: absolute;
     z-index: 9999;
@@ -728,26 +734,29 @@ button:focus {
     font-size: 10px;
     line-height: 36px;
     text-align: center;
-    background: rgba(0, 0, 0, .72);
+    background: rgba(0, 0, 0, 0.72);
     border-radius: 3px;
 }
 .integration-checklist__copy-button:hover {
     background-color: #eee;
 }
-.integration-checklist__copy-button:hover:before, .integration-checklist__copy-button:hover:after {
+.integration-checklist__copy-button:hover:before,
+.integration-checklist__copy-button:hover:after {
     display: block;
 }
-.integration-checklist__copy-button:active, .integration-checklist__copy-button:focus {
+.integration-checklist__copy-button:active,
+.integration-checklist__copy-button:focus {
     outline: none;
 }
-.integration-checklist__copy-button:active:after, .integration-checklist__copy-button:focus:after {
-    content: 'Copied!';
+.integration-checklist__copy-button:active:after,
+.integration-checklist__copy-button:focus:after {
+    content: "Copied!";
 }
 .signature {
     position: absolute;
     right: 12px;
     bottom: 12px;
-    color: rgba(0, 0, 0, .07);
+    color: rgba(0, 0, 0, 0.07);
     font-size: 10px;
 }
 
