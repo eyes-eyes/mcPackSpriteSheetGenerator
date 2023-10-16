@@ -542,13 +542,20 @@ button:focus {
     top: 45%;
     transform: translate(-50%, -50%);
     background-color: blue;
-    border-radius: 10px;
+    border-radius: 7px;
 }
 
 .canvasSpriteSheets canvas {
     image-rendering: pixelated;
-    width: 100%;
-    height: 100%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    /* transform: translate(-50%, -50%); */
+    /* width: 100%;
+    height: 100%; */
+    /* height:100%;
+    width:auto; */
     /* position: absolute;
     left:0px;
     top:0px; */
@@ -605,6 +612,7 @@ button:focus {
 
 .downloadSection button:hover {
     background: #000;
+    cursor: pointer;
 }
 
 .downloadSection button:hover .svg-wrapper {
@@ -648,6 +656,9 @@ button:focus {
     border-radius: 20px;
     cursor: pointer;
     transition-duration: 0.2s;
+    left: 50%;
+    margin-top: 18px;
+    transform: translate(-50%, 0);
 }
 
 .toggleSwitch::after {
@@ -672,4 +683,90 @@ button:focus {
 #checkingGroups:checked + .toggleSwitch {
     background-color: rgb(148, 118, 255);
     transition-duration: 0.2s;
+}
+
+
+.integration-checklist__copy-button {
+    display: inline;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    background-color: #fff;
+    background-image: url('images/1f4cb.svg');
+   /* Twitter clipboard emoji */
+    background-size: 60% auto;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border: 1px solid rgba(0, 0, 0, .29);
+    border-bottom-color: rgba(0, 0, 0, .36);
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .12);
+}
+.integration-checklist__copy-button:before {
+    content: '';
+    display: none;
+    position: absolute;
+    z-index: 9998;
+    top: 35px;
+    left: 15px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid rgba(0, 0, 0, .72);
+}
+.integration-checklist__copy-button:after {
+    content: 'Copy to Clipboard';
+    display: none;
+    position: absolute;
+    z-index: 9999;
+    top: 40px;
+    left: -37px;
+    width: 114px;
+    height: 36px;
+    color: #fff;
+    font-size: 10px;
+    line-height: 36px;
+    text-align: center;
+    background: rgba(0, 0, 0, .72);
+    border-radius: 3px;
+}
+.integration-checklist__copy-button:hover {
+    background-color: #eee;
+}
+.integration-checklist__copy-button:hover:before, .integration-checklist__copy-button:hover:after {
+    display: block;
+}
+.integration-checklist__copy-button:active, .integration-checklist__copy-button:focus {
+    outline: none;
+}
+.integration-checklist__copy-button:active:after, .integration-checklist__copy-button:focus:after {
+    content: 'Copied!';
+}
+.signature {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    color: rgba(0, 0, 0, .07);
+    font-size: 10px;
+}
+
+#I_like_sharing_cat_loading {
+    width: 80%;
+    height: 80%;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    animation: infinite 5s I_like_sharing_cat_loading_animation linear;
+    border-radius: 10px;
+}
+
+@keyframes I_like_sharing_cat_loading_animation {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
 }

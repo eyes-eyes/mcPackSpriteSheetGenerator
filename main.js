@@ -114,8 +114,8 @@ const java_mc_groups = {
         "^minecraft ^item Turtle Helmet",
     ],
     toolsets: [
-        "^minecraft ^item Stone Sword",
         "^minecraft ^item Wood Sword",
+        "^minecraft ^item Stone Sword",
         "^minecraft ^item Iron Sword",
         "^minecraft ^item gold Sword",
         "^minecraft ^item Diamond Sword",
@@ -834,6 +834,9 @@ function proceed() {
         document.getElementById("generate_page").style.display = "block";
         document.getElementById("edit_page").style.display = "none";
 
+        document.getElementById("I_like_sharing_cat_loading").style.display =
+            "block";
+
         generate_final_text_list().then(() => {
             generate_final_image();
         });
@@ -841,6 +844,7 @@ function proceed() {
 }
 
 async function generate_final_text_list() {
+    document.getElementById("out_canvas").width = 0;
     textures_list_final = search_selected_items;
     final_textures_list = [];
     for (i in textures_list_final) {
@@ -850,6 +854,8 @@ async function generate_final_text_list() {
             )
         );
     }
+    document.getElementById("I_like_sharing_cat_loading").style.display =
+        "none";
 }
 
 let final_textures_list = [];
@@ -864,6 +870,12 @@ async function generate_final_image() {
     const canvas = document.getElementById("out_canvas");
     canvas.width = out[1][1];
     canvas.height = out[1][0];
+
+    canvas.style.width = out[1][1] < out[1][0] ? "auto" : "100%";
+    canvas.style.height = out[1][1] < out[1][0] ? "100%" : "auto";
+
+    // canvas.height = canvas.width = Math.max(out[1][1], out[1][0]);
+
     const ctx = canvas.getContext("2d");
     ctx.drawImage(out[0], 0, 0);
 }
@@ -877,7 +889,7 @@ function sort_and_draw_image(image_array, width) {
         img_max_dimensions[1] = Math.max(img_max_dimensions[1], i.height);
         img_min_dimensions[0] = Math.min(img_min_dimensions[0], i.width);
         img_min_dimensions[1] = Math.min(img_min_dimensions[1], i.height);
-        console.log("sizes", img_max_dimensions, img_min_dimensions);
+        // console.log("sizes", img_max_dimensions, img_min_dimensions);
         img_area_needed += i.height * i.width;
     }
 
@@ -885,13 +897,13 @@ function sort_and_draw_image(image_array, width) {
         width =
             Math.ceil(Math.sqrt(img_area_needed) / img_min_dimensions[0]) *
             img_min_dimensions[0];
-        console.log("Width2 " + width);
+        // console.log("Width2 " + width);
     }
 
     width = Math.max(width, img_max_dimensions[0]);
-    console.log("Width3 " + width);
+    // console.log("Width3 " + width);
 
-    const offscreen = new OffscreenCanvas(16384, width);
+    const offscreen = new OffscreenCanvas(width, 16384);
     const ctx = offscreen.getContext("2d", {
         willReadFrequently: true,
         alpha: true,
@@ -946,9 +958,7 @@ function sort_and_draw_image(image_array, width) {
 //     link.click();
 // }
 
-const downloadButton = document.getElementById("downloadButton");
-
-downloadButton.addEventListener("click", function () {
+function download_button_clicked() {
     const canvas = document.getElementById("out_canvas");
     const image = canvas.toDataURL("image/png");
     const link = document.createElement("a");
@@ -958,7 +968,7 @@ downloadButton.addEventListener("click", function () {
         "_SPRITESHEET" +
         ".png";
     link.click();
-});
+}
 
 function back_to_edit_page() {
     pagination = 1;
@@ -969,6 +979,15 @@ function back_to_edit_page() {
 }
 
 window.addEventListener("load", install_event_listners);
+
+function toggle_all_groups(checked) {
+    document
+        .querySelectorAll(".switch > input[type=checkbox]")
+        .forEach(function (currentValue) {
+            currentValue.checked = checked;
+            group_selected(currentValue);
+        });
+}
 
 // const canvas = document.getElementById("out_canvas");
 // const ctx = canvas.getContext("2d");
