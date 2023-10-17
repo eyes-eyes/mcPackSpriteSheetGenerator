@@ -632,16 +632,96 @@ function clear_selected() {
 function group_selected(obj) {
     group_add_remove = java_mc_groups[obj.id];
 
+    // output = [];
+    // for (apple in group_add_remove) {
+    //     search_string = group_add_remove[apple].toLowerCase();
+    //     search_array = search_string.split(" ");
+    //     for (i in zip_orig_path_objects) {
+    //         current_name = get_just_file_name(zip_orig_path_objects[i]);
+    //         current_long_name = zip_orig_path_objects[i].filename; //get_just_file_name(zip_orig_path_objects[i]);
+    //         if (
+    //             current_name.endsWith(".png") &&
+    //             !get_just_file_name(zip_orig_path_objects[i]).startsWith(".")
+    //         ) {
+    //             current_eligablility = true;
+    //             for (o in search_array) {
+    //                 searched_level_path =
+    //                     search_array[o][0] == "^"
+    //                         ? current_long_name
+    //                         : current_name;
+    //                 search_string_current =
+    //                     search_array[o][0] == "^"
+    //                         ? search_array[o].slice(1)
+    //                         : search_array[o];
+
+    //                 if (search_string_current[0] == "!") {
+    //                     if (
+    //                         searched_level_path.includes(
+    //                             search_string_current.slice(1)
+    //                         )
+    //                     ) {
+    //                         current_eligablility = false;
+    //                     }
+    //                 } else {
+    //                     if (
+    //                         !searched_level_path.includes(search_string_current)
+    //                     ) {
+    //                         current_eligablility = false;
+    //                     }
+    //                 }
+    //             }
+    //             if (current_eligablility) {
+    //                 output.push(zip_orig_path_objects[i]);
+    //             }
+    //         }
+    //     }
+    // }
+
+    output = group_search_collon_d(group_add_remove, zip_orig_path_objects);
+
+    // for (i in output) {
+    //     if (obj.checked) {
+    //         if (!search_selected_items.includes(output[i])) {
+    //             search_selected_items.unshift(output[i]);
+    //         }
+    //     } else {
+    //         search_selected_items = search_selected_items.filter(
+    //             (a) => a !== output[i]
+    //         );
+    //     }
+    // }
+
+    if (obj.checked) {
+        for (i in output) {
+            if (!search_selected_items.includes(output[i])) {
+                search_selected_items.unshift(output[i]);
+            }
+        }
+    } else {
+        search_selected_items = search_selected_items.filter(
+            (a) => !output.includes(a)
+        );
+    }
+
+    generate_selected_textures_list();
+    search_user_input(last_user_inputStringThing);
+    document.getElementById("counterTotal").innerText =
+        "(" + search_selected_items.length + ") " + "Total Textures:";
+
+    // console.log(obj.id + (obj.checked ? " CHECKED" : " Unchecked"));
+}
+
+function group_search_collon_d(group_add_remove, obj_to_search) {
     output = [];
     for (apple in group_add_remove) {
         search_string = group_add_remove[apple].toLowerCase();
         search_array = search_string.split(" ");
-        for (i in zip_orig_path_objects) {
-            current_name = get_just_file_name(zip_orig_path_objects[i]);
-            current_long_name = zip_orig_path_objects[i].filename; //get_just_file_name(zip_orig_path_objects[i]);
+        for (i in obj_to_search) {
+            current_name = get_just_file_name(obj_to_search[i]);
+            current_long_name = obj_to_search[i].filename; //get_just_file_name(zip_orig_path_objects[i]);
             if (
                 current_name.endsWith(".png") &&
-                !get_just_file_name(zip_orig_path_objects[i]).startsWith(".")
+                !get_just_file_name(obj_to_search[i]).startsWith(".")
             ) {
                 current_eligablility = true;
                 for (o in search_array) {
@@ -671,30 +751,12 @@ function group_selected(obj) {
                     }
                 }
                 if (current_eligablility) {
-                    output.push(zip_orig_path_objects[i]);
+                    output.push(obj_to_search[i]);
                 }
             }
         }
     }
-
-    for (i in output) {
-        if (obj.checked) {
-            if (!search_selected_items.includes(output[i])) {
-                search_selected_items.unshift(output[i]);
-            }
-        } else {
-            search_selected_items = search_selected_items.filter(
-                (a) => a !== output[i]
-            );
-        }
-    }
-
-    generate_selected_textures_list();
-    search_user_input(last_user_inputStringThing);
-    document.getElementById("counterTotal").innerText =
-        "(" + search_selected_items.length + ") " + "Total Textures:";
-
-    // console.log(obj.id + (obj.checked ? " CHECKED" : " Unchecked"));
+    return output;
 }
 
 //Shows colors and removed codes in pack name
@@ -845,23 +907,73 @@ function proceed() {
 async function generate_final_text_list() {
     document.getElementById("out_canvas").width = 0;
     textures_list_final = search_selected_items;
-    final_textures_list = [];
+
+    obj_group_locations = {};
+
+    for (group_add_remove_index in java_mc_groups) {
+        if (!document.getElementById(group_add_remove_index).checked) continue;
+
+        group_add_remove = java_mc_groups[group_add_remove_index];
+        objs_in_this_group = group_search_collon_d(
+            group_add_remove,
+            textures_list_final
+        );
+
+        for (i of objs_in_this_group) {
+            obj_group_locations[i.filename] = group_add_remove_index;
+        }
+    }
+    // console.log(obj_group_locations);
+
+    final_textures_list = {};
     for (i in textures_list_final) {
-        final_textures_list.push(
+        if (
+            final_textures_list[
+                obj_group_locations?.[textures_list_final?.[i].filename] ||
+                    "UNDEF"
+            ] == undefined
+        ) {
+            final_textures_list[
+                obj_group_locations?.[textures_list_final?.[i].filename] ||
+                    "UNDEF"
+            ] = [];
+        }
+        final_textures_list[
+            obj_group_locations?.[textures_list_final?.[i].filename] || "UNDEF"
+        ].push(
             await createImageBitmap(
                 await textures_list_final[i].getData(new zip.BlobWriter())
             )
         );
     }
+
     document.getElementById("I_like_sharing_cat_loading").style.display =
         "none";
 }
 
-let final_textures_list = [];
+let final_textures_list = {};
 // ! generate final image function!!!
 async function generate_final_image() {
+    // console.log(final_textures_list);
+
+    real_final_textures_list = (final_textures_list["UNDEF"] || []).slice();
+    for (i in final_textures_list) {
+        if (i == "UNDEF") continue;
+        console.log(final_textures_list[i]);
+        real_final_textures_list.push(
+            sort_and_draw_image(
+                final_textures_list[i],
+                document.getElementById("width_input_generate").valueAsNumber ||
+                    0
+            )[0]
+        );
+    }
+
+    console.log(":D");
+    console.log(real_final_textures_list);
+
     out = sort_and_draw_image(
-        final_textures_list,
+        real_final_textures_list,
         document.getElementById("width_input_generate").valueAsNumber || 0
     );
     console.log((window.ffff = out));
@@ -928,7 +1040,17 @@ function sort_and_draw_image(image_array, width) {
     }
     line_offset_top += line_height_used_temp;
 
-    return [offscreen.transferToImageBitmap(), [line_offset_top, width]];
+    tmp_canvas = new OffscreenCanvas(width, line_offset_top);
+
+    tmp_canvas
+        .getContext("2d", {
+            willReadFrequently: true,
+            alpha: true,
+            antialias: false,
+        })
+        .drawImage(offscreen, 0, 0);
+
+    return [tmp_canvas.transferToImageBitmap(), [line_offset_top, width]];
 }
 
 // imageWorker=null;

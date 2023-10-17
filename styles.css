@@ -252,8 +252,6 @@ body {
     border-radius: 8px;
 }
 
-
-
 .searchTerm {
     max-width: 70%;
     width: 70% !important;
@@ -609,7 +607,7 @@ button:focus {
     fill: rgb(155, 153, 153);
     padding: 0.7em 1em;
     padding-left: 0.9em;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     border: none;
     border-radius: 15px;
@@ -705,9 +703,10 @@ button:focus {
 
 .copy_paste_list {
     position: relative;
-    left: 100%;
-    top: 50%;
+    left: 80%;
 }
+
+
 
 .integration-checklist__copy-button {
     position: relative;
@@ -715,6 +714,9 @@ button:focus {
     width: 40px;
     height: 40px;
     cursor: pointer;
+    top: 50%;
+    left: calc(50% - 20px);
+
     background-color: #fff;
     background-image: url("images/1f4cb.svg");
     /* Twitter clipboard emoji */
@@ -756,10 +758,12 @@ button:focus {
     border-radius: 3px;
 }
 .integration-checklist__copy-button:hover {
+    transform: translateY(-50%);
     background-color: #eee;
 }
 .integration-checklist__copy-button:hover:before,
 .integration-checklist__copy-button:hover:after {
+    transform: translateY(-50%);
     display: block;
 }
 .integration-checklist__copy-button:active,
