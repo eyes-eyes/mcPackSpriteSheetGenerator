@@ -97,7 +97,11 @@
                 <section>
                     <div class="groups_selector" id="groups_selector">
                         <div class="checkGroupsSection" id="checkGroupsSection">
-                            <input type="checkbox" id="checkingGroups" oninput="toggle_all_groups(this.checked)"/>
+                            <input
+                                type="checkbox"
+                                id="checkingGroups"
+                                oninput="toggle_all_groups(this.checked)"
+                            />
                             <label
                                 for="checkingGroups"
                                 class="toggleSwitch"
@@ -178,6 +182,17 @@
                                             <input
                                                 type="checkbox"
                                                 id="cropStages"
+                                                oninput="group_selected(this)"
+                                            />
+                                            <span class="toggle"></span>
+                                        </label>
+                                    </div>
+
+                                    <div>
+                                        <label class="switch buckets">
+                                            <input
+                                                type="checkbox"
+                                                id="buckets"
                                                 oninput="group_selected(this)"
                                             />
                                             <span class="toggle"></span>
@@ -280,6 +295,11 @@
                                 placeholder="Search for textures..."
                                 oninput="search_user_input(this.value)"
                             />
+                            <div
+                                class="toggleSearch"
+                                id="toggleSearch"
+                                onclick="toggle_all_searched()"
+                            ></div>
                         </div>
 
                         <div class="search_results" id="search_results"></div>
@@ -300,16 +320,23 @@
             <section>
                 <div class="canvasSpriteSheets" id="canvasSpriteSheets">
                     <canvas id="out_canvas"> </canvas>
-                    <image src="images/ILikeSharingCat.png" id="I_like_sharing_cat_loading"></image>
+                    <image
+                        src="images/ILikeSharingCat.png"
+                        id="I_like_sharing_cat_loading"
+                    ></image>
                 </div>
             </section>
 
             <section>
                 <div class="downloadSection" id="downloadSection">
                     <div class="copy_paste_list">
-                        <button class="integration-checklist__copy-button" id="integration-checklist__copy-button"></button>
+                        <button
+                            class="integration-checklist__copy-button"
+                            id="integration-checklist__copy-button"
+                        ></button>
                     </div>
-                    <button class="downloadButton"
+                    <button
+                        class="downloadButton"
                         id="downloadButton"
                         onclick="download_button_clicked()"
                     >

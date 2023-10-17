@@ -211,6 +211,10 @@ body {
     content: "Crop\00a0 Stages";
 }
 
+.switch.buckets .toggle::before {
+    content: "Buckets";
+}
+
 /* .switch > .toggle::before {
     translate: -50% 0px;
 } */
@@ -234,13 +238,27 @@ body {
     z-index: 1;
     font-weight: 900;
     margin-bottom: 5px;
+    justify-content: center;
 }
+
+.toggleSearch {
+    background-color: pink;
+    margin-left: 10px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: calc(30% - 24px - 10px - 5%);
+    background-image: url(images/switches_FILL0_wght400_GRAD0_opsz24.svg);
+    border-radius: 8px;
+}
+
+
 
 .searchTerm {
     max-width: 70%;
     width: 70% !important;
-    left: calc(15% - 12px);
-    position: relative;
+    /* left: calc(15% - 12px);
+    position: relative; */
 
     height: 20px;
     padding: 12px;

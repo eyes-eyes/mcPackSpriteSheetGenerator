@@ -256,6 +256,7 @@ const java_mc_groups = {
     vehicles: ["^minecraft ^item Minecart", "^item boat"],
     musicDiscs: ["^minecraft music disc"],
     shulkerBoxes: ["^minecraft ^block Shulker Box"],
+    buckets: ["^minecraft ^item bucket"],
 };
 
 document.onkeydown = function (evt) {
@@ -607,10 +608,10 @@ function generate_selected_textures_list() {
                 current_result_itter.setAttribute("checkd", "true");
             }
             search_results.appendChild(current_result_itter);
-            document.getElementById("counterTotal").innerText =
-                "(" + search_selected_items.length + ") " + "Total Textures:";
         }
     }
+    document.getElementById("counterTotal").innerText =
+        "(" + search_selected_items.length + ") " + "Total Textures:";
 }
 
 function clear_selected() {
@@ -622,6 +623,7 @@ function clear_selected() {
         .forEach(function (currentValue) {
             currentValue.checked = false;
         });
+    document.getElementById("checkingGroups").checked = false;
     document.getElementById("counterTotal").innerText =
         "(" + search_selected_items.length + ") " + "Total Textures:";
 }
@@ -694,9 +696,6 @@ function group_selected(obj) {
 
     // console.log(obj.id + (obj.checked ? " CHECKED" : " Unchecked"));
 }
-
-//! The real spritesheet stitch thing
-function drawingSpriteSheets() {}
 
 //Shows colors and removed codes in pack name
 
@@ -987,6 +986,27 @@ function toggle_all_groups(checked) {
             currentValue.checked = checked;
             group_selected(currentValue);
         });
+}
+
+function toggle_all_searched() {
+    document.querySelectorAll("#search_results > div").forEach((element) => {
+        let current_item_name_again = element.fill_obj;
+        if (!element.getAttribute("checkd")) {
+            if (!search_selected_items.includes(current_item_name_again)) {
+                search_selected_items.unshift(current_item_name_again);
+            }
+        } else {
+            search_selected_items = search_selected_items.filter(
+                (a) => a !== current_item_name_again
+            );
+        }
+
+        element.setAttribute(
+            "checkd",
+            !element.getAttribute("checkd") ? "true" : ""
+        );
+    });
+    generate_selected_textures_list();
 }
 
 // const canvas = document.getElementById("out_canvas");
