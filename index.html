@@ -87,10 +87,7 @@
                 <section>
                     <div class="textureAdded" id="textureAded">
                         <h2 id="counterTotal">Total Textures:</h2>
-                        <div
-                            class="search_results"
-                            id="total_textures_input"
-                        ></div>
+                        <div class="search_results" id="total_textures_input"></div>
                     </div>
                 </section>
 
@@ -102,10 +99,7 @@
                                 id="checkingGroups"
                                 oninput="toggle_all_groups(this.checked)"
                             />
-                            <label
-                                for="checkingGroups"
-                                class="toggleSwitch"
-                            ></label>
+                            <label for="checkingGroups" class="toggleSwitch"></label>
                         </div>
                         <h2>
                             Select the groups
@@ -319,9 +313,7 @@
 
                 <section>
                     <div class="proceedSection" id="proceedSection">
-                        <button class="proceedButton" onclick="proceed()">
-                            Proceed
-                        </button>
+                        <button class="proceedButton" onclick="proceed()">Proceed</button>
                     </div>
                 </section>
             </section>
@@ -366,7 +358,7 @@
                         class="integration-checklist__copy-button"
                         id="integration-checklist__copy-button"
                     ></button> -->
-                    <!-- <div class="copy_paste_list">
+                    <!--d <div class="copy_paste_list">
                         <button
                             class="integration-checklist__copy-button"
                             id="integration-checklist__copy-button"
@@ -375,7 +367,7 @@
                 </div>
             </section>
 
-            <section>
+            <section class="Options" id="Options">
                 <div class="custom_number" id="custom_number">
                     <h2>Input custom width for sprite sheet here:</h2>
                     <input
@@ -388,13 +380,9 @@
                         oninput="this.valueAsNumber = Math.min(Math.max(this.valueAsNumber,this.min),this.max);generate_final_image()"
                     />
                 </div>
-            </section>
 
-            <section>
                 <div class="SortMethods" id="SortMethods">
-                    <h2>
-                        Select a sorting method when generating sprite sheet
-                    </h2>
+                    <h2>Select a sorting method when</h2>
                     <div class="radio-container">
                         <div class="radio-wrapper">
                             <label class="radio-button">

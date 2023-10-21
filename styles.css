@@ -602,9 +602,8 @@ button:focus {
 }
 
 .downloadButton {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-        sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     font-size: 20px;
     background: #212121;
     color: white;
@@ -710,8 +709,6 @@ button:focus {
     left: 80%;
 }
 
-
-
 .integration-checklist__copy-button {
     position: relative;
     display: inline;
@@ -806,41 +803,32 @@ button:focus {
     }
 }
 
-.SortMethods {
-    position: absolute;
-    top: 30%;
-    left: 30%;
-    transform: translate(-50%,-50%);
-
-}
-
 .radio-container {
     margin: 0 auto;
     max-width: 300px;
     color: black;
+}
 
-  }
-  
-  .radio-wrapper {
+.radio-wrapper {
     margin-bottom: 20px;
-  }
-  
-  .radio-button {
+}
+
+.radio-button {
     display: flex;
     align-items: center;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
-  }
-  
-  .radio-button:hover {
+}
+
+.radio-button:hover {
     transform: translateY(-2px);
-  }
-  
-  .radio-button input[type="radio"] {
+}
+
+.radio-button input[type="radio"] {
     display: none;
-  }
-  
-  .radio-checkmark {
+}
+
+.radio-checkmark {
     display: inline-block;
     position: relative;
     width: 16px;
@@ -848,9 +836,9 @@ button:focus {
     margin-right: 10px;
     border: 2px solid #333;
     border-radius: 50%;
-  }
-  
-  .radio-checkmark:before {
+}
+
+.radio-checkmark:before {
     content: "";
     position: absolute;
     top: 50%;
@@ -861,14 +849,39 @@ button:focus {
     border-radius: 50%;
     background-color: #333;
     transition: all 0.2s ease-in-out;
-  }
-  
-  .radio-button input[type="radio"]:checked ~ .radio-checkmark:before {
+}
+
+.radio-button input[type="radio"]:checked ~ .radio-checkmark:before {
     transform: translate(-50%, -50%) scale(1);
-  }
-  
-  .radio-label {
+}
+
+.radio-label {
     font-size: 16px;
     font-weight: 600;
-  }
-  
+}
+
+.Options {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    left: calc((50% - 35vmin) / 2);
+    height: 30vh;
+    background: blueviolet;
+    border-radius: 10px;
+
+    top: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 20vmin;
+}
+
+.sortMethods {
+    left: calc((50% - 35vmin) / 2);
+    height: 30vh;
+    background: blueviolet;
+    border-radius: 10px;
+
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 20vmin;
+}
