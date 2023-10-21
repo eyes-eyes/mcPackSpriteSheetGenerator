@@ -167,6 +167,10 @@ body {
     content: "Tool\00a0Sets";
 }
 
+.switch.doors .toggle::before {
+    content: "Doors & Trapdoors";
+}
+
 .switch.statusEffects .toggle::before {
     content: "Status\00a0 Effects";
 }
@@ -590,6 +594,8 @@ button:focus {
 }
 
 .downloadSection {
+    /* display: flex;
+    flex-direction: row; */
     left: 50%;
     top: 90%;
     transform: translate(-50%, -50%);
@@ -699,83 +705,127 @@ button:focus {
     transition-duration: 0.2s;
 }
 
-.copy_paste_list {
-    position: relative;
-    left: 80%;
+/* tooltip settings 👇 */
+
+.copy {
+    /* button */
+    --button-bg: #353434;
+    --button-hover-bg: #464646;
+    --button-text-color: #cccccc;
+    --button-hover-text-color: #8bb9fe;
+    --button-border-radius: 10px;
+    --button-diameter: 36px;
+    --button-outline-width: 1px;
+    --button-outline-color: rgb(141, 141, 141);
+    /* tooltip */
+    --tooltip-bg: #f4f3f3;
+    --toolptip-border-radius: 4px;
+    --tooltip-font-family: Menlo, Roboto Mono, monospace;
+    /* 👆 this field should not be empty */
+    --tooltip-font-size: 12px;
+    /* 👆 this field should not be empty */
+    --tootip-text-color: rgb(50, 50, 50);
+    --tooltip-padding-x: 7px;
+    --tooltip-padding-y: 7px;
+    --tooltip-offset: 8px;
+    /* --tooltip-transition-duration: 0.3s; */
+    /* 👆 if you need a transition, 
+    just remove the comment,
+    but I didn't like the transition :| */
 }
 
-.integration-checklist__copy-button {
-    position: relative;
-    display: inline;
-    width: 40px;
-    height: 40px;
+.copy {
+    box-sizing: border-box;
+    width: var(--button-diameter);
+    height: var(--button-diameter);
+    border-radius: var(--button-border-radius);
+    background-color: var(--button-bg);
+    color: var(--button-text-color);
+    border: none;
     cursor: pointer;
-    top: 50%;
-    left: calc(50% - 20px);
+    position: relative;
+    outline: none;
+    transform: translate(0, -50%);
+}
 
-    background-color: #fff;
-    background-image: url("images/1f4cb.svg");
-    /* Twitter clipboard emoji */
-    background-size: 60% auto;
-    background-position: center center;
-    background-repeat: no-repeat;
-    border: 1px solid rgba(0, 0, 0, 0.29);
-    border-bottom-color: rgba(0, 0, 0, 0.36);
-    border-radius: 3px;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12);
+.tooltip {
+    position: absolute;
+    opacity: 0;
+    visibility: 0;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font: var(--tooltip-font-size) var(--tooltip-font-family);
+    color: var(--tootip-text-color);
+    background: var(--tooltip-bg);
+    padding: var(--tooltip-padding-y) var(--tooltip-padding-x);
+    border-radius: var(--toolptip-border-radius);
+    pointer-events: none;
+    transition: all var(--tooltip-transition-duration)
+        cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-.integration-checklist__copy-button:before {
+
+.tooltip::before {
+    content: attr(data-text-initial);
+}
+
+.tooltip::after {
     content: "";
-    display: none;
     position: absolute;
-    z-index: 9998;
-    top: 35px;
-    left: 15px;
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-bottom: 5px solid rgba(0, 0, 0, 0.72);
+    bottom: calc(var(--tooltip-padding-y) / 2 * -1);
+    width: var(--tooltip-padding-y);
+    height: var(--tooltip-padding-y);
+    background: inherit;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    z-index: -999;
+    pointer-events: none;
 }
-.integration-checklist__copy-button:after {
-    content: "Copy to Clipboard";
-    display: none;
+
+.copy svg {
     position: absolute;
-    z-index: 9999;
-    top: 40px;
-    left: -37px;
-    width: 114px;
-    height: 36px;
-    color: #fff;
-    font-size: 10px;
-    line-height: 36px;
-    text-align: center;
-    background: rgba(0, 0, 0, 0.72);
-    border-radius: 3px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
-.integration-checklist__copy-button:hover {
-    transform: translateY(-50%);
-    background-color: #eee;
+
+.checkmark {
+    display: none;
 }
-.integration-checklist__copy-button:hover:before,
-.integration-checklist__copy-button:hover:after {
-    transform: translateY(-50%);
+
+/* actions */
+
+.copy:hover .tooltip,
+.copy:focus:not(:focus-visible) .tooltip {
+    opacity: 1;
+    visibility: visible;
+    top: calc((100% + var(--tooltip-offset)) * -1);
+}
+
+.copy:focus:not(:focus-visible) .tooltip::before {
+    content: attr(data-text-end);
+}
+
+.copy:focus:not(:focus-visible) .clipboard {
+    display: none;
+}
+
+.copy:focus:not(:focus-visible) .checkmark {
     display: block;
 }
-.integration-checklist__copy-button:active,
-.integration-checklist__copy-button:focus {
-    outline: none;
+
+.copy:hover,
+.copy:focus {
+    background-color: var(--button-hover-bg);
 }
-.integration-checklist__copy-button:active:after,
-.integration-checklist__copy-button:focus:after {
-    content: "Copied!";
+
+.copy:active {
+    outline: var(--button-outline-width) solid var(--button-outline-color);
 }
-.signature {
-    position: absolute;
-    right: 12px;
-    bottom: 12px;
-    color: rgba(0, 0, 0, 0.07);
-    font-size: 10px;
+
+.copy:hover svg {
+    color: var(--button-hover-text-color);
 }
 
 #I_like_sharing_cat_loading {
@@ -855,6 +905,137 @@ button:focus {
     font-weight: 600;
 }
 
+.form {
+    --background: #ffffff;
+    --text: #414856;
+    --radio: #7c96b2;
+    --radio-checked: #4f29f0;
+    --radio-size: 20px;
+    --width: 25vmin;
+    --height: 140px;
+    --border-radius: 10px;
+    background: var(--background);
+    width: var(--width);
+    height: var(--height);
+    border-radius: var(--border-radius);
+    color: var(--text);
+    position: relative;
+    box-shadow: 0 10px 30px rgba(65, 72, 86, 0.05);
+    padding: 30px 20px;
+    display: grid;
+    grid-template-columns: auto var(--radio-size);
+    align-items: center;
+}
+
+.form label {
+    cursor: pointer;
+}
+
+.form input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+    height: var(--radio-size);
+    width: var(--radio-size);
+    outline: none;
+    margin: 0;
+    cursor: pointer;
+    border: 2px solid var(--radio);
+    background: transparent;
+    border-radius: 50%;
+    display: grid;
+    justify-self: end;
+    justify-items: center;
+    align-items: center;
+    overflow: hidden;
+    transition: border 0.5s ease;
+}
+
+.form input[type="radio"]::before,
+.form input[type="radio"]::after {
+    content: "";
+    display: flex;
+    justify-self: center;
+    border-radius: 50%;
+}
+
+.form input[type="radio"]::before {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--background);
+    z-index: 1;
+    opacity: var(--opacity, 1);
+}
+
+.form input[type="radio"]::after {
+    position: relative;
+    width: calc(100% / 2);
+    height: calc(100% / 2);
+    background: var(--radio-checked);
+    top: var(--y, 100%);
+    transition: top 0.5s cubic-bezier(0.48, 1.97, 0.5, 0.63);
+}
+
+.form input[type="radio"]:checked {
+    --radio: var(--radio-checked);
+}
+
+.form input[type="radio"]:checked::after {
+    --y: 0%;
+    animation: stretch-animate 0.3s ease-out 0.17s;
+}
+
+.form input[type="radio"]:checked::before {
+    --opacity: 0;
+}
+
+.form input[type="radio"]:checked ~ input[type="radio"]::after {
+    --y: -100%;
+}
+
+.form input[type="radio"]:not(:checked)::before {
+    --opacity: 1;
+    transition: opacity 0s linear 0.5s;
+}
+
+@keyframes stretch-animate {
+    0% {
+        transform: scale(1, 1);
+    }
+
+    28% {
+        transform: scale(1.15, 0.85);
+    }
+
+    50% {
+        transform: scale(0.9, 1.1);
+    }
+
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
+.socials {
+    position: fixed;
+    display: block;
+    left: 20px;
+    bottom: 20px;
+}
+
+.socials > a {
+    display: block;
+    width: 30px;
+    opacity: 0.2;
+    transform: scale(var(--scale, 0.8));
+    transition: transform 0.3s cubic-bezier(0.38, -0.12, 0.24, 1.91);
+}
+
+.socials > a:hover {
+    --scale: 1;
+}
+
 .CleanUp {
     width: 100%;
     display: flex;
@@ -868,6 +1049,12 @@ button:focus {
 
 .CleanUp > * {
     margin: auto;
+}
+
+.CleanUpAgain {
+    width: 75vmin;
+    display: grid;
+    grid-template-rows: auto;
 }
 
 .Options {

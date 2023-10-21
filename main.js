@@ -53,14 +53,21 @@ const color_codes = {
 
 const java_mc_groups = {
     woodVariants: [
-        "^minecraft ^block oak",
-        "^minecraft ^block spruce",
-        "^minecraft ^block birch",
-        "^minecraft ^block jungle",
-        "^minecraft ^block acacia",
-        "^minecraft ^block dark oak",
-        "^minecraft ^block mangrove",
-        "^minecraft ^block cherry",
+        "^minecraft ^block oak !door",
+        "^minecraft ^block spruce !door",
+        "^minecraft ^block birch !door",
+        "^minecraft ^block jungle !door",
+        "^minecraft ^block acacia !door",
+        "^minecraft ^block dark oak !door",
+        "^minecraft ^block mangrove !door",
+        "^minecraft ^block cherry !door",
+    ],
+    doors: [
+        "^minecraft ^block door upper",
+        "^minecraft ^block door lower",
+        "^minecraft ^block door top",
+        "^minecraft ^block door bottom",
+        "^minecraft ^block door",
     ],
     stones: [
         "^minecraft ^block stone !redstone !grindstone !lodestone !sword !axe !shovel !hoe !pickaxe !stonecutter !glowstone !slab !dripstone",
@@ -283,10 +290,12 @@ function back_button() {
     switch (pagination) {
         case 1:
             back_to_file_selector();
+            document.getElementById("searchTerm").value = "";
             clear_selected();
             break;
         case 2:
             back_to_edit_page();
+            document.getElementById("width_input_generate").value = 0;
             break;
         // back_to_file_selector()
 
@@ -900,13 +909,16 @@ async function generate_final_text_list() {
         // if (file_name_tmp.endsWith("door_upper") || file_name_tmp.endsWith("door_top")) {upper_lower_array.push()}
         // (file_name_tmp.endsWith("door_lower") || file_name_tmp.endsWith("door_bottom"))
 
-        index_push = final_textures_list[
-            obj_group_locations?.[file_name_tmp] || "UNDEF"
-        ].push(
-            await createImageBitmap(
-                await textures_list_final[i].getData(new zip.BlobWriter())
-            )
+        img_bitmap_tmp = await createImageBitmap(
+            await textures_list_final[i].getData(new zip.BlobWriter())
         );
+
+        img_bitmap_tmp.file_obj = textures_list_final[i];
+
+        index_push =
+            final_textures_list[obj_group_locations?.[file_name_tmp] || "UNDEF"].push(
+                img_bitmap_tmp
+            );
 
         // if () {upper_lower_array.push()}
     }
@@ -1022,7 +1034,75 @@ function color_append_to_imaged(images) {
     }
 }
 
-function sort_and_draw_image(image_array, width) {
+function sort_and_draw_image(image_array_in, width) {
+    image_array = image_array_in.slice();
+
+    if (document.getElementById("mergeStuff").checked) {
+        combined_parts_included = {};
+
+        for (i in image_array) {
+            obj_tmp = image_array[i];
+            if (!obj_tmp.file_obj) continue;
+            name_tmp = obj_tmp.file_obj.filename.replace(".png", "");
+            door_upper = name_tmp.endsWith("door_upper") || name_tmp.endsWith("door_top");
+            door_lower =
+                name_tmp.endsWith("door_lower") || name_tmp.endsWith("door_bottom");
+            if (door_upper || door_lower) {
+                name_tmp_normalized = name_tmp
+                    .replaceAll("door_upper", "")
+                    .replaceAll("door_lower", "")
+                    .replaceAll("door_top", "")
+                    .replaceAll("door_bottom", "");
+                opposite_part_name_tmp =
+                    name_tmp_normalized + (!door_upper ? "_TOP" : "_BOTTOM");
+                current_parr_name_tmp =
+                    name_tmp_normalized + (door_upper ? "_TOP" : "_BOTTOM");
+
+                opposite_part_index_tmp = combined_parts_included[opposite_part_name_tmp];
+                if (opposite_part_index_tmp) {
+                    opposite_part_obj_tmp = image_array[opposite_part_index_tmp];
+
+                    let offscreen_merge_canvas = new OffscreenCanvas(
+                        Math.max(opposite_part_obj_tmp.width, obj_tmp.width),
+                        opposite_part_obj_tmp.height + obj_tmp.height
+                    );
+                    merge_ctx = offscreen_merge_canvas.getContext("2d", {
+                        willReadFrequently: true,
+                        alpha: true,
+                        antialias: false,
+                    });
+
+                    if (door_upper) {
+                        merge_ctx.drawImage(obj_tmp, 0, 0);
+                        merge_ctx.drawImage(opposite_part_obj_tmp, 0, obj_tmp.height);
+                    } else {
+                        merge_ctx.drawImage(opposite_part_obj_tmp, 0, 0);
+                        merge_ctx.drawImage(obj_tmp, 0, opposite_part_obj_tmp.height);
+                    }
+
+                    // image_array.splice(opposite_part_index_tmp, 1);
+                    // image_array.splice(i, 1);
+                    // remove both self and the other :D
+
+                    opposite_part_obj_tmp.disabled = true;
+                    obj_tmp.disabled = true;
+
+                    tmp_out = offscreen_merge_canvas.transferToImageBitmap();
+                    // tmp_out.filename
+                    image_array.push(tmp_out);
+                } else {
+                    combined_parts_included[current_parr_name_tmp] = i;
+                }
+            }
+        }
+    } else {
+        for (i of image_array) i.disabled = false;
+    }
+
+    image_array = image_array.filter((a) => {
+        return !a.disabled;
+    });
+
     img_max_dimensions = [0, 0];
     img_area_needed = 0;
     img_min_dimensions = [9999999, 9999999];
