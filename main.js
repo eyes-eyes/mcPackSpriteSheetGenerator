@@ -89,13 +89,15 @@ const java_mc_groups = {
         "^minecraft ^item Gold Helmet",
         "^minecraft ^item Diamond Helmet",
         "^minecraft ^item Netherite Helmet",
-        "^minecraft ^item Leather Tunic",
+        "^minecraft ^item Leather Tunic !overlay",
+        "^minecraft ^item Leather chestplate !overlay",
         "^minecraft ^item Chainmail Chestplate",
         "^minecraft ^item Iron Chestplate",
         "^minecraft ^item gold Chestplate",
         "^minecraft ^item Diamond Chestplate",
         "^minecraft ^item Netherite Chestplate",
         "^minecraft ^item Leather Pants",
+        "^minecraft ^item Leather Leggings !overlay",
         "^minecraft ^item Chainmail Leggings",
         "^minecraft ^item Iron Leggings",
         "^minecraft ^item gold Leggings",
@@ -895,8 +897,8 @@ async function generate_final_text_list() {
             final_textures_list[obj_group_locations?.[file_name_tmp] || "UNDEF"] = [];
         }
 
-        // if (file_name_tmp.endsWith("upper") || file_name_tmp.endsWith("top")) {upper_lower_array.push()}
-        // (file_name_tmp.endsWith("lower") || file_name_tmp.endsWith("bottom"))
+        // if (file_name_tmp.endsWith("door_upper") || file_name_tmp.endsWith("door_top")) {upper_lower_array.push()}
+        // (file_name_tmp.endsWith("door_lower") || file_name_tmp.endsWith("door_bottom"))
 
         index_push = final_textures_list[
             obj_group_locations?.[file_name_tmp] || "UNDEF"
