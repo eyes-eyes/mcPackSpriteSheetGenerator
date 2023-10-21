@@ -267,11 +267,7 @@ document.onkeydown = function (evt) {
         isEscape = evt.keyCode === 27;
     }
     if (isEscape) {
-        const isNotCombinedKey = !(
-            event.ctrlKey ||
-            event.altKey ||
-            event.shiftKey
-        );
+        const isNotCombinedKey = !(event.ctrlKey || event.altKey || event.shiftKey);
         // if ()
         // if (isNotCombinedKey) {
         //     back_to_file_selector();
@@ -376,10 +372,9 @@ function handle_file(file) {
 
     console.log(file_object_raw.name.replace(".zip", ""));
 
-    document.getElementById("pack_name_top_bar").innerHTML =
-        minecraft_name_to_html(
-            file_object_raw.name.replace(".zip", "").replace(/^[!\s]*/gm, "")
-        ).innerHTML;
+    document.getElementById("pack_name_top_bar").innerHTML = minecraft_name_to_html(
+        file_object_raw.name.replace(".zip", "").replace(/^[!\s]*/gm, "")
+    ).innerHTML;
 
     file_object_zip = new zip.ZipReader(new zip.BlobReader(file));
     file_object_zip.getEntries().then(zip_new_entry_handler);
@@ -389,8 +384,7 @@ function back_to_file_selector() {
     pagination = 0;
     document.getElementById("main_file_selector_areas").style.display = "block";
     document.getElementById("main_site_data").style.display = "none";
-    document.getElementById("pack_version_top_bar").innerText =
-        "Pack version: (opening)";
+    document.getElementById("pack_version_top_bar").innerText = "Pack version: (opening)";
     document.getElementById("pack_name_top_bar").innerText = "None";
     document.getElementById("edit_page").style.display = "none";
     document.getElementById("generate_page").style.display = "none";
@@ -479,19 +473,13 @@ function search_user_input(search_string) {
             current_eligablility = true;
             for (o in search_array) {
                 searched_level_path =
-                    search_array[o][0] == "^"
-                        ? current_long_name
-                        : current_name;
+                    search_array[o][0] == "^" ? current_long_name : current_name;
                 search_string_current =
                     search_array[o][0] == "^"
                         ? search_array[o].slice(1)
                         : search_array[o];
                 if (search_string_current[0] == "!") {
-                    if (
-                        searched_level_path.includes(
-                            search_string_current.slice(1)
-                        )
-                    ) {
+                    if (searched_level_path.includes(search_string_current.slice(1))) {
                         current_eligablility = false;
                     }
                 } else {
@@ -516,14 +504,10 @@ function search_user_input(search_string) {
             current_result_itter.addEventListener("click", (e) => {
                 let current_item_name_again = e.target.fill_obj;
                 console.log(current_item_name_again);
-                console.log(
-                    search_selected_items.includes(current_item_name_again)
-                );
+                console.log(search_selected_items.includes(current_item_name_again));
 
                 if (!e.target.getAttribute("checkd")) {
-                    if (
-                        !search_selected_items.includes(current_item_name_again)
-                    ) {
+                    if (!search_selected_items.includes(current_item_name_again)) {
                         search_selected_items.unshift(current_item_name_again);
                     }
                 } else {
@@ -540,9 +524,10 @@ function search_user_input(search_string) {
                 generate_selected_textures_list();
             });
             current_result_itter.setAttribute("hover_text", output[i].filename);
-            current_result_itter.innerText = get_just_file_name(
-                output[i]
-            ).replace(".png", "");
+            current_result_itter.innerText = get_just_file_name(output[i]).replace(
+                ".png",
+                ""
+            );
             current_result_itter.fill_obj = output[i];
             if (search_selected_items.includes(output[i])) {
                 current_result_itter.setAttribute("checkd", "true");
@@ -569,14 +554,10 @@ function generate_selected_textures_list() {
             current_result_itter.addEventListener("click", (e) => {
                 let current_item_name_again = e.target.fill_obj;
                 console.log(current_item_name_again);
-                console.log(
-                    search_selected_items.includes(current_item_name_again)
-                );
+                console.log(search_selected_items.includes(current_item_name_again));
 
                 if (!e.target.getAttribute("checkd")) {
-                    if (
-                        !search_selected_items.includes(current_item_name_again)
-                    ) {
+                    if (!search_selected_items.includes(current_item_name_again)) {
                         search_selected_items.unshift(current_item_name_again);
                     }
                 } else {
@@ -697,9 +678,7 @@ function group_selected(obj) {
             }
         }
     } else {
-        search_selected_items = search_selected_items.filter(
-            (a) => !output.includes(a)
-        );
+        search_selected_items = search_selected_items.filter((a) => !output.includes(a));
     }
 
     generate_selected_textures_list();
@@ -725,9 +704,7 @@ function group_search_collon_d(group_add_remove, obj_to_search) {
                 current_eligablility = true;
                 for (o in search_array) {
                     searched_level_path =
-                        search_array[o][0] == "^"
-                            ? current_long_name
-                            : current_name;
+                        search_array[o][0] == "^" ? current_long_name : current_name;
                     search_string_current =
                         search_array[o][0] == "^"
                             ? search_array[o].slice(1)
@@ -735,16 +712,12 @@ function group_search_collon_d(group_add_remove, obj_to_search) {
 
                     if (search_string_current[0] == "!") {
                         if (
-                            searched_level_path.includes(
-                                search_string_current.slice(1)
-                            )
+                            searched_level_path.includes(search_string_current.slice(1))
                         ) {
                             current_eligablility = false;
                         }
                     } else {
-                        if (
-                            !searched_level_path.includes(search_string_current)
-                        ) {
+                        if (!searched_level_path.includes(search_string_current)) {
                             current_eligablility = false;
                         }
                     }
@@ -772,9 +745,7 @@ function minecraft_name_to_html(name) {
         current_element = document.createElement("span");
         current_element.style.fontWeight = settings.bold ? "bold" : "";
         current_element.style.color = settings.color;
-        current_element.style.textDecoration = settings.underline
-            ? "underline"
-            : "";
+        current_element.style.textDecoration = settings.underline ? "underline" : "";
         current_element.style.fontStyle = settings.italic ? "italic" : "";
         current_element.innerText = text;
         return current_element;
@@ -786,10 +757,7 @@ function minecraft_name_to_html(name) {
     for (let i = 0; i < name.length; i++) {
         if (name[i] == "§") {
             main_p.appendChild(
-                make_new_html_element_with_settings(
-                    text_buffer,
-                    current_setting
-                )
+                make_new_html_element_with_settings(text_buffer, current_setting)
             );
             text_buffer = "";
             i += 1;
@@ -812,9 +780,7 @@ function minecraft_name_to_html(name) {
         }
     }
 
-    main_p.appendChild(
-        make_new_html_element_with_settings(text_buffer, current_setting)
-    );
+    main_p.appendChild(make_new_html_element_with_settings(text_buffer, current_setting));
 
     return main_p;
 }
@@ -870,16 +836,14 @@ function install_event_listners() {
         false
     );
 
-    document
-        .getElementById("input_main_upload")
-        .addEventListener("change", () => {
-            files = document.getElementById("input_main_upload").files;
-            if (!!files[0]) {
-                handle_file(files[0]);
-            }
+    document.getElementById("input_main_upload").addEventListener("change", () => {
+        files = document.getElementById("input_main_upload").files;
+        if (!!files[0]) {
+            handle_file(files[0]);
+        }
 
-            document.getElementById("input_main_upload").value = "";
-        });
+        document.getElementById("input_main_upload").value = "";
+    });
 }
 
 // FUNCTION TO PROCEED TO DOWNLOAD PAGE
@@ -888,14 +852,12 @@ function proceed() {
         return;
     } else {
         pagination = 2;
-        document.getElementById("main_file_selector_areas").style.display =
-            "none";
+        document.getElementById("main_file_selector_areas").style.display = "none";
         document.getElementById("main_site_data").style.display = "block";
         document.getElementById("generate_page").style.display = "block";
         document.getElementById("edit_page").style.display = "none";
 
-        document.getElementById("I_like_sharing_cat_loading").style.display =
-            "block";
+        document.getElementById("I_like_sharing_cat_loading").style.display = "block";
 
         generate_final_text_list().then(() => {
             generate_final_image();
@@ -913,10 +875,7 @@ async function generate_final_text_list() {
         if (!document.getElementById(group_add_remove_index).checked) continue;
 
         group_add_remove = java_mc_groups[group_add_remove_index];
-        objs_in_this_group = group_search_collon_d(
-            group_add_remove,
-            textures_list_final
-        );
+        objs_in_this_group = group_search_collon_d(group_add_remove, textures_list_final);
 
         for (i of objs_in_this_group) {
             obj_group_locations[i.filename] = group_add_remove_index;
@@ -928,13 +887,11 @@ async function generate_final_text_list() {
     for (i in textures_list_final) {
         if (
             final_textures_list[
-                obj_group_locations?.[textures_list_final?.[i].filename] ||
-                    "UNDEF"
+                obj_group_locations?.[textures_list_final?.[i].filename] || "UNDEF"
             ] == undefined
         ) {
             final_textures_list[
-                obj_group_locations?.[textures_list_final?.[i].filename] ||
-                    "UNDEF"
+                obj_group_locations?.[textures_list_final?.[i].filename] || "UNDEF"
             ] = [];
         }
         final_textures_list[
@@ -946,8 +903,7 @@ async function generate_final_text_list() {
         );
     }
 
-    document.getElementById("I_like_sharing_cat_loading").style.display =
-        "none";
+    document.getElementById("I_like_sharing_cat_loading").style.display = "none";
 }
 
 let final_textures_list = {};
@@ -962,14 +918,19 @@ async function generate_final_image() {
         real_final_textures_list.push(
             sort_and_draw_image(
                 final_textures_list[i],
-                document.getElementById("width_input_generate").valueAsNumber ||
-                    0
+                document.getElementById("width_input_generate").valueAsNumber || 0
             )[0]
         );
     }
 
     console.log(":D");
     console.log(real_final_textures_list);
+
+    if (document.getElementById("option2").checked) {
+        real_final_textures_list.sort((a, b) => {
+            return a.height - b.height;
+        });
+    }
 
     out = sort_and_draw_image(
         real_final_textures_list,
@@ -1122,10 +1083,7 @@ function toggle_all_searched() {
             );
         }
 
-        element.setAttribute(
-            "checkd",
-            !element.getAttribute("checkd") ? "true" : ""
-        );
+        element.setAttribute("checkd", !element.getAttribute("checkd") ? "true" : "");
     });
     generate_selected_textures_list();
 }
