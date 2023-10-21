@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>A MC pack spritesheet compiler</title>
+        <title>A MC pack sprite sheet compiler</title>
         <link rel="stylesheet" href="styles.css" />
     </head>
     <body>
@@ -224,6 +224,17 @@
                                     </div>
 
                                     <div>
+                                        <label class="switch doors">
+                                            <input
+                                                type="checkbox"
+                                                id="doors"
+                                                oninput="group_selected(this)"
+                                            />
+                                            <span class="toggle"></span>
+                                        </label>
+                                    </div>
+
+                                    <div>
                                         <label class="switch foods">
                                             <input
                                                 type="checkbox"
@@ -351,10 +362,10 @@
                         </div>
                         <span>Save</span>
                     </button>
-                    <button
-                    class="integration-checklist__copy-button"
-                    id="integration-checklist__copy-button"
-                ></button>
+                    <!-- <button
+                        class="integration-checklist__copy-button"
+                        id="integration-checklist__copy-button"
+                    ></button> -->
                     <!-- <div class="copy_paste_list">
                         <button
                             class="integration-checklist__copy-button"
@@ -366,7 +377,7 @@
 
             <section>
                 <div class="custom_number" id="custom_number">
-                    <h2>Input custom width for spritesheet here:</h2>
+                    <h2>Input custom width for sprite sheet here:</h2>
                     <input
                         type="number"
                         id="width_input_generate"
@@ -376,6 +387,54 @@
                         min="0"
                         oninput="this.valueAsNumber = Math.min(Math.max(this.valueAsNumber,this.min),this.max);generate_final_image()"
                     />
+                </div>
+            </section>
+
+            <section>
+                <div class="SortMethods" id="SortMethods">
+                    <h2>
+                        Select a sorting method when generating sprite sheet
+                    </h2>
+                    <div class="radio-container">
+                        <div class="radio-wrapper">
+                            <label class="radio-button">
+                                <input
+                                    id="option1"
+                                    name="radio-group"
+                                    type="radio"
+                                    oninput=""
+                                />
+                                <span class="radio-checkmark"></span>
+                                <span class="radio-label">Color</span>
+                            </label>
+                        </div>
+
+                        <div class="radio-wrapper">
+                            <label class="radio-button">
+                                <input
+                                    id="option2"
+                                    name="radio-group"
+                                    type="radio"
+                                    oninput=""
+                                />
+                                <span class="radio-checkmark"></span>
+                                <span class="radio-label">Height</span>
+                            </label>
+                        </div>
+
+                        <div class="radio-wrapper">
+                            <label class="radio-button">
+                                <input
+                                    id="option3"
+                                    name="radio-group"
+                                    type="radio"
+                                    oninput=""
+                                />
+                                <span class="radio-checkmark"></span>
+                                <span class="radio-label">User Input</span>
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </section>
         </section>
