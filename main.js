@@ -126,12 +126,12 @@ const java_mc_groups = {
         "^minecraft ^item gold Pickaxe",
         "^minecraft ^item Diamond Pickaxe",
         "^minecraft ^item Netherite Pickaxe",
-        "^minecraft ^item Wood Axe",
-        "^minecraft ^item Stone Axe",
-        "^minecraft ^item Iron Axe",
-        "^minecraft ^item gold Axe",
-        "^minecraft ^item Diamond Axe",
-        "^minecraft ^item Netherite Axe",
+        "^minecraft ^item Wood Axe !pick !pick",
+        "^minecraft ^item Stone Axe !pick",
+        "^minecraft ^item Iron Axe !pick",
+        "^minecraft ^item gold Axe !pick",
+        "^minecraft ^item Diamond Axe !pick",
+        "^minecraft ^item Netherite Axe !pick",
         "^minecraft ^item Wood Shovel",
         "^minecraft ^item Stone Shovel",
         "^minecraft ^item Iron Shovel",
@@ -723,7 +723,7 @@ function group_search_collon_d(group_add_remove, obj_to_search) {
                     }
                 }
                 if (current_eligablility) {
-                    output.push(obj_to_search[i]);
+                    output.unshift(obj_to_search[i]);
                 }
             }
         }
@@ -883,24 +883,30 @@ async function generate_final_text_list() {
     }
     // console.log(obj_group_locations);
 
+    upper_lower_array = [];
+
     final_textures_list = {};
     for (i in textures_list_final) {
+        file_name_tmp = textures_list_final?.[i].filename;
         if (
-            final_textures_list[
-                obj_group_locations?.[textures_list_final?.[i].filename] || "UNDEF"
-            ] == undefined
+            final_textures_list[obj_group_locations?.[file_name_tmp] || "UNDEF"] ==
+            undefined
         ) {
-            final_textures_list[
-                obj_group_locations?.[textures_list_final?.[i].filename] || "UNDEF"
-            ] = [];
+            final_textures_list[obj_group_locations?.[file_name_tmp] || "UNDEF"] = [];
         }
-        final_textures_list[
-            obj_group_locations?.[textures_list_final?.[i].filename] || "UNDEF"
+
+        // if (file_name_tmp.endsWith("upper") || file_name_tmp.endsWith("top")) {upper_lower_array.push()}
+        // (file_name_tmp.endsWith("lower") || file_name_tmp.endsWith("bottom"))
+
+        index_push = final_textures_list[
+            obj_group_locations?.[file_name_tmp] || "UNDEF"
         ].push(
             await createImageBitmap(
                 await textures_list_final[i].getData(new zip.BlobWriter())
             )
         );
+
+        // if () {upper_lower_array.push()}
     }
 
     document.getElementById("I_like_sharing_cat_loading").style.display = "none";
@@ -912,23 +918,52 @@ async function generate_final_image() {
     // console.log(final_textures_list);
 
     real_final_textures_list = (final_textures_list["UNDEF"] || []).slice();
+
     for (i in final_textures_list) {
         if (i == "UNDEF") continue;
-        console.log(final_textures_list[i]);
-        real_final_textures_list.push(
-            sort_and_draw_image(
-                final_textures_list[i],
-                document.getElementById("width_input_generate").valueAsNumber || 0
-            )[0]
-        );
+        // console.log(final_textures_list[i]);
+
+        current_text_list = final_textures_list[i].slice();
+        if (document.getElementById("deconstruct").checked) {
+            real_final_textures_list.push(...current_text_list);
+        } else {
+            if (document.getElementById("sortInGroups").checked) {
+                if (document.getElementById("option2").checked) {
+                    current_text_list.sort((a, b) => {
+                        return a.height - b.height;
+                    });
+                }
+
+                if (document.getElementById("option1").checked) {
+                    color_append_to_imaged(current_text_list);
+                    current_text_list.sort((a, b) => {
+                        return a.avg_color[0] - b.avg_color[0];
+                    });
+                }
+            }
+
+            real_final_textures_list.push(
+                sort_and_draw_image(
+                    current_text_list,
+                    document.getElementById("width_input_generate").valueAsNumber || 0
+                )[0]
+            );
+        }
     }
 
-    console.log(":D");
-    console.log(real_final_textures_list);
+    // console.log(":D");
+    // console.log(real_final_textures_list);
 
     if (document.getElementById("option2").checked) {
         real_final_textures_list.sort((a, b) => {
             return a.height - b.height;
+        });
+    }
+
+    if (document.getElementById("option1").checked) {
+        color_append_to_imaged(real_final_textures_list);
+        real_final_textures_list.sort((a, b) => {
+            return a.avg_color[0] - b.avg_color[0];
         });
     }
 
@@ -949,6 +984,40 @@ async function generate_final_image() {
 
     const ctx = canvas.getContext("2d");
     ctx.drawImage(out[0], 0, 0);
+}
+
+function rgb2hsv(r, g, b) {
+    let v = Math.max(r, g, b),
+        c = v - Math.min(r, g, b);
+    let h = c && (v == r ? (g - b) / c : v == g ? 2 + (b - r) / c : 4 + (r - g) / c);
+    return [60 * (h < 0 ? h + 6 : h), v && c / v, v];
+}
+
+function color_append_to_imaged(images) {
+    img_max_height = img_max_width = 16000;
+
+    out = [];
+    f = new OffscreenCanvas(img_max_width, img_max_height).getContext("2d", {});
+    for (i in images) {
+        obj = images[i];
+        f.drawImage(obj, 0, 0);
+        colors = [0, 0, 0];
+        px_data = f.getImageData(0, 0, obj.width, obj.height).data;
+        pixels_in_use = 0;
+        for (color_ind = 0; color_ind < px_data.length; color_ind += 4) {
+            if (px_data[color_ind + 3] == 0) continue;
+            colors[0] += px_data[color_ind + 0];
+            colors[1] += px_data[color_ind + 1];
+            colors[2] += px_data[color_ind + 2];
+            pixels_in_use += 1;
+        }
+
+        colors[0] /= pixels_in_use;
+        colors[1] /= pixels_in_use;
+        colors[2] /= pixels_in_use;
+        // console.log(colors)
+        images[i].avg_color = rgb2hsv(colors[0], colors[1], colors[2]);
+    }
 }
 
 function sort_and_draw_image(image_array, width) {

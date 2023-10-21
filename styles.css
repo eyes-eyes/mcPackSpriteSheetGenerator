@@ -3,7 +3,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #f2f2f2;
+    background-color: #e8edf7;
     text-align: center;
 }
 
@@ -169,10 +169,6 @@ body {
 
 .switch.statusEffects .toggle::before {
     content: "Status\00a0 Effects";
-}
-
-.switch.doors .toggle::before {
-    content: "Doors";
 }
 
 .switch.stones .toggle::before {

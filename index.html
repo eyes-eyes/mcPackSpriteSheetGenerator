@@ -230,17 +230,6 @@
                                         </div>
 
                                         <div>
-                                            <label class="switch doors">
-                                                <input
-                                                    type="checkbox"
-                                                    id="doors"
-                                                    oninput="group_selected(this)"
-                                                />
-                                                <span class="toggle"></span>
-                                            </label>
-                                        </div>
-
-                                        <div>
                                             <label class="switch foods">
                                                 <input
                                                     type="checkbox"
@@ -382,7 +371,7 @@
                 <div class="SortMethods" id="SortMethods">
                     <h2>Select a sorting method when</h2>
                     <div class="radio-container">
-                        <!-- <div class="radio-wrapper">
+                        <div class="radio-wrapper">
                             <label class="radio-button">
                                 <input
                                     id="option1"
@@ -393,7 +382,7 @@
                                 <span class="radio-checkmark"></span>
                                 <span class="radio-label">Color</span>
                             </label>
-                        </div> -->
+                        </div>
 
                         <div class="radio-wrapper">
                             <label class="radio-button">
@@ -419,6 +408,28 @@
                                 <span class="radio-checkmark"></span>
                                 <span class="radio-label">User Input</span>
                             </label>
+                        </div>
+
+                        <div class="MoreOptions">
+                            <div>
+                                <input
+                                    type="checkbox"
+                                    name="sortInGroups"
+                                    id="sortInGroups"
+                                    oninput="generate_final_image()"
+                                />
+                                <label for="sortInGroups">Sort In Groups</label>
+                            </div>
+
+                            <div>
+                                <input
+                                    type="checkbox"
+                                    name="deconstruct"
+                                    id="deconstruct"
+                                    oninput="generate_final_image()"
+                                />
+                                <label for="deconstruct">Deconstruct</label>
+                            </div>
                         </div>
                     </div>
                 </div>
