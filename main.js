@@ -276,7 +276,7 @@ const java_mc_groups = {
         "^minecraft ^block bamboo stage",
     ],
     vehicles: ["^minecraft ^texture ^item ^!entity Minecart", "^item boat"],
-    musicDiscs: ["^minecraft music disc"],
+    musicDiscs: ["^minecraft music disc", "^minecraft record"],
     shulkerBoxes: ["^minecraft ^block Shulker Box"],
     wools: ["^minecraft ^texture ^block wool"],
     concretes: ["^minecraft ^texture ^block concrete"],
