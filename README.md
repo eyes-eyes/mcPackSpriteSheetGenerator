@@ -1,5 +1,5 @@
 #     mcPackSpriteSheetGenerator
-This is a github page to a website that will automatically merge Minecraft resource pack files into serveral big sprite sheets.
+This is a github page to a website that will automatically merge Minecraft resource pack files into several big sprite sheets.
 Check the out the link: https://eyes-eyes.github.io/mcPackSpriteSheetGenerator/
 
 ## MUST used zipped folder
@@ -43,3 +43,7 @@ Now you can use this in conjunction with each other like this:
 results in 
 - diamond_block
 - diamond_ore
+
+## Credits
+Portions of this software are copyright of their respective authors and released under the MIT license:
+Copyright - 2023 Pradeepsaranbishnoi (Pradeep Saran) 

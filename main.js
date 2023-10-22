@@ -52,6 +52,17 @@ const color_codes = {
 };
 
 const java_mc_groups = {
+    /*
+
+    woodVariants: [[[],[]],"type":"single_line","direction":"horizontal"]
+    woodVariants: [[[],[]],"type":"single_line","direction":"horizontal"]
+
+    "single"
+
+
+
+    */
+
     woodVariants: [
         "^minecraft ^block oak !door",
         "^minecraft ^block spruce !door",
@@ -62,6 +73,8 @@ const java_mc_groups = {
         "^minecraft ^block mangrove !door",
         "^minecraft ^block cherry !door",
     ],
+
+    // woodVariants: [[["^minecraft ^block oak !door"],["^minecraft ^block spruce !door"],["^minecraft ^block birch !door"]],"single_line","vertical"],
     doors: [
         "^minecraft ^block door upper",
         "^minecraft ^block door lower",
@@ -270,10 +283,13 @@ const java_mc_groups = {
 document.onkeydown = function (evt) {
     evt = evt || window.event;
     var isEscape = false;
+    var isCopy = false;
     if ("key" in evt) {
         isEscape = evt.key === "Escape" || evt.key === "Esc";
+        isCopy = evt.key === "c";
     } else {
         isEscape = evt.keyCode === 27;
+        isCopy = evt.keyCode === 67;
     }
     if (isEscape) {
         const isNotCombinedKey = !(event.ctrlKey || event.altKey || event.shiftKey);
@@ -283,6 +299,10 @@ document.onkeydown = function (evt) {
         // }
         // if (pagination == 2)
         back_button();
+    }
+    if (isCopy && pagination == 3) {
+        const isNotCombinedKey = !(event.ctrlKey || event.altKey || event.shiftKey);
+        document.getElementById("copy_image").click();
     }
 };
 
@@ -1192,14 +1212,77 @@ function sort_and_draw_image(image_array_in, width) {
 
 function download_button_clicked() {
     const canvas = document.getElementById("out_canvas");
-    const image = canvas.toDataURL("image/png");
-    const link = document.createElement("a");
-    link.href = image;
-    link.download =
-        file_object_raw.name.replace(".zip", "").replace(/^[!\s]*/gm, "") +
-        "_SPRITESHEET" +
-        ".png";
-    link.click();
+    scale_up_amt =
+        1 +
+        document.getElementById("scale_01").checked +
+        document.getElementById("scale_02").checked * 4 +
+        document.getElementById("scale_03").checked * 9;
+
+    let offscreen_upscale_canvas = new OffscreenCanvas(
+        canvas.width * scale_up_amt,
+        canvas.height * scale_up_amt
+    );
+    upscale_ctx = offscreen_upscale_canvas.getContext("2d", {
+        willReadFrequently: true,
+        alpha: true,
+        antialias: false,
+    });
+    upscale_ctx.imageSmoothingEnabled = false;
+    upscale_ctx.drawImage(
+        canvas,
+        0,
+        0,
+        canvas.width * scale_up_amt,
+        canvas.height * scale_up_amt
+    );
+
+    // const image = offscreen_upscale_canvas.toDataURL("image/png");
+
+    offscreen_upscale_canvas.convertToBlob().then((blob_D) => {
+        const link = document.createElement("a");
+        link.href = window.URL.createObjectURL(blob_D); //image;
+        link.download =
+            file_object_raw.name.replace(".zip", "").replace(/^[!\s]*/gm, "") +
+            "_SPRITESHEET" +
+            ".png";
+        link.click();
+    });
+}
+
+function copy_image_button_clicked() {
+    const canvas = document.getElementById("out_canvas");
+
+    scale_up_amt =
+        1 +
+        document.getElementById("scale_01").checked +
+        document.getElementById("scale_02").checked * 4 +
+        document.getElementById("scale_03").checked * 9;
+
+    let offscreen_upscale_canvas = new OffscreenCanvas(
+        canvas.width * scale_up_amt,
+        canvas.height * scale_up_amt
+    );
+    upscale_ctx = offscreen_upscale_canvas.getContext("2d", {
+        willReadFrequently: true,
+        alpha: true,
+        antialias: false,
+    });
+    upscale_ctx.imageSmoothingEnabled = false;
+    upscale_ctx.drawImage(
+        canvas,
+        0,
+        0,
+        canvas.width * scale_up_amt,
+        canvas.height * scale_up_amt
+    );
+
+    offscreen_upscale_canvas.convertToBlob().then((blob_D) => {
+        navigator.clipboard.write([
+            new ClipboardItem({
+                "image/png": blob_D,
+            }),
+        ]);
+    });
 }
 
 function back_to_edit_page() {

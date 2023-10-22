@@ -332,22 +332,6 @@
             <section>
                 <div class="downloadSection" id="downloadSection">
                     <div class="CleanUpAgain">
-                        <div class="ZoomOptions">
-                            <form class="form">
-                                <label for="01">200%</label>
-                                <input
-                                    id="01"
-                                    type="radio"
-                                    name="r"
-                                    value="1"
-                                    checked=""
-                                />
-                                <label for="02">500%</label>
-                                <input id="02" type="radio" name="r" value="2" />
-                                <label for="03">1000%</label>
-                                <input id="03" type="radio" name="r" value="3" />
-                            </form>
-                        </div>
                         <div>
                             <button
                                 class="downloadButton"
@@ -374,7 +358,7 @@
                         </div>
 
                         <div>
-                            <button class="copy">
+                            <button class="copy" id="copy_image" onclick="copy_image_button_clicked()">
                                 <span
                                     data-text-end="Copied!"
                                     data-text-initial="Copy to clipboard"
@@ -444,7 +428,7 @@
                 </div>
 
                 <div class="SortMethods" id="SortMethods">
-                    <h2>Select a sorting method when</h2>
+                    <h2>Select a sort method</h2>
                     <div class="radio-container">
                         <div class="radio-wrapper">
                             <label class="radio-button">
@@ -484,39 +468,54 @@
                                 <span class="radio-label">User Input</span>
                             </label>
                         </div>
+                    </div>
 
-                        <div class="MoreOptions">
-                            <div>
-                                <input
-                                    type="checkbox"
-                                    name="sortInGroups"
-                                    id="sortInGroups"
-                                    oninput="generate_final_image()"
-                                />
-                                <label for="sortInGroups">Sort In Groups</label>
-                            </div>
+                    <div class="MoreOptions">
+                        <div>
+                            <input
+                                type="checkbox"
+                                name="sortInGroups"
+                                id="sortInGroups"
+                                oninput="generate_final_image()"
+                            />
+                            <label for="sortInGroups">Sort In Groups</label>
+                        </div>
 
-                            <div>
-                                <input
-                                    type="checkbox"
-                                    name="deconstruct"
-                                    id="deconstruct"
-                                    oninput="generate_final_image()"
-                                />
-                                <label for="deconstruct">Deconstruct</label>
-                            </div>
+                        <div>
+                            <input
+                                type="checkbox"
+                                name="deconstruct"
+                                id="deconstruct"
+                                oninput="generate_final_image()"
+                            />
+                            <label for="deconstruct">Deconstruct</label>
+                        </div>
 
-                            <div>
-                                <input
-                                    type="checkbox"
-                                    name="mergeStuff"
-                                    id="mergeStuff"
-                                    oninput="generate_final_image()"
-                                />
-                                <label for="mergeStuff">Merge</label>
-                            </div>
+                        <div>
+                            <input
+                                type="checkbox"
+                                name="mergeStuff"
+                                id="mergeStuff"
+                                oninput="generate_final_image()"
+                            />
+                            <label for="mergeStuff">Merge</label>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div class="OptionsAgain" id="OptionsAgain">
+                <div class="ZoomOptions">
+                    <form class="form">
+                        <label for="scale_00">100%</label>
+                        <input id="scale_00" type="radio" name="r" value="1" checked="" />
+                        <label for="scale_01">200%</label>
+                        <input id="scale_01" type="radio" name="r" value="1"/>
+                        <label for="scale_02">500%</label>
+                        <input id="scale_02" type="radio" name="r" value="2" />
+                        <label for="scale_03">1000%</label>
+                        <input id="scale_03" type="radio" name="r" value="3" />
+                    </form>
                 </div>
             </div>
         </section>

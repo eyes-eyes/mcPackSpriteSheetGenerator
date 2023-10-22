@@ -35,14 +35,14 @@ body {
     border-radius: 10px;
 }
 
-.format_verify {
+/* .format_verify {
     margin: 1;
     padding: 1;
     left: 15%;
     top: 50%;
     position: absolute;
     width: 35vmin;
-    /* max-width: fit-content; */
+    max-width: fit-content;
     height: 20vmin;
     background-color: white;
     color: black;
@@ -52,7 +52,7 @@ body {
     font-family: Roboto, sans-serif;
     transform: translate(-50%, -50%);
     border-radius: 10px;
-}
+} */
 
 .groups_selector {
     margin: 1;
@@ -745,7 +745,7 @@ button:focus {
     cursor: pointer;
     position: relative;
     outline: none;
-    transform: translate(0, -50%);
+    transform: translate(0, +25%);
 }
 
 .tooltip {
@@ -925,6 +925,9 @@ button:focus {
     display: grid;
     grid-template-columns: auto var(--radio-size);
     align-items: center;
+    font-family: Montserrat, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji" !important;
 }
 
 .form label {
@@ -1052,9 +1055,25 @@ button:focus {
 }
 
 .CleanUpAgain {
-    width: 75vmin;
-    display: grid;
-    grid-template-rows: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.OptionsAgain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    left: 85%;
+    top: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.MoreOptions > * {
+    left: 0px;
+    /* align-items: start; */
+    text-align: start;
 }
 
 .Options {
@@ -1078,7 +1097,7 @@ button:focus {
     align-items: center;
     padding: 10px;
     /* left: calc((50% - 35vmin) / 2); */
-    height: 30vh;
+    /* height: 30vh; */
     background: #98b0dd;
     border-radius: 10px;
 
