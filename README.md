@@ -5,6 +5,15 @@ Check the out the link: https://eyes-eyes.github.io/mcPackSpriteSheetGenerator/
 # Credits
 Teamed up with davidawesome on discord (still has not been paid) (I told him I would XD)
 
+Portions of this software are copyright of their respective authors and released under the MIT license:
+Copyright - 2023 Pradeepsaranbishnoi (Pradeep Saran)
+Copyright - 2023 Yaya12085 (Yaya Mohamed)
+Copyright - 2023 r7chardgh (Richard Tsang)
+Copyright - 2023 Galahhad (Galahad)
+Copyright - 2023 cssbuttons-io (cssbuttons.io)
+Copyright - 2023 vinodjangid07 (Vinod )
+Copyright - 2023 SteveBloX (SteveBloX)  
+
 
 
 ## MUST used zipped folder
@@ -53,6 +62,3 @@ results in
 - diamond_block
 - diamond_ore
 
-## Credits
-Portions of this software are copyright of their respective authors and released under the MIT license:
-Copyright - 2023 Pradeepsaranbishnoi (Pradeep Saran) 

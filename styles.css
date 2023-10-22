@@ -1088,6 +1088,9 @@ button:focus {
     color: #6b7280;
     font-size: 0.875rem;
     line-height: 1.25rem;
+    font-family: Montserrat, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", Segoe UI;
 }
 
 .action {
