@@ -14,6 +14,7 @@ If a zipped folder says "This Folder is Empty" then it will not work!
 
 # How to use Search
 _Remember not to confuse file names with game names!_
+
 To get all minecraft items do
 > ^minecraft ^item ^!gui
 
