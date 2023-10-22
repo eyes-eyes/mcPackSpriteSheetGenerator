@@ -145,7 +145,7 @@
                 <div class="CleanUp">
                     <section>
                         <div class="searchingSection" id="searchingSection">
-                            <h1 style="font-size: 2.1vmin">
+                            <h1 style="font-size: 2.1vmin; padding-top: 15px">
                                 Add additional textures here!<br />
                             </h1>
                             <div class="search" id="search">
@@ -483,6 +483,10 @@
                                 </span>
                             </button>
                         </div>
+
+                        <button class="copyText" id="copyText" onclick="copyText()">
+                            Copy Text
+                        </button>
                     </div>
                 </div>
             </section>
@@ -596,6 +600,8 @@
             <div class="OptionsAgain" id="OptionsAgain">
                 <div class="ZoomOptions">
                     <form class="form">
+                        <h2>Zoom</h2>
+                        <br />
                         <label for="scale_00">100%</label>
                         <input id="scale_00" type="radio" name="r" value="1" checked="" />
                         <label for="scale_01">200%</label>

@@ -1364,39 +1364,36 @@ function toggle_all_searched() {
     generate_selected_textures_list();
 }
 
-// const canvas = document.getElementById("out_canvas");
-// const ctx = canvas.getContext("2d");
+function copyText() {
+    let copiedtext = [];
+    for (i of search_selected_items) {
+        tmp_name = get_just_file_name(i).replaceAll(".png", "");
+        if (tmp_name.startsWith("._")) continue;
 
-// const imageSources = [
-//     "images/bamboo.png",
-//     "images/barrier.png",
-//     "images/beef.png",
-//     "images/beetroot.png",
-// ];
+        door_upper = tmp_name.endsWith("door_upper") || tmp_name.endsWith("door_top");
+        door_lower = tmp_name.endsWith("door_lower") || tmp_name.endsWith("door_bottom");
 
-// var columns = 2;
-// var rows = 2;
+        if (door_upper || door_lower) {
+            door_generalized = tmp_name
+                .replaceAll("_upper", "")
+                .replaceAll("_lower", "")
+                .replaceAll("_top", "")
+                .replaceAll("_bottom", "");
+            oposite_name = door_generalized + (door_upper ? "_BOTTOM" : "_TOP");
+            if (copiedtext.includes(oposite_name)) {
+                copiedtext = copiedtext.filter((a) => {
+                    return a != oposite_name;
+                });
+                copiedtext.push(door_generalized);
+            } else {
+                copiedtext.push(door_generalized + (door_lower ? "_BOTTOM" : "_TOP"));
+            }
+        } else {
+            copiedtext.push(tmp_name);
+        }
+    }
 
-// const imageWidth = canvas.width / columns;
-// const imageHeight = canvas.height / rows;
+    // search_selected_items
 
-// let imagesLoaded = 0;
-// imageSources.forEach((src, index) => {
-//     const img = new Image();
-//     img.src = src;
-//     img.onload = () => {
-//         const row = Math.floor(index / columns);
-//         const col = index % columns;
-//         ctx.drawImage(
-//             img,
-//             col * imageWidth,
-//             row * imageHeight,
-//             imageWidth,
-//             imageHeight
-//         );
-//         imagesLoaded++;
-//         if (imagesLoaded == imageSources.length) {
-//             console.log("All images loaded and drawn on the canvas.");
-//         }
-//     };
-// });
+    navigator.clipboard.writeText(copiedtext.join(", ").replaceAll("_", " "));
+}

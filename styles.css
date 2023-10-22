@@ -1,10 +1,13 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+/* @import url(https://fonts.googleapis.com/css?family=Open+Sans); */
 
 body {
     margin: 0;
     padding: 0;
     background-color: #e8edf7;
     text-align: center;
+    font-family: Montserrat, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
 }
 
 .file_hover_popup {
@@ -34,25 +37,6 @@ body {
     transform: translate(-50%, -50%);
     border-radius: 10px;
 }
-
-/* .format_verify {
-    margin: 1;
-    padding: 1;
-    left: 15%;
-    top: 50%;
-    position: absolute;
-    width: 35vmin;
-    max-width: fit-content;
-    height: 20vmin;
-    background-color: white;
-    color: black;
-    text-align: center;
-    align-items: center;
-    font-size: 2vmin;
-    font-family: Roboto, sans-serif;
-    transform: translate(-50%, -50%);
-    border-radius: 10px;
-} */
 
 .groups_selector {
     margin: 1;
@@ -829,6 +813,20 @@ button:focus {
     color: var(--button-hover-text-color);
 }
 
+.copyText {
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    transition: transform 0.4s;
+    transform: scale(100%);
+}
+
+.copyText:active {
+    transform: scale(0.95);
+}
+
 #I_like_sharing_cat_loading {
     width: 80%;
     height: 80%;
@@ -904,6 +902,11 @@ button:focus {
 .radio-label {
     font-size: 16px;
     font-weight: 600;
+}
+
+.ZoomOptions h2 {
+    margin: 0;
+    padding: 0;
 }
 
 .form {
