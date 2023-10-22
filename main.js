@@ -284,6 +284,7 @@ document.onkeydown = function (evt) {
     evt = evt || window.event;
     var isEscape = false;
     var isCopy = false;
+    var copyButton = document.getElementById("copy_image");
     if ("key" in evt) {
         isEscape = evt.key === "Escape" || evt.key === "Esc";
         isCopy = evt.key === "c";
@@ -300,11 +301,29 @@ document.onkeydown = function (evt) {
         // if (pagination == 2)
         back_button();
     }
-    if (isCopy && pagination == 3) {
+    if (isCopy && pagination == 2) {
         const isNotCombinedKey = !(event.ctrlKey || event.altKey || event.shiftKey);
-        document.getElementById("copy_image").click();
+        console.log("CLICKED!!!");
+        // copyButton.contentEditable = true;
+        // copyButton.focus({ focusVisible: true }); // do the thing I sent add the focus  bc idk what else
+        // // document.getElementById("copy_image")
+        copyButton.click();
+        // copyButton.focus({ focusVisible: true });
+        // copyButton.contentEditable = false;
+
     }
 };
+
+// document.addEventListener("keyup", function (event) {
+//     // Check if the pressed key is the 'C' key (you can change it to any key you prefer)
+//     var copyButton = document.getElementById("copy_image");
+//     var tooltip = copyButton.querySelector(".tooltip");
+//     if (event.key === "c" || event.key === "C") {
+//         // Hide the tooltip
+//         tooltip.style.opacity = "0";
+//         tooltip.style.visibility = "hidden";
+//     }
+// });
 
 function back_button() {
     switch (pagination) {
@@ -527,7 +546,7 @@ function search_user_input(search_string) {
 
     search_results = document.getElementById("search_results");
     if (output.length == 0) {
-        search_results.innerHTML = "<p>no ballz</p>";
+        search_results.innerHTML = "<p>Nothing here!</p>";
     } else {
         search_results.innerHTML = "";
         for (i in output) {
@@ -1227,7 +1246,19 @@ function download_button_clicked() {
         alpha: true,
         antialias: false,
     });
+    if (document.getElementById("export_preview_color").checked) {
+        upscale_ctx.fillStyle = document.getElementById(
+            "preview_background_color_input"
+        ).value;
+        upscale_ctx.fillRect(
+            0,
+            0,
+            canvas.width * scale_up_amt,
+            canvas.height * scale_up_amt
+        );
+    }
     upscale_ctx.imageSmoothingEnabled = false;
+
     upscale_ctx.drawImage(
         canvas,
         0,
@@ -1267,6 +1298,17 @@ function copy_image_button_clicked() {
         alpha: true,
         antialias: false,
     });
+    if (document.getElementById("export_preview_color").checked) {
+        upscale_ctx.fillStyle = document.getElementById(
+            "preview_background_color_input"
+        ).value;
+        upscale_ctx.fillRect(
+            0,
+            0,
+            canvas.width * scale_up_amt,
+            canvas.height * scale_up_amt
+        );
+    }
     upscale_ctx.imageSmoothingEnabled = false;
     upscale_ctx.drawImage(
         canvas,

@@ -23,6 +23,68 @@
                     id="input_main_upload"
                 />
             </div>
+
+            <div class="InfoCards">
+                <div class="card">
+                    <div class="image"></div>
+                    <div class="content">
+                        <a href="#">
+                            <span class="title"> Short Cuts </span>
+                        </a>
+
+                        <p class="desc">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            Recusandae dolores, possimus pariatur animi temporibus
+                            nesciunt praesentium
+                        </p>
+
+                        <a class="action" href="#">
+                            Start here
+                            <span aria-hidden="true"> → </span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="image"></div>
+                    <div class="content">
+                        <a href="#">
+                            <span class="title"> Our Audience </span>
+                        </a>
+
+                        <p class="desc">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            Recusandae dolores, possimus pariatur animi temporibus
+                            nesciunt praesentium
+                        </p>
+
+                        <a class="action" href="#">
+                            Start here
+                            <span aria-hidden="true"> → </span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="image"></div>
+                    <div class="content">
+                        <a href="#">
+                            <span class="title"> Features </span>
+                        </a>
+
+                        <p class="desc">
+                            Can rearrange by:
+                            <li>color</li>
+                            <li>height</li>
+                        </p>
+
+                        <a class="action" href="#">
+                            Start here
+                            <span aria-hidden="true"> → </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section id="main_site_data" style="display: none">
@@ -358,7 +420,11 @@
                         </div>
 
                         <div>
-                            <button class="copy" id="copy_image" onclick="copy_image_button_clicked()">
+                            <button
+                                class="copy"
+                                id="copy_image"
+                                onclick="copy_image_button_clicked()"
+                            >
                                 <span
                                     data-text-end="Copied!"
                                     data-text-initial="Copy to clipboard"
@@ -425,6 +491,21 @@
                         min="0"
                         oninput="this.valueAsNumber = Math.min(Math.max(this.valueAsNumber,this.min),this.max);generate_final_image()"
                     />
+
+                    <h1>Preview color</h1>
+                    <input
+                        type="color"
+                        id="preview_background_color_input"
+                        value="#dbdad1"
+                        oninput="document.getElementById('canvasSpriteSheets').style.backgroundColor = this.value"
+                    /><br />
+
+                    <input
+                        type="checkbox"
+                        name="export_preview_color"
+                        id="export_preview_color"
+                    />
+                    <label for="export_preview_color">Export with color</label>
                 </div>
 
                 <div class="SortMethods" id="SortMethods">
@@ -510,7 +591,7 @@
                         <label for="scale_00">100%</label>
                         <input id="scale_00" type="radio" name="r" value="1" checked="" />
                         <label for="scale_01">200%</label>
-                        <input id="scale_01" type="radio" name="r" value="1"/>
+                        <input id="scale_01" type="radio" name="r" value="1" />
                         <label for="scale_02">500%</label>
                         <input id="scale_02" type="radio" name="r" value="2" />
                         <label for="scale_03">1000%</label>
