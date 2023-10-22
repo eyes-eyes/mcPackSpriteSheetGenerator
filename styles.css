@@ -188,6 +188,26 @@ body {
     content: "Shulker\00a0 Boxes";
 }
 
+.switch.wools .toggle::before {
+    content: "Wools";
+}
+
+.switch.concretes .toggle::before {
+    content: "Concretes";
+}
+
+.switch.glasses .toggle::before {
+    content: "Glass";
+}
+
+.switch.concretes .toggle::before {
+    content: "Concretes";
+}
+
+.switch.terracottas .toggle::before {
+    content: "Terracotta";
+}
+
 .switch.vehicles .toggle::before {
     content: "Vehicles";
 }

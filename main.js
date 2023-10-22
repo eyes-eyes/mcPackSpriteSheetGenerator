@@ -278,6 +278,10 @@ const java_mc_groups = {
     vehicles: ["^minecraft ^texture ^item ^!entity Minecart", "^item boat"],
     musicDiscs: ["^minecraft music disc"],
     shulkerBoxes: ["^minecraft ^block Shulker Box"],
+    wools: ["^minecraft ^texture ^block wool"],
+    concretes: ["^minecraft ^texture ^block concrete"],
+    terracottas: ["^minecraft ^texture ^block terracotta"],
+    glasses: ["^minecraft ^texture ^block glass !pane"],
     buckets: ["^minecraft ^item !model bucket"],
 };
 
