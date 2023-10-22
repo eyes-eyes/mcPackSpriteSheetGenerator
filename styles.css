@@ -275,6 +275,7 @@ body {
     background-color: lightgray;
     height: fit-content;
     overflow-y: auto;
+    overflow-x: clip;
     max-height: 50vh;
     border-radius: 10px 0px 0px 10px;
     text-align: center;
