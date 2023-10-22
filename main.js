@@ -29,6 +29,7 @@ const version_codes = {
     16: ["1.20", "1.20.1"],
     17: ["1.20", "1.20.1"],
     18: ["1.20.2", "1.20.2"],
+    19: ["1.21", "1.21"],
 };
 
 //Constants
@@ -310,7 +311,6 @@ document.onkeydown = function (evt) {
         copyButton.click();
         // copyButton.focus({ focusVisible: true });
         // copyButton.contentEditable = false;
-
     }
 };
 
