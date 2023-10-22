@@ -2,6 +2,11 @@
 This is a github page to a website that will automatically merge Minecraft resource pack files into several big sprite sheets.
 Check the out the link: https://eyes-eyes.github.io/mcPackSpriteSheetGenerator/
 
+# Credits
+Teamed up with davidawesome on discord (still has not been paid) (I told him I would XD)
+
+
+
 ## MUST used zipped folder
 
 ## Known issues
@@ -9,6 +14,9 @@ If a zipped folder says "This Folder is Empty" then it will not work!
 
 # How to use Search
 _Remember not to confuse file names with game names!_
+To get all minecraft items do
+> ^minecraft ^item ^!gui
+
 ### Anti-search
 The exclamation mark ("!") is an **anti-search**. Results containing the word after a exclamation mark will **NOT** be shown.
 For example (pack format 1 or known as 1.8.9):
