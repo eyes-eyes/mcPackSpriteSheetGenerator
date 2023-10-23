@@ -437,7 +437,7 @@
         <section id="generate_page" style="display: none">
             <section>
                 <div class="canvasSpriteSheets" id="canvasSpriteSheets">
-                    <canvas id="out_canvas" onmousemove="hover_canvas(event,false)" onclick="hover_canvas(event,true)"> </canvas>
+                    <canvas id="out_canvas"> </canvas>
                     <image
                         src="images/ILikeSharingCat.png"
                         id="I_like_sharing_cat_loading"
@@ -656,28 +656,6 @@
                         <input id="scale_02" type="radio" name="r" value="2" />
                         <label for="scale_03">1000%</label>
                         <input id="scale_03" type="radio" name="r" value="3" />
-                    </form>
-                </div>
-
-                <div class="ZoomOptions">
-                    <form class="form" style="grid-template-columns: 100%;">
-                        <h2>Current Element:</h2>
-                        <br />
-                        <div class="MoreOptions">
-                            <div>
-                                <input type="checkbox" name="hover_update_on_move" id="hover_update_on_move">
-                                <label for="hover_update_on_move">on move</label>
-                            </div>
-    
-                            <div>
-                                <input type="checkbox" name="hover_full_name" id="hover_full_name">
-                                <label for="hover_full_name">full name</label>
-                            </div>
-                        </div>
-                        <br />
-                        <p id="hovered_output"></p><br>
-
-                        
                     </form>
                 </div>
             </div>

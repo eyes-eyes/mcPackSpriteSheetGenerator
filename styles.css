@@ -930,25 +930,14 @@ button:focus {
     padding: 0;
 }
 
-.ZoomOptions {
-    margin-top:10px;
-    margin-bottom: 10px;
-}
-#hovered_output {
-    max-width: 20vmin;
-    text-wrap: wrap;
-    line-break: anywhere;
-    /* height: 100px; */
-}
-
 .form {
     --background: #ffffff;
     --text: #414856;
     --radio: #7c96b2;
     --radio-checked: #4f29f0;
     --radio-size: 20px;
-    --width: 20vmin;
-    --height: 180px;
+    --width: 25vmin;
+    --height: 140px;
     --border-radius: 10px;
     background: var(--background);
     width: var(--width);
@@ -973,7 +962,6 @@ button:focus {
 .form input[type="radio"] {
     -webkit-appearance: none;
     -moz-appearance: none;
-    appearance:none;
     position: relative;
     height: var(--radio-size);
     width: var(--radio-size);
@@ -1173,10 +1161,10 @@ button:focus {
     display: flex;
     flex-direction: column;
     align-items: center;
-    right: calc((50% - 35vmin) / 2);
+    left: 85%;
     top: 50%;
     position: absolute;
-    transform: translate(50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 .MoreOptions > * {
