@@ -1140,7 +1140,14 @@ function setup_processing_stage() {
 
     if (processing_stage) return
 
-    processing_stage = new Worker("processing_stage.js");
+    
+    const blob_inline_js = new Blob(
+        [document.getElementById("jsworker-inlinescript-processing_stage.js").innerText],
+        { type: "text/javascript" },
+    );
+    
+    processing_stage = new Worker(window.URL.createObjectURL(blob_inline_js));
+    // processing_stage = new Worker("processing_stage.js");
     processing_stage.onmessage = (e) => {
         textures_list_final = search_selected_items;
 

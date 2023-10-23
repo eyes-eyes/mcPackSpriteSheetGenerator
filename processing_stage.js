@@ -1,4 +1,6 @@
-output = []
+// MOVED INTO index.html, please use the inline version as to allow for users without webhosts to run
+// COPY THIS FILE DIRECTLY INTO THE HTML, this is left for syntax hylighting!!!!!!
+// PLEASE DO NOT USE THIS FILE EXPECTING UPDATES
 unfinished_objects = 0;
 
 onmessage = (e) => {
