@@ -1059,68 +1059,123 @@ function proceed() {
 
         document.getElementById("I_like_sharing_cat_loading").style.display = "block";
 
-        generate_final_text_list().then(() => {
-            generate_final_image();
-        });
+        generate_final_text_list()
+        // .then(() => {
+        //     generate_final_image();
+        // });
     }
 }
-
+obj_group_locations = {}
+generate_final_text_list_objs_processing = 0
 async function generate_final_text_list() {
     document.getElementById("out_canvas").width = 0;
     textures_list_final = search_selected_items;
 
     obj_group_locations = {};
-
+    console.log("group starting")
     for (group_add_remove_index in java_mc_groups) {
         if (!document.getElementById(group_add_remove_index).checked) continue;
 
-        group_add_remove = java_mc_groups[group_add_remove_index];
+        // group_add_remove = java_mc_groups[group_add_remove_index];
         // objs_in_this_group = group_search_collon_d(group_add_remove, textures_list_final);
 
-        objs_in_this_group = multi_level_search_group_init(textures_list_final,group_add_remove)
+        // objs_in_this_group = multi_level_search_group_init(textures_list_final,group_add_remove)
+
+        objs_in_this_group = cached_java_mc_groups_list[group_add_remove_index].filter((ind) => {return textures_list_final.includes(ind)})
 
         for (i of objs_in_this_group) {
             obj_group_locations[i.filename] = group_add_remove_index;
         }
     }
+    console.log("group done")
     // console.log(obj_group_locations);
 
     upper_lower_array = [];
 
     final_textures_list = {};
-    
+
+
+    setup_processing_stage()
     for (i in textures_list_final) {
-        file_name_tmp = textures_list_final?.[i].filename;
-        if (
-            final_textures_list[obj_group_locations?.[file_name_tmp] || "UNDEF"] ==
-            undefined
-        ) {
-            final_textures_list[obj_group_locations?.[file_name_tmp] || "UNDEF"] = [];
+        // console.log("sending image")
+        generate_final_text_list_objs_processing += 1
+        processing_stage.postMessage({"request":"handle_new_image","index":i,"blob":await textures_list_final[i].getData(new zip.BlobWriter())})
+    }
+    
+    // for (i in textures_list_final) {
+    //     file_name_tmp = textures_list_final?.[i].filename;
+    //     if (
+    //         final_textures_list[obj_group_locations?.[file_name_tmp] || "UNDEF"] ==
+    //         undefined
+    //     ) {
+    //         final_textures_list[obj_group_locations?.[file_name_tmp] || "UNDEF"] = [];
+    //     }
+
+    //     // if (file_name_tmp.endsWith("door_upper") || file_name_tmp.endsWith("door_top")) {upper_lower_array.push()}
+    //     // (file_name_tmp.endsWith("door_lower") || file_name_tmp.endsWith("door_bottom"))
+
+    //     img_bitmap_tmp = await createImageBitmap(
+            
+    //     );
+
+    //     img_bitmap_tmp.file_obj = textures_list_final[i];
+
+    //     img_bitmap_tmp.group_type = obj_group_locations?.[file_name_tmp] || "UNDEF"
+
+    //     index_push =
+    //         final_textures_list[obj_group_locations?.[file_name_tmp] || "UNDEF"].push(
+    //             img_bitmap_tmp
+    //         );
+
+    //     // if () {upper_lower_array.push()}
+    // }
+    // for (obj_group_this_tmp in final_textures_list) {
+    //     color_append_to_imaged(final_textures_list[obj_group_this_tmp]);
+    // }
+
+    
+}
+processing_stage = null
+function setup_processing_stage() {
+
+    if (processing_stage) return
+
+    processing_stage = new Worker("processing_stage.js");
+    processing_stage.onmessage = (e) => {
+        textures_list_final = search_selected_items;
+
+        if (e.data["request"] == "handle_new_image") {
+            // console.log("processing_finished!")
+            
+            img_bitmap_tmp = e.data["data"]
+            i = e.data["index"]
+            img_bitmap_tmp.avg_color = e.data["color"]
+            // console.log(e, i)
+            file_name_tmp = textures_list_final?.[i].filename;
+            if (
+                final_textures_list[obj_group_locations?.[file_name_tmp] || "UNDEF"] ==
+                undefined
+            ) {
+                final_textures_list[obj_group_locations?.[file_name_tmp] || "UNDEF"] = [];
+            }
+
+            img_bitmap_tmp.file_obj = textures_list_final[i];
+
+            img_bitmap_tmp.group_type = obj_group_locations?.[file_name_tmp] || "UNDEF"
+
+            index_push =
+                final_textures_list[obj_group_locations?.[file_name_tmp] || "UNDEF"].push(
+                    img_bitmap_tmp
+                );
+
+            generate_final_text_list_objs_processing -= 1
+
+            if (generate_final_text_list_objs_processing == 0) {
+                document.getElementById("I_like_sharing_cat_loading").style.display = "none";
+                generate_final_image();
+            }
         }
-
-        // if (file_name_tmp.endsWith("door_upper") || file_name_tmp.endsWith("door_top")) {upper_lower_array.push()}
-        // (file_name_tmp.endsWith("door_lower") || file_name_tmp.endsWith("door_bottom"))
-
-        img_bitmap_tmp = await createImageBitmap(
-            await textures_list_final[i].getData(new zip.BlobWriter())
-        );
-
-        img_bitmap_tmp.file_obj = textures_list_final[i];
-
-        img_bitmap_tmp.group_type = obj_group_locations?.[file_name_tmp] || "UNDEF"
-
-        index_push =
-            final_textures_list[obj_group_locations?.[file_name_tmp] || "UNDEF"].push(
-                img_bitmap_tmp
-            );
-
-        // if () {upper_lower_array.push()}
     }
-    for (obj_group_this_tmp in final_textures_list) {
-        color_append_to_imaged(final_textures_list[obj_group_this_tmp]);
-    }
-
-    document.getElementById("I_like_sharing_cat_loading").style.display = "none";
 }
 
 
@@ -1157,11 +1212,13 @@ async function generate_final_image() {
                 }
             }
 
-            
+            // if (document.getElementById("option1").checked) {
+
+            // }
 
             group_texture_tmp = sort_and_draw_image(
                 current_text_list,
-                document.getElementById("width_input_generate").valueAsNumber || 0
+                document.getElementById("width_input_generate").valueAsNumber || 0,true
             )
 
             textures_offset_list_and_locations["groups"][i] = group_texture_tmp[2]
@@ -1252,7 +1309,7 @@ function color_append_to_imaged(images) {
     }
 }
 
-function sort_and_draw_image(image_array_in, width) {
+function sort_and_draw_image(image_array_in, width, add_color_data) {
     image_array = image_array_in.slice();
 
     if (document.getElementById("mergeStuff").checked) {
@@ -1377,17 +1434,38 @@ function sort_and_draw_image(image_array_in, width) {
 
     tmp_canvas = new OffscreenCanvas(width, line_offset_top);
 
-    tmp_canvas
+    tmp_ctx = tmp_canvas
         .getContext("2d", {
             willReadFrequently: true,
             alpha: true,
             antialias: false,
         })
-        .drawImage(offscreen, 0, 0);
+        
+    tmp_ctx.drawImage(offscreen, 0, 0);
 
     // console.log(placed_image_locations)
 
-    return [tmp_canvas.transferToImageBitmap(), [line_offset_top, width],placed_image_locations];
+    out_bmp = tmp_canvas.transferToImageBitmap()
+
+    if (add_color_data) {
+        colors = [0, 0, 0];
+        px_data = tmp_ctx.getImageData(0, 0, width, line_offset_top).data;
+        pixels_in_use = 0;
+        for (color_ind = 0; color_ind < px_data.length; color_ind += 4) {
+            if (px_data[color_ind + 3] == 0) continue;
+            colors[0] += px_data[color_ind + 0];
+            colors[1] += px_data[color_ind + 1];
+            colors[2] += px_data[color_ind + 2];
+            pixels_in_use += 1;
+        }
+
+        colors[0] /= pixels_in_use;
+        colors[1] /= pixels_in_use;
+        colors[2] /= pixels_in_use;
+        out_bmp.avg_color = rgb2hsv(colors[0], colors[1], colors[2])
+    }
+
+    return [out_bmp, [line_offset_top, width],placed_image_locations];
 }
 
 
