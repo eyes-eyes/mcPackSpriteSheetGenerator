@@ -52,6 +52,8 @@ const color_codes = {
     f: ["#FFFFFF"],
 };
 
+let cached_java_mc_groups_list = {};
+
 const java_mc_groups = {
     /*
 
@@ -64,225 +66,291 @@ const java_mc_groups = {
 
     */
 
-    woodVariants: [
-        "^minecraft ^block oak !door",
-        "^minecraft ^block spruce !door",
-        "^minecraft ^block birch !door",
-        "^minecraft ^block jungle !door",
-        "^minecraft ^block acacia !door",
-        "^minecraft ^block dark oak !door",
-        "^minecraft ^block mangrove !door",
-        "^minecraft ^block cherry !door",
-    ],
+    woodVariants: {
+        "^minecraft": {
+            "^block": {
+                "!door": {
+                    oak: null,
+                    spruce: null,
+                    birch: null,
+                    jungle: null,
+                    acacia: null,
+                    "dark oak": null,
+                    mangrove: null,
+                    cherry: null,
+                },
+            },
+        },
+    },
 
-    // woodVariants: [[["^minecraft ^block oak !door"],["^minecraft ^block spruce !door"],["^minecraft ^block birch !door"]],"single_line","vertical"],
-    doors: [
-        "^minecraft ^block door upper",
-        "^minecraft ^block door lower",
-        "^minecraft ^block door top",
-        "^minecraft ^block door bottom",
-        "^minecraft ^block door",
-    ],
-    stones: [
-        "^minecraft ^block stone !redstone !grindstone !lodestone !sword !axe !shovel !hoe !pickaxe !stonecutter !glowstone !slab !dripstone",
-        "^minecraft ^block granite !slab",
-        "^minecraft ^block diorite !slab",
-        "^minecraft ^block andesite !slab",
-        "^minecraft ^block sandstone !slab",
-        "^minecraft ^block Obsidian !slab",
-        "^minecraft ^block blackstone !slab",
-    ],
-    statusEffects: ["^minecraft ^mob_effect"],
-    sediments: [
-        "^minecraft ^block grass block !sea !tallgrass !tall",
-        "^minecraft ^block Mycelium",
-        "^minecraft ^block Podzol",
-        "^minecraft ^block dirt",
-        "^minecraft ^block farmland",
-        "^minecraft ^block gravel",
-        "^minecraft ^block sand !sandstone !soul",
-    ],
-    armors: [
-        "^minecraft ^item Leather Cap",
-        "^minecraft ^item Leather helmet !overlay",
-        "^minecraft ^item Chainmail Helmet",
-        "^minecraft ^item Iron Helmet",
-        "^minecraft ^item Gold Helmet",
-        "^minecraft ^item Diamond Helmet",
-        "^minecraft ^item Netherite Helmet",
-        "^minecraft ^item Leather Tunic !overlay",
-        "^minecraft ^item Leather chestplate !overlay",
-        "^minecraft ^item Chainmail Chestplate",
-        "^minecraft ^item Iron Chestplate",
-        "^minecraft ^item gold Chestplate",
-        "^minecraft ^item Diamond Chestplate",
-        "^minecraft ^item Netherite Chestplate",
-        "^minecraft ^item Leather Pants",
-        "^minecraft ^item Leather Leggings !overlay",
-        "^minecraft ^item Chainmail Leggings",
-        "^minecraft ^item Iron Leggings",
-        "^minecraft ^item gold Leggings",
-        "^minecraft ^item Diamond Leggings",
-        "^minecraft ^item Netherite Leggings",
-        "^minecraft ^item Leather Boots !overlay",
-        "^minecraft ^item Chainmail Boots",
-        "^minecraft ^item Iron Boots",
-        "^minecraft ^item gold Boots",
-        "^minecraft ^item Diamond Boots",
-        "^minecraft ^item Netherite Boots",
-        "^minecraft ^item Leather Horse Armor",
-        "^minecraft ^item Iron Horse Armor",
-        "^minecraft ^item gold Horse Armor",
-        "^minecraft ^item Diamond Horse Armor",
-        "^minecraft ^item Turtle Helmet",
-    ],
-    toolsets: [
-        "^minecraft ^item Wood Sword",
-        "^minecraft ^item Stone Sword",
-        "^minecraft ^item Iron Sword",
-        "^minecraft ^item gold Sword",
-        "^minecraft ^item Diamond Sword",
-        "^minecraft ^item Netherite Sword",
-        "^minecraft ^item Wood Pickaxe",
-        "^minecraft ^item Stone Pickaxe",
-        "^minecraft ^item Iron Pickaxe",
-        "^minecraft ^item gold Pickaxe",
-        "^minecraft ^item Diamond Pickaxe",
-        "^minecraft ^item Netherite Pickaxe",
-        "^minecraft ^item Wood Axe !pick !pick",
-        "^minecraft ^item Stone Axe !pick",
-        "^minecraft ^item Iron Axe !pick",
-        "^minecraft ^item gold Axe !pick",
-        "^minecraft ^item Diamond Axe !pick",
-        "^minecraft ^item Netherite Axe !pick",
-        "^minecraft ^item Wood Shovel",
-        "^minecraft ^item Stone Shovel",
-        "^minecraft ^item Iron Shovel",
-        "^minecraft ^item gold Shovel",
-        "^minecraft ^item Diamond Shovel",
-        "^minecraft ^item Netherite Shovel",
-        "^minecraft ^item Wood Hoe",
-        "^minecraft ^item Stone Hoe",
-        "^minecraft ^item Iron Hoe",
-        "^minecraft ^item gold Hoe",
-        "^minecraft ^item Diamond Hoe",
-        "^minecraft ^item Netherite Hoe",
-    ],
-    foods: [
-        "^minecraft ^item Cooked Beef",
-        "^minecraft ^item Cooked Salmon",
-        "^minecraft ^item Steak",
-        "^minecraft ^item Tropical Fish",
-        "^minecraft ^item Raw Chicken",
-        "^minecraft ^item Pufferfish",
-        "^minecraft ^item Melon Slice",
-        "^minecraft ^item Cooked Chicken",
-        "^minecraft ^item Apple",
-        "^minecraft ^item Mushroom Stew",
-        "^minecraft ^item Raw Mutton",
-        "^minecraft ^item gold Apple",
-        "^minecraft ^item Baked Potato",
-        "^minecraft ^item Cooked Mutton",
-        "^minecraft ^item Beetroot !seed",
-        "^minecraft ^item Poisonous Potato",
-        "^minecraft ^item Raw Porkchop",
-        "^minecraft ^item Beetroot Soup",
-        "^minecraft ^item Pumpkin Pie",
-        "^minecraft ^item Cooked Porkchop",
-        "^minecraft ^item Bread",
-        "^minecraft ^item Rabbit Stew",
-        "^minecraft ^item Raw Rabbit",
-        "^minecraft ^item Chorus Fruit",
-        "^minecraft ^item Rotten Flesh",
-        "^minecraft ^item Cooked Rabbit",
-        "^minecraft ^item Cookie",
-        "^minecraft ^item Spider Eye",
-        "^minecraft ^item Raw Cod",
-        "^minecraft ^item Dried Kelp",
-        "^minecraft ^item Suspicious Stew",
-        "^minecraft ^item Cooked Cod",
-        "^minecraft ^item gold Carrot",
-        "^minecraft ^item Raw Salmon",
-        "^minecraft ^item Honey Bottle",
-    ],
-    ores: [
-        "^minecraft ^block Coal Ore",
-        "^minecraft ^block Iron Ore",
-        "^minecraft ^block Gold Ore",
-        "^minecraft ^block Redstone Ore !torch",
-        "^minecraft ^block Emerald Ore",
-        "^minecraft ^block Lapis Lazuli Ore",
-        "^minecraft ^block Diamond Ore",
-        "^minecraft ^block Copper Ore",
-        "^minecraft ^block Deepslate Coal Ore",
-        "^minecraft ^block Deepslate Iron Ore",
-        "^minecraft ^block Deepslate Gold Ore",
-        "^minecraft ^block Deepslate Redstone Ore",
-        "^minecraft ^block Deepslate Emerald Ore",
-        "^minecraft ^block Deepslate Lapis Lazuli Ore",
-        "^minecraft ^block Deepslate Diamond Ore",
-        "^minecraft ^block Deepslate Copper Ore",
-        "^minecraft ^block Nether Gold Ore",
-        "^minecraft ^block Quartz Ore",
-        "^minecraft ^block Ancient Debris",
-        "^minecraft ^block Block Iron",
-        "^minecraft ^block Block Gold",
-        "^minecraft ^block Block Redstone",
-        "^minecraft ^block Block Emerald",
-        "^minecraft ^block Block Lapis",
-        "^minecraft ^block Block Diamond",
-        "^minecraft ^block Block Copper",
-        "^minecraft ^block Block Netherite",
-        "^minecraft ^block raw iron block",
-        "^minecraft ^block raw gold block",
-        "^minecraft ^block raw copper block",
-    ],
-    minerals: [
-        "^minecraft ^item emerald !empty",
-        "^minecraft ^item diamond !sword !shovel !axe !pickaxe !hoe !armor !helmet !chestplate !leggings !boots !empty",
-        "^minecraft ^item copper ingot",
-        "^minecraft ^item iron ingot",
-        "^minecraft ^item iron nugget",
-        "^minecraft ^item gold ingot",
-        "^minecraft ^item gold nugget",
-        "^minecraft ^item netherite ingot",
-        "^minecraft ^item netherite scrap",
-        "^minecraft ^item redstone !overlay !dot !line !empty !torch",
-        "^minecraft ^item coal !block",
-        "^minecraft ^item charcoal !block",
-        "^minecraft ^item Lapis Lazuli !block !empty",
-        "^minecraft ^item raw copper !block",
-        "^minecraft ^item raw iron !block",
-        "^minecraft ^item raw gold !block",
-        "^minecraft ^item quartz !block !empty",
-    ],
-    balls: [
-        "^minecraft ^item ender pearl",
-        "^minecraft ^item eye of ender",
-        "^minecraft ^item snowball",
-        "^minecraft ^item slime ball",
-        "^minecraft ^item egg !leggings !overlay !spawn",
-        "^minecraft ^item magma cream",
-        "^minecraft ^item fireball",
-        "^minecraft ^item fire charge !firework",
-        "^minecraft ^item Heart Sea !model",
-    ],
-    cropStages: [
-        "^minecraft ^block wheat stage",
-        "^minecraft ^block carrot stage",
-        "^minecraft ^block beetroot stage",
-        "^minecraft ^block cocoa stage",
-        "^minecraft ^block potatoes stage",
-        "^minecraft ^block bamboo stage",
-    ],
-    vehicles: ["^minecraft ^texture ^item ^!entity Minecart", "^item boat"],
-    musicDiscs: ["^minecraft music disc", "^minecraft record"],
-    shulkerBoxes: ["^minecraft ^block Shulker Box"],
-    wools: ["^minecraft ^texture ^block wool"],
-    concretes: ["^minecraft ^texture ^block concrete"],
-    terracottas: ["^minecraft ^texture ^block terracotta"],
-    glasses: ["^minecraft ^texture ^block glass !pane"],
-    buckets: ["^minecraft ^item !model bucket"],
+    doors: {
+        "^minecraft": {
+            "^block": {
+                door: {
+                    upper: null,
+                    lower: null,
+                    top: null,
+                    bottom: null,
+                    "": null, //the whole list now other than aboves parts should be selected
+                },
+            },
+        },
+    },
+    stones: {
+        "^minecraft": {
+            "^block": {
+                "!slab": {
+                    granite: null,
+                    diorite: null,
+                    andesite: null,
+                    sandstone: null,
+                    obsidian: null,
+                    blackstone: null,
+                    "stone !redstone !grindstone !lodestone !sword !axe !shovel !hoe !pickaxe !stonecutter !glowstone !slab !dripstone":
+                        null,
+                },
+            },
+        },
+    },
+    statusEffects: { "^minecraft": { "^mob_effect": null } },
+    sediments: {
+        "^minecraft": {
+            "^block": {
+                "grass block !sea !tallgrass !tall": null,
+                Mycelium: null,
+                Podzol: null,
+                dirt: null,
+                farmland: null,
+                gravel: null,
+                "sand !sandstone !soul": null,
+            },
+        },
+    },
+    armors: {
+        "^minecraft": {
+            "^item": {
+                "Leather Cap": null,
+                "Leather helmet !overlay": null,
+                "Chainmail Helmet": null,
+                "Iron Helmet": null,
+                "Gold Helmet": null,
+                "Diamond Helmet": null,
+                "Netherite Helmet": null,
+                "Leather Tunic !overlay": null,
+                "Leather chestplate !overlay": null,
+                "Chainmail Chestplate": null,
+                "Iron Chestplate": null,
+                "gold Chestplate": null,
+                "Diamond Chestplate": null,
+                "Netherite Chestplate": null,
+                "Leather Pants": null,
+                "Leather Leggings !overlay": null,
+                "Chainmail Leggings": null,
+                "Iron Leggings": null,
+                "gold Leggings": null,
+                "Diamond Leggings": null,
+                "Netherite Leggings": null,
+                "Leather Boots !overlay": null,
+                "Chainmail Boots": null,
+                "Iron Boots": null,
+                "gold Boots": null,
+                "Diamond Boots": null,
+                "Netherite Boots": null,
+                "Leather Horse Armor": null,
+                "Iron Horse Armor": null,
+                "gold Horse Armor": null,
+                "Diamond Horse Armor": null,
+                "Turtle Helmet": null,
+            },
+        },
+    },
+    toolsets: {
+        "^minecraft": {
+            "^item": {
+                "Wood Sword": null,
+                "Stone Sword": null,
+                "Iron Sword": null,
+                "gold Sword": null,
+                "Diamond Sword": null,
+                "Netherite Sword": null,
+                "Wood Pickaxe": null,
+                "Stone Pickaxe": null,
+                "Iron Pickaxe": null,
+                "gold Pickaxe": null,
+                "Diamond Pickaxe": null,
+                "Netherite Pickaxe": null,
+                "Wood Axe !pick !pick": null,
+                "Stone Axe !pick": null,
+                "Iron Axe !pick": null,
+                "gold Axe !pick": null,
+                "Diamond Axe !pick": null,
+                "Netherite Axe !pick": null,
+                "Wood Shovel": null,
+                "Stone Shovel": null,
+                "Iron Shovel": null,
+                "gold Shovel": null,
+                "Diamond Shovel": null,
+                "Netherite Shovel": null,
+                "Wood Hoe": null,
+                "Stone Hoe": null,
+                "Iron Hoe": null,
+                "gold Hoe": null,
+                "Diamond Hoe": null,
+                "Netherite Hoe": null,
+            },
+        },
+    },
+    foods: {
+        "^minecraft": {
+            "^item": {
+                "Cooked Beef": null,
+                "Cooked Salmon": null,
+                Steak: null,
+                "Tropical Fish": null,
+                "Raw Chicken": null,
+                Pufferfish: null,
+                "Melon Slice": null,
+                "Cooked Chicken": null,
+                Apple: null,
+                "Mushroom Stew": null,
+                "Raw Mutton": null,
+                "gold Apple": null,
+                "Baked Potato": null,
+                "Cooked Mutton": null,
+                "Beetroot !seed": null,
+                "Poisonous Potato": null,
+                "Raw Porkchop": null,
+                "Beetroot Soup": null,
+                "Pumpkin Pie": null,
+                "Cooked Porkchop": null,
+                Bread: null,
+                "Rabbit Stew": null,
+                "Raw Rabbit": null,
+                "Chorus Fruit": null,
+                "Rotten Flesh": null,
+                "Cooked Rabbit": null,
+                Cookie: null,
+                "Spider Eye": null,
+                "Raw Cod": null,
+                "Dried Kelp": null,
+                "Suspicious Stew": null,
+                "Cooked Cod": null,
+                "gold Carrot": null,
+                "Raw Salmon": null,
+                "Honey Bottle": null,
+            },
+        },
+    },
+
+    ores: {
+        "^minecraft": {
+            "^block": {
+                "Coal Ore": null,
+                "Iron Ore": null,
+                "Gold Ore": null,
+                "Redstone Ore !torch": null,
+                "Emerald Ore": null,
+                "Lapis Lazuli Ore": null,
+                "Diamond Ore": null,
+                "Copper Ore": null,
+                "Deepslate Coal Ore": null,
+                "Deepslate Iron Ore": null,
+                "Deepslate Gold Ore": null,
+                "Deepslate Redstone Ore": null,
+                "Deepslate Emerald Ore": null,
+                "Deepslate Lapis Lazuli Ore": null,
+                "Deepslate Diamond Ore": null,
+                "Deepslate Copper Ore": null,
+                "Nether Gold Ore": null,
+                "Quartz Ore": null,
+                "Ancient Debris": null,
+                "Block Iron": null,
+                "Block Gold": null,
+                "Block Redstone": null,
+                "Block Emerald": null,
+                "Block Lapis": null,
+                "Block Diamond": null,
+                "Block Copper": null,
+                "Block Netherite": null,
+                "raw iron block": null,
+                "raw gold block": null,
+                "raw copper block": null,
+            },
+        },
+    },
+
+    minerals: {
+        "^minecraft": {
+            "^item": {
+                "emerald !empty": null,
+                "diamond !sword !shovel !axe !pickaxe !hoe !armor !helmet !chestplate !leggings !boots !empty":
+                    null,
+                "copper ingot": null,
+                "iron ingot": null,
+                "iron nugget": null,
+                "gold ingot": null,
+                "gold nugget": null,
+                "netherite ingot": null,
+                "netherite scrap": null,
+                "redstone !overlay !dot !line !empty !torch": null,
+                "coal !block": null,
+                "charcoal !block": null,
+                "Lapis Lazuli !block !empty": null,
+                "raw copper !block": null,
+                "raw iron !block": null,
+                "raw gold !block": null,
+                "quartz !block !empty": null,
+            },
+        },
+    },
+
+    balls: {
+        "^minecraft": {
+            "^item": {
+                "ender pearl": null,
+                "eye of ender": null,
+                snowball: null,
+                "slime ball": null,
+                "egg !leggings !overlay !spawn": null,
+                "magma cream": null,
+                fireball: null,
+                "fire charge !firework": null,
+                "Heart Sea !model": null,
+            },
+        },
+    },
+
+    cropStages: {
+        "^minecraft": {
+            "^block": {
+                "wheat stage": null,
+                "carrot stage": null,
+                "beetroot stage": null,
+                "cocoa stage": null,
+                "potatoes stage": null,
+                "bamboo stage": null,
+            },
+        },
+    },
+
+    vehicles: {
+        "^item": {
+            "^minecraft ^texture ^!entity Minecart": null,
+            boat: null,
+        },
+    },
+    musicDiscs: {
+        "^minecraft": {
+            "music disc": null,
+            record: null,
+        },
+    },
+    shulkerBoxes: { "^minecraft ^block Shulker Box": null },
+    wools: { "^minecraft ^texture ^block wool": null },
+    concretes: { "^minecraft ^texture ^block concrete": null },
+    terracottas: { "^minecraft ^texture ^block terracotta": null },
+    glasses: { "^minecraft ^texture ^block glass !pane": null },
+    buckets: { "^minecraft ^item !model bucket": null },
 };
 
 document.onkeydown = function (evt) {
@@ -398,10 +466,14 @@ function update_pack_version(pack_version) {
 function zip_new_entry_handler(entries) {
     zip_path_objects = {};
     for (i in entries) {
-        path_arrary = entries[i].filename.split("/");
+        path_array = entries[i].filename.split("/");
+        entries[i].short_name = get_just_file_name(entries[i]);
+        entries[i].is_png = entries[i].filename.endsWith(".png");
+        entries[i].is_hidden = entries[i].short_name.endsWith(".");
+        entries[i].groups = [];
 
         // if (!get_just_file_name(entries[i]).startsWith("."))
-        fillObjectAtDepth(zip_path_objects, entries[i], path_arrary);
+        fillObjectAtDepth(zip_path_objects, entries[i], path_array);
     }
     zip_orig_path_objects = entries;
 
@@ -410,67 +482,71 @@ function zip_new_entry_handler(entries) {
             error_invalid_pack("cant parse pack.mcmeta");
         }
     });
-<<<<<<< HEAD
 
     //cached_java_mc_groups_list
     for (i in java_mc_groups) {
-        console.log("starting group: "+ i)
-        let out = multi_level_search_group_init(zip_orig_path_objects,java_mc_groups[i])
+        console.log("starting group: " + i);
+        let out = multi_level_search_group_init(zip_orig_path_objects, java_mc_groups[i]);
         cached_java_mc_groups_list[i] = out;
         for (o of out) {
-            o.groups.push(i)
+            o.groups.push(i);
         }
     }
 }
 
 // BEFORE CALLING THIS PLEASE .filter for is_png true and is_hidden false
-function multi_level_search_group(current_objs,group_obj) {
-    let out = []
+function multi_level_search_group(current_objs, group_obj) {
+    let out = [];
     for (search in group_obj) {
-        let search_sup_result = current_objs
+        let search_sup_result = current_objs;
         for (search_section of search.toLowerCase().split(" ")) {
-            search_sup_result = search_sup_result.filter(construct_function_for_search(search_section))
-            
+            search_sup_result = search_sup_result.filter(
+                construct_function_for_search(search_section)
+            );
         }
 
         if (group_obj[search] == null) {
-            out.push(...search_sup_result)
+            out.push(...search_sup_result);
         } else {
-            out.push(...multi_level_search_group(search_sup_result,group_obj[search]))
+            out.push(...multi_level_search_group(search_sup_result, group_obj[search]));
         }
     }
 
-    return out
+    return out;
 }
 
-function multi_level_search_group_init(current_objs,group_obj) {
-    real_current_objs = current_objs.filter((a) => {return a.is_png && !a.is_hidden})
+function multi_level_search_group_init(current_objs, group_obj) {
+    real_current_objs = current_objs.filter((a) => {
+        return a.is_png && !a.is_hidden;
+    });
 
-    let out = multi_level_search_group(real_current_objs,group_obj)
-
+    let out = multi_level_search_group(real_current_objs, group_obj);
 
     return Array.from(new Set(out)); // rm duplicates and reorder
 }
 
 function construct_function_for_search(search_term) {
     if (search_term.startsWith("^!")) {
-        let real_search_term = search_term.slice(2)
-        return (input) => {return !input.filename.includes(real_search_term)}
+        let real_search_term = search_term.slice(2);
+        return (input) => {
+            return !input.filename.includes(real_search_term);
+        };
+    } else if (search_term.startsWith("!")) {
+        let real_search_term = search_term.slice(1);
+        return (input) => {
+            return !input.short_name.includes(real_search_term);
+        };
+    } else if (search_term.startsWith("^")) {
+        let real_search_term = search_term.slice(1);
+        return (input) => {
+            return input.filename.includes(real_search_term);
+        };
+    } else {
+        let real_search_term = search_term;
+        return (input) => {
+            return input.short_name.includes(real_search_term);
+        };
     }
-    else if (search_term.startsWith("!")) {
-        let real_search_term = search_term.slice(1)
-        return (input) => {return !input.short_name.includes(real_search_term)}
-    }
-    else if (search_term.startsWith("^")) {
-        let real_search_term = search_term.slice(1)
-        return (input) => {return input.filename.includes(real_search_term)}
-    }
-    else {
-        let real_search_term = search_term
-        return (input) => {return input.short_name.includes(real_search_term)}
-    }
-=======
->>>>>>> parent of 70b2ec4 (Made better v1 (#11))
 }
 
 function handle_file(file) {
@@ -574,40 +650,51 @@ function search_object_tree(root, search_value) {
     return output_array;
 }
 
-function search_user_input(search_string) {
+async function search_user_input(search_string) {
     last_user_inputStringThing = search_string;
     output = [];
-    search_array = search_string.split(" ");
-    for (i in zip_orig_path_objects) {
-        current_name = get_just_file_name(zip_orig_path_objects[i]);
-        current_long_name = zip_orig_path_objects[i].filename;
-        if (
-            current_name.endsWith(".png") &&
-            !get_just_file_name(zip_orig_path_objects[i]).startsWith(".")
-        ) {
-            current_eligablility = true;
-            for (o in search_array) {
-                searched_level_path =
-                    search_array[o][0] == "^" ? current_long_name : current_name;
-                search_string_current =
-                    search_array[o][0] == "^"
-                        ? search_array[o].slice(1)
-                        : search_array[o];
-                if (search_string_current[0] == "!") {
-                    if (searched_level_path.includes(search_string_current.slice(1))) {
-                        current_eligablility = false;
-                    }
-                } else {
-                    if (!searched_level_path.includes(search_string_current)) {
-                        current_eligablility = false;
-                    }
-                }
-            }
-            if (current_eligablility) {
-                output.push(zip_orig_path_objects[i]);
-            }
-        }
+    // search_array = search_string.split(" ");
+    // for (i in zip_orig_path_objects) {
+    //     current_name = get_just_file_name(zip_orig_path_objects[i]);
+    //     current_long_name = zip_orig_path_objects[i].filename;
+    //     if (
+    //         current_name.endsWith(".png") &&
+    //         !get_just_file_name(zip_orig_path_objects[i]).startsWith(".")
+    //     ) {
+    //         current_eligablility = true;
+    //         for (o in search_array) {
+    //             searched_level_path =
+    //                 search_array[o][0] == "^" ? current_long_name : current_name;
+    //             search_string_current =
+    //                 search_array[o][0] == "^"
+    //                     ? search_array[o].slice(1)
+    //                     : search_array[o];
+    //             if (search_string_current[0] == "!") {
+    //                 if (searched_level_path.includes(search_string_current.slice(1))) {
+    //                     current_eligablility = false;
+    //                 }
+    //             } else {
+    //                 if (!searched_level_path.includes(search_string_current)) {
+    //                     current_eligablility = false;
+    //                 }
+    //             }
+    //         }
+    //         if (current_eligablility) {
+    //             output.push(zip_orig_path_objects[i]);
+    //         }
+    //     }
+    // }
+
+    let search_sup_result = zip_orig_path_objects.filter((a) => {
+        return a.is_png && !a.is_hidden;
+    });
+    for (search_section of search_string.toLowerCase().split(" ")) {
+        search_sup_result = search_sup_result.filter(
+            construct_function_for_search(search_section)
+        );
     }
+
+    output = search_sup_result;
 
     search_results = document.getElementById("search_results");
     if (output.length == 0) {
@@ -639,10 +726,7 @@ function search_user_input(search_string) {
                 generate_selected_textures_list();
             });
             current_result_itter.setAttribute("hover_text", output[i].filename);
-            current_result_itter.innerText = get_just_file_name(output[i]).replace(
-                ".png",
-                ""
-            );
+            current_result_itter.innerText = output[i].short_name.replace(".png", "");
             current_result_itter.fill_obj = output[i];
             if (search_selected_items.includes(output[i])) {
                 current_result_itter.setAttribute("checkd", "true");
@@ -724,8 +808,8 @@ function clear_selected() {
 }
 
 //! group selection method
-function group_selected(obj) {
-    group_add_remove = java_mc_groups[obj.id];
+function group_selected(obj, dont_update_search) {
+    // group_add_remove = java_mc_groups[obj.id];
 
     // output = [];
     // for (apple in group_add_remove) {
@@ -772,19 +856,10 @@ function group_selected(obj) {
     //     }
     // }
 
-<<<<<<< HEAD
     // output = group_search_collon_d(group_add_remove, zip_orig_path_objects);
     // output = multi_level_search_group_init(zip_orig_path_objects,group_add_remove);
-<<<<<<< HEAD
+
     output = cached_java_mc_groups_list[obj.id] || [];
-=======
-
-    output = cached_java_mc_groups_list[obj.id] || []
-
->>>>>>> parent of 9df379a (main)
-=======
-    output = group_search_collon_d(group_add_remove, zip_orig_path_objects);
->>>>>>> parent of 70b2ec4 (Made better v1 (#11))
 
     // for (i in output) {
     //     if (obj.checked) {
@@ -799,16 +874,17 @@ function group_selected(obj) {
     // }
 
     if (obj.checked) {
-        for (i in output) {
-            if (!search_selected_items.includes(output[i])) {
-                search_selected_items.unshift(output[i]);
-            }
-        }
+        // for (i in output) {
+        //     if (!search_selected_items.includes(output[i])) {
+        //         search_selected_items.unshift(output[i]);
+        //     }
+        // }
+        search_selected_items.unshift(...output);
+        search_selected_items = Array.from(new Set(search_selected_items));
     } else {
         search_selected_items = search_selected_items.filter((a) => !output.includes(a));
     }
 
-<<<<<<< HEAD
     if (!dont_update_search) {
         generate_selected_textures_list();
         search_user_input(last_user_inputStringThing);
@@ -816,17 +892,7 @@ function group_selected(obj) {
         document.getElementById("counterTotal").innerText =
             "(" + search_selected_items.length + ") " + "Total Textures:";
     }
-<<<<<<< HEAD
-=======
-        
-=======
-    generate_selected_textures_list();
-    search_user_input(last_user_inputStringThing);
-    document.getElementById("counterTotal").innerText =
-        "(" + search_selected_items.length + ") " + "Total Textures:";
->>>>>>> parent of 70b2ec4 (Made better v1 (#11))
 
->>>>>>> parent of 9df379a (main)
     // console.log(obj.id + (obj.checked ? " CHECKED" : " Unchecked"));
 }
 
@@ -1000,66 +1066,58 @@ function proceed() {
 
         document.getElementById("I_like_sharing_cat_loading").style.display = "block";
 
-        generate_final_text_list()
-        // .then(() => {
-        //     generate_final_image();
-        // });
+        generate_final_text_list().then(() => {
+            generate_final_image();
+        });
     }
 }
-obj_group_locations = {}
-generate_final_text_list_objs_processing = 0
+
 async function generate_final_text_list() {
     document.getElementById("out_canvas").width = 0;
     textures_list_final = search_selected_items;
 
     obj_group_locations = {};
-    console.log("group starting")
+
     for (group_add_remove_index in java_mc_groups) {
         if (!document.getElementById(group_add_remove_index).checked) continue;
 
         group_add_remove = java_mc_groups[group_add_remove_index];
-        objs_in_this_group = group_search_collon_d(group_add_remove, textures_list_final);
+        // objs_in_this_group = group_search_collon_d(group_add_remove, textures_list_final);
+
+        objs_in_this_group = multi_level_search_group_init(
+            textures_list_final,
+            group_add_remove
+        );
 
         for (i of objs_in_this_group) {
             obj_group_locations[i.filename] = group_add_remove_index;
         }
     }
-    console.log("group done")
     // console.log(obj_group_locations);
 
     upper_lower_array = [];
 
     final_textures_list = {};
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    
->>>>>>> parent of 9df379a (main)
-=======
->>>>>>> parent of 70b2ec4 (Made better v1 (#11))
+
     for (i in textures_list_final) {
-        // console.log("sending image")
-        generate_final_text_list_objs_processing += 1
-        processing_stage.postMessage({"request":"handle_new_image","index":i,"blob":await textures_list_final[i].getData(new zip.BlobWriter())})
-    }
-    
-    // for (i in textures_list_final) {
-    //     file_name_tmp = textures_list_final?.[i].filename;
-    //     if (
-    //         final_textures_list[obj_group_locations?.[file_name_tmp] || "UNDEF"] ==
-    //         undefined
-    //     ) {
-    //         final_textures_list[obj_group_locations?.[file_name_tmp] || "UNDEF"] = [];
-    //     }
+        file_name_tmp = textures_list_final?.[i].filename;
+        if (
+            final_textures_list[obj_group_locations?.[file_name_tmp] || "UNDEF"] ==
+            undefined
+        ) {
+            final_textures_list[obj_group_locations?.[file_name_tmp] || "UNDEF"] = [];
+        }
 
-    //     // if (file_name_tmp.endsWith("door_upper") || file_name_tmp.endsWith("door_top")) {upper_lower_array.push()}
-    //     // (file_name_tmp.endsWith("door_lower") || file_name_tmp.endsWith("door_bottom"))
+        // if (file_name_tmp.endsWith("door_upper") || file_name_tmp.endsWith("door_top")) {upper_lower_array.push()}
+        // (file_name_tmp.endsWith("door_lower") || file_name_tmp.endsWith("door_bottom"))
 
-    //     img_bitmap_tmp = await createImageBitmap(
-            
-    //     );
+        img_bitmap_tmp = await createImageBitmap(
+            await textures_list_final[i].getData(new zip.BlobWriter())
+        );
 
-    //     img_bitmap_tmp.file_obj = textures_list_final[i];
+        img_bitmap_tmp.file_obj = textures_list_final[i];
+
+        img_bitmap_tmp.group_type = obj_group_locations?.[file_name_tmp] || "UNDEF";
 
         index_push =
             final_textures_list[obj_group_locations?.[file_name_tmp] || "UNDEF"].push(
@@ -1068,71 +1126,16 @@ async function generate_final_text_list() {
 
         // if () {upper_lower_array.push()}
     }
-
-
-    //     // if () {upper_lower_array.push()}
-    // }
-    // for (obj_group_this_tmp in final_textures_list) {
-    //     color_append_to_imaged(final_textures_list[obj_group_this_tmp]);
-    // }
-
-    
-}
-processing_stage = null
-function setup_processing_stage() {
-
-    if (processing_stage) return
-
-    processing_stage = new Worker("processing_stage.js");
-    processing_stage.onmessage = (e) => {
-        textures_list_final = search_selected_items;
-
-        if (e.data["request"] == "handle_new_image") {
-            // console.log("processing_finished!")
-            
-            img_bitmap_tmp = e.data["data"]
-            i = e.data["index"]
-            img_bitmap_tmp.avg_color = e.data["color"]
-            // console.log(e, i)
-            file_name_tmp = textures_list_final?.[i].filename;
-            if (
-                final_textures_list[obj_group_locations?.[file_name_tmp] || "UNDEF"] ==
-                undefined
-            ) {
-                final_textures_list[obj_group_locations?.[file_name_tmp] || "UNDEF"] = [];
-            }
-
-            img_bitmap_tmp.file_obj = textures_list_final[i];
-
-            img_bitmap_tmp.group_type = obj_group_locations?.[file_name_tmp] || "UNDEF"
-
-            index_push =
-                final_textures_list[obj_group_locations?.[file_name_tmp] || "UNDEF"].push(
-                    img_bitmap_tmp
-                );
-
-            generate_final_text_list_objs_processing -= 1
-
-            if (generate_final_text_list_objs_processing == 0) {
-                document.getElementById("I_like_sharing_cat_loading").style.display = "none";
-                generate_final_image();
-            }
-        }
+    for (obj_group_this_tmp in final_textures_list) {
+        color_append_to_imaged(final_textures_list[obj_group_this_tmp]);
     }
+
+    document.getElementById("I_like_sharing_cat_loading").style.display = "none";
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 textures_offset_list_and_locations = { groups: {}, items: [] }; //[{"loc": [0,0,10,10],"path":null,"file_obj":null,"group":"asd"}]
-
-=======
-
-textures_offset_list_and_locations = {"groups": {}, "items": []}//[{"loc": [0,0,10,10],"path":null,"file_obj":null,"group":"asd"}]
->>>>>>> parent of 9df379a (main)
 // [{"loc":[],"group":""}]
 
-=======
->>>>>>> parent of 70b2ec4 (Made better v1 (#11))
 let final_textures_list = {};
 // ! generate final image function!!!
 async function generate_final_image() {
@@ -1140,7 +1143,7 @@ async function generate_final_image() {
 
     real_final_textures_list = (final_textures_list["UNDEF"] || []).slice();
 
-    for (i in final_textures_list) {
+    for (let i in final_textures_list) {
         if (i == "UNDEF") continue;
         // console.log(final_textures_list[i]);
 
@@ -1156,51 +1159,22 @@ async function generate_final_image() {
                 }
 
                 if (document.getElementById("option1").checked) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
-                    
->>>>>>> parent of 9df379a (main)
-=======
-                    color_append_to_imaged(current_text_list);
->>>>>>> parent of 70b2ec4 (Made better v1 (#11))
                     current_text_list.sort((a, b) => {
                         return a.avg_color[0] - b.avg_color[0];
                     });
                 }
             }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-            
->>>>>>> parent of 9df379a (main)
-
             group_texture_tmp = sort_and_draw_image(
                 current_text_list,
                 document.getElementById("width_input_generate").valueAsNumber || 0
-<<<<<<< HEAD
-
-=======
-            )
-
-            textures_offset_list_and_locations["groups"][i] = group_texture_tmp[2]
-
-            group_texture_tmp[0].group_name_ye = i
-
-            
-            real_final_textures_list.push(
-                group_texture_tmp[0]
->>>>>>> parent of 9df379a (main)
-=======
-            real_final_textures_list.push(
-                sort_and_draw_image(
-                    current_text_list,
-                    document.getElementById("width_input_generate").valueAsNumber || 0
-                )[0]
->>>>>>> parent of 70b2ec4 (Made better v1 (#11))
             );
+
+            textures_offset_list_and_locations["groups"][i] = group_texture_tmp[2];
+
+            group_texture_tmp[0].group_name_ye = i;
+
+            real_final_textures_list.push(group_texture_tmp[0]);
         }
     }
 
@@ -1224,18 +1198,9 @@ async function generate_final_image() {
         real_final_textures_list,
         document.getElementById("width_input_generate").valueAsNumber || 0
     );
-<<<<<<< HEAD
-
-<<<<<<< HEAD
 
     textures_offset_list_and_locations["items"] = out[2];
-=======
-    textures_offset_list_and_locations["items"] = out[2]
->>>>>>> parent of 9df379a (main)
 
-
-=======
->>>>>>> parent of 70b2ec4 (Made better v1 (#11))
     console.log((window.ffff = out));
 
     const canvas = document.getElementById("out_canvas");
@@ -1262,17 +1227,13 @@ function color_append_to_imaged(images) {
     img_max_height = img_max_width = 16000;
 
     out = [];
-    f = new OffscreenCanvas(img_max_width, img_max_height).getContext("2d", {});
+    f = new OffscreenCanvas(img_max_width, img_max_height).getContext("2d", {
+        willReadFrequently: true,
+        alpha: true,
+        antialias: false,
+    });
     for (i in images) {
-<<<<<<< HEAD
-<<<<<<< HEAD
         if (images[i].avg_color) continue;
-
-=======
-        if (images[i].avg_color) continue
->>>>>>> parent of 9df379a (main)
-=======
->>>>>>> parent of 70b2ec4 (Made better v1 (#11))
         obj = images[i];
         f.drawImage(obj, 0, 0);
         colors = [0, 0, 0];
@@ -1294,42 +1255,28 @@ function color_append_to_imaged(images) {
     }
 }
 
-function sort_and_draw_image(image_array_in, width, add_color_data) {
+function sort_and_draw_image(image_array_in, width) {
     image_array = image_array_in.slice();
 
     if (document.getElementById("mergeStuff").checked) {
         combined_parts_included = {};
 
-        for (i in image_array) {
+        for (let i in image_array) {
             obj_tmp = image_array[i];
             if (!obj_tmp.file_obj) continue;
             name_tmp = obj_tmp.file_obj.filename.replace(".png", "");
-<<<<<<< HEAD
-<<<<<<< HEAD
-
             door_upper =
                 (name_tmp.endsWith("_upper") || name_tmp.endsWith("_top")) &&
                 name_tmp.includes("door");
             door_lower =
                 (name_tmp.endsWith("_lower") || name_tmp.endsWith("_bottom")) &&
                 name_tmp.includes("door");
-
-=======
-            door_upper = (name_tmp.endsWith("_upper") || name_tmp.endsWith("_top")) && name_tmp.includes("door");
-            door_lower =
-                (name_tmp.endsWith("_lower") || name_tmp.endsWith("_bottom")) && name_tmp.includes("door");
->>>>>>> parent of 9df379a (main)
-=======
-            door_upper = name_tmp.endsWith("door_upper") || name_tmp.endsWith("door_top");
-            door_lower =
-                name_tmp.endsWith("door_lower") || name_tmp.endsWith("door_bottom");
->>>>>>> parent of 70b2ec4 (Made better v1 (#11))
             if (door_upper || door_lower) {
                 name_tmp_normalized = name_tmp
-                    .replaceAll("door_upper", "")
-                    .replaceAll("door_lower", "")
-                    .replaceAll("door_top", "")
-                    .replaceAll("door_bottom", "");
+                    .replaceAll("_upper", "")
+                    .replaceAll("_lower", "")
+                    .replaceAll("_top", "")
+                    .replaceAll("_bottom", "");
                 opposite_part_name_tmp =
                     name_tmp_normalized + (!door_upper ? "_TOP" : "_BOTTOM");
                 current_parr_name_tmp =
@@ -1366,16 +1313,8 @@ function sort_and_draw_image(image_array_in, width, add_color_data) {
 
                     tmp_out = offscreen_merge_canvas.transferToImageBitmap();
                     // tmp_out.filename
-<<<<<<< HEAD
 
-<<<<<<< HEAD
                     tmp_out.fake_file_name = name_tmp_normalized;
-
-=======
-                    tmp_out.fake_file_name = name_tmp_normalized
->>>>>>> parent of 9df379a (main)
-=======
->>>>>>> parent of 70b2ec4 (Made better v1 (#11))
                     image_array.push(tmp_out);
                 } else {
                     combined_parts_included[current_parr_name_tmp] = i;
@@ -1383,7 +1322,7 @@ function sort_and_draw_image(image_array_in, width, add_color_data) {
             }
         }
     } else {
-        for (i of image_array) i.disabled = false;
+        for (let i of image_array) i.disabled = false;
     }
 
     image_array = image_array.filter((a) => {
@@ -1393,7 +1332,7 @@ function sort_and_draw_image(image_array_in, width, add_color_data) {
     img_max_dimensions = [0, 0];
     img_area_needed = 0;
     img_min_dimensions = [9999999, 9999999];
-    for (i of image_array) {
+    for (let i of image_array) {
         img_max_dimensions[0] = Math.max(img_max_dimensions[0], i.width);
         img_max_dimensions[1] = Math.max(img_max_dimensions[1], i.height);
         img_min_dimensions[0] = Math.min(img_min_dimensions[0], i.width);
@@ -1423,12 +1362,8 @@ function sort_and_draw_image(image_array_in, width, add_color_data) {
     line_width_used_tmp = 0;
     line_offset_top = 0;
 
-<<<<<<< HEAD
-    placed_image_locations = [] // {"loc":[],img_dat:}
+    placed_image_locations = []; // {"loc":[],img_dat:}
 
-
-=======
->>>>>>> parent of 70b2ec4 (Made better v1 (#11))
     for (image of image_array) {
         if (image.width > width - line_width_used_tmp) {
             line_offset_top += line_height_used_temp;
@@ -1439,12 +1374,11 @@ function sort_and_draw_image(image_array_in, width, add_color_data) {
 
         ctx.drawImage(image, line_width_used_tmp, line_offset_top);
 
-<<<<<<< HEAD
-        placed_image_locations.push({"loc":[line_width_used_tmp,line_offset_top,image.width,image.height],"img":image})
+        placed_image_locations.push({
+            loc: [line_width_used_tmp, line_offset_top, image.width, image.height],
+            img: image,
+        });
 
-
-=======
->>>>>>> parent of 70b2ec4 (Made better v1 (#11))
         line_height_used_temp = Math.max(line_height_used_temp, image.height);
         line_width_used_tmp += image.width;
     }
@@ -1452,70 +1386,39 @@ function sort_and_draw_image(image_array_in, width, add_color_data) {
 
     tmp_canvas = new OffscreenCanvas(width, line_offset_top);
 
-    tmp_ctx = tmp_canvas
+    tmp_canvas
         .getContext("2d", {
             willReadFrequently: true,
             alpha: true,
             antialias: false,
         })
-        
-    tmp_ctx.drawImage(offscreen, 0, 0);
+        .drawImage(offscreen, 0, 0);
 
     // console.log(placed_image_locations)
 
-    out_bmp = tmp_canvas.transferToImageBitmap()
-
-    if (add_color_data) {
-        colors = [0, 0, 0];
-        px_data = tmp_ctx.getImageData(0, 0, width, line_offset_top).data;
-        pixels_in_use = 0;
-        for (color_ind = 0; color_ind < px_data.length; color_ind += 4) {
-            if (px_data[color_ind + 3] == 0) continue;
-            colors[0] += px_data[color_ind + 0];
-            colors[1] += px_data[color_ind + 1];
-            colors[2] += px_data[color_ind + 2];
-            pixels_in_use += 1;
-        }
-
-        colors[0] /= pixels_in_use;
-        colors[1] /= pixels_in_use;
-        colors[2] /= pixels_in_use;
-        out_bmp.avg_color = rgb2hsv(colors[0], colors[1], colors[2])
-    }
-
-    return [out_bmp, [line_offset_top, width],placed_image_locations];
+    return [
+        tmp_canvas.transferToImageBitmap(),
+        [line_offset_top, width],
+        placed_image_locations,
+    ];
 }
 
-
-
-function get_image_from_loc(x,y) {
-    hovered_img = null
+function get_image_from_loc(x, y) {
+    hovered_img = null;
     for (i of textures_offset_list_and_locations["items"]) {
-        if ((i.loc[0] <= x && i.loc[1] <= y) && ( (i.loc[0]+i.loc[2]) > x && (i.loc[1] + i.loc[3]) > y)) {
-            hovered_img = i
-            break;
-        }
-    }
-
-
-    return [tmp_canvas.transferToImageBitmap(), [line_offset_top, width]];
-}
-
-<<<<<<< HEAD
-
-
-function get_image_from_loc(x,y) {
-    hovered_img = null
-    for (i of textures_offset_list_and_locations["items"]) {
-        if ((i.loc[0] <= x && i.loc[1] <= y) && ( (i.loc[0]+i.loc[2]) > x && (i.loc[1] + i.loc[3]) > y)) {
-            hovered_img = i
+        if (
+            i.loc[0] <= x &&
+            i.loc[1] <= y &&
+            i.loc[0] + i.loc[2] > x &&
+            i.loc[1] + i.loc[3] > y
+        ) {
+            hovered_img = i;
             break;
         }
     }
 
     if (hovered_img != null) {
         if (hovered_img.img.group_name_ye) {
-<<<<<<< HEAD
             x -= hovered_img.loc[0];
             y -= hovered_img.loc[1];
             for (i of textures_offset_list_and_locations["groups"][
@@ -1528,96 +1431,44 @@ function get_image_from_loc(x,y) {
                     i.loc[1] + i.loc[3] > y
                 ) {
                     hovered_img = i;
-
-=======
-            x -= hovered_img.loc[0]
-            y -= hovered_img.loc[1]
-            for (i of textures_offset_list_and_locations["groups"][hovered_img.img.group_name_ye]) {
-                if ((i.loc[0] <= x && i.loc[1] <= y) && ( (i.loc[0]+i.loc[2]) > x && (i.loc[1] + i.loc[3]) > y)) {
-                    hovered_img = i
->>>>>>> parent of 9df379a (main)
                     break;
                 }
             }
         }
     }
-<<<<<<< HEAD
-
     return hovered_img;
-=======
-    return hovered_img
->>>>>>> parent of 9df379a (main)
 }
 
-function hover_canvas(event,click) {
-    if (!click && !document.getElementById("hover_update_on_move" ).checked) return
+function hover_canvas(event, click) {
+    if (!click && !document.getElementById("hover_update_on_move").checked) return;
     // console.log(performance.now())
-    x = event.clientX
-    y = event.clientY
+    x = event.clientX;
+    y = event.clientY;
 
-    rect = event.target.getBoundingClientRect()
+    rect = event.target.getBoundingClientRect();
 
-    x -= rect.x
-    y -= rect.y
+    x -= rect.x;
+    y -= rect.y;
 
-    x /= rect.width
-    y /= rect.height
+    x /= rect.width;
+    y /= rect.height;
 
-    x *= event.target.width
-    y *= event.target.height
+    x *= event.target.width;
+    y *= event.target.height;
 
     // console.log(get_image_from_loc(x,y).img.file_obj.filename)
     // console.log(performance.now())
 
-    img_obj = get_image_from_loc(x,y)?.img
+    img_obj = get_image_from_loc(x, y)?.img;
 
-    img_name = img_obj?.file_obj?.filename || img_obj?.fake_file_name
+    img_name = img_obj?.file_obj?.filename || img_obj?.fake_file_name;
 
-<<<<<<< HEAD
     if (!document.getElementById("hover_full_name").checked)
         img_name = img_name?.split("/")?.at(-1)?.replaceAll(".png", "");
 
     document.getElementById("hovered_output").innerText = img_name || "N/A";
-
 }
-=======
-    if (!document.getElementById("hover_full_name").checked) img_name = img_name?.split("/")?.at(-1)?.replaceAll(".png","")
-    
-    document.getElementById("hovered_output").innerText = img_name || "N/A"
-} 
->>>>>>> parent of 9df379a (main)
 
-function hover_canvas(event,click) {
-    if (!click && !document.getElementById("hover_update_on_move" ).checked) return
-    // console.log(performance.now())
-    x = event.clientX
-    y = event.clientY
-
-    rect = event.target.getBoundingClientRect()
-
-    x -= rect.x
-    y -= rect.y
-
-    x /= rect.width
-    y /= rect.height
-
-    x *= event.target.width
-    y *= event.target.height
-
-    // console.log(get_image_from_loc(x,y).img.file_obj.filename)
-    // console.log(performance.now())
-
-    img_obj = get_image_from_loc(x,y)?.img
-
-    img_name = img_obj?.file_obj?.filename || img_obj?.fake_file_name
-
-    if (!document.getElementById("hover_full_name").checked) img_name = img_name?.split("/")?.at(-1)?.replaceAll(".png","")
-    
-    document.getElementById("hovered_output").innerText = img_name || "N/A"
-} 
-
-=======
->>>>>>> parent of 70b2ec4 (Made better v1 (#11))
 // imageWorker=null;
 // function sort_and_draw_image(image_array) {
 //     if (imageWorker == null)
@@ -1757,8 +1608,14 @@ function toggle_all_groups(checked) {
         .querySelectorAll(".switch > input[type=checkbox]")
         .forEach(function (currentValue) {
             currentValue.checked = checked;
-            group_selected(currentValue);
+            group_selected(currentValue, true);
         });
+
+    generate_selected_textures_list();
+    search_user_input(last_user_inputStringThing);
+
+    document.getElementById("counterTotal").innerText =
+        "(" + search_selected_items.length + ") " + "Total Textures:";
 }
 
 function toggle_all_searched() {
@@ -1785,24 +1642,12 @@ function copyText() {
         tmp_name = get_just_file_name(i).replaceAll(".png", "");
         if (tmp_name.startsWith("._")) continue;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-
         door_upper =
             (tmp_name.endsWith("_upper") || tmp_name.endsWith("_top")) &&
             tmp_name.includes("door");
         door_lower =
             (tmp_name.endsWith("_lower") || tmp_name.endsWith("_bottom")) &&
             tmp_name.includes("door");
-=======
-        door_upper = (tmp_name.endsWith("_upper") || tmp_name.endsWith("_top")) && tmp_name.includes("door");
-        door_lower = (tmp_name.endsWith("_lower") || tmp_name.endsWith("_bottom")) && tmp_name.includes("door");
->>>>>>> parent of 9df379a (main)
-
-=======
-        door_upper = tmp_name.endsWith("door_upper") || tmp_name.endsWith("door_top");
-        door_lower = tmp_name.endsWith("door_lower") || tmp_name.endsWith("door_bottom");
->>>>>>> parent of 70b2ec4 (Made better v1 (#11))
 
         if (door_upper || door_lower) {
             door_generalized = tmp_name
