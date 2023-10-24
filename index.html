@@ -17,11 +17,7 @@
                     />
                     Upload resource pack
                 </h1>
-                <input
-                    type="file"
-                    accept="application/x-zip-compressed"
-                    id="input_main_upload"
-                />
+                <input type="file" accept="application/x-zip-compressed" id="input_main_upload" />
             </div>
 
             <div class="InfoCards">
@@ -33,10 +29,7 @@
 
                         <p class="desc">You can press Escape to get back a page.</p>
 
-                        <a
-                            class="action"
-                            onclick="document.getElementById('input_main_upload').click()"
-                        >
+                        <a class="action" onclick="document.getElementById('input_main_upload').click()">
                             Start here
                             <span aria-hidden="true"> → </span>
                         </a>
@@ -50,10 +43,9 @@
                         </a>
 
                         <p class="desc">
-                            This tool is catered towards Minecraft pack artists that
-                            showcase their pack or works on a social media platform on a
-                            background or those that reference a mc pack in the form of a
-                            sprite sheet! Link to the repository here:
+                            This tool is catered towards Minecraft pack artists that showcase their pack or
+                            works on a social media platform on a background or those that reference a mc pack
+                            in the form of a sprite sheet! Link to the repository here:
                             <a
                                 href="https://github.com/eyes-eyes/mcPackSpriteSheetGenerator"
                                 style="text-decoration: underline"
@@ -62,10 +54,7 @@
                             >
                         </p>
 
-                        <a
-                            class="action"
-                            onclick="document.getElementById('input_main_upload').click()"
-                        >
+                        <a class="action" onclick="document.getElementById('input_main_upload').click()">
                             Start here
                             <span aria-hidden="true"> → </span>
                         </a>
@@ -79,17 +68,13 @@
                         </a>
 
                         <p class="desc">
-                            Can copy text of textures with merging door top/upper &
-                            bottom/lower into doors.
+                            Can copy text of textures with merging door top/upper & bottom/lower into doors.
                             <br />Can showcase textures by:
                             <li>color</li>
                             <li>height</li>
                         </p>
 
-                        <a
-                            class="action"
-                            onclick="document.getElementById('input_main_upload').click()"
-                        >
+                        <a class="action" onclick="document.getElementById('input_main_upload').click()">
                             Start here
                             <span aria-hidden="true"> → </span>
                         </a>
@@ -102,12 +87,7 @@
             <section>
                 <div class="top_bar_thingy">
                     <button
-                        style="
-                            left: 5%;
-                            top: 50%;
-                            position: absolute;
-                            transform: translate(0px, -50%);
-                        "
+                        style="left: 5%; top: 50%; position: absolute; transform: translate(0px, -50%)"
                         onclick="back_button()"
                     >
                         &leftarrow; (Esc)
@@ -444,10 +424,7 @@
                         onclick="hover_canvas(event,true)"
                     >
                     </canvas>
-                    <image
-                        src="images/ILikeSharingCat.png"
-                        id="I_like_sharing_cat_loading"
-                    ></image>
+                    <image src="images/ILikeSharingCat.png" id="I_like_sharing_cat_loading"></image>
                 </div>
             </section>
 
@@ -480,11 +457,7 @@
                         </div>
 
                         <div>
-                            <button
-                                class="copy"
-                                id="copy_image"
-                                onclick="copy_image_button_clicked()"
-                            >
+                            <button class="copy" id="copy_image" onclick="copy_image_button_clicked()">
                                 <span
                                     data-text-end="Copied!"
                                     data-text-initial="Copy to image clipboard"
@@ -536,9 +509,7 @@
                             </button>
                         </div>
 
-                        <button class="copyText" id="copyText" onclick="copyText()">
-                            Copy Text
-                        </button>
+                        <button class="copyText" id="copyText" onclick="copyText()">Copy Text</button>
                     </div>
                 </div>
             </section>
@@ -564,11 +535,7 @@
                         oninput="document.getElementById('canvasSpriteSheets').style.backgroundColor = this.value"
                     /><br />
 
-                    <input
-                        type="checkbox"
-                        name="export_preview_color"
-                        id="export_preview_color"
-                    />
+                    <input type="checkbox" name="export_preview_color" id="export_preview_color" />
                     <label for="export_preview_color">Export with color</label>
                 </div>
 
@@ -680,11 +647,7 @@
                             </div>
 
                             <div>
-                                <input
-                                    type="checkbox"
-                                    name="hover_full_name"
-                                    id="hover_full_name"
-                                />
+                                <input type="checkbox" name="hover_full_name" id="hover_full_name" />
                                 <label for="hover_full_name">file path</label>
                             </div>
                         </div>
@@ -703,42 +666,41 @@
         // COPY THIS FILE DIRECTLY INTO THE HTML, this is left for syntax hylighting!!!!!!
         // PLEASE DO NOT USE THIS FILE EXPECTING UPDATES
         unfinished_objects = 0;
-
+        
         onmessage = (e) => {
             if (e.data["request"] == "handle_new_image") {
                 unfinished_objects += 1
-                try {
-                    createImageBitmap(e.data["blob"]).then((bitmap) => {
-                    
+                createImageBitmap(e.data["blob"]).then((bitmap) => {
+                    try {
                         bitmap.id_processing = e.data["index"]
                         // output.push(bitmap)
                         color_img = color_append_to_image(bitmap)
                         unfinished_objects -= 1
-
+        
                         postMessage({"request":"handle_new_image","data":bitmap,"index": e.data["index"], "color": color_img})
-                    
-                    }).catch(() => {
-                        postMessage({"request":"handle_new_image","index": e.data["index"],"error":+e.message})
-                    }) 
-                } catch (e) {
-                    postMessage({"request":"handle_new_image","index": e.data["index"],"error":+e.message})
-                }
+                    } catch (err) {
+                        postMessage({"request":"handle_new_image","index": e?.data?.["index"] || 0,"error":+err.stack.toString() || "UNK"})
+                    }
+                }).catch((err) => {
+                    postMessage({"request":"handle_new_image","index": e?.data?.["index"],"error":+err.stack.toString() || "UNK"})
+                }) 
+                
             } 
         };
-
+        
         img_max_height = img_max_width = 16000;
         f = new OffscreenCanvas(img_max_width, img_max_height).getContext("2d", {
             willReadFrequently: true,
             alpha: true,
             antialias: false,
         });
-
+        
         function color_append_to_image(image) {
             
-
+        
             out = [];
             
-
+        
             if (image.avg_color) return
             obj = image;
             f.drawImage(obj, 0, 0);
@@ -752,14 +714,14 @@
                 colors[2] += px_data[color_ind + 2];
                 pixels_in_use += 1;
             }
-
+        
             colors[0] /= pixels_in_use;
             colors[1] /= pixels_in_use;
             colors[2] /= pixels_in_use;
             // console.log(colors)
             return image.avg_color = rgb2hsv(colors[0], colors[1], colors[2]);
         }
-
+        
         function rgb2hsv(r, g, b) {
             let v = Math.max(r, g, b),
                 c = v - Math.min(r, g, b);

@@ -6,22 +6,21 @@ unfinished_objects = 0;
 onmessage = (e) => {
     if (e.data["request"] == "handle_new_image") {
         unfinished_objects += 1
-        try {
-            createImageBitmap(e.data["blob"]).then((bitmap) => {
-            
+        createImageBitmap(e.data["blob"]).then((bitmap) => {
+            try {
                 bitmap.id_processing = e.data["index"]
                 // output.push(bitmap)
                 color_img = color_append_to_image(bitmap)
                 unfinished_objects -= 1
 
                 postMessage({"request":"handle_new_image","data":bitmap,"index": e.data["index"], "color": color_img})
-            
-            }).catch(() => {
-                postMessage({"request":"handle_new_image","index": e.data["index"],"error":+e.message})
-            }) 
-        } catch (e) {
-            postMessage({"request":"handle_new_image","index": e.data["index"],"error":+e.message})
-        }
+            } catch (err) {
+                postMessage({"request":"handle_new_image","index": e?.data?.["index"] || 0,"error":+err.stack.toString() || "UNK"})
+            }
+        }).catch((err) => {
+            postMessage({"request":"handle_new_image","index": e?.data?.["index"],"error":+err.stack.toString() || "UNK"})
+        }) 
+        
     } 
 };
 
