@@ -254,14 +254,14 @@ const java_mc_groups = {
     ores: {
         "^minecraft": {
             "^block": {
-                "Coal Ore": null,
-                "Iron Ore": null,
-                "Gold Ore": null,
+                "Coal Ore !deepslate": null,
+                "Iron Ore !!deepslate": null,
+                "Gold Ore !!deepslate": null,
                 "Redstone Ore !torch": null,
-                "Emerald Ore": null,
-                "Lapis Lazuli Ore": null,
-                "Diamond Ore": null,
-                "Copper Ore": null,
+                "Emerald Ore !!deepslate": null,
+                "Lapis Lazuli Ore !deepslate": null,
+                "Diamond Ore !!deepslate": null,
+                "Copper Ore !!deepslate": null,
                 "Deepslate Coal Ore": null,
                 "Deepslate Iron Ore": null,
                 "Deepslate Gold Ore": null,
