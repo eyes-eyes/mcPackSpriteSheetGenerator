@@ -1,6 +1,7 @@
-function error_occurred(err, file, line, col, error) {
+function error_occurred(err) {
+    // console.log(err)
     alert(
-        `${line}:${col}\nError occurred :(, we don't know what type but heres the trace for us, please send!\n\n${err.stack.toString()}`
+        `${err.lineno}:${err.colno}\nError occurred :(, we don't know what type but heres the trace for us, please send!\n\n${err.error.stack.toString()}`
     );
 }
 
@@ -1623,6 +1624,8 @@ function download_button_clicked() {
 }
 
 function copy_image_button_clicked() {
+
+    // AudioDestinationNodeasdad();
     const canvas = document.getElementById("out_canvas");
 
     scale_up_amt =
