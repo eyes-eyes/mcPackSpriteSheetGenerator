@@ -15,10 +15,12 @@ onmessage = (e) => {
 
                 postMessage({"request":"handle_new_image","data":bitmap,"index": e.data["index"], "color": color_img})
             } catch (err) {
-                postMessage({"request":"handle_new_image","index": e?.data?.["index"] || 0,"error":+err.stack.toString() || "UNK"})
+                unfinished_objects -= 1
+                postMessage({"request":"handle_new_image","index": e?.data?.["index"] || 0,"error":err.stack.toString() || "UNK"})
             }
         }).catch((err) => {
-            postMessage({"request":"handle_new_image","index": e?.data?.["index"],"error":+err.stack.toString() || "UNK"})
+            unfinished_objects -= 1
+            postMessage({"request":"handle_new_image","index": e?.data?.["index"],"error":err.stack.toString() || "UNK"})
         }) 
         
     } 

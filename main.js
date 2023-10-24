@@ -2,10 +2,14 @@
 //HI
 //
 //
+function error_occored(err, file, line, col, error) {
+    alert(
+        `${line}:${col}\nError occored :(, we dont know what type but heres the trace for us, please send!\n\n${err.stack.toString()}`
+    );
+}
 
-
-
-
+window.addEventListener("error", error_occored);
+window.addEventListener("unhandledrejection", error_occored);
 
 let file_object_raw = null;
 let file_object_zip = null;
@@ -1138,7 +1142,7 @@ function setup_processing_stage() {
         textures_list_final = search_selected_items;
 
         if (e.data["request"] == "handle_new_image") {
-            console.log(e);
+            // console.log(e);
             if (e.data["error"]) {
                 alert(
                     "error while processing image:" +
