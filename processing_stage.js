@@ -16,9 +16,9 @@ onmessage = (e) => {
 
                 postMessage({"request":"handle_new_image","data":bitmap,"index": e.data["index"], "color": color_img})
             
-            }).catch(e) {
+            }).catch(() => {
                 postMessage({"request":"handle_new_image","index": e.data["index"],"error":+e.message})
-            }
+            }) 
         } catch (e) {
             postMessage({"request":"handle_new_image","index": e.data["index"],"error":+e.message})
         }

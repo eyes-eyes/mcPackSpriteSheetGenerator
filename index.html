@@ -709,21 +709,21 @@
                 unfinished_objects += 1
                 try {
                     createImageBitmap(e.data["blob"]).then((bitmap) => {
-
+                    
                         bitmap.id_processing = e.data["index"]
                         // output.push(bitmap)
                         color_img = color_append_to_image(bitmap)
                         unfinished_objects -= 1
 
                         postMessage({"request":"handle_new_image","data":bitmap,"index": e.data["index"], "color": color_img})
-
-                    }).catch(e) {
+                    
+                    }).catch(() => {
                         postMessage({"request":"handle_new_image","index": e.data["index"],"error":+e.message})
-                    }
+                    }) 
                 } catch (e) {
                     postMessage({"request":"handle_new_image","index": e.data["index"],"error":+e.message})
                 }
-            }
+            } 
         };
 
         img_max_height = img_max_width = 16000;
@@ -734,10 +734,10 @@
         });
 
         function color_append_to_image(image) {
-
+            
 
             out = [];
-
+            
 
             if (image.avg_color) return
             obj = image;
