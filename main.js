@@ -77,7 +77,7 @@ const java_mc_groups = {
 
     woodVariants: {
         "^minecraft": {
-            "^block": {
+            "^block !troll": {
                 "!door": {
                     oak: null,
                     spruce: null,
