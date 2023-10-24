@@ -260,7 +260,7 @@ const java_mc_groups = {
                 "Redstone Ore !torch": null,
                 "Emerald Ore !deepslate": null,
                 "Lapis Lazuli Ore !deepslate": null,
-                "Diamond Ore !!deepslate": null,
+                "Diamond Ore !deepslate": null,
                 "Copper Ore !deepslate": null,
                 "Deepslate Coal Ore": null,
                 "Deepslate Iron Ore": null,
