@@ -666,7 +666,7 @@ async function search_user_input(search_string) {
     //         current_name.endsWith(".png") &&
     //         !get_just_file_name(zip_orig_path_objects[i]).startsWith(".")
     //     ) {
-    //         current_eligablility = true;
+    //         current_eligibility = true;
     //         for (o in search_array) {
     //             searched_level_path =
     //                 search_array[o][0] == "^" ? current_long_name : current_name;
@@ -676,15 +676,15 @@ async function search_user_input(search_string) {
     //                     : search_array[o];
     //             if (search_string_current[0] == "!") {
     //                 if (searched_level_path.includes(search_string_current.slice(1))) {
-    //                     current_eligablility = false;
+    //                     current_eligibility = false;
     //                 }
     //             } else {
     //                 if (!searched_level_path.includes(search_string_current)) {
-    //                     current_eligablility = false;
+    //                     current_eligibility = false;
     //                 }
     //             }
     //         }
-    //         if (current_eligablility) {
+    //         if (current_eligibility) {
     //             output.push(zip_orig_path_objects[i]);
     //         }
     // }
@@ -811,7 +811,7 @@ function group_selected(obj, dont_update_search) {
     //             current_name.endsWith(".png") &&
     //             !get_just_file_name(zip_orig_path_objects[i]).startsWith(".")
     //         ) {
-    //             current_eligablility = true;
+    //             current_eligibility = true;
     //             for (o in search_array) {
     //                 searched_level_path =
     //                     search_array[o][0] == "^"
@@ -828,17 +828,17 @@ function group_selected(obj, dont_update_search) {
     //                             search_string_current.slice(1)
     //                         )
     //                     ) {
-    //                         current_eligablility = false;
+    //                         current_eligibility = false;
     //                     }
     //                 } else {
     //                     if (
     //                         !searched_level_path.includes(search_string_current)
     //                     ) {
-    //                         current_eligablility = false;
+    //                         current_eligibility = false;
     //                     }
     //                 }
     //             }
-    //             if (current_eligablility) {
+    //             if (current_eligibility) {
     //                 output.push(zip_orig_path_objects[i]);
     //             }
     //         }
@@ -894,7 +894,7 @@ function group_search_collon_d(group_add_remove, obj_to_search) {
             current_name = get_just_file_name(obj_to_search[i]);
             current_long_name = obj_to_search[i].filename; //get_just_file_name(zip_orig_path_objects[i]);
             if (current_name.endsWith(".png") && !get_just_file_name(obj_to_search[i]).startsWith(".")) {
-                current_eligablility = true;
+                current_eligibility = true;
                 for (o in search_array) {
                     searched_level_path = search_array[o][0] == "^" ? current_long_name : current_name;
                     search_string_current =
@@ -902,15 +902,15 @@ function group_search_collon_d(group_add_remove, obj_to_search) {
 
                     if (search_string_current[0] == "!") {
                         if (searched_level_path.includes(search_string_current.slice(1))) {
-                            current_eligablility = false;
+                            current_eligibility = false;
                         }
                     } else {
                         if (!searched_level_path.includes(search_string_current)) {
-                            current_eligablility = false;
+                            current_eligibility = false;
                         }
                     }
                 }
-                if (current_eligablility) {
+                if (current_eligibility) {
                     output.unshift(obj_to_search[i]);
                 }
             }
@@ -972,7 +972,7 @@ function minecraft_name_to_html(name) {
 }
 //helper function
 
-function install_event_listners() {
+function install_event_listeners() {
     window.addEventListener(
         "dragover",
         (ev) => {
@@ -1620,7 +1620,7 @@ function back_to_edit_page() {
     document.getElementById("edit_page").style.display = "block";
 }
 
-window.addEventListener("load", install_event_listners);
+window.addEventListener("load", install_event_listeners);
 
 function toggle_all_groups(checked) {
     document.querySelectorAll(".switch > input[type=checkbox]").forEach(function (currentValue) {
