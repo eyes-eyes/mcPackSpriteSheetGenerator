@@ -273,6 +273,7 @@ const java_mc_groups = {
                 "Nether Gold Ore": null,
                 "Quartz Ore": null,
                 "Ancient Debris": null,
+                "Block coal": null,
                 "Block Iron": null,
                 "Block Gold": null,
                 "Block Redstone": null,
