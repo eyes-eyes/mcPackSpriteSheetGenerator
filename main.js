@@ -94,7 +94,7 @@ const java_mc_groups = {
 
     doors: {
         "^minecraft": {
-            "^block": {
+            "^block !tip": {
                 door: {
                     upper: null,
                     lower: null,
