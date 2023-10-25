@@ -125,7 +125,7 @@ const java_mc_groups = {
     sediments: {
         "^minecraft": {
             "^block": {
-                "grass block !sea !tallgrass !tall": null,
+                "grass block !sea !tallgrass !tall !model": null,
                 Mycelium: null,
                 Podzol: null,
                 dirt: null,
