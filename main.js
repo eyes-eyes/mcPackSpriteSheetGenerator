@@ -1,8 +1,14 @@
 function error_occurred(err) {
-    // console.log(err)
-    alert(
-        `${err.lineno}:${err.colno}\nError occurred :(, we don't know what type but heres the trace for us, please send!\n\n${err.error.stack.toString()}`
-    );
+    try {
+        // console.log(err)
+        alert(
+            `${err.lineno}:${
+                err.colno
+            }\nError occurred :(, we don't know what type but heres the trace for us, please send!\n\n${err.error.stack.toString()}`
+        );
+    } catch (catchErr) {
+        console.error("Error handling error:", catchErr);
+    }
 }
 
 window.addEventListener("error", error_occurred);
@@ -1599,7 +1605,6 @@ function download_button_clicked() {
 }
 
 function copy_image_button_clicked() {
-
     // AudioDestinationNodeasdad();
     const canvas = document.getElementById("out_canvas");
 
