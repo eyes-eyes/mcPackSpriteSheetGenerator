@@ -925,12 +925,12 @@ button:focus {
     font-weight: 600;
 }
 
-.ZoomOptions h2 {
+.Formatting h2 {
     margin: 0;
     padding: 0;
 }
 
-.ZoomOptions {
+.Formatting {
     margin-top:10px;
     margin-bottom: 10px;
 }

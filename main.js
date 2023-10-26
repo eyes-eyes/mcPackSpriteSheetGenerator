@@ -1547,6 +1547,11 @@ function hover_canvas(event, click) {
     document.getElementById("hovered_output").innerText = img_name || "N/A";
 }
 
+//!zoom canvas function!!
+function zoom_sprite_sheet() {
+    let offscreen_zooming_canvas = new OffscreenCanvas();
+}
+
 // imageWorker=null;
 // function sort_and_draw_image(image_array) {
 //     if (imageWorker == null)
