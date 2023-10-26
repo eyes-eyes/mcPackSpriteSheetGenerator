@@ -1,6 +1,6 @@
 function error_occurred(err, file, line, col, error) {
     alert(
-        `${line}:${col}\nError occurred :(, we don't know what type but heres the trace for us, please send!\n\n${err.stack.toString()}`
+        `${line}:${col}\nError occurred :(, we don't know what type but heres the trace for us, please send!\n\n${err.error.stack.toString()}`
     );
 }
 
