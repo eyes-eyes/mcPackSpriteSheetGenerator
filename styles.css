@@ -1176,7 +1176,7 @@ button:focus {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #fff;
-    padding: 10px;
+    padding: 15px;
     border: 1px solid #ccc;
 }
 
@@ -1190,7 +1190,9 @@ button:focus {
 
 .scrollable_modal {
     height: 90vmin;
+    width: 90vmin;
     overflow-y: auto;
+    overflow-x: auto;
 }
 
 .CleanUp {
