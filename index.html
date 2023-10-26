@@ -657,6 +657,23 @@
                     </form>
                 </div>
             </div>
+            <div class="ZoomParam">
+                <!-- <h2>Zoom Square</h2>
+                <input type="number" name="sideLength" id="Zooming" />
+                <br>
+                <input type="checkbox" name="ConsentZoom" id="yesZoom" oninput="" />
+                <label for="ConsentZoom">Toggle Zoom</label> -->
+                <button id="openModalBtn" onclick="Zooming_sprite_sheet()">Open Zoom</button>
+
+                <div id="canvasModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" id="closeModalBtn">&times;</span>
+                        <div class="scrollable_modal">
+                            <canvas id="modalCanvas"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </body>
     <script type="text/javascript" src="librarys/zip-full.min.js"></script>
