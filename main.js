@@ -1,14 +1,22 @@
 function error_occurred(err) {
-    try {
-        // console.log(err)
-        alert(
-            `${err.lineno}:${
-                err.colno
-            }\nError occurred :(, we don't know what type but heres the trace for us, please send!\n\n${err.error.stack.toString()}`
-        );
-    } catch (catchErr) {
-        console.error("Error handling error:", catchErr);
+    // console.log(err)
+    let errorInfo = `${err.lineno}:${
+        err.colno
+    }\nError occurred :(, we don't know what type but heres the trace for us, please send!\n\n${err.error.stack.toString()}`;
+
+    if (err.error && err.error.stack) {
+        errorInfo += err.error.stack.toString();
+    } else {
+        errorInfo += " No stack trace available."
     }
+
+    alert(errorInfo);
+    
+    // alert(
+    //     `${err.lineno}:${
+    //         err.colno
+    //     }\nError occurred :(, we don't know what type but heres the trace for us, please send!\n\n${err.error.stack.toString()}`
+    // );
 }
 
 window.addEventListener("error", error_occurred);
@@ -1606,51 +1614,7 @@ function download_button_clicked() {
 
 function copy_image_button_clicked() {
     // AudioDestinationNodeasdad();
-    const canvas = document.getElementById("out_canvas");
-
-    scale_up_amt =
-        1 +
-        document.getElementById("scale_01").checked +
-        document.getElementById("scale_02").checked * 4 +
-        document.getElementById("scale_03").checked * 9;
-
-    let offscreen_upscale_canvas = new OffscreenCanvas(
-        canvas.width * scale_up_amt,
-        canvas.height * scale_up_amt
-    );
-    upscale_ctx = offscreen_upscale_canvas.getContext("2d", {
-        willReadFrequently: true,
-        alpha: true,
-        antialias: false,
-    });
-    if (document.getElementById("export_preview_color").checked) {
-        upscale_ctx.fillStyle = document.getElementById("preview_background_color_input").value;
-        upscale_ctx.fillRect(0, 0, canvas.width * scale_up_amt, canvas.height * scale_up_amt);
-    }
-    upscale_ctx.imageSmoothingEnabled = false;
-    upscale_ctx.drawImage(canvas, 0, 0, canvas.width * scale_up_amt, canvas.height * scale_up_amt);
-
-    offscreen_upscale_canvas.convertToBlob().then((blob_D) => {
-        navigator.clipboard.write([
-            new ClipboardItem({
-                "image/png": blob_D,
-            }),
-        ]);
-    });
-}
-
-function back_to_edit_page() {
-    pagination = 1;
-    document.getElementById("main_file_selector_areas").style.display = "none";
-    document.getElementById("main_site_data").style.display = "block";
-    document.getElementById("generate_page").style.display = "none";
-    document.getElementById("edit_page").style.display = "block";
-}
-
-window.addEventListener("load", install_event_listeners);
-
-function toggle_all_groups(checked) {
-    document.querySelectorAll(".switch > input[type=checkbox]").forEach(function (currentValue) {
+    electorAll(".switch > input[type=checkbox]").forEach(function (currentValue) {
         currentValue.checked = checked;
         group_selected(currentValue, true);
     });
