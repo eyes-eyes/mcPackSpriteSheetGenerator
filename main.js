@@ -410,14 +410,10 @@ const java_mc_groups = {
 document.onkeydown = function (evt) {
     evt = evt || window.event;
     var isEscape = false;
-    var isCopy = false;
-    var copyButton = document.getElementById("copy_image");
     if ("key" in evt) {
         isEscape = evt.key === "Escape" || evt.key === "Esc";
-        isCopy = evt.key === "c";
     } else {
         isEscape = evt.keyCode === 27;
-        isCopy = evt.keyCode === 67;
     }
     if (isEscape) {
         const isNotCombinedKey = !(event.ctrlKey || event.altKey || event.shiftKey);
@@ -428,28 +424,7 @@ document.onkeydown = function (evt) {
         // if (pagination == 2)
         back_button();
     }
-    if (isCopy && pagination == 2) {
-        const isNotCombinedKey = !(event.ctrlKey || event.altKey || event.shiftKey);
-        console.log("CLICKED!!!");
-        // copyButton.contentEditable = true;
-        // copyButton.focus({ focusVisible: true }); // do the thing I sent add the focus  bc idk what else
-        // // document.getElementById("copy_image")
-        copyButton.click();
-        // copyButton.focus({ focusVisible: true });
-        // copyButton.contentEditable = false;
-    }
 };
-
-// document.addEventListener("keyup", function (event) {
-//     // Check if the pressed key is the 'C' key (you can change it to any key you prefer)
-//     var copyButton = document.getElementById("copy_image");
-//     var tooltip = copyButton.querySelector(".tooltip");
-//     if (event.key === "c" || event.key === "C") {
-//         // Hide the tooltip
-//         tooltip.style.opacity = "0";
-//         tooltip.style.visibility = "hidden";
-//     }
-// });
 
 function back_button() {
     switch (pagination) {
