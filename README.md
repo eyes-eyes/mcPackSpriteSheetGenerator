@@ -3,7 +3,7 @@ This is a github page to a website that will automatically merge Minecraft resou
 Check the out the link: https://eyes-eyes.github.io/mcPackSpriteSheetGenerator/
 
 # Credits
-Teamed up with davidawesome on discord (still has not been paid) (I told him I would XD) (:D)
+Teamed up with davidawesome on discord 
 
 Portions of this software are copyright of their respective authors and released under the MIT license:
 Copyright - 2023 Pradeepsaranbishnoi (Pradeep Saran)
