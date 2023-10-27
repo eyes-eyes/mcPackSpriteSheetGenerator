@@ -1124,6 +1124,16 @@ button:focus {
         Helvetica Neue, Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI;
 }
 
+.code-box {
+    margin: 2px;
+    display: inline-block;
+    padding: 2px 4px;
+    border: 1px solid #d4d4d4; /* Light gray border color */
+    border-radius: 4px;
+    font-family: monospace;
+    background-color: #f0f0f0; /* Light gray background color */
+}
+
 .action {
     display: inline-flex;
     margin-top: 1rem;

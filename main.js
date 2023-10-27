@@ -411,22 +411,27 @@ const java_mc_groups = {
 };
 
 document.onkeydown = function (evt) {
+    const isNotCombinedKey = !(event.ctrlKey || event.altKey || event.shiftKey);
     evt = evt || window.event;
     var isEscape = false;
     var isSlash = false;
     if ("key" in evt) {
         isEscape = evt.key === "Escape" || evt.key === "Esc";
+        isSlash = evt.key === "/";
     } else {
         isEscape = evt.keyCode === 27;
+        isSlash = evt.keyCode === 191;
     }
     if (isEscape) {
-        const isNotCombinedKey = !(event.ctrlKey || event.altKey || event.shiftKey);
-        // if ()
-        // if (isNotCombinedKey) {
-        //     back_to_file_selector();
-        // }
-        // if (pagination == 2)
-        back_button();
+        if (isNotCombinedKey) {
+            back_button();
+        }
+    }
+    if (isSlash) {
+        if (isNotCombinedKey) {
+            evt.preventDefault();
+            document.getElementById("searchTerm").focus();
+        }
     }
 };
 
