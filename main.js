@@ -15,6 +15,10 @@ let pack_mcmeta_data = {};
 let pack_version = 0;
 let pagination = 0;
 
+const openModalBtn = document.getElementById("openModalBtn");
+const closeModalBtn = document.getElementById("closeModalBtn");
+const modal = document.getElementById("canvasModal");
+
 search_selected_items = [];
 last_user_inputStringThing = "";
 
@@ -77,7 +81,7 @@ const java_mc_groups = {
 
     woodVariants: {
         "^minecraft": {
-            "^block !troll": {
+            "^block !troll ^!entity": {
                 "!door": {
                     oak: null,
                     spruce: null,
@@ -211,7 +215,7 @@ const java_mc_groups = {
     },
     foods: {
         "^minecraft": {
-            "^item": {
+            "^item !model": {
                 "Cooked Beef": null,
                 "Cooked Salmon": null,
                 Steak: null,
@@ -344,8 +348,8 @@ const java_mc_groups = {
     },
 
     vehicles: {
-        "^item": {
-            "^minecraft ^texture ^!entity Minecart": null,
+        "^minecraft ^texture ^item ^!entity ": {
+            Minecart: null,
             boat: null,
         },
     },
@@ -407,35 +411,29 @@ const java_mc_groups = {
 };
 
 document.onkeydown = function (evt) {
+    const isNotCombinedKey = !(event.ctrlKey || event.altKey || event.shiftKey);
     evt = evt || window.event;
     var isEscape = false;
-    var copyButton = document.getElementById("copy_image");
+    var isSlash = false;
     if ("key" in evt) {
         isEscape = evt.key === "Escape" || evt.key === "Esc";
+        isSlash = evt.key === "/";
     } else {
         isEscape = evt.keyCode === 27;
+        isSlash = evt.keyCode === 191;
     }
     if (isEscape) {
-        const isNotCombinedKey = !(event.ctrlKey || event.altKey || event.shiftKey);
-        // if ()
-        // if (isNotCombinedKey) {
-        //     back_to_file_selector();
-        // }
-        // if (pagination == 2)
-        back_button();
+        if (isNotCombinedKey) {
+            back_button();
+        }
+    }
+    if (isSlash) {
+        if (isNotCombinedKey) {
+            evt.preventDefault();
+            document.getElementById("searchTerm").focus();
+        }
     }
 };
-
-// document.addEventListener("keyup", function (event) {
-//     // Check if the pressed key is the 'C' key (you can change it to any key you prefer)
-//     var copyButton = document.getElementById("copy_image");
-//     var tooltip = copyButton.querySelector(".tooltip");
-//     if (event.key === "c" || event.key === "C") {
-//         // Hide the tooltip
-//         tooltip.style.opacity = "0";
-//         tooltip.style.visibility = "hidden";
-//     }
-// });
 
 function back_button() {
     switch (pagination) {
@@ -1548,9 +1546,73 @@ function hover_canvas(event, click) {
 }
 
 //!zoom canvas function!!
-function zoom_sprite_sheet() {
-    let offscreen_zooming_canvas = new OffscreenCanvas();
+function openModal() {
+    const modal = document.getElementById("canvasModal");
+    modal.style.display = "block";
+
+    const modalCanvas = document.getElementById("modalCanvas");
+    const originalCanvas = document.getElementById("out_canvas");
+
+    const scale_up_amt =
+        1 +
+        document.getElementById("scale_01").checked +
+        document.getElementById("scale_02").checked * 4 +
+        document.getElementById("scale_03").checked * 9;
+
+    const offscreen_upscale_canvas = new OffscreenCanvas(
+        originalCanvas.width * scale_up_amt,
+        originalCanvas.height * scale_up_amt
+    );
+
+    const upscale_ctx = offscreen_upscale_canvas.getContext("2d", {
+        willReadFrequently: true,
+        alpha: true,
+        antialias: false,
+    });
+
+    if (document.getElementById("export_preview_color").checked) {
+        upscale_ctx.fillStyle = document.getElementById("preview_background_color_input").value;
+        upscale_ctx.fillRect(0, 0, offscreen_upscale_canvas.width, offscreen_upscale_canvas.height);
+    }
+
+    upscale_ctx.imageSmoothingEnabled = false;
+
+    upscale_ctx.drawImage(
+        originalCanvas,
+        0,
+        0,
+        originalCanvas.width * scale_up_amt,
+        originalCanvas.height * scale_up_amt
+    );
+
+    modalCanvas.width = offscreen_upscale_canvas.width;
+    modalCanvas.height = offscreen_upscale_canvas.height;
+
+    const modalCtx = modalCanvas.getContext("2d");
+    modalCtx.drawImage(offscreen_upscale_canvas, 0, 0);
 }
+
+function closeModal() {
+    const modal = document.getElementById("canvasModal");
+    modal.style.display = "none";
+}
+
+function initModal() {
+    const openModalBtn = document.getElementById("openModalBtn");
+    const closeModalBtn = document.getElementById("closeModalBtn");
+
+    openModalBtn.addEventListener("click", openModal);
+    closeModalBtn.addEventListener("click", closeModal);
+
+    window.addEventListener("click", (event) => {
+        const modal = document.getElementById("canvasModal");
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
+}
+
+initModal();
 
 // imageWorker=null;
 // function sort_and_draw_image(image_array) {
