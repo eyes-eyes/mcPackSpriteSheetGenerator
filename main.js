@@ -81,7 +81,7 @@ const java_mc_groups = {
 
     woodVariants: {
         "^minecraft": {
-            "^block !troll": {
+            "^block !troll ^!entity": {
                 "!door": {
                     oak: null,
                     spruce: null,
@@ -215,7 +215,7 @@ const java_mc_groups = {
     },
     foods: {
         "^minecraft": {
-            "^item": {
+            "^item !model": {
                 "Cooked Beef": null,
                 "Cooked Salmon": null,
                 Steak: null,
@@ -348,8 +348,8 @@ const java_mc_groups = {
     },
 
     vehicles: {
-        "^item": {
-            "^minecraft ^texture ^!entity Minecart": null,
+        "^minecraft ^texture ^item ^!entity ": {
+            Minecart: null,
             boat: null,
         },
     },
