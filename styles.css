@@ -1176,8 +1176,9 @@ button:focus {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #fff;
-    padding: 15px;
+    padding: 3vmin;
     border: 1px solid #ccc;
+    border-radius: 8px;
 }
 
 .close {

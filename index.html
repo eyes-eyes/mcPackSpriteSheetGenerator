@@ -547,6 +547,19 @@
                         <div class="radio-wrapper">
                             <label class="radio-button">
                                 <input
+                                    id="option3"
+                                    name="radio-group"
+                                    type="radio"
+                                    oninput="generate_final_image()"
+                                />
+                                <span class="radio-checkmark"></span>
+                                <span class="radio-label">User Input</span>
+                            </label>
+                        </div>
+
+                        <div class="radio-wrapper">
+                            <label class="radio-button">
+                                <input
                                     id="option1"
                                     name="radio-group"
                                     type="radio"
@@ -567,19 +580,6 @@
                                 />
                                 <span class="radio-checkmark"></span>
                                 <span class="radio-label">Height</span>
-                            </label>
-                        </div>
-
-                        <div class="radio-wrapper">
-                            <label class="radio-button">
-                                <input
-                                    id="option3"
-                                    name="radio-group"
-                                    type="radio"
-                                    oninput="generate_final_image()"
-                                />
-                                <span class="radio-checkmark"></span>
-                                <span class="radio-label">User Input</span>
                             </label>
                         </div>
                     </div>
@@ -611,6 +611,7 @@
                                 name="mergeStuff"
                                 id="mergeStuff"
                                 oninput="generate_final_image()"
+                                checked=""
                             />
                             <label for="mergeStuff">Merge Doors</label>
                         </div>
@@ -657,23 +658,26 @@
                     </form>
                 </div>
             </div>
-            <div class="ZoomParam">
-                <!-- <h2>Zoom Square</h2>
-                <input type="number" name="sideLength" id="Zooming" />
-                <br>
-                <input type="checkbox" name="ConsentZoom" id="yesZoom" oninput="" />
-                <label for="ConsentZoom">Toggle Zoom</label> -->
-                <button id="openModalBtn" onclick="Zooming_sprite_sheet()">Open Zoom</button>
 
-                <div id="canvasModal" class="modal">
-                    <div class="modal-content">
-                        <span class="close" id="closeModalBtn">&times;</span>
-                        <div class="scrollable_modal">
-                            <canvas id="modalCanvas"></canvas>
+            <section>
+                <div class="ZoomParam">
+                    <!-- <h2>Zoom Square</h2>
+                    <input type="number" name="sideLength" id="Zooming" />
+                    <br>
+                    <input type="checkbox" name="ConsentZoom" id="yesZoom" oninput="" />
+                    <label for="ConsentZoom">Toggle Zoom</label> -->
+                    <button id="openModalBtn">Open Zoom</button>
+
+                    <div id="canvasModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close" id="closeModalBtn">&times;</span>
+                            <div class="scrollable_modal">
+                                <canvas id="modalCanvas"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </section>
     </body>
     <script type="text/javascript" src="librarys/zip-full.min.js"></script>

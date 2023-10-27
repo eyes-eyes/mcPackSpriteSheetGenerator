@@ -413,7 +413,7 @@ const java_mc_groups = {
 document.onkeydown = function (evt) {
     evt = evt || window.event;
     var isEscape = false;
-    var copyButton = document.getElementById("copy_image");
+    var isSlash = false;
     if ("key" in evt) {
         isEscape = evt.key === "Escape" || evt.key === "Esc";
     } else {
@@ -429,17 +429,6 @@ document.onkeydown = function (evt) {
         back_button();
     }
 };
-
-// document.addEventListener("keyup", function (event) {
-//     // Check if the pressed key is the 'C' key (you can change it to any key you prefer)
-//     var copyButton = document.getElementById("copy_image");
-//     var tooltip = copyButton.querySelector(".tooltip");
-//     if (event.key === "c" || event.key === "C") {
-//         // Hide the tooltip
-//         tooltip.style.opacity = "0";
-//         tooltip.style.visibility = "hidden";
-//     }
-// });
 
 function back_button() {
     switch (pagination) {
