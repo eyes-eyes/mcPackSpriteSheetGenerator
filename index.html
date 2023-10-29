@@ -8,81 +8,98 @@
     </head>
     <body>
         <section id="main_file_selector_areas">
-            <div class="file_hover_popup" id="file_hover_popup"></div>
-            <div class="main_file_selector">
-                <h1>
-                    <link
-                        rel="stylesheet"
-                        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-                    />
-                    Upload resource pack
-                </h1>
-                <input type="file" accept="application/x-zip-compressed" id="input_main_upload" />
-            </div>
+            <div class="main_area_flex">
+                <div class="file_hover_popup" id="file_hover_popup"></div>
+                <div class="main_file_selector">
+                    <h1>
+                        <link
+                            rel="stylesheet"
+                            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+                        />
+                        Upload resource pack
+                    </h1>
+                    <input type="file" accept="application/x-zip-compressed" id="input_main_upload" />
+                </div>
 
-            <div class="InfoCards">
-                <div class="card">
-                    <div class="content">
-                        <a href="#">
-                            <span class="title"> Short Cuts </span>
-                        </a>
+                <div class="InfoCards">
+                    <div class="card">
+                        <div class="content">
+                            <a href="#">
+                                <span class="title"> Short Cuts </span>
+                            </a>
 
-                        <p class="desc">
-                            Press <span class="code-box">Esc</span> to get back a page. <br />Press
-                            <span class="code-box">/</span> to focus onto search. <br /><b
-                                >PACK MUST BE ZIPPED!!!</b
-                            >
-                        </p>
+                            <p class="desc">
+                                Press <span class="code-box">Esc</span> to get back a page. <br />Press
+                                <span class="code-box">/</span> to focus onto search. <br /><b
+                                    >PACK MUST BE ZIPPED!!!</b
+                                >
+                            </p>
 
-                        <a class="action" onclick="document.getElementById('input_main_upload').click()">
-                            Start here
-                            <span aria-hidden="true"> → </span>
-                        </a>
+                            <a class="action" onclick="document.getElementById('input_main_upload').click()">
+                                Start here
+                                <span aria-hidden="true"> → </span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="content">
+                            <a href="#">
+                                <span class="title"> Our Audience </span>
+                            </a>
+
+                            <p class="desc">
+                                Catered towards Minecraft pack artists that showcase their pack/works on a
+                                social media platform on a background OR those that reference a mc pack in the
+                                form of a sprite sheet!<br />Link to the repository here:
+                                <a
+                                    href="https://github.com/eyes-eyes/mcPackSpriteSheetGenerator"
+                                    style="text-decoration: underline"
+                                    ;
+                                    >https://github.com/eyes-eyes/mcPackSpriteSheetGenerator</a
+                                >
+                            </p>
+
+                            <a class="action" onclick="document.getElementById('input_main_upload').click()">
+                                Start here
+                                <span aria-hidden="true"> → </span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="content">
+                            <a href="#">
+                                <span class="title"> Features </span>
+                            </a>
+
+                            <p class="desc">
+                                Can copy text of textures with merging door top/upper & bottom/lower into
+                                doors.
+                                <br />Works across <b>ALL releases</b>. <br />Can showcase textures by:
+                                <li>color</li>
+                                <li>height</li>
+                            </p>
+
+                            <a class="action" onclick="document.getElementById('input_main_upload').click()">
+                                Start here
+                                <span aria-hidden="true"> → </span>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="content">
-                        <a href="#">
-                            <span class="title"> Our Audience </span>
-                        </a>
-
-                        <p class="desc">
-                            Catered towards Minecraft pack artists that showcase their pack/works on a social
-                            media platform on a background OR those that reference a mc pack in the form of a
-                            sprite sheet!<br />Link to the repository here:
-                            <a
-                                href="https://github.com/eyes-eyes/mcPackSpriteSheetGenerator"
-                                style="text-decoration: underline"
-                                ;
-                                >https://github.com/eyes-eyes/mcPackSpriteSheetGenerator</a
-                            >
-                        </p>
-
-                        <a class="action" onclick="document.getElementById('input_main_upload').click()">
-                            Start here
-                            <span aria-hidden="true"> → </span>
-                        </a>
+                <div class="card-showcase-group">
+                    <div class="card-showcase">
+                        <div class="box"></div>
+                        <div class="box"></div>
+                        <div class="circle"></div>
                     </div>
-                </div>
 
-                <div class="card">
-                    <div class="content">
-                        <a href="#">
-                            <span class="title"> Features </span>
-                        </a>
-
-                        <p class="desc">
-                            Can copy text of textures with merging door top/upper & bottom/lower into doors.
-                            <br />Works across <b>ALL releases</b>. <br />Can showcase textures by:
-                            <li>color</li>
-                            <li>height</li>
-                        </p>
-
-                        <a class="action" onclick="document.getElementById('input_main_upload').click()">
-                            Start here
-                            <span aria-hidden="true"> → </span>
-                        </a>
+                    <div class="card-showcase">
+                        <div class="box"></div>
+                        <div class="box"></div>
+                        <div class="circle"></div>
                     </div>
                 </div>
             </div>
@@ -623,6 +640,11 @@
                             <input type="checkbox" name="firstFrame" id="firstFrame" oninput="" />
                             <label for="firstFrame">First frame (blocks & items)</label>
                         </div>
+
+                        <div>
+                            <input type="checkbox" name="leatherTint" id="leatherTint" oninput="" />
+                            <label for="leatherTint">Leather Tint</label>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -665,22 +687,72 @@
                         <p id="hovered_output"></p>
                     </form>
                 </div>
+
+                <div class="Formatting">
+                    <div class="zoomButton">
+                        <button id="openModalBtn" onclick="openModal()">Open Zoom</button>
+                    </div>
+                </div>
             </div>
 
             <section>
-                <div class="ZoomParam">
-                    <!-- <h2>Zoom Square</h2>
-                    <input type="number" name="sideLength" id="Zooming" />
-                    <br>
-                    <input type="checkbox" name="ConsentZoom" id="yesZoom" oninput="" />
-                    <label for="ConsentZoom">Toggle Zoom</label> -->
-                    <button id="openModalBtn">Open Zoom</button>
-
-                    <div id="canvasModal" class="modal">
+                <div class="RealZoom">
+                    <div class="modal" id="canvasModal">
                         <div class="modal-content">
-                            <span class="close" id="closeModalBtn">&times;</span>
+                            <span class="close" id="closeModalBtn" onclick="closeModal()" style="color: white"
+                                >&times;</span
+                            >
                             <div class="scrollable_modal">
-                                <canvas id="modalCanvas"></canvas>
+                                <canvas
+                                    id="modalCanvas"
+                                    style="width: 100%; height: 100%"
+                                    onmousemove="hover_zoom_canvas(event,false)"
+                                    onclick="hover_zoom_canvas(event,true)"
+                                ></canvas>
+                            </div>
+
+                            <div class="sectioning-column">
+                                <div class="zoomModal" id="zoomModal">
+                                    <div class="zoom-modal-content">
+                                        <canvas
+                                            id="zoomModalCanvas"
+                                            style="width: 100%; height: 100%; background-color: #dbdad1"
+                                        ></canvas>
+                                    </div>
+                                </div>
+                                <div class="current-texture-mini">
+                                    <form class="form" style="grid-template-columns: 100%">
+                                        <h2>Preview color</h2>
+                                        <input
+                                            type="color"
+                                            id="preview_background_color_input"
+                                            value="#dbdad1"
+                                            oninput="document.getElementById('zoomModalCanvas').style.backgroundColor = this.value"
+                                        /><br />
+                                        <h2>Current Texture:</h2>
+                                        <br />
+                                        <div class="MoreOptions">
+                                            <div>
+                                                <input
+                                                    type="checkbox"
+                                                    name="hover_update_on_move"
+                                                    id="hover_update_on_move"
+                                                />
+                                                <label for="hover_update_on_move">on move</label>
+                                            </div>
+
+                                            <div>
+                                                <input
+                                                    type="checkbox"
+                                                    name="hover_full_name"
+                                                    id="hover_full_name"
+                                                />
+                                                <label for="hover_full_name">file path</label>
+                                            </div>
+                                        </div>
+                                        <p id="hovered_output"></p>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>

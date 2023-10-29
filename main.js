@@ -1,6 +1,6 @@
 function error_occurred(err, file, line, col, error) {
     alert(
-        `${line}:${col}\nError occurred :(, we don't know what type but heres the trace for us, please send!\n\n${err.error.stack.toString()}`
+        `${line}:${col}\nError occurred :(, we don't know what type but heres the trace for us, please send!\n\n${error.stack.toString()}`
     );
 }
 
@@ -429,8 +429,10 @@ document.onkeydown = function (evt) {
     }
     if (isSlash) {
         if (isNotCombinedKey) {
-            evt.preventDefault();
-            document.getElementById("searchTerm").focus();
+            if (document.getElementById("searchTerm") !== document.activeElement) {
+                document.getElementById("searchTerm").focus();
+                evt.preventDefault();
+            }
         }
     }
 };
@@ -1545,6 +1547,76 @@ function hover_canvas(event, click) {
     document.getElementById("hovered_output").innerText = img_name || "N/A";
 }
 
+function hover_zoom_canvas(event, click) {
+    x = event.clientX;
+    y = event.clientY;
+
+    rect = event.target.getBoundingClientRect();
+
+    x -= rect.x;
+    y -= rect.y;
+
+    x /= rect.width;
+    y /= rect.height;
+
+    x *= event.target.width;
+    y *= event.target.height;
+
+    zoom_size_lol = 32;
+
+    // let canvas_in_tmp = document.getElementById("modalCanvas");
+
+    // let ctx_in_tmp = canvas_in_tmp.getContext("2d", {
+    //     willReadFrequently: true,
+    //     alpha: true,
+    //     antialias: false,
+    // });
+
+    if (zoom_modal_canvas_data_for_fast_access == null) return;
+
+    let canvas_out_tmp = document.getElementById("zoomModalCanvas");
+
+    let ctx_out_tmp = canvas_out_tmp.getContext("2d", {
+        willReadFrequently: true,
+        alpha: true,
+        antialias: false,
+    });
+
+    canvas_out_tmp.width = canvas_out_tmp.height = zoom_size_lol;
+
+    // ctx_out_tmp.clearRect(0, 0, zoom_size_lol, zoom_size_lol);
+
+    console.log("asd");
+    ctx_out_tmp.putImageData(
+        zoom_modal_canvas_data_for_fast_access,
+        0 - (x - zoom_size_lol / 2),
+        0 - (y - zoom_size_lol / 2),
+        x - zoom_size_lol / 2,
+        y - zoom_size_lol / 2,
+        zoom_size_lol,
+        zoom_size_lol
+    );
+
+    // ctx_out_tmp.putImageData(
+    //     ctx_in_tmp.getImageData(x - zoom_size_lol / 2, y - zoom_size_lol / 2, zoom_size_lol, zoom_size_lol),
+    //     0,
+    //     0
+    // );
+
+    if (!click && !document.getElementById("hover_update_on_move").checked) return;
+
+    img_obj = get_image_from_loc(x, y)?.img;
+
+    img_name = img_obj?.file_obj?.filename || img_obj?.fake_file_name;
+
+    if (!document.getElementById("hover_full_name").checked)
+        img_name = img_name?.split("/")?.at(-1)?.replaceAll(".png", "");
+
+    document.getElementById("hovered_output").innerText = img_name || "N/A";
+}
+
+let zoom_modal_canvas_data_for_fast_access = null;
+
 //!zoom canvas function!!
 function openModal() {
     const modal = document.getElementById("canvasModal");
@@ -1553,43 +1625,55 @@ function openModal() {
     const modalCanvas = document.getElementById("modalCanvas");
     const originalCanvas = document.getElementById("out_canvas");
 
-    const scale_up_amt =
-        1 +
-        document.getElementById("scale_01").checked +
-        document.getElementById("scale_02").checked * 4 +
-        document.getElementById("scale_03").checked * 9;
+    // const scale_up_amt =
+    //     1 +
+    //     document.getElementById("scale_01").checked +
+    //     document.getElementById("scale_02").checked * 4 +
+    //     document.getElementById("scale_03").checked * 9;
 
-    const offscreen_upscale_canvas = new OffscreenCanvas(
-        originalCanvas.width * scale_up_amt,
-        originalCanvas.height * scale_up_amt
-    );
+    // const offscreen_upscale_canvas = new OffscreenCanvas(
+    //     originalCanvas.width * scale_up_amt,
+    //     originalCanvas.height * scale_up_amt
+    // );
 
-    const upscale_ctx = offscreen_upscale_canvas.getContext("2d", {
-        willReadFrequently: true,
-        alpha: true,
-        antialias: false,
-    });
+    // const upscale_ctx = offscreen_upscale_canvas.getContext("2d", {
+    //     willReadFrequently: true,
+    //     alpha: true,
+    //     antialias: false,
+    // });
 
-    if (document.getElementById("export_preview_color").checked) {
-        upscale_ctx.fillStyle = document.getElementById("preview_background_color_input").value;
-        upscale_ctx.fillRect(0, 0, offscreen_upscale_canvas.width, offscreen_upscale_canvas.height);
-    }
+    // if (document.getElementById("export_preview_color").checked) {
+    //     upscale_ctx.fillStyle = document.getElementById("preview_background_color_input").value;
+    //     upscale_ctx.fillRect(0, 0, offscreen_upscale_canvas.width, offscreen_upscale_canvas.height);
+    // }
 
-    upscale_ctx.imageSmoothingEnabled = false;
+    // upscale_ctx.imageSmoothingEnabled = false;
 
-    upscale_ctx.drawImage(
-        originalCanvas,
-        0,
-        0,
-        originalCanvas.width * scale_up_amt,
-        originalCanvas.height * scale_up_amt
-    );
+    // upscale_ctx.drawImage(
+    //     originalCanvas,
+    //     0,
+    //     0,
+    //     originalCanvas.width * scale_up_amt,
+    //     originalCanvas.height * scale_up_amt
+    // );
 
-    modalCanvas.width = offscreen_upscale_canvas.width;
-    modalCanvas.height = offscreen_upscale_canvas.height;
+    // modalCanvas.width = offscreen_upscale_canvas.width;
+    // modalCanvas.height = offscreen_upscale_canvas.height;
 
-    const modalCtx = modalCanvas.getContext("2d");
-    modalCtx.drawImage(offscreen_upscale_canvas, 0, 0);
+    modalCanvas.width = originalCanvas.width;
+    modalCanvas.height = originalCanvas.height;
+
+    modalCanvas.style.width = originalCanvas.width < originalCanvas.height ? "auto" : "100%";
+    modalCanvas.style.height = originalCanvas.width < originalCanvas.height ? "100%" : "auto";
+
+    // canvas.height = canvas.width = Math.max(out[1][1], out[1][0]);
+
+    const ctx = modalCanvas.getContext("2d");
+    ctx.drawImage(originalCanvas, 0, 0);
+
+    zoom_modal_canvas_data_for_fast_access = originalCanvas
+        .getContext("2d")
+        .getImageData(0, 0, originalCanvas.width, originalCanvas.height);
 }
 
 function closeModal() {
@@ -1597,22 +1681,22 @@ function closeModal() {
     modal.style.display = "none";
 }
 
-function initModal() {
-    const openModalBtn = document.getElementById("openModalBtn");
-    const closeModalBtn = document.getElementById("closeModalBtn");
+// function initModal() {
+//     const openModalBtn = document.getElementById("openModalBtn");
+// const closeModalBtn = document.getElementById("closeModalBtn");
 
-    openModalBtn.addEventListener("click", openModal);
-    closeModalBtn.addEventListener("click", closeModal);
+//     openModalBtn.addEventListener("click", openModal);
+// closeModalBtn.addEventListener("click", closeModal);
 
-    window.addEventListener("click", (event) => {
-        const modal = document.getElementById("canvasModal");
-        if (event.target === modal) {
-            closeModal();
-        }
-    });
-}
+//     window.addEventListener("click", (event) => {
+//         const modal = document.getElementById("canvasModal");
+//         if (event.target === modal) {
+//             closeModal();
+//         }
+//     });
+// }
 
-initModal();
+// initModal();
 
 // imageWorker=null;
 // function sort_and_draw_image(image_array) {

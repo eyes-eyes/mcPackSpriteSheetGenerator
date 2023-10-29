@@ -23,6 +23,11 @@ body {
     opacity: 0.5;
 }
 
+.main_area_flex {
+    display: flex;
+    flex: wrap;
+}
+
 .main_file_selector {
     left: 50%;
     top: 13%;
@@ -420,6 +425,7 @@ body {
     -webkit-user-select: none;
     vertical-align: middle;
     white-space: nowrap;
+    z-index: 9999;
 }
 
 .top_bar_thingy button:after {
@@ -1038,6 +1044,10 @@ button:focus {
     transition: opacity 0s linear 0.5s;
 }
 
+.form h2 {
+    margin: 0;
+}
+
 @keyframes stretch-animate {
     0% {
         transform: scale(1, 1);
@@ -1156,16 +1166,26 @@ button:focus {
     transform: translateX(4px);
 }
 
-.ZoomParam {
+.sectioning-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.sectioning-column > * {
+    padding: 10px;
+}
+
+.zoomButton {
+    padding: 8px;
     background-color: white;
     border-radius: 8px;
-    padding: 15px;
+}
+
+.RealZoom {
     position: absolute;
-    right: 15%;
-    top: 85%;
-    /* transform: translate(-50%, -50%);
-    width: 10vmin;
-    height: 10vmin; */
+    width: 90%;
+    flex-direction: row;
 }
 
 /* CSS for modal */
@@ -1180,15 +1200,32 @@ button:focus {
     background-color: rgba(0, 0, 0, 0.7);
 }
 
-.modal-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    padding: 3vmin;
-    border: 1px solid #ccc;
+.zoomModal {
+    /* display: none; */
+    /* position: fixed; */
+    z-index: 1;
+    /* padding: 10px; */
+}
+
+.zoom-modal-content {
+    width: 35vmin;
+    height: 35vmin;
+    background-color: white;
     border-radius: 8px;
+}
+
+.zoom-modal-content canvas {
+    background-color: white;
+    image-rendering: pixelated;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+    flex: wrap;
 }
 
 .close {
@@ -1200,10 +1237,18 @@ button:focus {
 }
 
 .scrollable_modal {
-    height: 90vmin;
-    width: 90vmin;
-    overflow-y: auto;
-    overflow-x: auto;
+    height: 75vmin;
+    width: 75vmin;
+    padding: 10px;
+    background-color: white;
+    border-radius: 8px;
+    border: white;
+    /* overflow-y: auto;
+    overflow-x: auto; */
+}
+
+.scrollable_modal canvas {
+    image-rendering: pixelated;
 }
 
 .CleanUp {
@@ -1253,6 +1298,88 @@ button:focus {
     top: 65%;
     transform: translate(0, -50%);
     flex-wrap: wrap;
+}
+
+.card-showcase-group {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    flex-direction: row;
+    top: 80%;
+    transform: translate(0, -50%);
+    flex-wrap: wrap;
+}
+
+.card-showcase {
+    position: relative;
+    width: 20rem;
+    height: 26.875rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-showcase .box {
+    position: relative;
+    width: 110%;
+    height: 12.5rem;
+    background-color: red;
+    border-radius: 0.9375rem;
+}
+
+.card-showcase .box:nth-child(1)::before {
+    content: "";
+    position: absolute;
+    top: 101px;
+    left: -1px;
+    width: 1.25rem;
+    height: 1.25rem;
+    background: transparent;
+    z-index: 10;
+    border-bottom-left-radius: 1.25rem;
+    box-shadow: -0.375rem 0.375rem #e8edf7;
+}
+
+.card-showcase .box:nth-child(1)::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 125px;
+    width: 1.25rem;
+    height: 1.25rem;
+    background: transparent;
+    z-index: 10;
+    border-bottom-left-radius: 1.25rem;
+    box-shadow: -0.375rem 0.375rem #e8edf7;
+}
+
+.card-showcase .box:nth-child(2) {
+    background-color: white;
+    height: 13.75rem;
+    width: 100%;
+}
+
+.card-showcase .box:nth-child(2)::before {
+    content: "";
+    position: absolute;
+    bottom: 90px;
+    background-color: greenyellow;
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.card-showcase .circle {
+    position: absolute;
+    top: 50%;
+    left: -4.375rem;
+    transform: translateY(-50%);
+    width: 11.25rem;
+    height: 11.25rem;
+    background-color: greenyellow;
+    border-radius: 50%;
+    border: 0.625rem solid #e8edf7;
 }
 
 .Options {
