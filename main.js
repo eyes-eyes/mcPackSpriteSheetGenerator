@@ -1587,7 +1587,7 @@ function hover_zoom_canvas(event, click) {
 
     // ctx_out_tmp.clearRect(0, 0, zoom_size_lol, zoom_size_lol);
 
-    console.log("asd");
+    // console.log("asd");
     ctx_out_tmp.putImageData(
         zoom_modal_canvas_data_for_fast_access,
         0 - (x - zoom_size_lol / 2),
