@@ -446,7 +446,7 @@ function back_button() {
             break;
         case 2:
             back_to_edit_page();
-            document.getElementById("width_input_generate").value = 0;
+            document.getElementById("width_input_generate").value = "";
             closeModal();
             break;
         // back_to_file_selector()
