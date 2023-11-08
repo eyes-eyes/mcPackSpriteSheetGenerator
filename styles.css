@@ -169,6 +169,10 @@ body {
     content: "Candles";
 }
 
+.switch.dyes .toggle::before {
+    content: "Dyes";
+}
+
 .switch.doorItems .toggle::before {
     content: "Item Doors & Trapdoors";
 }

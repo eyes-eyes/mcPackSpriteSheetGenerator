@@ -441,6 +441,9 @@ const java_mc_groups = {
             },
         },
     },
+    dyes: {
+        "^minecraft ^item ^dye": null,
+    },
     glasses: { "^minecraft ^texture ^block glass !pane": null },
     buckets: { "^minecraft ^item !model bucket": null },
 };
