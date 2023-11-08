@@ -95,6 +95,22 @@ const java_mc_groups = {
             },
         },
     },
+    signs: {
+        "^minecraft": {
+            "^item !troll ^!entity": {
+                sign: {
+                    "oak !dark": null,
+                    spruce: null,
+                    birch: null,
+                    jungle: null,
+                    acacia: null,
+                    "dark oak": null,
+                    mangrove: null,
+                    cherry: null,
+                },
+            },
+        },
+    },
 
     doors: {
         "^minecraft": {
@@ -248,7 +264,7 @@ const java_mc_groups = {
                 "Cooked Porkchop": null,
                 Bread: null,
                 "Rabbit Stew": null,
-                "Raw Rabbit": null,
+                "Rabbit !hide !foot !stew": null,
                 "Chorus Fruit": null,
                 "Rotten Flesh": null,
                 "Cook Rabbit": null,
@@ -322,7 +338,7 @@ const java_mc_groups = {
                 "Lapis Lazuli !block !empty": null,
                 "raw copper !block": null,
                 "raw iron !block": null,
-                "raw gold !block": null,
+                "raw gold !block !berry": null,
                 "quartz !block !empty": null,
             },
         },
@@ -474,12 +490,13 @@ const java_mc_groups = {
             gunpowder: null,
             "sugar !cane": null,
             honeycomb: null,
-            ink: null,
+            "ink !pink": null,
             shell: null,
             "nether star": null,
             "phantom membrane": null,
             "prismarine !wall": null,
-            "rabbit !cook !stew": null,
+            "rabbit hide !cook !stew": null,
+            "rabbit foot !cook !stew": null,
             scute: null,
             book: null,
             "brick !wall !fence": null,
