@@ -109,6 +109,15 @@ const java_mc_groups = {
             },
         },
     },
+    doorItems: {
+        "^minecraft": {
+            "^item !tip": {
+                door: {
+                    "": null, //the whole list now other than aboves parts should be selected
+                },
+            },
+        },
+    },
     stones: {
         "^minecraft": {
             "^block": {
@@ -403,6 +412,32 @@ const java_mc_groups = {
                 red: null,
                 white: null,
                 yellow: null,
+            },
+        },
+    },
+    beds: {
+        "^minecraft ^item bed !rock": null,
+    },
+    candles: {
+        "^minecraft": {
+            "^item candle": {
+                black: null,
+                "blue !light": null,
+                brown: null,
+                cyan: null,
+                "gray !light": null,
+                green: null,
+                "light blue": null,
+                "light gray": null,
+                lime: null,
+                magenta: null,
+                orange: null,
+                pink: null,
+                purple: null,
+                red: null,
+                white: null,
+                yellow: null,
+                candle: null,
             },
         },
     },
@@ -1613,7 +1648,7 @@ function hover_zoom_canvas(event, click) {
     if (!document.getElementById("hover_full_name").checked)
         img_name = img_name?.split("/")?.at(-1)?.replaceAll(".png", "");
 
-    document.getElementById("hovered_output").innerText = img_name || "N/A";
+    document.getElementById("zoom_hovered_output").innerText = img_name || "N/A";
 }
 
 let zoom_modal_canvas_data_for_fast_access = null;

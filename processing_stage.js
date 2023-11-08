@@ -5,25 +5,39 @@ unfinished_objects = 0;
 
 onmessage = (e) => {
     if (e.data["request"] == "handle_new_image") {
-        unfinished_objects += 1
-        createImageBitmap(e.data["blob"]).then((bitmap) => {
-            try {
-                bitmap.id_processing = e.data["index"]
-                // output.push(bitmap)
-                color_img = color_append_to_image(bitmap)
-                unfinished_objects -= 1
+        unfinished_objects += 1;
+        createImageBitmap(e.data["blob"])
+            .then((bitmap) => {
+                try {
+                    bitmap.id_processing = e.data["index"];
+                    // output.push(bitmap)
+                    color_img = color_append_to_image(bitmap);
+                    unfinished_objects -= 1;
 
-                postMessage({"request":"handle_new_image","data":bitmap,"index": e.data["index"], "color": color_img})
-            } catch (err) {
-                unfinished_objects -= 1
-                postMessage({"request":"handle_new_image","index": e?.data?.["index"] || 0,"error":err.stack.toString() || "UNK"})
-            }
-        }).catch((err) => {
-            unfinished_objects -= 1
-            postMessage({"request":"handle_new_image","index": e?.data?.["index"],"error":err.stack.toString() || "UNK"})
-        }) 
-        
-    } 
+                    postMessage({
+                        request: "handle_new_image",
+                        data: bitmap,
+                        index: e.data["index"],
+                        color: color_img,
+                    });
+                } catch (err) {
+                    unfinished_objects -= 1;
+                    postMessage({
+                        request: "handle_new_image",
+                        index: e?.data?.["index"] || 0,
+                        error: err.stack.toString() || "UNK",
+                    });
+                }
+            })
+            .catch((err) => {
+                unfinished_objects -= 1;
+                postMessage({
+                    request: "handle_new_image",
+                    index: e?.data?.["index"],
+                    error: err.stack.toString() || "UNK",
+                });
+            });
+    }
 };
 
 img_max_height = img_max_width = 16000;
@@ -34,12 +48,9 @@ f = new OffscreenCanvas(img_max_width, img_max_height).getContext("2d", {
 });
 
 function color_append_to_image(image) {
-    
-
     out = [];
-    
 
-    if (image.avg_color) return
+    if (image.avg_color) return;
     obj = image;
     f.drawImage(obj, 0, 0);
     colors = [0, 0, 0];
@@ -57,7 +68,7 @@ function color_append_to_image(image) {
     colors[1] /= pixels_in_use;
     colors[2] /= pixels_in_use;
     // console.log(colors)
-    return image.avg_color = rgb2hsv(colors[0], colors[1], colors[2]);
+    return (image.avg_color = rgb2hsv(colors[0], colors[1], colors[2]));
 }
 
 function rgb2hsv(r, g, b) {
