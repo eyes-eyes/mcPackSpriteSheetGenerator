@@ -363,7 +363,7 @@ const java_mc_groups = {
         },
     },
     musicDiscs: {
-        "^minecraft": {
+        "^minecraft ^item": {
             "music disc": null,
             record: null,
         },
