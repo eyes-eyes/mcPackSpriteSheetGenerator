@@ -229,6 +229,10 @@ body {
     content: "Terracotta";
 }
 
+.switch.utilityBlocks .toggle::before {
+    content: "Block Utility";
+}
+
 .switch.vehicles .toggle::before {
     content: "Vehicles";
 }

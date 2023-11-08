@@ -362,6 +362,46 @@ const java_mc_groups = {
             boat: null,
         },
     },
+    utilityBlocks: {
+        "^minecraft ^texture ^block": {
+            "craft table": {
+                top: null,
+                "": null,
+            },
+            "cartograph table": {
+                top: null,
+                "": null,
+            },
+            "fletch table": {
+                top: null,
+                "": null,
+            },
+            "smith table": {
+                top: null,
+                "": null,
+            },
+            "stonecut !saw": {
+                top: null,
+                "": null,
+            },
+            loom: {
+                top: null,
+                "": null,
+            },
+            "furnace !blast": {
+                top: null,
+                "": null,
+            },
+            "blast furnace": {
+                top: null,
+                "": null,
+            },
+            smoker: {
+                top: null,
+                "": null,
+            },
+        },
+    },
     musicDiscs: {
         "^minecraft ^item": {
             "music disc": null,
