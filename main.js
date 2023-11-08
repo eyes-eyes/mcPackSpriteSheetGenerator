@@ -83,7 +83,7 @@ const java_mc_groups = {
         "^minecraft": {
             "^block !troll ^!entity": {
                 "!door": {
-                    oak: null,
+                    "oak !dark": null,
                     spruce: null,
                     birch: null,
                     jungle: null,
