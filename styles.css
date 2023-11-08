@@ -233,6 +233,10 @@ body {
     content: "Block Utility";
 }
 
+.switch.materials .toggle::before {
+    content: "Materials";
+}
+
 .switch.vehicles .toggle::before {
     content: "Vehicles";
 }
