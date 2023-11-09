@@ -96,20 +96,7 @@ const java_mc_groups = {
         },
     },
     signs: {
-        "^minecraft": {
-            "^item !troll ^!entity": {
-                sign: {
-                    "oak !dark": null,
-                    spruce: null,
-                    birch: null,
-                    jungle: null,
-                    acacia: null,
-                    "dark oak": null,
-                    mangrove: null,
-                    cherry: null,
-                },
-            },
-        },
+        "^minecraft ^item !troll ^!entity ^!block sign": null,
     },
 
     doors: {
