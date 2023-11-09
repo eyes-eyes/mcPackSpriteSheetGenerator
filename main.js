@@ -366,6 +366,18 @@ const java_mc_groups = {
             boat: null,
         },
     },
+    rangedThings: {
+        "^minecraft ^item": {
+            "bow !cross !bowl": null,
+            "arrow !crossbow": null,
+            crossbow: null,
+            "fishing rod": null,
+            "carrot stick": null,
+            "warped stick": null,
+            trident: null,
+            "firework rocket !overlay": null,
+        },
+    },
     // utilityBlocks: {
     //     "^minecraft ^texture ^block": {
     //         "craft table": {
@@ -437,6 +449,9 @@ const java_mc_groups = {
             },
         },
     },
+    potterySherds: {
+        "^minecraft ^item pottery": null,
+    },
     concretes: {
         "^minecraft": {
             "^block concrete": {
@@ -491,7 +506,7 @@ const java_mc_groups = {
             "firework star !overlay": null,
             "leather !overlay !helmet !": null,
             paper: null,
-            "goat horn": null,
+            // "goat horn": null,
         },
     },
     beds: {

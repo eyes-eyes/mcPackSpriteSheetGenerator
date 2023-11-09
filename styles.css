@@ -172,8 +172,16 @@ body {
     content: "Candles";
 }
 
+.switch.rangedThings .toggle::before {
+    content: "Ranged Things";
+}
+
 .switch.dyes .toggle::before {
     content: "Dyes";
+}
+
+.switch.potterySherds .toggle::before {
+    content: "Pottery Sherds";
 }
 
 .switch.doorItems .toggle::before {
