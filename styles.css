@@ -176,6 +176,10 @@ body {
     content: "Ranged Things";
 }
 
+.switch.utilityItems .toggle::before {
+    content: "Utility\00a0 Items";
+}
+
 .switch.dyes .toggle::before {
     content: "Dyes";
 }

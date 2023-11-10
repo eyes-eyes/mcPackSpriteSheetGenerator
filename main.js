@@ -378,6 +378,21 @@ const java_mc_groups = {
             "firework rocket !overlay": null,
         },
     },
+    utilityItems: {
+        "^minecraft ^item": {
+            "totem undy": null,
+            "spyglass !model": null,
+            "name tag": null,
+            lead: null,
+            saddle: null,
+            "totem undy": null,
+            "goat horn": null,
+            bundle: null,
+            shear: null,
+            "flint and steel": null,
+            elytra: null,
+        },
+    },
     // utilityBlocks: {
     //     "^minecraft ^texture ^block": {
     //         "craft table": {
