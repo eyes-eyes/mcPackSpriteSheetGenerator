@@ -467,6 +467,12 @@ const java_mc_groups = {
     potterySherds: {
         "^minecraft ^item pottery": null,
     },
+    smithingTemplates: {
+        "^minecraft ^item ^!block": {
+            "smith upgrade": null,
+            "smith template": null,
+        },
+    },
     concretes: {
         "^minecraft": {
             "^block concrete": {
