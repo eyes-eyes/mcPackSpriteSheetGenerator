@@ -188,6 +188,10 @@ body {
     content: "Pottery Sherds";
 }
 
+.switch.smithingTemplates .toggle::before {
+    content: "Smithing\00a0 Templates";
+}
+
 .switch.doorItems .toggle::before {
     content: "Item Doors & Trapdoors";
 }
