@@ -1801,13 +1801,13 @@ function hover_zoom_canvas(event, click) {
     //     0
     // );
 
-    if (!click && !document.getElementById("hover_update_on_move").checked) return;
+    if (!click && !document.getElementById("zoom_hover_update_on_move").checked) return;
 
     img_obj = get_image_from_loc(x, y)?.img;
 
     img_name = img_obj?.file_obj?.filename || img_obj?.fake_file_name;
 
-    if (!document.getElementById("hover_full_name").checked)
+    if (!document.getElementById("zoom_hover_full_name").checked)
         img_name = img_name?.split("/")?.at(-1)?.replaceAll(".png", "");
 
     document.getElementById("zoom_hovered_output").innerText = img_name || "N/A";
