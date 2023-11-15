@@ -439,7 +439,29 @@ const java_mc_groups = {
             record: null,
         },
     },
-    shulkerBoxes: { "^minecraft ^block shulker box": null },
+    shulkerBoxes: {
+        "^minecraft": {
+            "^block shulker box": {
+                black: null,
+                "blue !light": null,
+                brown: null,
+                cyan: null,
+                "gray !light": null,
+                green: null,
+                "light blue": null,
+                "light gray": null,
+                lime: null,
+                magenta: null,
+                orange: null,
+                pink: null,
+                purple: null,
+                red: null,
+                white: null,
+                yellow: null,
+                "shulker box": null,
+            },
+        },
+    },
     wools: { "^minecraft ^texture ^block wool": null },
     terracottas: {
         "^minecraft": {
@@ -559,7 +581,29 @@ const java_mc_groups = {
     dyes: {
         "^minecraft ^item ^dye": null,
     },
-    glasses: { "^minecraft ^texture ^block glass !pane": null },
+    glasses: {
+        "^minecraft": {
+            "^block glass !pane": {
+                black: null,
+                "blue !light": null,
+                brown: null,
+                cyan: null,
+                "gray !light": null,
+                green: null,
+                "light blue": null,
+                "light gray": null,
+                lime: null,
+                magenta: null,
+                orange: null,
+                pink: null,
+                purple: null,
+                red: null,
+                white: null,
+                yellow: null,
+                glass: null,
+            },
+        },
+    },
     buckets: { "^minecraft ^item !model bucket": null },
 };
 
