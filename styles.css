@@ -146,7 +146,10 @@ body {
 
 .switch.woodVariants .toggle::before {
     content: "Wood\00a0Variants";
-    /* text-align: center; */
+}
+
+.switch.signs .toggle::before {
+    content: "Signs";
 }
 
 .switch.armors .toggle::before {
@@ -169,8 +172,24 @@ body {
     content: "Candles";
 }
 
+.switch.rangedThings .toggle::before {
+    content: "Ranged Things";
+}
+
+.switch.utilityItems .toggle::before {
+    content: "Utility\00a0 Items";
+}
+
 .switch.dyes .toggle::before {
     content: "Dyes";
+}
+
+.switch.potterySherds .toggle::before {
+    content: "Pottery Sherds";
+}
+
+.switch.smithingTemplates .toggle::before {
+    content: "Smithing\00a0 Templates";
 }
 
 .switch.doorItems .toggle::before {
@@ -231,6 +250,10 @@ body {
 
 .switch.utilityBlocks .toggle::before {
     content: "Block Utility";
+}
+
+.switch.materials .toggle::before {
+    content: "Materials";
 }
 
 .switch.vehicles .toggle::before {

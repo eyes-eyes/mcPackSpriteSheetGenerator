@@ -205,6 +205,17 @@
                                         </div>
 
                                         <div>
+                                            <label class="switch signs">
+                                                <input
+                                                    type="checkbox"
+                                                    id="signs"
+                                                    oninput="group_selected(this)"
+                                                />
+                                                <span class="toggle"></span>
+                                            </label>
+                                        </div>
+
+                                        <div>
                                             <label class="switch stones">
                                                 <input
                                                     type="checkbox"
@@ -304,6 +315,28 @@
                                         </div>
 
                                         <div>
+                                            <label class="switch potterySherds">
+                                                <input
+                                                    type="checkbox"
+                                                    id="potterySherds"
+                                                    oninput="group_selected(this)"
+                                                />
+                                                <span class="toggle"></span>
+                                            </label>
+                                        </div>
+
+                                        <div>
+                                            <label class="switch smithingTemplates">
+                                                <input
+                                                    type="checkbox"
+                                                    id="smithingTemplates"
+                                                    oninput="group_selected(this)"
+                                                />
+                                                <span class="toggle"></span>
+                                            </label>
+                                        </div>
+
+                                        <div>
                                             <label class="switch buckets">
                                                 <input
                                                     type="checkbox"
@@ -314,11 +347,22 @@
                                             </label>
                                         </div>
 
-                                        <div>
+                                        <!-- <div>
                                             <label class="switch utilityBlocks">
                                                 <input
                                                     type="checkbox"
                                                     id="utilityBlocks"
+                                                    oninput="group_selected(this)"
+                                                />
+                                                <span class="toggle"></span>
+                                            </label>
+                                        </div> -->
+
+                                        <div>
+                                            <label class="switch materials">
+                                                <input
+                                                    type="checkbox"
+                                                    id="materials"
                                                     oninput="group_selected(this)"
                                                 />
                                                 <span class="toggle"></span>
@@ -464,6 +508,28 @@
                                                 <input
                                                     type="checkbox"
                                                     id="balls"
+                                                    oninput="group_selected(this)"
+                                                />
+                                                <span class="toggle"></span>
+                                            </label>
+                                        </div>
+
+                                        <div>
+                                            <label class="switch rangedThings">
+                                                <input
+                                                    type="checkbox"
+                                                    id="rangedThings"
+                                                    oninput="group_selected(this)"
+                                                />
+                                                <span class="toggle"></span>
+                                            </label>
+                                        </div>
+
+                                        <div>
+                                            <label class="switch utilityItems">
+                                                <input
+                                                    type="checkbox"
+                                                    id="utilityItems"
                                                     oninput="group_selected(this)"
                                                 />
                                                 <span class="toggle"></span>
@@ -760,7 +826,7 @@
                             <div class="scrollable_modal">
                                 <canvas
                                     id="modalCanvas"
-                                    style="width: 100%; height: 100%"
+                                    style="width: 100%; height: 100%; background-color: #dbdad1"
                                     onmousemove="hover_zoom_canvas(event,false)"
                                     onclick="hover_zoom_canvas(event,true)"
                                 ></canvas>
@@ -782,7 +848,7 @@
                                             type="color"
                                             id="preview_background_color_input"
                                             value="#dbdad1"
-                                            oninput="document.getElementById('zoomModalCanvas').style.backgroundColor = this.value"
+                                            oninput="document.getElementById('zoomModalCanvas').style.backgroundColor = this.value; document.getElementById('modalCanvas').style.backgroundColor = this.value"
                                         /><br />
                                         <h2>Current Texture:</h2>
                                         <br />
@@ -790,19 +856,19 @@
                                             <div>
                                                 <input
                                                     type="checkbox"
-                                                    name="hover_update_on_move"
-                                                    id="hover_update_on_move"
+                                                    name="zoom_hover_update_on_move"
+                                                    id="zoom_hover_update_on_move"
                                                 />
-                                                <label for="hover_update_on_move">on move</label>
+                                                <label for="zoom_hover_update_on_move">on move</label>
                                             </div>
 
                                             <div>
                                                 <input
                                                     type="checkbox"
-                                                    name="hover_full_name"
-                                                    id="hover_full_name"
+                                                    name="zoom_hover_full_name"
+                                                    id="zoom_hover_full_name"
                                                 />
-                                                <label for="hover_full_name">file path</label>
+                                                <label for="zoom_hover_full_name">file path</label>
                                             </div>
                                         </div>
                                         <p id="zoom_hovered_output"></p>

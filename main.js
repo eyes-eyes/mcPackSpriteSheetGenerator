@@ -95,6 +95,9 @@ const java_mc_groups = {
             },
         },
     },
+    signs: {
+        "^minecraft ^item !troll ^!entity ^!block sign": null,
+    },
 
     doors: {
         "^minecraft": {
@@ -230,8 +233,9 @@ const java_mc_groups = {
                 Steak: null,
                 "Tropical Fish": null,
                 "Raw Chicken": null,
-                Pufferfish: null,
-                "Melon Slice": null,
+                pufferfish: null,
+                "melon slice !glister": null,
+                "melon slice glister": null,
                 "Cooked Chicken": null,
                 Apple: null,
                 "Mushroom Stew": null,
@@ -247,17 +251,17 @@ const java_mc_groups = {
                 "Cooked Porkchop": null,
                 Bread: null,
                 "Rabbit Stew": null,
-                "Raw Rabbit": null,
+                "Rabbit !hide !foot !stew": null,
                 "Chorus Fruit": null,
                 "Rotten Flesh": null,
-                "Cooked Rabbit": null,
+                "Cook Rabbit": null,
                 Cookie: null,
                 "Spider Eye": null,
                 "Raw Cod": null,
                 "Dried Kelp": null,
                 "Suspicious Stew": null,
                 "Cooked Cod": null,
-                "gold Carrot": null,
+                "carrot !stick": null,
                 "Raw Salmon": null,
                 "Honey Bottle": null,
             },
@@ -321,7 +325,7 @@ const java_mc_groups = {
                 "Lapis Lazuli !block !empty": null,
                 "raw copper !block": null,
                 "raw iron !block": null,
-                "raw gold !block": null,
+                "raw gold !block !berry": null,
                 "quartz !block !empty": null,
             },
         },
@@ -362,53 +366,102 @@ const java_mc_groups = {
             boat: null,
         },
     },
-    utilityBlocks: {
-        "^minecraft ^texture ^block": {
-            "craft table": {
-                top: null,
-                "": null,
-            },
-            "cartograph table": {
-                top: null,
-                "": null,
-            },
-            "fletch table": {
-                top: null,
-                "": null,
-            },
-            "smith table": {
-                top: null,
-                "": null,
-            },
-            "stonecut !saw": {
-                top: null,
-                "": null,
-            },
-            loom: {
-                top: null,
-                "": null,
-            },
-            "furnace !blast": {
-                top: null,
-                "": null,
-            },
-            "blast furnace": {
-                top: null,
-                "": null,
-            },
-            smoker: {
-                top: null,
-                "": null,
-            },
+    rangedThings: {
+        "^minecraft ^item": {
+            "bow !cross !bowl": null,
+            "arrow !crossbow": null,
+            crossbow: null,
+            "fishing rod": null,
+            "carrot stick": null,
+            "warped stick": null,
+            trident: null,
+            "firework rocket !overlay": null,
         },
     },
+    utilityItems: {
+        "^minecraft ^item": {
+            "totem undy": null,
+            "spyglass !model": null,
+            "name tag": null,
+            lead: null,
+            saddle: null,
+            "totem undy": null,
+            "goat horn": null,
+            bundle: null,
+            shear: null,
+            "flint and steel": null,
+            elytra: null,
+        },
+    },
+    // utilityBlocks: {
+    //     "^minecraft ^texture ^block": {
+    //         "craft table": {
+    //             top: null,
+    //             "": null,
+    //         },
+    //         "cartograph table": {
+    //             top: null,
+    //             "": null,
+    //         },
+    //         "fletch table": {
+    //             top: null,
+    //             "": null,
+    //         },
+    //         "smith table": {
+    //             top: null,
+    //             "": null,
+    //         },
+    //         "stonecut !saw": {
+    //             top: null,
+    //             "": null,
+    //         },
+    //         loom: {
+    //             top: null,
+    //             "": null,
+    //         },
+    //         "furnace !blast": {
+    //             top: null,
+    //             "": null,
+    //         },
+    //         "blast furnace": {
+    //             top: null,
+    //             "": null,
+    //         },
+    //         smoker: {
+    //             top: null,
+    //             "": null,
+    //         },
+    //     },
+    // },
     musicDiscs: {
         "^minecraft ^item": {
             "music disc": null,
             record: null,
         },
     },
-    shulkerBoxes: { "^minecraft ^block Shulker Box": null },
+    shulkerBoxes: {
+        "^minecraft": {
+            "^block shulker box": {
+                black: null,
+                "blue !light": null,
+                brown: null,
+                cyan: null,
+                "gray !light": null,
+                green: null,
+                "light blue": null,
+                "light gray": null,
+                lime: null,
+                magenta: null,
+                orange: null,
+                pink: null,
+                purple: null,
+                red: null,
+                white: null,
+                yellow: null,
+                "shulker box": null,
+            },
+        },
+    },
     wools: { "^minecraft ^texture ^block wool": null },
     terracottas: {
         "^minecraft": {
@@ -433,6 +486,15 @@ const java_mc_groups = {
             },
         },
     },
+    potterySherds: {
+        "^minecraft ^item pottery": null,
+    },
+    smithingTemplates: {
+        "^minecraft ^item ^!block": {
+            "smith upgrade": null,
+            "smith template": null,
+        },
+    },
     concretes: {
         "^minecraft": {
             "^block concrete": {
@@ -453,6 +515,41 @@ const java_mc_groups = {
                 white: null,
                 yellow: null,
             },
+        },
+    },
+    materials: {
+        "^minecraft ^texture ^item": {
+            "amethyst shard": null,
+            "blaze rod": null,
+            "blaze powder": null,
+            bone: null,
+            clay: null,
+            "disc frag": null,
+            "dragon breath": null,
+            "echo shard": null,
+            feather: null,
+            string: null,
+            "flint !steel": null,
+            "ghast tear": null,
+            "glowstone dust": null,
+            gunpowder: null,
+            "sugar !cane": null,
+            honeycomb: null,
+            "ink !pink": null,
+            shell: null,
+            "nether star": null,
+            "phantom membrane": null,
+            "prismarine !wall": null,
+            "rabbit hide !cook !stew": null,
+            "rabbit foot !cook !stew": null,
+            scute: null,
+            book: null,
+            "brick !wall !fence": null,
+            "ferment spider eye": null,
+            "firework star !overlay": null,
+            "leather !overlay !helmet !": null,
+            paper: null,
+            // "goat horn": null,
         },
     },
     beds: {
@@ -484,7 +581,29 @@ const java_mc_groups = {
     dyes: {
         "^minecraft ^item ^dye": null,
     },
-    glasses: { "^minecraft ^texture ^block glass !pane": null },
+    glasses: {
+        "^minecraft": {
+            "^block glass !pane": {
+                black: null,
+                "blue !light": null,
+                brown: null,
+                cyan: null,
+                "gray !light": null,
+                green: null,
+                "light blue": null,
+                "light gray": null,
+                lime: null,
+                magenta: null,
+                orange: null,
+                pink: null,
+                purple: null,
+                red: null,
+                white: null,
+                yellow: null,
+                glass: null,
+            },
+        },
+    },
     buckets: { "^minecraft ^item !model bucket": null },
 };
 
@@ -1682,13 +1801,13 @@ function hover_zoom_canvas(event, click) {
     //     0
     // );
 
-    if (!click && !document.getElementById("hover_update_on_move").checked) return;
+    if (!click && !document.getElementById("zoom_hover_update_on_move").checked) return;
 
     img_obj = get_image_from_loc(x, y)?.img;
 
     img_name = img_obj?.file_obj?.filename || img_obj?.fake_file_name;
 
-    if (!document.getElementById("hover_full_name").checked)
+    if (!document.getElementById("zoom_hover_full_name").checked)
         img_name = img_name?.split("/")?.at(-1)?.replaceAll(".png", "");
 
     document.getElementById("zoom_hovered_output").innerText = img_name || "N/A";
