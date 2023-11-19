@@ -257,7 +257,7 @@ const java_mc_groups = {
                 "Pumpkin Pie": null,
                 cake: null,
                 "Rotten Flesh": null,
-                "Spider Eye": null,
+                "Spider Eye !ferment": null,
                 "Honey Bottle": null,
             },
         },
