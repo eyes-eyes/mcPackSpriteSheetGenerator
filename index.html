@@ -7,10 +7,10 @@
         <link rel="stylesheet" href="styles.css" />
     </head>
     <body>
-        <section id="main_file_selector_areas">
+        <section class="main_file_selector_areas" id="main_file_selector_areas">
             <!-- testing new Hero Page -->
             <div class="top_pitch_area">
-                <nav class="navbar">
+                <!-- <nav class="navbar">
                     <div class="container">
                         <div class="navbar_header">
                             <a href="/" class="navbar_branding">
@@ -21,12 +21,7 @@
                         <div class="navbar_collapse" id="main_navbar">
                             <ul class="navbar_left">
                                 <li class="dropdown">
-                                    <a
-                                        href="#"
-                                        class="dropdown_toggle"
-                                        data-toggle="dropdown"
-                                        aria-expanded="false"
-                                    >
+                                    <a href="#" class="dropdown_toggle" data-toggle="dropdown" aria-expanded="false">
                                         Learn
                                         <b class="caret"></b>
                                     </a>
@@ -41,11 +36,40 @@
                             <ul class="navbar_right"></ul>
                         </div>
                     </div>
-                </nav>
-                <div class="container"></div>
+                </nav> -->
+                <div class="container">
+                    <div class="FrontPage_topArea">
+                        <div class="row" style="margin: 30px 0 60px">
+                            <div class="col-sm-6">
+                                <div class="FrontPage_title_container">
+                                    <header>
+                                        <h1 class="FrontPage_mainTitle">
+                                            <span class="FrontPage_mainTitle_block">Quickly Convert</span>
+                                            <span class="FrontPage_mainTitle_block">
+                                                <span class="FrontPage_mainTitleFileFormat">ZIPPED</span>
+                                                Packs
+                                            </span>
+                                            <span class="FrontPage_mainTitle_block">
+                                                to
+                                                <span class="FrontPage_mainTitleFileFormat">Sprite Sheets</span>
+                                            </span>
+                                        </h1>
+                                        <p class="FrontPage_mainSubtitle">
+                                            Quickly get your packs ready to be showcased on social media platforms. Catered towards Minecraft pack artists that showcase
+                                            their works on a social media platform on a background OR those that reference a mc pack in the form of a sprite sheet!
+                                        </p>
+                                    </header>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 cardShowcaseContainer">
+                                <div class="showcaseAnimation"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="main_area_flex">
+            <!-- <div class="main_area_flex">
                 <div class="file_hover_popup" id="file_hover_popup"></div>
                 <div class="main_file_selector">
                     <h1>
@@ -125,18 +149,13 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </section>
 
         <section id="main_site_data" style="display: none">
             <section>
                 <div class="top_bar_thingy">
-                    <button
-                        style="left: 5%; top: 50%; position: absolute; transform: translate(0px, -50%)"
-                        onclick="back_button()"
-                    >
-                        &leftarrow; (Esc)
-                    </button>
+                    <button style="left: 5%; top: 50%; position: absolute; transform: translate(0px, -50%)" onclick="back_button()">&leftarrow; (Esc)</button>
                     <p
                         style="
                             position: absolute;
@@ -154,16 +173,7 @@
                     >
                         None
                     </p>
-                    <p
-                        style="
-                            right: 5%;
-                            top: 50%;
-                            position: absolute;
-                            transform: translate(0px, -50%);
-                            font-family: Roboto, sans-serif;
-                        "
-                        id="pack_version_top_bar"
-                    >
+                    <p style="right: 5%; top: 50%; position: absolute; transform: translate(0px, -50%); font-family: Roboto, sans-serif" id="pack_version_top_bar">
                         Pack version: (opening)
                     </p>
                 </div>
@@ -173,22 +183,10 @@
                 <div class="CleanUp">
                     <section>
                         <div class="searchingSection" id="searchingSection">
-                            <h1 style="font-size: 2.1vmin; padding-top: 15px">
-                                Add additional textures here!<br />
-                            </h1>
+                            <h1 style="font-size: 2.1vmin; padding-top: 15px">Add additional textures here!<br /></h1>
                             <div class="search" id="search">
-                                <input
-                                    type="text"
-                                    class="searchTerm"
-                                    id="searchTerm"
-                                    placeholder="Search for textures..."
-                                    oninput="search_user_input(this.value)"
-                                />
-                                <div
-                                    class="toggleSearch"
-                                    id="toggleSearch"
-                                    onclick="toggle_all_searched()"
-                                ></div>
+                                <input type="text" class="searchTerm" id="searchTerm" placeholder="Search for textures..." oninput="search_user_input(this.value)" />
+                                <div class="toggleSearch" id="toggleSearch" onclick="toggle_all_searched()"></div>
                             </div>
 
                             <div class="search_results" id="search_results"></div>
@@ -205,11 +203,7 @@
                     <section>
                         <div class="groups_selector" id="groups_selector">
                             <div class="checkGroupsSection" id="checkGroupsSection">
-                                <input
-                                    type="checkbox"
-                                    id="checkingGroups"
-                                    oninput="toggle_all_groups(this.checked)"
-                                />
+                                <input type="checkbox" id="checkingGroups" oninput="toggle_all_groups(this.checked)" />
                                 <label for="checkingGroups" class="toggleSwitch"></label>
                             </div>
                             <h2>
@@ -218,154 +212,98 @@
                                     <div class="column" id="column">
                                         <div>
                                             <label class="switch woodVariants">
-                                                <input
-                                                    type="checkbox"
-                                                    id="woodVariants"
-                                                    oninput="group_selected(this)"
-                                                />
+                                                <input type="checkbox" id="woodVariants" oninput="group_selected(this)" />
                                                 <span class="toggle"></span>
                                             </label>
                                         </div>
 
                                         <div>
                                             <label class="switch signs">
-                                                <input
-                                                    type="checkbox"
-                                                    id="signs"
-                                                    oninput="group_selected(this)"
-                                                />
+                                                <input type="checkbox" id="signs" oninput="group_selected(this)" />
                                                 <span class="toggle"></span>
                                             </label>
                                         </div>
 
                                         <div>
                                             <label class="switch stones">
-                                                <input
-                                                    type="checkbox"
-                                                    id="stones"
-                                                    oninput="group_selected(this)"
-                                                />
+                                                <input type="checkbox" id="stones" oninput="group_selected(this)" />
                                                 <span class="toggle"></span>
                                             </label>
                                         </div>
 
                                         <div>
                                             <label class="switch statusEffects">
-                                                <input
-                                                    type="checkbox"
-                                                    id="statusEffects"
-                                                    oninput="group_selected(this)"
-                                                />
+                                                <input type="checkbox" id="statusEffects" oninput="group_selected(this)" />
                                                 <span class="toggle"></span>
                                             </label>
                                         </div>
 
                                         <div>
                                             <label class="switch sediments">
-                                                <input
-                                                    type="checkbox"
-                                                    id="sediments"
-                                                    oninput="group_selected(this)"
-                                                />
+                                                <input type="checkbox" id="sediments" oninput="group_selected(this)" />
                                                 <span class="toggle"></span>
                                             </label>
                                         </div>
 
                                         <div>
                                             <label class="switch minerals">
-                                                <input
-                                                    type="checkbox"
-                                                    id="minerals"
-                                                    oninput="group_selected(this)"
-                                                />
+                                                <input type="checkbox" id="minerals" oninput="group_selected(this)" />
                                                 <span class="toggle"></span>
                                             </label>
                                         </div>
 
                                         <div>
                                             <label class="switch vehicles">
-                                                <input
-                                                    type="checkbox"
-                                                    id="vehicles"
-                                                    oninput="group_selected(this)"
-                                                />
+                                                <input type="checkbox" id="vehicles" oninput="group_selected(this)" />
                                                 <span class="toggle"></span>
                                             </label>
                                         </div>
 
                                         <div>
                                             <label class="switch cropStages">
-                                                <input
-                                                    type="checkbox"
-                                                    id="cropStages"
-                                                    oninput="group_selected(this)"
-                                                />
+                                                <input type="checkbox" id="cropStages" oninput="group_selected(this)" />
                                                 <span class="toggle"></span>
                                             </label>
                                         </div>
 
                                         <div>
                                             <label class="switch candles">
-                                                <input
-                                                    type="checkbox"
-                                                    id="candles"
-                                                    oninput="group_selected(this)"
-                                                />
+                                                <input type="checkbox" id="candles" oninput="group_selected(this)" />
                                                 <span class="toggle"></span>
                                             </label>
                                         </div>
 
                                         <div>
                                             <label class="switch dyes">
-                                                <input
-                                                    type="checkbox"
-                                                    id="dyes"
-                                                    oninput="group_selected(this)"
-                                                />
+                                                <input type="checkbox" id="dyes" oninput="group_selected(this)" />
                                                 <span class="toggle"></span>
                                             </label>
                                         </div>
 
                                         <div>
                                             <label class="switch terracottas">
-                                                <input
-                                                    type="checkbox"
-                                                    id="terracottas"
-                                                    oninput="group_selected(this)"
-                                                />
+                                                <input type="checkbox" id="terracottas" oninput="group_selected(this)" />
                                                 <span class="toggle"></span>
                                             </label>
                                         </div>
 
                                         <div>
                                             <label class="switch potterySherds">
-                                                <input
-                                                    type="checkbox"
-                                                    id="potterySherds"
-                                                    oninput="group_selected(this)"
-                                                />
+                                                <input type="checkbox" id="potterySherds" oninput="group_selected(this)" />
                                                 <span class="toggle"></span>
                                             </label>
                                         </div>
 
                                         <div>
                                             <label class="switch smithingTemplates">
-                                                <input
-                                                    type="checkbox"
-                                                    id="smithingTemplates"
-                                                    oninput="group_selected(this)"
-                                                />
+                                                <input type="checkbox" id="smithingTemplates" oninput="group_selected(this)" />
                                                 <span class="toggle"></span>
                                             </label>
                                         </div>
 
                                         <div>
                                             <label class="switch buckets">
-                                                <input
-                                                    type="checkbox"
-                                                    id="buckets"
-                                                    oninput="group_selected(this)"
-                                                />
+                                                <input type="checkbox" id="buckets" oninput="group_selected(this)" />
                                                 <span class="toggle"></span>
                                             </label>
                                         </div>
@@ -383,11 +321,7 @@
 
                                         <div>
                                             <label class="switch materials">
-                                                <input
-                                                    type="checkbox"
-                                                    id="materials"
-                                                    oninput="group_selected(this)"
-                                                />
+                                                <input type="checkbox" id="materials" oninput="group_selected(this)" />
                                                 <span class="toggle"></span>
                                             </label>
                                         </div>
@@ -396,165 +330,105 @@
                                     <div class="column" id="column">
                                         <div>
                                             <label class="switch doors">
-                                                <input
-                                                    type="checkbox"
-                                                    id="doors"
-                                                    oninput="group_selected(this)"
-                                                />
+                                                <input type="checkbox" id="doors" oninput="group_selected(this)" />
                                                 <span class="toggle"></span>
                                             </label>
                                         </div>
 
                                         <div>
                                             <label class="switch doorItems">
-                                                <input
-                                                    type="checkbox"
-                                                    id="doorItems"
-                                                    oninput="group_selected(this)"
-                                                />
+                                                <input type="checkbox" id="doorItems" oninput="group_selected(this)" />
                                                 <span class="toggle"></span>
                                             </label>
                                         </div>
 
                                         <div>
                                             <label class="switch beds">
-                                                <input
-                                                    type="checkbox"
-                                                    id="beds"
-                                                    oninput="group_selected(this)"
-                                                />
+                                                <input type="checkbox" id="beds" oninput="group_selected(this)" />
                                                 <span class="toggle"></span>
                                             </label>
                                         </div>
 
                                         <div>
                                             <label class="switch armors">
-                                                <input
-                                                    type="checkbox"
-                                                    id="armors"
-                                                    oninput="group_selected(this)"
-                                                />
+                                                <input type="checkbox" id="armors" oninput="group_selected(this)" />
                                                 <span class="toggle"></span>
                                             </label>
                                         </div>
 
                                         <div>
                                             <label class="switch toolsets">
-                                                <input
-                                                    type="checkbox"
-                                                    id="toolsets"
-                                                    oninput="group_selected(this)"
-                                                />
+                                                <input type="checkbox" id="toolsets" oninput="group_selected(this)" />
                                                 <span class="toggle"></span>
                                             </label>
                                         </div>
 
                                         <div>
                                             <label class="switch foods">
-                                                <input
-                                                    type="checkbox"
-                                                    id="foods"
-                                                    oninput="group_selected(this)"
-                                                />
+                                                <input type="checkbox" id="foods" oninput="group_selected(this)" />
                                                 <span class="toggle"></span>
                                             </label>
                                         </div>
 
                                         <div>
                                             <label class="switch ores">
-                                                <input
-                                                    type="checkbox"
-                                                    id="ores"
-                                                    oninput="group_selected(this)"
-                                                />
+                                                <input type="checkbox" id="ores" oninput="group_selected(this)" />
                                                 <span class="toggle"></span>
                                             </label>
                                         </div>
 
                                         <div>
                                             <label class="switch shulkerBoxes">
-                                                <input
-                                                    type="checkbox"
-                                                    id="shulkerBoxes"
-                                                    oninput="group_selected(this)"
-                                                />
+                                                <input type="checkbox" id="shulkerBoxes" oninput="group_selected(this)" />
                                                 <span class="toggle"></span>
                                             </label>
                                         </div>
 
                                         <div>
                                             <label class="switch wools">
-                                                <input
-                                                    type="checkbox"
-                                                    id="wools"
-                                                    oninput="group_selected(this)"
-                                                />
+                                                <input type="checkbox" id="wools" oninput="group_selected(this)" />
                                                 <span class="toggle"></span>
                                             </label>
                                         </div>
 
                                         <div>
                                             <label class="switch glasses">
-                                                <input
-                                                    type="checkbox"
-                                                    id="glasses"
-                                                    oninput="group_selected(this)"
-                                                />
+                                                <input type="checkbox" id="glasses" oninput="group_selected(this)" />
                                                 <span class="toggle"></span>
                                             </label>
                                         </div>
 
                                         <div>
                                             <label class="switch concretes">
-                                                <input
-                                                    type="checkbox"
-                                                    id="concretes"
-                                                    oninput="group_selected(this)"
-                                                />
+                                                <input type="checkbox" id="concretes" oninput="group_selected(this)" />
                                                 <span class="toggle"></span>
                                             </label>
                                         </div>
 
                                         <div>
                                             <label class="switch musicDiscs">
-                                                <input
-                                                    type="checkbox"
-                                                    id="musicDiscs"
-                                                    oninput="group_selected(this)"
-                                                />
+                                                <input type="checkbox" id="musicDiscs" oninput="group_selected(this)" />
                                                 <span class="toggle"></span>
                                             </label>
                                         </div>
 
                                         <div>
                                             <label class="switch balls">
-                                                <input
-                                                    type="checkbox"
-                                                    id="balls"
-                                                    oninput="group_selected(this)"
-                                                />
+                                                <input type="checkbox" id="balls" oninput="group_selected(this)" />
                                                 <span class="toggle"></span>
                                             </label>
                                         </div>
 
                                         <div>
                                             <label class="switch rangedThings">
-                                                <input
-                                                    type="checkbox"
-                                                    id="rangedThings"
-                                                    oninput="group_selected(this)"
-                                                />
+                                                <input type="checkbox" id="rangedThings" oninput="group_selected(this)" />
                                                 <span class="toggle"></span>
                                             </label>
                                         </div>
 
                                         <div>
                                             <label class="switch utilityItems">
-                                                <input
-                                                    type="checkbox"
-                                                    id="utilityItems"
-                                                    oninput="group_selected(this)"
-                                                />
+                                                <input type="checkbox" id="utilityItems" oninput="group_selected(this)" />
                                                 <span class="toggle"></span>
                                             </label>
                                         </div>
@@ -584,12 +458,7 @@
         <section id="generate_page" style="display: none">
             <section>
                 <div class="canvasSpriteSheets" id="canvasSpriteSheets">
-                    <canvas
-                        id="out_canvas"
-                        onmousemove="hover_canvas(event,false)"
-                        onclick="hover_canvas(event,true)"
-                    >
-                    </canvas>
+                    <canvas id="out_canvas" onmousemove="hover_canvas(event,false)" onclick="hover_canvas(event,true)"> </canvas>
                     <image src="images/ILikeSharingCat.png" id="I_like_sharing_cat_loading"></image>
                 </div>
             </section>
@@ -598,20 +467,10 @@
                 <div class="downloadSection" id="downloadSection">
                     <div class="CleanUpAgain">
                         <div>
-                            <button
-                                class="downloadButton"
-                                id="downloadButton"
-                                onclick="download_button_clicked()"
-                            >
+                            <button class="downloadButton" id="downloadButton" onclick="download_button_clicked()">
                                 <div class="svg-wrapper-1">
                                     <div class="svg-wrapper">
-                                        <svg
-                                            class="icon"
-                                            height="30"
-                                            width="30"
-                                            viewBox="0 0 24 24"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                        >
+                                        <svg class="icon" height="30" width="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                             <path
                                                 d="M22,15.04C22,17.23 20.24,19 18.07,19H5.93C3.76,19 2,17.23 2,15.04C2,13.07 3.43,11.44 5.31,11.14C5.28,11 5.27,10.86 5.27,10.71C5.27,9.33 6.38,8.2 7.76,8.2C8.37,8.2 8.94,8.43 9.37,8.8C10.14,7.05 11.13,5.44 13.91,5.44C17.28,5.44 18.87,8.06 18.87,10.83C18.87,10.94 18.87,11.06 18.86,11.17C20.65,11.54 22,13.13 22,15.04Z"
                                             ></path>
@@ -624,11 +483,7 @@
 
                         <div>
                             <button class="copy" id="copy_image" onclick="copy_image_button_clicked()">
-                                <span
-                                    data-text-end="Copied!"
-                                    data-text-initial="Copy to image clipboard"
-                                    class="tooltip"
-                                ></span>
+                                <span data-text-end="Copied!" data-text-initial="Copy to image clipboard" class="tooltip"></span>
                                 <span>
                                     <svg
                                         xml:space="preserve"
@@ -710,12 +565,7 @@
                     <div class="radio-container">
                         <div class="radio-wrapper">
                             <label class="radio-button">
-                                <input
-                                    id="option3"
-                                    name="radio-group"
-                                    type="radio"
-                                    oninput="generate_final_image()"
-                                />
+                                <input id="option3" name="radio-group" type="radio" oninput="generate_final_image()" />
                                 <span class="radio-checkmark"></span>
                                 <span class="radio-label">User Input</span>
                             </label>
@@ -723,12 +573,7 @@
 
                         <div class="radio-wrapper">
                             <label class="radio-button">
-                                <input
-                                    id="option1"
-                                    name="radio-group"
-                                    type="radio"
-                                    oninput="generate_final_image()"
-                                />
+                                <input id="option1" name="radio-group" type="radio" oninput="generate_final_image()" />
                                 <span class="radio-checkmark"></span>
                                 <span class="radio-label">Color</span>
                             </label>
@@ -736,12 +581,7 @@
 
                         <div class="radio-wrapper">
                             <label class="radio-button">
-                                <input
-                                    id="option2"
-                                    name="radio-group"
-                                    type="radio"
-                                    oninput="generate_final_image()"
-                                />
+                                <input id="option2" name="radio-group" type="radio" oninput="generate_final_image()" />
                                 <span class="radio-checkmark"></span>
                                 <span class="radio-label">Height</span>
                             </label>
@@ -750,33 +590,17 @@
 
                     <div class="MoreOptions">
                         <div>
-                            <input
-                                type="checkbox"
-                                name="sortInGroups"
-                                id="sortInGroups"
-                                oninput="generate_final_image()"
-                            />
+                            <input type="checkbox" name="sortInGroups" id="sortInGroups" oninput="generate_final_image()" />
                             <label for="sortInGroups">Sort In Groups</label>
                         </div>
 
                         <div>
-                            <input
-                                type="checkbox"
-                                name="deconstruct"
-                                id="deconstruct"
-                                oninput="generate_final_image()"
-                            />
+                            <input type="checkbox" name="deconstruct" id="deconstruct" oninput="generate_final_image()" />
                             <label for="deconstruct">Deconstruct</label>
                         </div>
 
                         <div>
-                            <input
-                                type="checkbox"
-                                name="mergeStuff"
-                                id="mergeStuff"
-                                oninput="generate_final_image()"
-                                checked=""
-                            />
+                            <input type="checkbox" name="mergeStuff" id="mergeStuff" oninput="generate_final_image()" checked="" />
                             <label for="mergeStuff">Merge Doors</label>
                         </div>
 
@@ -815,11 +639,7 @@
                         <br />
                         <div class="MoreOptions">
                             <div>
-                                <input
-                                    type="checkbox"
-                                    name="hover_update_on_move"
-                                    id="hover_update_on_move"
-                                />
+                                <input type="checkbox" name="hover_update_on_move" id="hover_update_on_move" />
                                 <label for="hover_update_on_move">on move</label>
                             </div>
 
@@ -843,9 +663,7 @@
                 <div class="RealZoom">
                     <div class="modal" id="canvasModal">
                         <div class="modal-content">
-                            <span class="close" id="closeModalBtn" onclick="closeModal()" style="color: white"
-                                >&times;</span
-                            >
+                            <span class="close" id="closeModalBtn" onclick="closeModal()" style="color: white">&times;</span>
                             <div class="scrollable_modal">
                                 <canvas
                                     id="modalCanvas"
@@ -858,10 +676,7 @@
                             <div class="sectioning-column">
                                 <div class="zoomModal" id="zoomModal">
                                     <div class="zoom-modal-content">
-                                        <canvas
-                                            id="zoomModalCanvas"
-                                            style="width: 100%; height: 100%; background-color: #dbdad1"
-                                        ></canvas>
+                                        <canvas id="zoomModalCanvas" style="width: 100%; height: 100%; background-color: #dbdad1"></canvas>
                                     </div>
                                 </div>
                                 <div class="current-texture-mini">
@@ -877,20 +692,12 @@
                                         <br />
                                         <div class="MoreOptions">
                                             <div>
-                                                <input
-                                                    type="checkbox"
-                                                    name="zoom_hover_update_on_move"
-                                                    id="zoom_hover_update_on_move"
-                                                />
+                                                <input type="checkbox" name="zoom_hover_update_on_move" id="zoom_hover_update_on_move" />
                                                 <label for="zoom_hover_update_on_move">on move</label>
                                             </div>
 
                                             <div>
-                                                <input
-                                                    type="checkbox"
-                                                    name="zoom_hover_full_name"
-                                                    id="zoom_hover_full_name"
-                                                />
+                                                <input type="checkbox" name="zoom_hover_full_name" id="zoom_hover_full_name" />
                                                 <label for="zoom_hover_full_name">file path</label>
                                             </div>
                                         </div>

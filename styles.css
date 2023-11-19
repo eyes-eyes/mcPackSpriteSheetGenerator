@@ -5,9 +5,8 @@ body {
     padding: 0;
     background-color: #e8edf7;
     /* text-align: center; */
-    font-family: Montserrat, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-        Helvetica Neue, Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol,
-        "Noto Color Emoji";
+    font-family: Montserrat, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
 }
 
 .file_hover_popup {
@@ -660,8 +659,7 @@ button:focus {
 }
 
 .downloadButton {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
-        "Open Sans", "Helvetica Neue", sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     font-size: 20px;
     background: #212121;
     color: white;
@@ -1011,9 +1009,8 @@ button:focus {
     display: grid;
     grid-template-columns: auto var(--radio-size);
     align-items: center;
-    font-family: Montserrat, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-        Helvetica Neue, Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol,
-        "Noto Color Emoji" !important;
+    font-family: Montserrat, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji" !important;
 }
 
 .form label {
@@ -1137,9 +1134,8 @@ button:focus {
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     border: 1px solid transparent;
     margin: 1vmin;
-    font-family: Montserrat, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-        Helvetica Neue, Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol,
-        "Noto Color Emoji" !important;
+    font-family: Montserrat, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji" !important;
     flex: 1;
 }
 
@@ -1175,8 +1171,8 @@ button:focus {
     color: #6b7280;
     font-size: 0.875rem;
     line-height: 1.25rem;
-    font-family: Montserrat, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-        Helvetica Neue, Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI;
+    font-family: Montserrat, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", Segoe UI;
 }
 
 .code-box {
@@ -1461,4 +1457,320 @@ p#zoom_hovered_output {
 
     position: relative;
     width: 20vmin;
+}
+
+.main_file_selector_areas {
+    box-sizing: border-box;
+}
+
+.top_pitch_area {
+    background: rgba(95, 121, 139, 1);
+    /* background: linear-gradient(200deg, rgba(16, 21, 24, 1) 0, rgba(55, 70, 80, 1) 50%, rgba(95, 121, 139, 1) 100%); */
+    margin-bottom: 40px;
+}
+
+.navbar {
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 20px;
+    border-radius: 0;
+}
+
+nav {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container > .navbar_header {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .navbar_header {
+        float: left;
+    }
+}
+
+.navbar_branding {
+    float: left;
+    height: 50px;
+    padding: 15px 15px;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.navbar_branding .svg_logo_icon {
+    height: 0;
+    position: relative;
+    vertical-align: baseline;
+    margin-right: 3px;
+}
+
+.svg_logo_icon {
+    width: 26px;
+    height: 26px;
+    display: inline-block;
+    vertical-align: text-bottom;
+}
+
+.navbar_branding .svg_logo_icon svg {
+    position: absolute;
+    display: block;
+    width: 26px;
+    height: 26px;
+    bottom: -6px;
+}
+
+@media (min-width: 768px) {
+    .navbar > .container .navbar_branding {
+        margin-left: -15px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container > .navbar_collapse {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .navbar > .navbar_collapse {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .navbar_collapse.collapse {
+        display: block !important;
+        height: auto !important;
+        padding-bottom: 0;
+        overflow: visible !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .navbar_collapse {
+        width: auto;
+        border-top: 0;
+        box-shadow: none;
+    }
+}
+
+.collapse {
+    display: none;
+}
+
+.navbar_collapse {
+    padding-right: 15px;
+    padding-left: 15px;
+    overflow-x: visible;
+    border-top: 1px solid transparent;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.btn-group-vertical > .btn-group:after,
+.btn-group-vertical > .btn-group:before,
+.btn-toolbar:after,
+.btn-toolbar:before,
+.clearfix:after,
+.clearfix:before,
+.container-fluid:after,
+.container-fluid:before,
+.container:after,
+.container:before,
+.dl-horizontal dd:after,
+.dl-horizontal dd:before,
+.form-horizontal .form-group:after,
+.form-horizontal .form-group:before,
+.modal-footer:after,
+.modal-footer:before,
+.modal-header:after,
+.modal-header:before,
+.nav:after,
+.nav:before,
+.navbar-collapse:after,
+.navbar-collapse:before,
+.navbar-header:after,
+.navbar-header:before,
+.navbar:after,
+.navbar:before,
+.pager:after,
+.pager:before,
+.panel-body:after,
+.panel-body:before,
+.row:after,
+.row:before {
+    display: table;
+    content: " ";
+}
+
+.btn-group-vertical > .btn-group::after,
+.btn-toolbar::after,
+.clearfix::after,
+.container-fluid::after,
+.container::after,
+.dl-horizontal dd::after,
+.form-horizontal .form-group::after,
+.modal-footer::after,
+.modal-header::after,
+.nav::after,
+.navbar-collapse::after,
+.navbar-header::after,
+.navbar::after,
+.pager::after,
+.panel-body::after,
+.row::after {
+    clear: both;
+}
+
+@media (min-width: 768px) {
+    .col-sm-6 {
+        width: 50%;
+    }
+}
+
+@media (min-width: 768px) {
+    .col-sm-1,
+    .col-sm-10,
+    .col-sm-11,
+    .col-sm-12,
+    .col-sm-2,
+    .col-sm-3,
+    .col-sm-4,
+    .col-sm-5,
+    .col-sm-6,
+    .col-sm-7,
+    .col-sm-8,
+    .col-sm-9 {
+        float: left;
+    }
+}
+
+.col-lg-1,
+.col-lg-10,
+.col-lg-11,
+.col-lg-12,
+.col-lg-2,
+.col-lg-3,
+.col-lg-4,
+.col-lg-5,
+.col-lg-6,
+.col-lg-7,
+.col-lg-8,
+.col-lg-9,
+.col-md-1,
+.col-md-10,
+.col-md-11,
+.col-md-12,
+.col-md-2,
+.col-md-3,
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-7,
+.col-md-8,
+.col-md-9,
+.col-sm-1,
+.col-sm-10,
+.col-sm-11,
+.col-sm-12,
+.col-sm-2,
+.col-sm-3,
+.col-sm-4,
+.col-sm-5,
+.col-sm-6,
+.col-sm-7,
+.col-sm-8,
+.col-sm-9,
+.col-xs-1,
+.col-xs-10,
+.col-xs-11,
+.col-xs-12,
+.col-xs-2,
+.col-xs-3,
+.col-xs-4,
+.col-xs-5,
+.col-xs-6,
+.col-xs-7,
+.col-xs-8,
+.col-xs-9 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.FrontPage_title_container {
+    margin: 0 auto;
+    width: 330px;
+}
+
+header {
+    display: block;
+}
+
+@media (max-width: 1199px) {
+    .FrontPage_mainTitle {
+        margin-top: 15px;
+    }
+}
+
+.FrontPage_mainTitle {
+    font-size: 20px;
+    color: #fff;
+    margin-top: 0;
+    line-height: 1.25;
+}
+
+.FrontPage_mainTitle_block {
+    white-space: nowrap;
+}
+
+.FrontPage_mainTitleFileFormat {
+    font-size: 34px;
+}
+
+.FrontPage_mainSubtitle {
+    font-size: 15px;
+    line-height: 1.75;
+    color: #fff;
+    margin: 20px 0 40px;
+}
+
+p {
+    margin: 0 0 10px;
+}
+
+.h1,
+.h2,
+.h3,
+h1,
+h2,
+h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
