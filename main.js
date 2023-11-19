@@ -225,7 +225,7 @@ const java_mc_groups = {
     foods: {
         "^minecraft": {
             "^item !model !bucket": {
-                Beef: null,
+                "Beef !cook": null,
                 "Cook Beef": null,
                 Steak: null,
                 Chicken: null,
