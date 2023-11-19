@@ -255,6 +255,7 @@ const java_mc_groups = {
                 Cookie: null,
                 Potato: null,
                 "Pumpkin Pie": null,
+                cake: null,
                 "Rotten Flesh": null,
                 "Spider Eye": null,
                 "Honey Bottle": null,
