@@ -1,7 +1,5 @@
 function error_occurred(err, file, line, col, error) {
-    alert(
-        `${line}:${col}\nError occurred :(, we don't know what type but heres the trace for us, please send!\n\n${error.stack.toString()}`
-    );
+    alert(`${line}:${col}\nError occurred :(, we don't know what type but heres the trace for us, please send!\n\n${error.stack.toString()}`);
 }
 
 window.addEventListener("error", error_occurred);
@@ -131,8 +129,7 @@ const java_mc_groups = {
                     sandstone: null,
                     obsidian: null,
                     blackstone: null,
-                    "stone !redstone !grindstone !lodestone !sword !axe !shovel !hoe !pickaxe !stonecutter !glowstone !slab !dripstone":
-                        null,
+                    "stone !redstone !grindstone !lodestone !sword !axe !shovel !hoe !pickaxe !stonecutter !glowstone !slab !dripstone": null,
                 },
             },
         },
@@ -310,8 +307,7 @@ const java_mc_groups = {
         "^minecraft": {
             "^item": {
                 "emerald !empty": null,
-                "diamond !sword !shovel !axe !pickaxe !hoe !armor !helmet !chestplate !leggings !boots !empty":
-                    null,
+                "diamond !sword !shovel !axe !pickaxe !hoe !armor !helmet !chestplate !leggings !boots !empty": null,
                 "copper ingot": null,
                 "iron ingot": null,
                 "iron nugget": null,
@@ -690,13 +686,7 @@ function update_pack_version(pack_version) {
         pack_minecraft_version_names = ["Unknown", "Unknown"];
     }
     document.getElementById("pack_version_top_bar").innerText =
-        "Pack version: " +
-        pack_version +
-        " (" +
-        pack_minecraft_version_names[0] +
-        "-" +
-        pack_minecraft_version_names[1] +
-        ")";
+        "Pack version: " + pack_version + " (" + pack_minecraft_version_names[0] + "-" + pack_minecraft_version_names[1] + ")";
 }
 
 function zip_new_entry_handler(entries) {
@@ -797,9 +787,7 @@ function handle_file(file) {
 
     console.log(file_object_raw.name.replace(".zip", ""));
 
-    document.getElementById("pack_name_top_bar").innerHTML = minecraft_name_to_html(
-        file_object_raw.name.replace(".zip", "").replace(/^[!\s]*/gm, "")
-    ).innerHTML;
+    document.getElementById("pack_name_top_bar").innerHTML = minecraft_name_to_html(file_object_raw.name.replace(".zip", "").replace(/^[!\s]*/gm, "")).innerHTML;
 
     file_object_zip = new zip.ZipReader(new zip.BlobReader(file));
     file_object_zip.getEntries().then(zip_new_entry_handler);
@@ -944,9 +932,7 @@ async function search_user_input(search_string) {
                         search_selected_items.unshift(current_item_name_again);
                     }
                 } else {
-                    search_selected_items = search_selected_items.filter(
-                        (a) => a !== current_item_name_again
-                    );
+                    search_selected_items = search_selected_items.filter((a) => a !== current_item_name_again);
                 }
 
                 e.target.setAttribute("checkd", !e.target.getAttribute("checkd") ? "true" : "");
@@ -989,9 +975,7 @@ function generate_selected_textures_list() {
                     }
                 } else {
                     // search_selected_items.pop(current_item_name_again);
-                    search_selected_items = search_selected_items.filter(
-                        (a) => a !== current_item_name_again
-                    );
+                    search_selected_items = search_selected_items.filter((a) => a !== current_item_name_again);
                 }
 
                 e.target.setAttribute("checkd", !e.target.getAttribute("checkd") ? "true" : "");
@@ -1009,8 +993,7 @@ function generate_selected_textures_list() {
             search_results.appendChild(current_result_itter);
         }
     }
-    document.getElementById("counterTotal").innerText =
-        "(" + search_selected_items.length + ") " + "Total Textures:";
+    document.getElementById("counterTotal").innerText = "(" + search_selected_items.length + ") " + "Total Textures:";
 }
 
 function clear_selected() {
@@ -1021,8 +1004,7 @@ function clear_selected() {
         currentValue.checked = false;
     });
     document.getElementById("checkingGroups").checked = false;
-    document.getElementById("counterTotal").innerText =
-        "(" + search_selected_items.length + ") " + "Total Textures:";
+    document.getElementById("counterTotal").innerText = "(" + search_selected_items.length + ") " + "Total Textures:";
 }
 
 //! group selection method
@@ -1107,8 +1089,7 @@ function group_selected(obj, dont_update_search) {
         generate_selected_textures_list();
         search_user_input(last_user_inputStringThing);
 
-        document.getElementById("counterTotal").innerText =
-            "(" + search_selected_items.length + ") " + "Total Textures:";
+        document.getElementById("counterTotal").innerText = "(" + search_selected_items.length + ") " + "Total Textures:";
     }
 
     // console.log(obj.id + (obj.checked ? " CHECKED" : " Unchecked"));
@@ -1126,8 +1107,7 @@ function group_search_collon_d(group_add_remove, obj_to_search) {
                 current_eligibility = true;
                 for (o in search_array) {
                     searched_level_path = search_array[o][0] == "^" ? current_long_name : current_name;
-                    search_string_current =
-                        search_array[o][0] == "^" ? search_array[o].slice(1) : search_array[o];
+                    search_string_current = search_array[o][0] == "^" ? search_array[o].slice(1) : search_array[o];
 
                     if (search_string_current[0] == "!") {
                         if (searched_level_path.includes(search_string_current.slice(1))) {
@@ -1356,10 +1336,7 @@ processing_stage = null;
 function setup_processing_stage() {
     if (processing_stage) return;
 
-    const blob_inline_js = new Blob(
-        [document.getElementById("jsworker-inlinescript-processing_stage.js").innerText],
-        { type: "text/javascript" }
-    );
+    const blob_inline_js = new Blob([document.getElementById("jsworker-inlinescript-processing_stage.js").innerText], { type: "text/javascript" });
 
     processing_stage = new Worker(window.URL.createObjectURL(blob_inline_js));
     // processing_stage = new Worker("processing_stage.js");
@@ -1369,12 +1346,7 @@ function setup_processing_stage() {
         if (e.data["request"] == "handle_new_image") {
             // console.log(e);
             if (e.data["error"]) {
-                alert(
-                    "error while processing image:" +
-                        textures_list_final?.[e?.data["index"]]?.filename +
-                        "\n\n" +
-                        e.data["error"]
-                );
+                alert("error while processing image:" + textures_list_final?.[e?.data["index"]]?.filename + "\n\n" + e.data["error"]);
             }
 
             // console.log("processing_finished!")
@@ -1392,8 +1364,7 @@ function setup_processing_stage() {
 
                 img_bitmap_tmp.group_type = obj_group_locations?.[file_name_tmp] || "UNDEF";
 
-                index_push =
-                    final_textures_list[obj_group_locations?.[file_name_tmp] || "UNDEF"].push(img_bitmap_tmp);
+                index_push = final_textures_list[obj_group_locations?.[file_name_tmp] || "UNDEF"].push(img_bitmap_tmp);
             }
 
             generate_final_text_list_objs_processing -= 1;
@@ -1442,11 +1413,7 @@ async function generate_final_image() {
 
             // }
 
-            group_texture_tmp = sort_and_draw_image(
-                current_text_list,
-                document.getElementById("width_input_generate").valueAsNumber || 0,
-                true
-            );
+            group_texture_tmp = sort_and_draw_image(current_text_list, document.getElementById("width_input_generate").valueAsNumber || 0, true);
 
             textures_offset_list_and_locations["groups"][i] = group_texture_tmp[2];
 
@@ -1472,10 +1439,7 @@ async function generate_final_image() {
         });
     }
 
-    out = sort_and_draw_image(
-        real_final_textures_list,
-        document.getElementById("width_input_generate").valueAsNumber || 0
-    );
+    out = sort_and_draw_image(real_final_textures_list, document.getElementById("width_input_generate").valueAsNumber || 0);
 
     textures_offset_list_and_locations["items"] = out[2];
 
@@ -1543,16 +1507,10 @@ function sort_and_draw_image(image_array_in, width, add_color_data) {
             obj_tmp = image_array[i];
             if (!obj_tmp.file_obj) continue;
             name_tmp = obj_tmp.file_obj.filename.replace(".png", "");
-            door_upper =
-                (name_tmp.endsWith("_upper") || name_tmp.endsWith("_top")) && name_tmp.includes("door");
-            door_lower =
-                (name_tmp.endsWith("_lower") || name_tmp.endsWith("_bottom")) && name_tmp.includes("door");
+            door_upper = (name_tmp.endsWith("_upper") || name_tmp.endsWith("_top")) && name_tmp.includes("door");
+            door_lower = (name_tmp.endsWith("_lower") || name_tmp.endsWith("_bottom")) && name_tmp.includes("door");
             if (door_upper || door_lower) {
-                name_tmp_normalized = name_tmp
-                    .replaceAll("_upper", "")
-                    .replaceAll("_lower", "")
-                    .replaceAll("_top", "")
-                    .replaceAll("_bottom", "");
+                name_tmp_normalized = name_tmp.replaceAll("_upper", "").replaceAll("_lower", "").replaceAll("_top", "").replaceAll("_bottom", "");
                 opposite_part_name_tmp = name_tmp_normalized + (!door_upper ? "_TOP" : "_BOTTOM");
                 current_parr_name_tmp = name_tmp_normalized + (door_upper ? "_TOP" : "_BOTTOM");
 
@@ -1560,10 +1518,7 @@ function sort_and_draw_image(image_array_in, width, add_color_data) {
                 if (opposite_part_index_tmp) {
                     opposite_part_obj_tmp = image_array[opposite_part_index_tmp];
 
-                    let offscreen_merge_canvas = new OffscreenCanvas(
-                        Math.max(opposite_part_obj_tmp.width, obj_tmp.width),
-                        opposite_part_obj_tmp.height + obj_tmp.height
-                    );
+                    let offscreen_merge_canvas = new OffscreenCanvas(Math.max(opposite_part_obj_tmp.width, obj_tmp.width), opposite_part_obj_tmp.height + obj_tmp.height);
                     merge_ctx = offscreen_merge_canvas.getContext("2d", {
                         willReadFrequently: true,
                         alpha: true,
@@ -1739,8 +1694,7 @@ function hover_canvas(event, click) {
 
     img_name = img_obj?.file_obj?.filename || img_obj?.fake_file_name;
 
-    if (!document.getElementById("hover_full_name").checked)
-        img_name = img_name?.split("/")?.at(-1)?.replaceAll(".png", "");
+    if (!document.getElementById("hover_full_name").checked) img_name = img_name?.split("/")?.at(-1)?.replaceAll(".png", "");
 
     document.getElementById("hovered_output").innerText = img_name || "N/A";
 }
@@ -1807,8 +1761,7 @@ function hover_zoom_canvas(event, click) {
 
     img_name = img_obj?.file_obj?.filename || img_obj?.fake_file_name;
 
-    if (!document.getElementById("zoom_hover_full_name").checked)
-        img_name = img_name?.split("/")?.at(-1)?.replaceAll(".png", "");
+    if (!document.getElementById("zoom_hover_full_name").checked) img_name = img_name?.split("/")?.at(-1)?.replaceAll(".png", "");
 
     document.getElementById("zoom_hovered_output").innerText = img_name || "N/A";
 }
@@ -1869,9 +1822,7 @@ function openModal() {
     const ctx = modalCanvas.getContext("2d");
     ctx.drawImage(originalCanvas, 0, 0);
 
-    zoom_modal_canvas_data_for_fast_access = originalCanvas
-        .getContext("2d")
-        .getImageData(0, 0, originalCanvas.width, originalCanvas.height);
+    zoom_modal_canvas_data_for_fast_access = originalCanvas.getContext("2d").getImageData(0, 0, originalCanvas.width, originalCanvas.height);
 }
 
 function closeModal() {
@@ -1924,16 +1875,9 @@ function closeModal() {
 
 function download_button_clicked() {
     const canvas = document.getElementById("out_canvas");
-    scale_up_amt =
-        1 +
-        document.getElementById("scale_01").checked +
-        document.getElementById("scale_02").checked * 4 +
-        document.getElementById("scale_03").checked * 9;
+    scale_up_amt = 1 + document.getElementById("scale_01").checked + document.getElementById("scale_02").checked * 4 + document.getElementById("scale_03").checked * 9;
 
-    let offscreen_upscale_canvas = new OffscreenCanvas(
-        canvas.width * scale_up_amt,
-        canvas.height * scale_up_amt
-    );
+    let offscreen_upscale_canvas = new OffscreenCanvas(canvas.width * scale_up_amt, canvas.height * scale_up_amt);
     upscale_ctx = offscreen_upscale_canvas.getContext("2d", {
         willReadFrequently: true,
         alpha: true,
@@ -1952,8 +1896,7 @@ function download_button_clicked() {
     offscreen_upscale_canvas.convertToBlob().then((blob_D) => {
         const link = document.createElement("a");
         link.href = window.URL.createObjectURL(blob_D); //image;
-        link.download =
-            file_object_raw.name.replace(".zip", "").replace(/^[!\s]*/gm, "") + "_SPRITESHEET" + ".png";
+        link.download = file_object_raw.name.replace(".zip", "").replace(/^[!\s]*/gm, "") + "_SPRITESHEET" + ".png";
         link.click();
     });
 }
@@ -1961,16 +1904,9 @@ function download_button_clicked() {
 function copy_image_button_clicked() {
     const canvas = document.getElementById("out_canvas");
 
-    scale_up_amt =
-        1 +
-        document.getElementById("scale_01").checked +
-        document.getElementById("scale_02").checked * 4 +
-        document.getElementById("scale_03").checked * 9;
+    scale_up_amt = 1 + document.getElementById("scale_01").checked + document.getElementById("scale_02").checked * 4 + document.getElementById("scale_03").checked * 9;
 
-    let offscreen_upscale_canvas = new OffscreenCanvas(
-        canvas.width * scale_up_amt,
-        canvas.height * scale_up_amt
-    );
+    let offscreen_upscale_canvas = new OffscreenCanvas(canvas.width * scale_up_amt, canvas.height * scale_up_amt);
     upscale_ctx = offscreen_upscale_canvas.getContext("2d", {
         willReadFrequently: true,
         alpha: true,
@@ -2011,8 +1947,7 @@ function toggle_all_groups(checked) {
     generate_selected_textures_list();
     search_user_input(last_user_inputStringThing);
 
-    document.getElementById("counterTotal").innerText =
-        "(" + search_selected_items.length + ") " + "Total Textures:";
+    document.getElementById("counterTotal").innerText = "(" + search_selected_items.length + ") " + "Total Textures:";
 }
 
 function toggle_all_searched() {
@@ -2038,15 +1973,10 @@ function copyText() {
         if (tmp_name.startsWith("._")) continue;
 
         door_upper = (tmp_name.endsWith("_upper") || tmp_name.endsWith("_top")) && tmp_name.includes("door");
-        door_lower =
-            (tmp_name.endsWith("_lower") || tmp_name.endsWith("_bottom")) && tmp_name.includes("door");
+        door_lower = (tmp_name.endsWith("_lower") || tmp_name.endsWith("_bottom")) && tmp_name.includes("door");
 
         if (door_upper || door_lower) {
-            door_generalized = tmp_name
-                .replaceAll("_upper", "")
-                .replaceAll("_lower", "")
-                .replaceAll("_top", "")
-                .replaceAll("_bottom", "");
+            door_generalized = tmp_name.replaceAll("_upper", "").replaceAll("_lower", "").replaceAll("_top", "").replaceAll("_bottom", "");
             oposite_name = door_generalized + (door_upper ? "_BOTTOM" : "_TOP");
             if (copiedtext.includes(oposite_name)) {
                 copiedtext = copiedtext.filter((a) => {

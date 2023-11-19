@@ -1774,3 +1774,92 @@ h3 {
     margin-top: 20px;
     margin-bottom: 10px;
 }
+
+.h3,
+h3 {
+    font-size: 24px;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+}
+
+.h2,
+h2 {
+    font-size: 30px;
+}
+
+.FrontPage_UploadArea {
+    display: flex;
+    align-items: stretch;
+}
+
+@media (min-width: 768px) {
+    .col-sm-8 {
+        width: 66.66666666666666666666666666%;
+    }
+}
+
+.FrontPage_topArea .panel {
+    background-color: rgba(255, 255, 255, 0.09);
+    border: none;
+    color: #fff;
+}
+
+.panel {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 05);
+}
+
+.panel {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.05);
+}
+
+.FrontPage_topArea .panel_heading {
+    background: rgba(255, 255, 255, 0.06);
+    border: none;
+    color: #fff;
+}
+
+.panel_title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+    color: inherit;
+}
+
+.panel_heading {
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.panel_body {
+    padding: 15px;
+}
+
+.panel_body#p {
+    margin: 0 0 10px;
+}
+
+.panel_default {
+    border-color: #ddd;
+}
