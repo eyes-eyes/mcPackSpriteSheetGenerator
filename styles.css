@@ -28,17 +28,17 @@ body {
 }
 
 .main_file_selector {
-    left: 50%;
+    /* left: 50%;
     top: 13%;
-    position: absolute;
-    width: 60vmin;
-    height: 22vmin;
+    position: absolute; */
+    /* width: 60vmin;
+    height: 22vmin; */
     background-color: #98b0dd;
     color: black;
     text-align: center;
     font-size: 3vmin;
     font-family: Roboto, sans-serif;
-    transform: translate(-50%, -50%);
+    /* transform: translate(-50%, -50%); */
     border-radius: 10px;
 }
 
@@ -642,7 +642,7 @@ button:focus {
     /* height: 30vh; */
     background: #98b0dd;
     border-radius: 10px;
-
+    text-align: center;
     top: 50%;
     position: relative;
     width: 20vmin;
@@ -1009,6 +1009,7 @@ button:focus {
     display: grid;
     grid-template-columns: auto var(--radio-size);
     align-items: center;
+    text-align: center;
     font-family: Montserrat, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
         "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji" !important;
 }
@@ -1036,6 +1037,12 @@ button:focus {
     align-items: center;
     overflow: hidden;
     transition: border 0.5s ease;
+}
+
+.form input[type="input"] {
+    position: relative;
+    align-items: center;
+    text-align: center;
 }
 
 .form input[type="radio"]::before,
@@ -1089,6 +1096,7 @@ button:focus {
 .form h2 {
     margin: 0;
 }
+
 
 @keyframes stretch-animate {
     0% {
@@ -1829,7 +1837,7 @@ h2 {
     background-color: #fff;
     border: 1px solid transparent;
     border-radius: 4px;
-    box-shadow: rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 
 .FrontPage_topArea .panel_heading {
