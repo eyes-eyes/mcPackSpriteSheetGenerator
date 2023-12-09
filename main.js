@@ -12,6 +12,7 @@ let zip_orig_path_objects = [];
 let pack_mcmeta_data = {};
 let pack_version = 0;
 let pagination = 0;
+let animated_textures_array = [];
 
 const openModalBtn = document.getElementById("openModalBtn");
 const closeModalBtn = document.getElementById("closeModalBtn");
@@ -99,7 +100,7 @@ const java_mc_groups = {
 
     doors: {
         "^minecraft": {
-            "^block !tip": {
+            "^block !tip !troll": {
                 door: {
                     upper: null,
                     lower: null,
@@ -126,7 +127,8 @@ const java_mc_groups = {
                     granite: null,
                     diorite: null,
                     andesite: null,
-                    sandstone: null,
+                    "sandstone !red": null,
+                    "red sandstone": null,
                     obsidian: null,
                     blackstone: null,
                     "stone !redstone !grindstone !lodestone !sword !axe !shovel !hoe !pickaxe !stonecutter !glowstone !slab !dripstone": null,
@@ -330,13 +332,15 @@ const java_mc_groups = {
             "^item": {
                 "ender pearl": null,
                 "eye of ender": null,
-                snowball: null,
-                "slime ball": null,
                 "egg !leggings !overlay !spawn": null,
                 "magma cream": null,
-                fireball: null,
+                ball: null,
+                "fire charge": null,
                 "fire charge !firework": null,
                 "Heart Sea !model": null,
+            },
+            "^entity": {
+                ball: null,
             },
         },
     },
@@ -517,7 +521,7 @@ const java_mc_groups = {
             "blaze rod": null,
             "blaze powder": null,
             bone: null,
-            clay: null,
+            // clay: null,
             "disc frag": null,
             "dragon breath": null,
             "echo shard": null,
@@ -643,6 +647,7 @@ function back_button() {
         // back_to_file_selector()
 
         default:
+            // clear_selected();
             break;
     }
 }
@@ -687,7 +692,25 @@ function update_pack_version(pack_version) {
         "Pack version: " + pack_version + " (" + pack_minecraft_version_names[0] + "-" + pack_minecraft_version_names[1] + ")";
 }
 
-function zip_new_entry_handler(entries) {
+async function parse_mcmeta_png(mcmeta_file) {
+    try {
+        // animated_textures_array
+        mcmeta_data_png = await read_file_to_str(mcmeta_file);
+
+        mcmeta_file.parsed_mcmeta = JSON.parse(mcmeta_data_png.replaceAll("\r", "").replaceAll("\n", ""));
+
+        mcmeta_file.is_animation_mcmeta = "animation" in mcmeta_file.parsed_mcmeta;
+
+        if (mcmeta_file.is_animation_mcmeta) {
+            animated_textures_array.push(mcmeta_file.filename.replaceAll(".png.mcmeta", ".png"));
+        }
+    } catch (error) {
+        console.warn("Could not parse mcmeta file", mcmeta_file, error);
+    }
+}
+
+async function zip_new_entry_handler(entries) {
+    clear_selected(); // mby fix bug idk
     zip_path_objects = {};
     for (i in entries) {
         path_array = entries[i].filename.split("/");
@@ -695,6 +718,11 @@ function zip_new_entry_handler(entries) {
         entries[i].is_png = entries[i].filename.endsWith(".png");
         entries[i].is_hidden = entries[i].short_name.endsWith(".");
         entries[i].groups = [];
+        entries[i].is_mcmeta = entries[i].filename.endsWith(".png.mcmeta");
+        if (entries[i].is_mcmeta) {
+            // console.log("adasdadadad",entries[i]);
+            await parse_mcmeta_png(entries[i]);
+        }
 
         // if (!get_just_file_name(entries[i]).startsWith("."))
         fillObjectAtDepth(zip_path_objects, entries[i], path_array);
@@ -785,7 +813,9 @@ function handle_file(file) {
 
     console.log(file_object_raw.name.replace(".zip", ""));
 
-    document.getElementById("pack_name_top_bar").innerHTML = minecraft_name_to_html(file_object_raw.name.replace(".zip", "").replace(/^[!\s]*/gm, "")).innerHTML;
+    document.getElementById("pack_name_top_bar").innerHTML = minecraft_name_to_html(
+        file_object_raw.name.replace(".zip", "").replace(/^[!\s]*/gm, "")
+    ).innerHTML;
 
     file_object_zip = new zip.ZipReader(new zip.BlobReader(file));
     file_object_zip.getEntries().then(zip_new_entry_handler);
@@ -1498,11 +1528,71 @@ function color_append_to_imaged(images) {
 function sort_and_draw_image(image_array_in, width, add_color_data) {
     image_array = image_array_in.slice();
 
-    if (document.getElementById("mergeStuff").checked) {
-        combined_parts_included = {};
+    // if (document.getElementById("mergeStuff").checked) {
+    //     combined_parts_included = {};
 
-        for (let i in image_array) {
-            obj_tmp = image_array[i];
+    //     for (let i in image_array) {
+    //         obj_tmp = image_array[i];
+    //         if (!obj_tmp.file_obj) continue;
+    //         name_tmp = obj_tmp.file_obj.filename.replace(".png", "");
+    //         door_upper = (name_tmp.endsWith("_upper") || name_tmp.endsWith("_top")) && name_tmp.includes("door");
+    //         door_lower = (name_tmp.endsWith("_lower") || name_tmp.endsWith("_bottom")) && name_tmp.includes("door");
+    //         if (door_upper || door_lower) {
+    //             name_tmp_normalized = name_tmp.replaceAll("_upper", "").replaceAll("_lower", "").replaceAll("_top", "").replaceAll("_bottom", "");
+    //             opposite_part_name_tmp = name_tmp_normalized + (!door_upper ? "_TOP" : "_BOTTOM");
+    //             current_parr_name_tmp = name_tmp_normalized + (door_upper ? "_TOP" : "_BOTTOM");
+
+    //             opposite_part_index_tmp = combined_parts_included[opposite_part_name_tmp];
+    //             if (opposite_part_index_tmp) {
+    //                 opposite_part_obj_tmp = image_array[opposite_part_index_tmp];
+
+    //                 let offscreen_merge_canvas = new OffscreenCanvas(Math.max(opposite_part_obj_tmp.width, obj_tmp.width), opposite_part_obj_tmp.height + obj_tmp.height);
+    //                 merge_ctx = offscreen_merge_canvas.getContext("2d", {
+    //                     willReadFrequently: true,
+    //                     alpha: true,
+    //                     antialias: false,
+    //                 });
+
+    //                 if (door_upper) {
+    //                     merge_ctx.drawImage(obj_tmp, 0, 0);
+    //                     merge_ctx.drawImage(opposite_part_obj_tmp, 0, obj_tmp.height);
+    //                 } else {
+    //                     merge_ctx.drawImage(opposite_part_obj_tmp, 0, 0);
+    //                     merge_ctx.drawImage(obj_tmp, 0, opposite_part_obj_tmp.height);
+    //                 }
+
+    //                 // image_array.splice(opposite_part_index_tmp, 1);
+    //                 // image_array.splice(i, 1);
+    //                 // remove both self and the other :D
+
+    //                 opposite_part_obj_tmp.disabled = true;
+    //                 obj_tmp.disabled = true;
+
+    //                 tmp_out = offscreen_merge_canvas.transferToImageBitmap();
+    //                 // tmp_out.filename
+
+    //                 tmp_out.fake_file_name = name_tmp_normalized;
+    //                 image_array.push(tmp_out);
+    //             } else {
+    //                 combined_parts_included[current_parr_name_tmp] = i;
+    //             }
+    //         }
+    //     }
+    // } else {
+    //     for (let i of image_array) i.disabled = false;
+    // }
+
+    // if (document.getElementById("mergeStuff").checked) {
+    merge_stuff = document.getElementById("mergeStuff").checked;
+    first_frame_stuff = document.getElementById("firstFrame").checked;
+
+    combined_parts_included = {};
+
+    for (let i in image_array) {
+        obj_tmp = image_array[i];
+        obj_tmp.disabled = false; // stupid hack
+
+        if (merge_stuff) {
             if (!obj_tmp.file_obj) continue;
             name_tmp = obj_tmp.file_obj.filename.replace(".png", "");
             door_upper = (name_tmp.endsWith("_upper") || name_tmp.endsWith("_top")) && name_tmp.includes("door");
@@ -1516,7 +1606,10 @@ function sort_and_draw_image(image_array_in, width, add_color_data) {
                 if (opposite_part_index_tmp) {
                     opposite_part_obj_tmp = image_array[opposite_part_index_tmp];
 
-                    let offscreen_merge_canvas = new OffscreenCanvas(Math.max(opposite_part_obj_tmp.width, obj_tmp.width), opposite_part_obj_tmp.height + obj_tmp.height);
+                    let offscreen_merge_canvas = new OffscreenCanvas(
+                        Math.max(opposite_part_obj_tmp.width, obj_tmp.width),
+                        opposite_part_obj_tmp.height + obj_tmp.height
+                    );
                     merge_ctx = offscreen_merge_canvas.getContext("2d", {
                         willReadFrequently: true,
                         alpha: true,
@@ -1548,9 +1641,50 @@ function sort_and_draw_image(image_array_in, width, add_color_data) {
                 }
             }
         }
-    } else {
-        for (let i of image_array) i.disabled = false;
+        // } else {
+        //     obj_tmp.disabled = false;
+        // }
+
+        // pre process all image stuff
+        //! first frame
+        if (first_frame_stuff && !obj_tmp.disabled) {
+            if (!obj_tmp.file_obj) continue; // replace with break and use a while loop as if
+
+            if (obj_tmp.file_obj.filename in animated_textures_array) {
+                //! fix here
+                let offscreen_merge_canvas = new OffscreenCanvas(obj_tmp.width, obj_tmp.width);
+                merge_ctx = offscreen_merge_canvas.getContext("2d", {
+                    willReadFrequently: true,
+                    alpha: true,
+                    antialias: false,
+                });
+                merge_ctx.drawImage(obj_tmp, 0, 0, obj_tmp.width, obj_tmp.width);
+
+                obj_tmp.disabled = true;
+
+                tmp_out = offscreen_merge_canvas.transferToImageBitmap();
+                tmp_out.file_obj = obj_tmp.file_obj;
+
+                tmp_out.disabled = false;
+                tmp_out.group_type = obj_tmp.group_type;
+                tmp_out.avg_color = obj_tmp.avg_color;
+
+                image_array.push(tmp_out);
+                console.log(obj_tmp, tmp_out);
+            }
+        }
+
+        // while (first_frame_stuff) {
+        //     if (!obj_tmp.file_obj) break;
+
+        //     //code
+
+        //     break;
+        // }
     }
+    // } else {
+    //     for (let i of image_array) i.disabled = false;
+    // }
 
     image_array = image_array.filter((a) => {
         return !a.disabled;
@@ -1712,7 +1846,7 @@ function hover_zoom_canvas(event, click) {
     x *= event.target.width;
     y *= event.target.height;
 
-    zoom_size_lol = document.getElementById("zoom_input_width").valueAsNumber || 32;//32;
+    zoom_size_lol = document.getElementById("zoom_input_width").valueAsNumber || 32; //32;
 
     // let canvas_in_tmp = document.getElementById("modalCanvas");
 
@@ -1873,7 +2007,11 @@ function closeModal() {
 
 function download_button_clicked() {
     const canvas = document.getElementById("out_canvas");
-    scale_up_amt = 1 + document.getElementById("scale_01").checked + document.getElementById("scale_02").checked * 4 + document.getElementById("scale_03").checked * 9;
+    scale_up_amt =
+        1 +
+        document.getElementById("scale_01").checked +
+        document.getElementById("scale_02").checked * 4 +
+        document.getElementById("scale_03").checked * 9;
 
     let offscreen_upscale_canvas = new OffscreenCanvas(canvas.width * scale_up_amt, canvas.height * scale_up_amt);
     upscale_ctx = offscreen_upscale_canvas.getContext("2d", {
@@ -1902,7 +2040,11 @@ function download_button_clicked() {
 function copy_image_button_clicked() {
     const canvas = document.getElementById("out_canvas");
 
-    scale_up_amt = 1 + document.getElementById("scale_01").checked + document.getElementById("scale_02").checked * 4 + document.getElementById("scale_03").checked * 9;
+    scale_up_amt =
+        1 +
+        document.getElementById("scale_01").checked +
+        document.getElementById("scale_02").checked * 4 +
+        document.getElementById("scale_03").checked * 9;
 
     let offscreen_upscale_canvas = new OffscreenCanvas(canvas.width * scale_up_amt, canvas.height * scale_up_amt);
     upscale_ctx = offscreen_upscale_canvas.getContext("2d", {
