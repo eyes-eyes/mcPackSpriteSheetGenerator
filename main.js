@@ -1712,7 +1712,7 @@ function hover_zoom_canvas(event, click) {
     x *= event.target.width;
     y *= event.target.height;
 
-    zoom_size_lol = 32;
+    zoom_size_lol = document.getElementById("zoom_input_width").valueAsNumber || 32;//32;
 
     // let canvas_in_tmp = document.getElementById("modalCanvas");
 

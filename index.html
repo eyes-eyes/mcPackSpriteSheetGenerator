@@ -624,7 +624,7 @@
                             <label for="mergeStuff">Merge Doors</label>
                         </div>
 
-                        <!-- <div>
+                        <div>
                             <input type="checkbox" name="firstFrame" id="firstFrame" oninput="" />
                             <label for="firstFrame">First frame (blocks & items)</label>
                         </div>
@@ -632,7 +632,7 @@
                         <div>
                             <input type="checkbox" name="leatherTint" id="leatherTint" oninput="" />
                             <label for="leatherTint">Leather Tint</label>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -708,6 +708,17 @@
                                             value="#dbdad1"
                                             oninput="document.getElementById('zoomModalCanvas').style.backgroundColor = this.value; document.getElementById('modalCanvas').style.backgroundColor = this.value"
                                         /><br />
+                                        <h3>Change zoom box resolution</h3>
+                                        <input
+                                        type="number"
+                                        id="zoom_input_width"
+                                        required
+                                        maxlength="5"
+                                        max="16384"
+                                        value="32"
+                                        min="0"
+                                        oninput="this.valueAsNumber = Math.min(Math.max(this.valueAsNumber,this.min),this.max);generate_final_image()"
+                                        />
                                         <h2>Current Texture:</h2>
                                         <br />
                                         <div class="MoreOptions">
