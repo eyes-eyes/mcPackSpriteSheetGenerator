@@ -1097,7 +1097,6 @@ button:focus {
     margin: 0;
 }
 
-
 @keyframes stretch-animate {
     0% {
         transform: scale(1, 1);
@@ -1809,6 +1808,22 @@ h6 {
 .h2,
 h2 {
     font-size: 30px;
+}
+
+.white_panel {
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    padding: 2% 4%;
+    margin: 0 -4% 40px -4%;
+}
+
+.ribbon {
+    position: absolute;
+    top: -10px;
+    left: -50px;
+    color: #fff;
 }
 
 .FrontPage_UploadArea {
