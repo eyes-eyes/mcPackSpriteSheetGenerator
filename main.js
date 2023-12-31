@@ -152,29 +152,29 @@ const java_mc_groups = {
     },
     armors: {
         "^minecraft": {
-            "^item": {
+            "^item !overlay": {
                 "Leather Cap": null,
-                "Leather helmet !overlay": null,
+                "Leather helmet": null,
                 "Chainmail Helmet": null,
                 "Iron Helmet": null,
                 "Gold Helmet": null,
                 "Diamond Helmet": null,
                 "Netherite Helmet": null,
-                "Leather Tunic !overlay": null,
-                "Leather chestplate !overlay": null,
+                "Leather Tunic": null,
+                "Leather chestplate": null,
                 "Chainmail Chestplate": null,
                 "Iron Chestplate": null,
                 "gold Chestplate": null,
                 "Diamond Chestplate": null,
                 "Netherite Chestplate": null,
                 "Leather Pants": null,
-                "Leather Leggings !overlay": null,
+                "Leather Leggings": null,
                 "Chainmail Leggings": null,
                 "Iron Leggings": null,
                 "gold Leggings": null,
                 "Diamond Leggings": null,
                 "Netherite Leggings": null,
-                "Leather Boots !overlay": null,
+                "Leather Boots": null,
                 "Chainmail Boots": null,
                 "Iron Boots": null,
                 "gold Boots": null,
@@ -1525,7 +1525,7 @@ function color_append_to_imaged(images) {
 
 function sort_and_draw_image(image_array_in, width, add_color_data) {
     image_array = image_array_in.slice();
-    overlay_array_stuff = {}
+    overlay_array_stuff = {};
 
     // if (document.getElementById("mergeStuff").checked) {
     //     combined_parts_included = {};
@@ -1592,7 +1592,7 @@ function sort_and_draw_image(image_array_in, width, add_color_data) {
     for (let i in image_array) {
         obj_tmp = image_array[i];
         obj_tmp.disabled = false; // stupid hack
-        
+
         if (merge_stuff) {
             if (!obj_tmp.file_obj) continue;
             name_tmp = obj_tmp.file_obj.filename.replace(".png", "");
@@ -1640,8 +1640,6 @@ function sort_and_draw_image(image_array_in, width, add_color_data) {
             }
         }
 
-        
-
         // } else {
         //     obj_tmp.disabled = false;
         // }
@@ -1671,14 +1669,16 @@ function sort_and_draw_image(image_array_in, width, add_color_data) {
                 tmp_out.avg_color = obj_tmp.avg_color;
 
                 // image_array.push(tmp_out);
-                image_array[i] = obj_tmp = tmp_out
+                image_array[i] = obj_tmp = tmp_out;
                 // console.log(obj_tmp, tmp_out);
             }
         }
 
         if (redie_lol_ye && !obj_tmp.disabled) {
             if (!obj_tmp.file_obj) continue;
-            if (!obj_tmp.file_obj.short_name.startsWith("leather") || obj_tmp.file_obj.short_name.endsWith("_overlay") || obj_tmp.file_obj.short_name == "leather") {continue;}
+            if (!obj_tmp.file_obj.short_name.startsWith("leather") || obj_tmp.file_obj.short_name.endsWith("_overlay") || obj_tmp.file_obj.short_name == "leather") {
+                continue;
+            }
             let offscreen_merge_canvas = new OffscreenCanvas(obj_tmp.width, obj_tmp.height);
             merge_ctx = offscreen_merge_canvas.getContext("2d", {
                 willReadFrequently: true,
@@ -1690,7 +1690,7 @@ function sort_and_draw_image(image_array_in, width, add_color_data) {
             merge_ctx.globalCompositeOperation = "multiply"; // multiply it by red color
             merge_ctx.fillStyle = "#" + "A06540";
             merge_ctx.fillRect(0, 0, obj_tmp.width, obj_tmp.height);
-            merge_ctx.globalCompositeOperation = "destination-in"
+            merge_ctx.globalCompositeOperation = "destination-in";
             merge_ctx.drawImage(obj_tmp, 0, 0);
 
             obj_tmp.disabled = true;
@@ -1703,14 +1703,13 @@ function sort_and_draw_image(image_array_in, width, add_color_data) {
             tmp_out.avg_color = obj_tmp.avg_color;
 
             // image_array.push(tmp_out);
-            image_array[i] = obj_tmp = tmp_out
-
+            image_array[i] = obj_tmp = tmp_out;
         }
 
         if (display_armor_stuff_togetherness) {
-            overlay_array_stuff
+            overlay_array_stuff;
         }
-        
+
         // while (first_frame_stuff) {
         //     if (!obj_tmp.file_obj) break;
 
