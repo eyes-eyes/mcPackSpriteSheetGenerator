@@ -1706,9 +1706,10 @@ function sort_and_draw_image(image_array_in, width, add_color_data) {
             image_array[i] = obj_tmp = tmp_out;
         }
 
-        if (display_armor_stuff_togetherness) {
-            overlay_array_stuff;
-        }
+        //!overlay things
+        // if (display_armor_stuff_togetherness) {
+        //     overlay_array_stuff;
+        // }
 
         // while (first_frame_stuff) {
         //     if (!obj_tmp.file_obj) break;
