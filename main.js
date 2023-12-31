@@ -711,6 +711,7 @@ async function parse_mcmeta_png(mcmeta_file) {
 async function zip_new_entry_handler(entries) {
     clear_selected(); // mby fix bug idk
     zip_path_objects = {};
+    animated_textures_array = [];
     for (i in entries) {
         path_array = entries[i].filename.split("/");
         entries[i].short_name = get_just_file_name(entries[i]);
@@ -1524,6 +1525,7 @@ function color_append_to_imaged(images) {
 
 function sort_and_draw_image(image_array_in, width, add_color_data) {
     image_array = image_array_in.slice();
+    overlay_array_stuff = {}
 
     // if (document.getElementById("mergeStuff").checked) {
     //     combined_parts_included = {};
@@ -1582,13 +1584,15 @@ function sort_and_draw_image(image_array_in, width, add_color_data) {
     // if (document.getElementById("mergeStuff").checked) {
     merge_stuff = document.getElementById("mergeStuff").checked;
     first_frame_stuff = document.getElementById("firstFrame").checked;
+    redie_lol_ye = document.getElementById("leatherTint").checked;
+    // rediy_culor = document.getElementById("leatherTint").value;
 
     combined_parts_included = {};
 
     for (let i in image_array) {
         obj_tmp = image_array[i];
         obj_tmp.disabled = false; // stupid hack
-
+        
         if (merge_stuff) {
             if (!obj_tmp.file_obj) continue;
             name_tmp = obj_tmp.file_obj.filename.replace(".png", "");
@@ -1635,6 +1639,9 @@ function sort_and_draw_image(image_array_in, width, add_color_data) {
                 }
             }
         }
+
+        
+
         // } else {
         //     obj_tmp.disabled = false;
         // }
@@ -1644,7 +1651,7 @@ function sort_and_draw_image(image_array_in, width, add_color_data) {
         if (first_frame_stuff && !obj_tmp.disabled) {
             if (!obj_tmp.file_obj) continue; // replace with break and use a while loop as if
 
-            if (obj_tmp.file_obj.filename in animated_textures_array) {
+            if (animated_textures_array.includes(obj_tmp.file_obj.filename)) {
                 //! fix here
                 let offscreen_merge_canvas = new OffscreenCanvas(obj_tmp.width, obj_tmp.width);
                 merge_ctx = offscreen_merge_canvas.getContext("2d", {
@@ -1652,22 +1659,58 @@ function sort_and_draw_image(image_array_in, width, add_color_data) {
                     alpha: true,
                     antialias: false,
                 });
-                merge_ctx.drawImage(obj_tmp, 0, 0, obj_tmp.width, obj_tmp.width);
+                merge_ctx.drawImage(obj_tmp, 0, 0); //, obj_tmp.width, obj_tmp.width);
 
                 obj_tmp.disabled = true;
 
                 tmp_out = offscreen_merge_canvas.transferToImageBitmap();
                 tmp_out.file_obj = obj_tmp.file_obj;
 
-                tmp_out.disabled = false;
+                delete tmp_out.disabled; // = false;
                 tmp_out.group_type = obj_tmp.group_type;
                 tmp_out.avg_color = obj_tmp.avg_color;
 
-                image_array.push(tmp_out);
-                console.log(obj_tmp, tmp_out);
+                // image_array.push(tmp_out);
+                image_array[i] = obj_tmp = tmp_out
+                // console.log(obj_tmp, tmp_out);
             }
         }
 
+        if (redie_lol_ye && !obj_tmp.disabled) {
+            if (!obj_tmp.file_obj) continue;
+            if (!obj_tmp.file_obj.short_name.startsWith("leather") || obj_tmp.file_obj.short_name.endsWith("_overlay") || obj_tmp.file_obj.short_name == "leather") {continue;}
+            let offscreen_merge_canvas = new OffscreenCanvas(obj_tmp.width, obj_tmp.height);
+            merge_ctx = offscreen_merge_canvas.getContext("2d", {
+                willReadFrequently: true,
+                alpha: true,
+                antialias: false,
+            });
+            merge_ctx.drawImage(obj_tmp, 0, 0);
+
+            merge_ctx.globalCompositeOperation = "multiply"; // multiply it by red color
+            merge_ctx.fillStyle = "#" + "A06540";
+            merge_ctx.fillRect(0, 0, obj_tmp.width, obj_tmp.height);
+            merge_ctx.globalCompositeOperation = "destination-in"
+            merge_ctx.drawImage(obj_tmp, 0, 0);
+
+            obj_tmp.disabled = true;
+
+            tmp_out = offscreen_merge_canvas.transferToImageBitmap();
+            tmp_out.file_obj = obj_tmp.file_obj;
+
+            delete tmp_out.disabled; // = false;
+            tmp_out.group_type = obj_tmp.group_type;
+            tmp_out.avg_color = obj_tmp.avg_color;
+
+            // image_array.push(tmp_out);
+            image_array[i] = obj_tmp = tmp_out
+
+        }
+
+        if (display_armor_stuff_togetherness) {
+            overlay_array_stuff
+        }
+        
         // while (first_frame_stuff) {
         //     if (!obj_tmp.file_obj) break;
 
