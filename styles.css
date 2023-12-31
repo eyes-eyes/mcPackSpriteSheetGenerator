@@ -1273,6 +1273,7 @@ p#zoom_hovered_output {
 .zoom-modal-content canvas {
     background-color: white;
     image-rendering: pixelated;
+    border-radius: 8px;
 }
 
 .modal-content {
