@@ -813,7 +813,9 @@ function handle_file(file) {
 
     console.log(file_object_raw.name.replace(".zip", ""));
 
-    document.getElementById("pack_name_top_bar").innerHTML = minecraft_name_to_html(file_object_raw.name.replace(".zip", "").replace(/^[!\s]*/gm, "")).innerHTML;
+    document.getElementById("pack_name_top_bar").innerHTML = minecraft_name_to_html(
+        file_object_raw.name.replace(".zip", "").replace(/^[!\s]*/gm, "")
+    ).innerHTML;
 
     file_object_zip = new zip.ZipReader(new zip.BlobReader(file));
     file_object_zip.getEntries().then(zip_new_entry_handler);
@@ -1607,7 +1609,10 @@ function sort_and_draw_image(image_array_in, width, add_color_data) {
                 if (opposite_part_index_tmp) {
                     opposite_part_obj_tmp = image_array[opposite_part_index_tmp];
 
-                    let offscreen_merge_canvas = new OffscreenCanvas(Math.max(opposite_part_obj_tmp.width, obj_tmp.width), opposite_part_obj_tmp.height + obj_tmp.height);
+                    let offscreen_merge_canvas = new OffscreenCanvas(
+                        Math.max(opposite_part_obj_tmp.width, obj_tmp.width),
+                        opposite_part_obj_tmp.height + obj_tmp.height
+                    );
                     merge_ctx = offscreen_merge_canvas.getContext("2d", {
                         willReadFrequently: true,
                         alpha: true,
@@ -1676,7 +1681,11 @@ function sort_and_draw_image(image_array_in, width, add_color_data) {
 
         if (redie_lol_ye && !obj_tmp.disabled) {
             if (!obj_tmp.file_obj) continue;
-            if (!obj_tmp.file_obj.short_name.startsWith("leather") || obj_tmp.file_obj.short_name.endsWith("_overlay") || obj_tmp.file_obj.short_name == "leather") {
+            if (
+                !obj_tmp.file_obj.short_name.startsWith("leather") ||
+                obj_tmp.file_obj.short_name.endsWith("_overlay") ||
+                obj_tmp.file_obj.short_name == "leather"
+            ) {
                 continue;
             }
             let offscreen_merge_canvas = new OffscreenCanvas(obj_tmp.width, obj_tmp.height);
@@ -2044,7 +2053,11 @@ function closeModal() {
 
 function download_button_clicked() {
     const canvas = document.getElementById("out_canvas");
-    scale_up_amt = 1 + document.getElementById("scale_01").checked + document.getElementById("scale_02").checked * 4 + document.getElementById("scale_03").checked * 9;
+    scale_up_amt =
+        1 +
+        document.getElementById("scale_01").checked +
+        document.getElementById("scale_02").checked * 4 +
+        document.getElementById("scale_03").checked * 9;
 
     let offscreen_upscale_canvas = new OffscreenCanvas(canvas.width * scale_up_amt, canvas.height * scale_up_amt);
     upscale_ctx = offscreen_upscale_canvas.getContext("2d", {
@@ -2073,7 +2086,11 @@ function download_button_clicked() {
 function copy_image_button_clicked() {
     const canvas = document.getElementById("out_canvas");
 
-    scale_up_amt = 1 + document.getElementById("scale_01").checked + document.getElementById("scale_02").checked * 4 + document.getElementById("scale_03").checked * 9;
+    scale_up_amt =
+        1 +
+        document.getElementById("scale_01").checked +
+        document.getElementById("scale_02").checked * 4 +
+        document.getElementById("scale_03").checked * 9;
 
     let offscreen_upscale_canvas = new OffscreenCanvas(canvas.width * scale_up_amt, canvas.height * scale_up_amt);
     upscale_ctx = offscreen_upscale_canvas.getContext("2d", {
