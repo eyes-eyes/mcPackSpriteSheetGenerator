@@ -330,6 +330,7 @@ const java_mc_groups = {
             "^item": {
                 "ender pearl": null,
                 "eye of ender": null,
+                ball: null,
                 snowball: null,
                 "slime ball": null,
                 "egg !leggings !overlay !spawn": null,
@@ -517,7 +518,7 @@ const java_mc_groups = {
             "blaze rod": null,
             "blaze powder": null,
             bone: null,
-            clay: null,
+            // clay: null,
             "disc frag": null,
             "dragon breath": null,
             "echo shard": null,
