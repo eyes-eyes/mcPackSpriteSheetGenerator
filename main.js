@@ -82,8 +82,8 @@ const java_mc_groups = {
     woodVariants: {
         "^minecraft": {
             "^block !troll ^!entity": {
-                "!door": {
-                    "oak !dark": null,
+                "!door !sapling !propagule !root": {
+                    "oak !dark !pale": null,
                     spruce: null,
                     birch: null,
                     jungle: null,
@@ -91,6 +91,24 @@ const java_mc_groups = {
                     "dark oak": null,
                     mangrove: null,
                     cherry: null,
+                    "pale oak": null,
+                },
+            },
+        },
+    },
+    saplings: {
+        "^minecraft": {
+            "^block ^!entity": {
+                "!door !plank !log sapling": {
+                    "oak !dark !pale": null,
+                    spruce: null,
+                    birch: null,
+                    jungle: null,
+                    acacia: null,
+                    "dark oak": null,
+                    mangrove: null,
+                    cherry: null,
+                    "pale oak": null,
                 },
             },
         },
