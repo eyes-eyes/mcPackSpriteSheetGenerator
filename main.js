@@ -807,7 +807,9 @@ function handle_file(file) {
 
     console.log(file_object_raw.name.replace(".zip", ""));
 
-    document.getElementById("pack_name_top_bar").innerHTML = minecraft_name_to_html(file_object_raw.name.replace(".zip", "").replace(/^[!\s]*/gm, "")).innerHTML;
+    document.getElementById("pack_name_top_bar").innerHTML = minecraft_name_to_html(
+        file_object_raw.name.replace(".zip", "").replace(/^[!\s]*/gm, "")
+    ).innerHTML;
 
     file_object_zip = new zip.ZipReader(new zip.BlobReader(file));
     file_object_zip.getEntries().then(zip_new_entry_handler);
@@ -1013,7 +1015,7 @@ function generate_selected_textures_list() {
             search_results.appendChild(current_result_itter);
         }
     }
-    document.getElementById("counterTotal").innerText = "(" + search_selected_items.length + ") " + "Total Textures:";
+    document.getElementById("currentCounter").innerText = "(" + search_selected_items.length + ") " + "Total Textures:";
 }
 
 function clear_selected() {
@@ -1024,7 +1026,7 @@ function clear_selected() {
         currentValue.checked = false;
     });
     document.getElementById("checkingGroups").checked = false;
-    document.getElementById("counterTotal").innerText = "(" + search_selected_items.length + ") " + "Total Textures:";
+    document.getElementById("currentCounter").innerText = "(" + search_selected_items.length + ") " + "Total Textures:";
 }
 
 //! group selection method
@@ -1109,7 +1111,7 @@ function group_selected(obj, dont_update_search) {
         generate_selected_textures_list();
         search_user_input(last_user_inputStringThing);
 
-        document.getElementById("counterTotal").innerText = "(" + search_selected_items.length + ") " + "Total Textures:";
+        document.getElementById("currentCounter").innerText = "(" + search_selected_items.length + ") " + "Total Textures:";
     }
 
     // console.log(obj.id + (obj.checked ? " CHECKED" : " Unchecked"));
@@ -1538,7 +1540,10 @@ function sort_and_draw_image(image_array_in, width, add_color_data) {
                 if (opposite_part_index_tmp) {
                     opposite_part_obj_tmp = image_array[opposite_part_index_tmp];
 
-                    let offscreen_merge_canvas = new OffscreenCanvas(Math.max(opposite_part_obj_tmp.width, obj_tmp.width), opposite_part_obj_tmp.height + obj_tmp.height);
+                    let offscreen_merge_canvas = new OffscreenCanvas(
+                        Math.max(opposite_part_obj_tmp.width, obj_tmp.width),
+                        opposite_part_obj_tmp.height + obj_tmp.height
+                    );
                     merge_ctx = offscreen_merge_canvas.getContext("2d", {
                         willReadFrequently: true,
                         alpha: true,
@@ -1895,7 +1900,8 @@ function closeModal() {
 
 function download_button_clicked() {
     const canvas = document.getElementById("out_canvas");
-    scale_up_amt = 1 + document.getElementById("scale_01").checked + document.getElementById("scale_02").checked * 4 + document.getElementById("scale_03").checked * 9;
+    scale_up_amt =
+        1 + document.getElementById("scale_01").checked + document.getElementById("scale_02").checked * 4 + document.getElementById("scale_03").checked * 9;
 
     let offscreen_upscale_canvas = new OffscreenCanvas(canvas.width * scale_up_amt, canvas.height * scale_up_amt);
     upscale_ctx = offscreen_upscale_canvas.getContext("2d", {
@@ -1924,7 +1930,8 @@ function download_button_clicked() {
 function copy_image_button_clicked() {
     const canvas = document.getElementById("out_canvas");
 
-    scale_up_amt = 1 + document.getElementById("scale_01").checked + document.getElementById("scale_02").checked * 4 + document.getElementById("scale_03").checked * 9;
+    scale_up_amt =
+        1 + document.getElementById("scale_01").checked + document.getElementById("scale_02").checked * 4 + document.getElementById("scale_03").checked * 9;
 
     let offscreen_upscale_canvas = new OffscreenCanvas(canvas.width * scale_up_amt, canvas.height * scale_up_amt);
     upscale_ctx = offscreen_upscale_canvas.getContext("2d", {
@@ -1967,7 +1974,7 @@ function toggle_all_groups(checked) {
     generate_selected_textures_list();
     search_user_input(last_user_inputStringThing);
 
-    document.getElementById("counterTotal").innerText = "(" + search_selected_items.length + ") " + "Total Textures:";
+    document.getElementById("currentCounter").innerText = "(" + search_selected_items.length + ") " + "Total Textures:";
 }
 
 function toggle_all_searched() {
