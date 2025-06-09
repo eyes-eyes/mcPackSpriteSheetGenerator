@@ -378,7 +378,7 @@ const java_mc_groups = {
     },
 
     vehicles: {
-        "^minecraft ^texture ^item ^!entity ": {
+        "^minecraft ^texture ^item ^!entity ^!gui": {
             Minecart: null,
             boat: null,
             raft: null,
