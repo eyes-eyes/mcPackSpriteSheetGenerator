@@ -183,6 +183,14 @@ body {
     content: "Utility\00a0 Items";
 }
 
+.switch.bannerPatterns .toggle::before {
+    content: "Banner\00a0 Patterns";
+}
+
+.switch.spawnEggs .toggle::before {
+    content: "Spawn\00a0 Eggss";
+}
+
 .switch.dyes .toggle::before {
     content: "Dyes";
 }
@@ -257,6 +265,10 @@ body {
 
 .switch.materials .toggle::before {
     content: "Materials";
+}
+
+.switch.light .toggle::before {
+    content: "Light";
 }
 
 .switch.vehicles .toggle::before {

@@ -170,29 +170,29 @@ const java_mc_groups = {
     },
     armors: {
         "^minecraft": {
-            "^item": {
+            "^item !overlay": {
                 "Leather Cap": null,
-                "Leather helmet !overlay": null,
+                "Leather helmet": null,
                 "Chainmail Helmet": null,
                 "Iron Helmet": null,
                 "Gold Helmet": null,
                 "Diamond Helmet": null,
                 "Netherite Helmet": null,
-                "Leather Tunic !overlay": null,
-                "Leather chestplate !overlay": null,
+                "Leather Tunic": null,
+                "Leather chestplate": null,
                 "Chainmail Chestplate": null,
                 "Iron Chestplate": null,
                 "gold Chestplate": null,
                 "Diamond Chestplate": null,
                 "Netherite Chestplate": null,
                 "Leather Pants": null,
-                "Leather Leggings !overlay": null,
+                "Leather Leggings": null,
                 "Chainmail Leggings": null,
                 "Iron Leggings": null,
                 "gold Leggings": null,
                 "Diamond Leggings": null,
                 "Netherite Leggings": null,
-                "Leather Boots !overlay": null,
+                "Leather Boots": null,
                 "Chainmail Boots": null,
                 "Iron Boots": null,
                 "gold Boots": null,
@@ -203,6 +203,7 @@ const java_mc_groups = {
                 "gold Horse Armor": null,
                 "Diamond Horse Armor": null,
                 "Turtle Helmet": null,
+                "wolf armor": null,
             },
         },
     },
@@ -244,7 +245,7 @@ const java_mc_groups = {
     },
     foods: {
         "^minecraft": {
-            "^item !model !bucket": {
+            "^item !model !bucket !egg": {
                 Beef: null,
                 "Cook Beef": null,
                 Steak: null,
@@ -380,6 +381,7 @@ const java_mc_groups = {
         "^minecraft ^texture ^item ^!entity ": {
             Minecart: null,
             boat: null,
+            raft: null,
         },
     },
     rangedThings: {
@@ -407,8 +409,20 @@ const java_mc_groups = {
             shear: null,
             "flint and steel": null,
             elytra: null,
+            brush: null,
         },
     },
+    bannerPatterns: {
+        "^minecraft ^item ^!gui": {
+            "banner pattern": null,
+        },
+    },
+    light: {
+        "^minecraft ^item ^!gui": {
+            "light ^item ^!block ^!gui ^!trims ^!misc !blue !gray": null,
+        },
+    },
+
     // utilityBlocks: {
     //     "^minecraft ^texture ^block": {
     //         "craft table": {
@@ -538,6 +552,8 @@ const java_mc_groups = {
             "amethyst shard": null,
             "blaze rod": null,
             "blaze powder": null,
+            "breeze rod": null,
+            bamboo: null,
             bone: null,
             // clay: null,
             "disc frag": null,
@@ -621,6 +637,11 @@ const java_mc_groups = {
         },
     },
     buckets: { "^minecraft ^item !model bucket": null },
+    spawnEggs: {
+        "^minecraft ^item ^!gui !trim !leggings": {
+            "spawn egg": null,
+        },
+    },
 };
 
 document.onkeydown = function (evt) {

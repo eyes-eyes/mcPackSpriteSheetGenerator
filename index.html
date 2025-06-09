@@ -29,9 +29,8 @@
                             </a>
 
                             <p class="desc">
-                                Press <span class="code-box">Esc</span> to get back a page. <br />Press <span class="code-box">/</span> to focus onto search. <br /><b
-                                    >PACK MUST BE ZIPPED!!!</b
-                                >
+                                Press <span class="code-box">Esc</span> to get back a page. <br />Press <span class="code-box">/</span> to focus onto search.
+                                <br /><b>PACK MUST BE ZIPPED!!!</b>
                             </p>
 
                             <a class="action" onclick="document.getElementById('input_main_upload').click()">
@@ -48,13 +47,9 @@
                             </a>
 
                             <p class="desc">
-                                Catered towards Minecraft pack artists that showcase their pack/works on a
-                                social media platform on a background OR those that reference a mc pack in the
-                                form of a sprite sheet!<br />Link to the repository here:
-                                <a
-                                    href="https://github.com/eyes-eyes/mcPackSpriteSheetGenerator"
-                                    style="text-decoration: underline"
-                                    ;
+                                Catered towards Minecraft pack artists that showcase their pack/works on a social media platform on a background OR those that
+                                reference a mc pack in the form of a sprite sheet!<br />Link to the repository here:
+                                <a href="https://github.com/eyes-eyes/mcPackSpriteSheetGenerator" style="text-decoration: underline" ;
                                     >https://github.com/eyes-eyes/mcPackSpriteSheetGenerator</a
                                 >
                             </p>
@@ -125,13 +120,7 @@
                         None
                     </p>
                     <p
-                        style="
-                            right: 5%;
-                            top: 50%;
-                            position: absolute;
-                            transform: translate(0px, -50%);
-                            font-family: Roboto, sans-serif;
-                        "
+                        style="right: 5%; top: 50%; position: absolute; transform: translate(0px, -50%); font-family: Roboto, sans-serif"
                         id="pack_version_top_bar"
                     >
                         Pack version: (opening)
@@ -152,11 +141,7 @@
                                     placeholder="Search for textures..."
                                     oninput="search_user_input(this.value)"
                                 />
-                                <div
-                                    class="toggleSearch"
-                                    id="toggleSearch"
-                                    onclick="toggle_all_searched()"
-                                ></div>
+                                <div class="toggleSearch" id="toggleSearch" onclick="toggle_all_searched()"></div>
                             </div>
 
                             <div class="search_results" id="search_results"></div>
@@ -302,6 +287,13 @@
                                                 <span class="toggle"></span>
                                             </label>
                                         </div>
+
+                                        <div>
+                                            <label class="switch light">
+                                                <input type="checkbox" id="light" oninput="group_selected(this)" />
+                                                <span class="toggle"></span>
+                                            </label>
+                                        </div>
                                     </div>
 
                                     <div class="column" id="column">
@@ -406,6 +398,20 @@
                                         <div>
                                             <label class="switch utilityItems">
                                                 <input type="checkbox" id="utilityItems" oninput="group_selected(this)" />
+                                                <span class="toggle"></span>
+                                            </label>
+                                        </div>
+
+                                        <div>
+                                            <label class="switch bannerPatterns">
+                                                <input type="checkbox" id="bannerPatterns" oninput="group_selected(this)" />
+                                                <span class="toggle"></span>
+                                            </label>
+                                        </div>
+
+                                        <div>
+                                            <label class="switch spawnEggs">
+                                                <input type="checkbox" id="spawnEggs" oninput="group_selected(this)" />
                                                 <span class="toggle"></span>
                                             </label>
                                         </div>
