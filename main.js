@@ -553,7 +553,7 @@ const java_mc_groups = {
             "blaze rod": null,
             "blaze powder": null,
             "breeze rod": null,
-            bamboo: null,
+            "bamboo !door !sign !raft": null,
             bone: null,
             // clay: null,
             "disc frag": null,
